@@ -1,9 +1,16 @@
-Portfolio WordPress Plugin
+<a href="http://bestwebsoft.com/plugin/portfolio-plugin/" target=_blank>Portfolio WordPress Plugin</a>
 ==========================
 
-Portfolio plugin provides a possibility to create a unique page for displaying portfolio items consisting of screenshots and additional information such as description, short description, URL, date of completion, etc. Also it allows adding of additional screenshots (multiple additional screenshots per 1 portfolio item).
+With the Portfolio plugin you can create a unique page for displaying portfolio items consisting of screenshots and additional information such as description, short description, URL, date of completion, etc. Moreover you can add not just one, but many screenshots to one portfolio item for better visual guidance. 
 
-Official plugin page: http://bestwebsoft.com/plugin/portfolio-plugin/
+<img src="http://bestwebsoft.com/wp-content/uploads/2011/07/portfolio1.jpg" />
+
+<a href="http://bestwebsoft.com/plugin/portfolio-plugin/#description" target=_blank>Description</a> | 
+<a href="http://bestwebsoft.com/plugin/portfolio-plugin/#installation" target=_blank>Installation</a> | 
+<a href="http://bestwebsoft.com/plugin/portfolio-plugin/#faq" target=_blank>FAQ</a> | 
+<a href="http://bestwebsoft.com/plugin/portfolio-plugin/#screenshots" target=_blank>Screenshots</a> | 
+<a href="http://bestwebsoft.com/plugin/portfolio-plugin/#changelog" target=_blank>Changelog</a> | 
+<a href="http://bestwebsoft.com/plugin/portfolio-plugin/#download" target=_blank>Download</a>
 
 Features
 -----------------------------
