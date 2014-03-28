@@ -109,6 +109,7 @@ function setMessage(msg) {
 		$(".error").hide();
 		$(".updated").html(msg);
 		$(".updated").show();
+		$('#prtfl_settings_notice').hide();
 	})(jQuery);
 }
 
@@ -119,3 +120,14 @@ function setError(msg) {
 		$(".error").show();
 	})(jQuery);
 }
+
+(function($) {
+	$(document).ready( function() {
+		$( '#prtfl_form_image_size input' ).bind( "change click select", function() {
+			if ( $( this ).attr( 'type' ) != 'submit' ) {
+				$( '.updated.fade' ).css( 'display', 'none' );
+				$( '#prtfl_settings_notice' ).css( 'display', 'block' );
+			};
+		});
+	});
+})(jQuery);
