@@ -5,12 +5,12 @@ With the Portfolio plugin you can create a unique page for displaying portfolio 
 
 <img src="http://bestwebsoft.com/wp-content/uploads/2011/07/portfolio1.jpg" />
 
-<a href="http://bestwebsoft.com/plugin/portfolio-plugin/#description" target=_blank>Description</a> | 
-<a href="http://bestwebsoft.com/plugin/portfolio-plugin/#installation" target=_blank>Installation</a> | 
-<a href="http://bestwebsoft.com/plugin/portfolio-plugin/#faq" target=_blank>FAQ</a> | 
-<a href="http://bestwebsoft.com/plugin/portfolio-plugin/#screenshots" target=_blank>Screenshots</a> | 
-<a href="http://bestwebsoft.com/plugin/portfolio-plugin/#changelog" target=_blank>Changelog</a> | 
-<a href="http://bestwebsoft.com/plugin/portfolio-plugin/#download" target=_blank>Download</a>
+<a href="http://bestwebsoft.com/products/portfolio-plugin/#description" target=_blank>Description</a> | 
+<a href="http://bestwebsoft.com/products/portfolio-plugin/#installation" target=_blank>Installation</a> | 
+<a href="http://bestwebsoft.com/products/portfolio-plugin/#faq" target=_blank>FAQ</a> | 
+<a href="http://bestwebsoft.com/products/portfolio-plugin/#screenshots" target=_blank>Screenshots</a> | 
+<a href="http://bestwebsoft.com/products/portfolio-plugin/#changelog" target=_blank>Changelog</a> | 
+<a href="http://bestwebsoft.com/products/portfolio-plugin/#download" target=_blank>Download</a>
 
 Features
 -----------------------------
