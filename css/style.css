@@ -14,11 +14,6 @@
 	margin-left: 23px;
 	margin-top: 10px;
 }
-.prtfl_form_image_size label {
-	display: block;
-	float: left;
-	min-width: 131px;
-}
 .portfolio_images_block {
 	clear: both;
 }
@@ -68,11 +63,10 @@
 }
 .portfolio_content .read_more a {
 	display: block;
-	width: 80px;
 	font-size: 14px;
 	color: #FFF;
 	background-color: #555;
-	padding: 3px 0;
+	padding: 5px 10px;
 }
 .portfolio_content .read_more a:hover {
 	background-color: #2484c6;
@@ -85,16 +79,15 @@
 .entry_footer {
 	clear:both;
 	position: relative;
-	height: 30px;
 	padding-bottom: 15px;
 }
 .portfolio_terms {
-	border-bottom: 1px solid #D8D8D8;
+	border-top: 1px solid #D8D8D8;
 	clear: both;
 	font-size: 13px;
 	margin: 0;
+	padding: 5px 0;
 	position: relative;
-	top: -25px;
 	z-index: 99;
 }
 .portfolio_terms a {
@@ -150,13 +143,8 @@
 }
 #prtfl_loader,
 #prtfl_img_loader {
-	float: left;
 	position: relative;
 	display: none;
-}
-#ajax_update_postmeta,
-#ajax_update_images {
-	float: left;
 }
 #prtfl_date_additional_field, #prtfl_link_additional_field, 
 #prtfl_shrdescription_additional_field, #prtfl_description_additional_field,
@@ -179,7 +167,8 @@
 }
 .page-template-portfolio .site-content .site-content,
 .single-portfolio .site-content .site-content,
-.tax-portfolio_technologies .site-content .site-content {
+.tax-portfolio_technologies .site-content .site-content,
+.tax-portfolio_executor_profile .site-content .site-content {
 	margin-left: 0;
 	width: auto;
 	float: none;

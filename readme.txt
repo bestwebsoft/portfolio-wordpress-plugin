@@ -1,10 +1,10 @@
 === Portfolio by BestWebSoft ===
 Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
-Tags: album, categories, clients, custom, custom fields, image, images, image description, image display, images gallery, image size, jpeg, jpg, labels, page, pages, photos, photographs, picture, pictures, portfolio, portolio, porfolio, Post, posts, screenshots, showcase, tags, thumbnails, visual items
-Requires at least: 3.1
-Tested up to: 4.2.2
-Stable tag: 2.34
+Tags: add portfolio widget, add album, add image, add image description, add custom fields, add portfolio, add portfolios, add portfolio plugin, add categories, album, best portfolio, best portfolio plugin, categories, category, clients, clients-plugin, custom, custom fields, free, free plugin, free portfolio plugin, free portfolio, image, image description, image display, image-size, images, images gallery, jpeg, jpg, labels, page, pages, photographs, photos, picture, pictures, porfolio, portfolio, portolio, portfolio plugin, portfolio widget, portfolio plugin wordpress, portfolio wp plugin, Post, posts, premium portfolio, project, project portfolio, responsive, responsive design, responsive portfolio, simple portfolio, simple portfolio plugin, screenshots, showcase, tags, thumbnails, visual items, widget, wordpress, wp, wp plugin, wp free plugin, wp portfolio, wp portfolio plugin, wp simple portfolio plugin, wp free portfolio, wp free portfolio plugin, wordpress plugin, wordpress free plugin, wordpress portfolio, wordpress portfolio plugin, wordpress simple portfolio plugin, wordpress free portfolio, wordpress free portfolio plugin
+Requires at least: 3.8
+Tested up to: 4.3.1
+Stable tag: 2.35
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,22 +17,22 @@ Moreover you can add not just one, but many screenshots to one portfolio item fo
 
 https://www.youtube.com/watch?v=OIxDlQZcCcI
 
-<a href="http://www.youtube.com/watch?v=6xPYIttiJ8g" target="_blank">Video instruction on Installation</a>
+<a href="http://www.youtube.com/watch?v=6xPYIttiJ8g" target="_blank">Portfolio by BestWebSoft Video instruction on Installation</a>
 
-<a href="http://wordpress.org/plugins/portfolio/faq/" target="_blank">FAQ</a>
+<a href="http://wordpress.org/plugins/portfolio/faq/" target="_blank">Portfolio by BestWebSoft FAQ</a>
 
-<a href="http://support.bestwebsoft.com" target="_blank">Support</a>
+<a href="http://support.bestwebsoft.com" target="_blank">Portfolio by BestWebSoft Support</a>
 
-<a href="http://bestwebsoft.com/products/portfolio/?k=b97fe54507469c680b273a111ab11083" target="_blank">Upgrade to Pro Version</a>
+<a href="http://bestwebsoft.com/products/portfolio/?k=b97fe54507469c680b273a111ab11083" target="_blank">Upgrade to Portfolio Pro by BestWebSoft</a>
 
 = Features =
 
-* Actions: Create a template with page navigation to display all portfolio items. 
-* Actions: Regenerate thumbnails after changing their size. 
-* Options: Change image size and a number of images displayed in the row. 
-* Actions: Edit labels of additional fields.
-* Display: Enable/disable the option of additional fields displaying. 
-* Actions: Display the latest portfolio items on your page or post using the shortcode [latest_portfolio_items count=3].
+* Create a template with page navigation to display all portfolio items. 
+* Regenerate thumbnails after changing their size. 
+* Change image size and a number of images displayed in the row. 
+* Edit labels of additional fields.
+* Enable/disable the option of additional fields displaying. 
+* Display the latest portfolio items on your page or post using the shortcode.
 
 = Recommended Plugins =
 
@@ -135,10 +135,17 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 2. Add technologies page.
 3. Add executors profile page.
 4. Add New Portfolio items.
-5. Portfolio frontend page (for all portfolios).
-6. Portfolio single frontend page.
+5. Portfolio admin page (for all portfolios).
+6. Portfolio frontend page (for all portfolios).
+7. Portfolio single frontend page.
+8. The pop-up window on Portfolio single page.
 
 == Changelog ==
+
+= V2.35 - 16.11.2015 =
+* NEW : A button for Portfolio shortcode inserting to the content was added.
+* Update : Compatibility with PDF & Print by BestWebSoft was added.
+* Update : All functionality for wordpress 4.3.1 was updated.
 
 = V2.34 - 08.07.2015 =
 * NEW : Ability to restore settings to defaults.
@@ -302,6 +309,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * In this version an image uploaded by means of custom fields is substituted with Wordpress standard meta box for the media files uploading.
 
 == Upgrade Notice ==
+
+= V2.35 =
+A button for Portfolio shortcode inserting to the content was added. Compatibility with PDF & Print by BestWebSoft was added. All functionality for wordpress 4.3.1 was updated.
 
 = V2.34 =
 Ability to restore settings to defaults. Portfolio Settings page is updated.
