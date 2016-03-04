@@ -1,7 +1,7 @@
 <?php
 /*
 Template Name: Portfolio template
-* Version: 1.4
+* Version: 1.4.1
 */
 get_header(); ?>
 	<div class="content-area">
@@ -153,10 +153,10 @@ get_header(); ?>
 									<a href="<?php the_permalink(); ?>" rel="bookmark"><?php _e( 'Read more', 'portfolio' ); ?></a>
 								</div><!-- .read_more -->
 								<div class="portfolio_terms">
-									<?php $terms = wp_get_object_terms( $post->ID, 'portfolio_technologies' );
-									if ( is_array( $terms ) && 0 < count( $terms ) ) { ?>
-										
-											<?php echo $portfolio_options['prtfl_technologies_text_field'];
+									<?php if ( 1 == $portfolio_options['prtfl_technologies_additional_field'] ) {
+										$terms = wp_get_object_terms( $post->ID, 'portfolio_technologies' );
+										if ( is_array( $terms ) && 0 < count( $terms ) ) {
+											echo $portfolio_options['prtfl_technologies_text_field'];
 											$count = 0;
 											foreach ( $terms as $term ) {
 												if ( 0 < $count )
@@ -164,6 +164,7 @@ get_header(); ?>
 												echo '<a href="' . get_term_link( $term->slug, 'portfolio_technologies') . '" title="' . sprintf( __( "View all posts in %s" ), $term->name ) . '" ' . '>' . $term->name . '</a>';
 												$count++;
 											}									
+										}
 									} ?>
 								</div><!-- .portfolio_terms -->
 							</div><!-- .entry_footer -->
@@ -204,6 +205,7 @@ get_header(); ?>
 							echo "<a href='" . get_pagenum_link( $pages ) . "'>&raquo;</a>"; ?>
 						<div class='clear'></div>
 					</div><!-- .pagination -->
+					<?php if ( function_exists( 'pgntn_display_pagination' ) ) pgntn_display_pagination( 'custom', $second_query ); ?>
 				</div><!-- #portfolio_pagenation -->
 			<?php } ?>
 			<?php comments_template(); ?>

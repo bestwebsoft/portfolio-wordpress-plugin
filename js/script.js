@@ -64,5 +64,9 @@ function setError( msg ) {
 				}
 			});
 		});
+		
+		$( '#_prtfl_date_compl' ).datepicker({
+			dateFormat : 'dd.mm.yy'
+		});
 	});
 })(jQuery);

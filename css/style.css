@@ -29,7 +29,6 @@
 	padding-top: 10px;
 }
 .portfolio_admin_box {
-	width: 98%; 
 	margin: 10px auto 10px auto; 
 	background-color: #F9F9F9; 
 	border: 1px solid #DFDFDF; 
@@ -58,7 +57,7 @@
 	clear: both;
 	float: right;
 	text-align: center;
-	z-index: 100;
+	z-index: 3;
 	position: relative;
 }
 .portfolio_content .read_more a {
@@ -67,14 +66,15 @@
 	color: #FFF;
 	background-color: #555;
 	padding: 5px 10px;
+	border-bottom: none;
 }
 .portfolio_content .read_more a:hover {
 	background-color: #2484c6;
 }
 .portfolio_short_content {
 	float: left;
-	margin-left: 15px;
-	width: 320px;
+	margin: 0 15px;
+	max-width: 320px;
 }
 .entry_footer {
 	clear:both;
@@ -88,7 +88,7 @@
 	margin: 0;
 	padding: 5px 0;
 	position: relative;
-	z-index: 99;
+	z-index: 2;
 }
 .portfolio_terms a {
 	font-size: 13px;
@@ -155,8 +155,8 @@
 	top: 2px;
 	margin-right: 3px;
 }
-.page-template-portfolio-php .portfolio_content.entry-content,
-.single-portfolio .portfolio_content.entry-content {
+.page-template-portfolio-php:not(.prtfl_twentyfourteen) .portfolio_content.entry-content,
+.single-portfolio:not(.prtfl_twentyfourteen) .portfolio_content.entry-content {
     max-width: 1080px;
 }
 .single-portfolio #fancybox-wrap,
@@ -172,4 +172,16 @@
 	margin-left: 0;
 	width: auto;
 	float: none;
+}
+.rtl .portfolio_images_gallery,
+.rtl .portfolio_thumb,
+.rtl .portfolio_short_content,
+.rtl #prtfl_date_additional_field, #prtflpr_link_additional_field, 
+.rtl #prtfl_shrdescription_additional_field, #prtflpr_description_additional_field,
+.rtl #prtfl_svn_additional_field, #prtflpr_executor_additional_field,
+.rtl #prtfl_technologies_additional_field, #prtflpr_categories_additional_field {
+	float: right;
+}
+.rtl .portfolio_content .read_more {
+	float: left;
 }

@@ -1,7 +1,7 @@
 <?php
 /*
 * Template - Portfolio post
-* Version: 1.4
+* Version: 1.4.1
 */
 get_header(); ?>
 	<div class="content-area">
@@ -137,18 +137,20 @@ get_header(); ?>
 							</div><!-- .portfolio_images_block -->
 						</div><!-- .entry -->
 						<div class="entry_footer">
-							<?php $terms = wp_get_object_terms( $post->ID, 'portfolio_technologies' );
-							if ( is_array( $terms ) && 0 < count( $terms ) ) { ?>
-								<div class="portfolio_terms"><?php echo $portfolio_options['prtfl_technologies_text_field']; ?>
-									<?php $count = 0;
-									foreach ( $terms as $term ) {
-										if ( $count > 0 )
-											echo ', ';
-										echo '<a href="' . get_term_link( $term->slug, 'portfolio_technologies') . '" title="' . sprintf( __( "View all posts in %s" ), $term->name ) . '" ' . '>' . $term->name . '</a>';
-										$count++;
-									} ?>
-								</div><!-- .portfolio_terms -->
-							<?php } ?>
+							<?php if ( 1 == $portfolio_options['prtfl_technologies_additional_field'] ) {
+								$terms = wp_get_object_terms( $post->ID, 'portfolio_technologies' );
+								if ( is_array( $terms ) && 0 < count( $terms ) ) { ?>
+									<div class="portfolio_terms"><?php echo $portfolio_options['prtfl_technologies_text_field']; ?>
+										<?php $count = 0;
+										foreach ( $terms as $term ) {
+											if ( $count > 0 )
+												echo ', ';
+											echo '<a href="' . get_term_link( $term->slug, 'portfolio_technologies') . '" title="' . sprintf( __( "View all posts in %s" ), $term->name ) . '" ' . '>' . $term->name . '</a>';
+											$count++;
+										} ?>
+									</div><!-- .portfolio_terms -->
+								<?php }
+							} ?>
 						</div><!-- .entry_footer -->
 					</div><!-- .portfolio_content -->
 				<?php endwhile;
@@ -164,6 +166,7 @@ get_header(); ?>
 								$all_plugins = get_plugins();
 								if ( ( ! is_plugin_active( 'gallery-plugin-pro/gallery-plugin-pro.php' ) ) || ( isset( $all_plugins["gallery-plugin-pro/gallery-plugin-pro.php"]["Version"] ) && "1.3.0" >= $all_plugins["gallery-plugin-pro/gallery-plugin-pro.php"]["Version"] ) ) {  ?>
 									$("a[rel=portfolio_fancybox]").fancybox({
+										'type' 				: 'image',
 										'transitionIn'		: 'elastic',
 										'transitionOut'		: 'elastic',
 										'titlePosition' 	: 'inside',
@@ -180,6 +183,7 @@ get_header(); ?>
 										helpers		: {
 											title	: { type : 'inside' }
 										},
+										type		: 'image',
 										prevEffect	: 'fade',
 										nextEffect	: 'fade',	
 										openEffect	: 'elastic',
