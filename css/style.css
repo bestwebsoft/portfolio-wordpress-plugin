@@ -22,6 +22,9 @@
 	padding-bottom: 10px;
 	padding-right: 6px;
 }
+.entry-content .portfolio_images_gallery a {
+	text-decoration: none;
+}
 .portfolio_images_rows {
 	clear:both;
 	border-top: 1px dotted #939393;
@@ -141,6 +144,10 @@
 #portfolio_pagenation .pagination a:hover {
 	background-color: #2484C6;
 }
+#portfolio_pagenation .pagination:before,
+#portfolio_pagenation  .pagination:after {
+	height: 0;
+}
 #prtfl_loader,
 #prtfl_img_loader {
 	position: relative;
@@ -184,4 +191,88 @@
 }
 .rtl .portfolio_content .read_more {
 	float: left;
+}
+
+/* metabox for portfolio images */
+#prtfl_images_container ul:after,
+#prtfl_images_container ul:before {
+	content: " ";
+	display: table;
+}
+#prtfl_images_container ul:after {
+	clear: both
+}
+#prtfl_images_container ul li.prtfl_single_image,
+#prtfl_images_container ul li.prtfl-sortable-placeholder {
+	width: 100px;
+	height: 100px;
+	float: left;
+	cursor: move;	
+	margin:9px 9px 0 0;	
+	border-radius: 2px;
+	position: relative;
+	box-sizing: border-box;
+}
+#prtfl_images_container ul li.prtfl_single_image img,
+#prtfl_images_container ul li.prtfl-sortable-placeholder img{
+	width: 100%;
+	height: auto;
+	display: block;
+	border: 1px solid #d5d5d5;
+}
+#prtfl_images_container ul li.prtfl-sortable-placeholder {
+	border:3px dashed #ddd;
+	position: relative;
+}
+#prtfl_images_container ul li.prtfl-sortable-placeholder:after {
+	background: #f7f7f7;
+	font-family: 'dashicons';
+	content: "\f128";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	font-size: 3em;
+	line-height: 75px;
+	color: #ddd;
+}
+#prtfl_images_container .prtfl_delete_image {
+	position: absolute;
+	top: -8px;
+	padding: 2px;
+	display: none;
+}
+body:not(.rtl) #prtfl_images_container .prtfl_delete_image {
+	right: -8px;
+}
+#prtfl_images_container ul li:hover .prtfl_delete_image {
+	display: block;
+}
+#prtfl_images_container .prtfl_delete_image a {
+	display: block;
+	text-indent: -9999px;
+	position: relative;
+	height: 1em;
+	width: 1em;
+	font-size: 1.4em;
+}
+#prtfl_images_container .prtfl_delete_image a:before {
+	font-family: 'dashicons';
+	content: "\f153";
+	color: #23282d;
+	background-color: #fff;
+	left: 0;
+	top: 0;
+	text-indent: 0;
+	position: absolute;
+	border-radius: 100%;
+}
+.rtl #prtfl_images_container ul li.prtfl_single_image,
+.rtl #prtfl_images_container ul li.prtfl-sortable-placeholder {
+	float: right;
+}
+.rtl #prtfl_images_container .prtfl_delete_image {
+	left: -8px;
 }

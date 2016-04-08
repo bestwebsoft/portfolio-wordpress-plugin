@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: portfolio\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-16 16:57+0300\n"
-"PO-Revision-Date: 2016-02-16 16:57+0300\n"
+"POT-Creation-Date: 2016-04-06 16:07+0300\n"
+"PO-Revision-Date: 2016-04-06 16:07+0300\n"
 "Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
 "Language-Team: \n"
 "Language: he_IL\n"
@@ -19,17 +19,17 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 # @ portfolio
-#: portfolio.php:45 portfolio.php:642 portfolio.php:643
+#: portfolio.php:45 portfolio.php:633 portfolio.php:634
 msgid "Portfolio"
 msgstr "פורטפוליו"
 
 # @ portfolio
-#: portfolio.php:48 portfolio.php:407 portfolio.php:1683 portfolio.php:1699
+#: portfolio.php:48 portfolio.php:413 portfolio.php:1682 portfolio.php:1698
 msgid "Settings"
 msgstr "הגדרות"
 
 # @ portfolio
-#: portfolio.php:81 portfolio.php:573
+#: portfolio.php:81 portfolio.php:566
 msgid "Short description"
 msgstr "תיאור קצר"
 
@@ -40,7 +40,7 @@ msgid ""
 msgstr "תיאור קצר שתרצה שיוצג בדף הפורטפוליו שלך"
 
 # @ portfolio
-#: portfolio.php:82 portfolio.php:571
+#: portfolio.php:82 portfolio.php:498 portfolio.php:564
 msgid "Date of completion"
 msgstr "תאריך סיום"
 
@@ -50,7 +50,7 @@ msgid "The date when the task was completed"
 msgstr "התאריך בו הושלמה המשימה"
 
 # @ portfolio
-#: portfolio.php:83 portfolio.php:493 portfolio.php:572
+#: portfolio.php:83 portfolio.php:499 portfolio.php:565
 msgid "Link"
 msgstr "קישור"
 
@@ -60,7 +60,7 @@ msgid "A link to the site"
 msgstr "קישור לאתר"
 
 # @ portfolio
-#: portfolio.php:84 portfolio.php:496 portfolio.php:575
+#: portfolio.php:84 portfolio.php:502 portfolio.php:568
 msgid "SVN"
 msgstr "SVN"
 
@@ -124,37 +124,41 @@ msgstr ""
 "ספריית התבנית שלך כדי שהתוסף יעבוד באופן תקין."
 
 # @ portfolio
-#: portfolio.php:376
+#: portfolio.php:382
 #, fuzzy
 msgid "Settings saved."
 msgstr "האפשרויות נשמרו."
 
-#: portfolio.php:384
+#: portfolio.php:390
 msgid "All plugin settings were restored."
 msgstr ""
 
 # @ portfolio
-#: portfolio.php:405
+#: portfolio.php:411
 #, fuzzy
 msgid "Portfolio Settings"
 msgstr "אפשרויות פורטפוליו"
 
-#: portfolio.php:408
+#: portfolio.php:414
+msgid "Custom code"
+msgstr ""
+
+#: portfolio.php:415
 msgid "Go PRO"
 msgstr ""
 
-#: portfolio.php:421
+#: portfolio.php:428
 msgid "Please enable JavaScript to use the option to renew images."
 msgstr ""
 
-#: portfolio.php:424
+#: portfolio.php:431
 #, php-format
 msgid ""
 "If you would like to add the Latest Portfolio Items to your page or post, "
 "please use %s button"
 msgstr ""
 
-#: portfolio.php:429
+#: portfolio.php:436
 #, php-format
 msgid ""
 "You can add the Latest Portfolio Items to your page or post by clicking on "
@@ -164,688 +168,659 @@ msgid ""
 msgstr ""
 
 # @ portfolio
-#: portfolio.php:438
+#: portfolio.php:446
+#, fuzzy
+msgid "Image size"
+msgstr "שם גודל התמונה"
+
+#: portfolio.php:449
+msgid ""
+"WordPress will create a copy of the post thumbnail with the specified "
+"dimensions when you upload a new photo."
+msgstr ""
+
+# @ portfolio
+#: portfolio.php:451
+#, fuzzy
+msgid "For the album cover"
+msgstr "שם גודל התמונה"
+
+#: portfolio.php:452 portfolio.php:456
+msgid "width x height"
+msgstr ""
+
+#: portfolio.php:452 portfolio.php:456
+msgid "in px"
+msgstr ""
+
+# @ portfolio
+#: portfolio.php:455
+#, fuzzy
+msgid "For thumbnails"
+msgstr "שם גודל התמונה"
+
+# @ portfolio
+#: portfolio.php:459
 msgid "Update images for portfolio"
 msgstr "עדכן תמונות לפורטפוליו"
 
-# @ default
-#: portfolio.php:440
-msgid "Update images"
-msgstr "עדכן תמונות"
-
 # @ portfolio
-#: portfolio.php:449
-#, fuzzy
-msgid "Image size for the album cover"
-msgstr "שם גודל התמונה"
-
-# @ portfolio
-#: portfolio.php:451 portfolio.php:460
-msgid "Image size name"
-msgstr "שם גודל התמונה"
-
-# @ portfolio
-#: portfolio.php:452 portfolio.php:461 portfolio.php:533
-msgid "Width (in px)"
-msgstr "רוחב (בפיקסלים)"
-
-# @ portfolio
-#: portfolio.php:453 portfolio.php:462 portfolio.php:534
-msgid "Height (in px)"
-msgstr "גובה (בפיקסלים)"
-
-# @ portfolio
-#: portfolio.php:454 portfolio.php:463
-#, fuzzy
-msgid ""
-"WordPress will create a new thumbnail with the specified dimensions when you "
-"upload a new photo. It is necessary to click the Update images button at the "
-"top of this page in order to generate new images and set new dimensions for "
-"the old photo."
-msgstr ""
-"וורדפרס ייצור עותק של התמונה הממוזערת של הפוסט עם המידות שצוינו, כאשר אתה "
-"מעלה תמונה חדשה. זה הכרחי ללחוץ על כפתור עדכון תמונות בתחתית דף זה כדי לייצר "
-"תמונות חדשות בהתאם למידות החדשות "
-
-# @ portfolio
-#: portfolio.php:458
-#, fuzzy
-msgid "Image size for thumbnails"
-msgstr "שם גודל התמונה"
-
-# @ portfolio
-#: portfolio.php:467
+#: portfolio.php:465
 #, fuzzy
 msgid "Sort portfolio by"
 msgstr "פורטפוליו"
 
 # @ portfolio
-#: portfolio.php:469
+#: portfolio.php:467
 #, fuzzy
 msgid "portfolio id"
 msgstr "פורטפוליו"
 
 # @ portfolio
-#: portfolio.php:470
+#: portfolio.php:468
 #, fuzzy
 msgid "portfolio title"
 msgstr "אפשרויות פורטפוליו"
 
-#: portfolio.php:471
+#: portfolio.php:469
 msgid "date"
 msgstr ""
 
-#: portfolio.php:472
+#: portfolio.php:470
 msgid "menu order"
 msgstr ""
 
-#: portfolio.php:473
+#: portfolio.php:471
 msgid "random"
 msgstr ""
 
 # @ portfolio
-#: portfolio.php:477
+#: portfolio.php:475
 #, fuzzy
 msgid "Portfolio sorting"
 msgstr "אפשרויות פורטפוליו"
 
-#: portfolio.php:479
+#: portfolio.php:477
 msgid "ASC (ascending order from lowest to highest values - 1, 2, 3; a, b, c)"
 msgstr ""
 
-#: portfolio.php:480
+#: portfolio.php:478
 msgid ""
 "DESC (descending order from highest to lowest values - 3, 2, 1; c, b, a)"
 msgstr ""
 
 # @ portfolio
-#: portfolio.php:484
+#: portfolio.php:482
 #, fuzzy
 msgid "Number of images in the row"
 msgstr "מספר תמונות בשורה"
 
-# @ portfolio
-#: portfolio.php:490 portfolio.php:509
-msgid "Display additional fields"
-msgstr "הצג שדות נוספים"
-
-#: portfolio.php:492
-msgid "Date"
-msgstr ""
-
-# @ portfolio
-#: portfolio.php:494
-msgid "Short Description"
-msgstr "תיאור קצר"
-
-# @ portfolio
-#: portfolio.php:495 portfolio.php:574
-msgid "Description"
-msgstr "תיאור"
-
-# @ portfolio
-#: portfolio.php:497
-msgid "Executor"
-msgstr "מחולל"
-
-# @ portfolio
-#: portfolio.php:498 portfolio.php:578 portfolio.php:724 portfolio.php:738
-#: portfolio.php:781 portfolio.php:1351
-msgid "Technologies"
-msgstr "טכנולוגיות"
-
-#: portfolio.php:505
-msgid "Close"
-msgstr ""
-
-#: portfolio.php:511 portfolio.php:850
-msgid "Categories"
-msgstr ""
-
-# @ portfolio
-#: portfolio.php:515
-#, fuzzy
-msgid "Hide \"More screenshots\" block"
-msgstr "עוד צילומי מסך"
-
-#: portfolio.php:521
-msgid "Selectbox of sorting portfolio by date or title in the front end"
-msgstr ""
-
-#: portfolio.php:527
-msgid "The lightbox helper"
-msgstr ""
-
-#: portfolio.php:529
-msgid "Do not use"
-msgstr ""
-
-#: portfolio.php:530
-msgid "Button helper"
-msgstr ""
-
-#: portfolio.php:531
-msgid "Thumbnail helper"
-msgstr ""
-
-#: portfolio.php:537
-msgid "top"
-msgstr ""
-
-#: portfolio.php:538
-msgid "bottom"
-msgstr ""
-
-# @ portfolio
-#: portfolio.php:540
-#, fuzzy
-msgid "Position"
-msgstr "תיאור"
-
-#: portfolio.php:547
-msgid ""
-"If you upgrade to Pro version all your settings and portfolios will be saved."
-msgstr ""
-
-#: portfolio.php:554 portfolio.php:879 portfolio.php:965
-msgid "Unlock premium options by upgrading to Pro version"
-msgstr ""
-
-# @ portfolio
-#: portfolio.php:556 portfolio.php:881 portfolio.php:967
-#, fuzzy
-msgid "Learn More"
-msgstr "קרא עוד"
-
-#: portfolio.php:563
+#: portfolio.php:488
 msgid "Display the link field as a text for non-registered users"
 msgstr ""
 
 # @ portfolio
-#: portfolio.php:569
+#: portfolio.php:494 portfolio.php:514
+#, fuzzy
+msgid "Display in the front end"
+msgstr "הצג שדות נוספים"
+
+# @ portfolio
+#: portfolio.php:497 portfolio.php:562 portfolio.php:683
+msgid "Executor Profiles"
+msgstr "פרופילים"
+
+# @ portfolio
+#: portfolio.php:498 portfolio.php:563 portfolio.php:715 portfolio.php:729
+#: portfolio.php:772 portfolio.php:1366
+msgid "Technologies"
+msgstr "טכנולוגיות"
+
+# @ portfolio
+#: portfolio.php:500
+msgid "Short Description"
+msgstr "תיאור קצר"
+
+# @ portfolio
+#: portfolio.php:501 portfolio.php:567
+msgid "Description"
+msgstr "תיאור"
+
+#: portfolio.php:510
+msgid "Close"
+msgstr ""
+
+#: portfolio.php:517
+msgid "Selectbox of sorting portfolio by date or title"
+msgstr ""
+
+#: portfolio.php:518 portfolio.php:842
+msgid "Categories"
+msgstr ""
+
+# @ portfolio
+#: portfolio.php:519 portfolio.php:569
+#, fuzzy
+msgid "\"More screenshots\" block"
+msgstr "עוד צילומי מסך"
+
+#: portfolio.php:524
+msgid "The lightbox helper"
+msgstr ""
+
+#: portfolio.php:526
+msgid "Do not use"
+msgstr ""
+
+#: portfolio.php:527
+msgid "Button helper"
+msgstr ""
+
+#: portfolio.php:528
+msgid "Thumbnail helper"
+msgstr ""
+
+# @ portfolio
+#: portfolio.php:530
+msgid "Width (in px)"
+msgstr "רוחב (בפיקסלים)"
+
+# @ portfolio
+#: portfolio.php:531
+msgid "Height (in px)"
+msgstr "גובה (בפיקסלים)"
+
+#: portfolio.php:534
+msgid "top"
+msgstr ""
+
+#: portfolio.php:535
+msgid "bottom"
+msgstr ""
+
+# @ portfolio
+#: portfolio.php:537
+#, fuzzy
+msgid "Position"
+msgstr "תיאור"
+
+#: portfolio.php:544
+msgid ""
+"If you upgrade to Pro version all your settings and portfolios will be saved."
+msgstr ""
+
+#: portfolio.php:551 portfolio.php:868 portfolio.php:924
+msgid "Unlock premium options by upgrading to Pro version"
+msgstr ""
+
+# @ portfolio
+#: portfolio.php:553 portfolio.php:870 portfolio.php:926
+#, fuzzy
+msgid "Learn More"
+msgstr "קרא עוד"
+
+# @ portfolio
+#: portfolio.php:560
 msgid "Text for additional fields"
 msgstr ""
 
 # @ portfolio
-#: portfolio.php:576 portfolio.php:693 template/portfolio.php:19
-#: template/portfolio.php:20
-msgid "Executor Profile"
-msgstr "פרופיל"
-
-# @ portfolio
-#: portfolio.php:577
-#, fuzzy
-msgid "More screenshots"
-msgstr "עוד צילומי מסך"
-
-# @ portfolio
-#: portfolio.php:582
+#: portfolio.php:573
 #, fuzzy
 msgid "Slug for portfolio item"
 msgstr "פורטפוליו"
 
-#: portfolio.php:584
+#: portfolio.php:575
 msgid "for any structure of permalinks except the default structure"
 msgstr ""
 
-#: portfolio.php:588
+#: portfolio.php:579
 msgid "Rewrite templates after update"
 msgstr ""
 
-#: portfolio.php:590
+#: portfolio.php:582
+#, php-format
 msgid ""
-"Turn off the checkbox, if You edited the file 'portfolio.php' or 'portfolio-"
-"post.php' file in your theme folder and You don't want to rewrite them"
-msgstr ""
-
-#: portfolio.php:594
-msgid "Rename uploaded images"
-msgstr ""
-
-#: portfolio.php:596
-msgid ""
-"To avoid conflicts, all the symbols will be excluded, except numbers, the "
-"Roman letters,  _ and - symbols."
+"Turn off the checkbox, if You edited the file %s or %s file in your theme "
+"folder and You don't want to rewrite them"
 msgstr ""
 
 # @ portfolio
-#: portfolio.php:600
+#: portfolio.php:589
 #, fuzzy
 msgid "Add portfolio to the search"
 msgstr "קישור לאתר"
 
-#: portfolio.php:605 portfolio.php:608 portfolio.php:612
+#: portfolio.php:594 portfolio.php:597 portfolio.php:601
 msgid "Using Custom Search powered by"
 msgstr ""
 
-#: portfolio.php:608
+#: portfolio.php:597
 msgid "Activate Custom Search"
 msgstr ""
 
-#: portfolio.php:612
+#: portfolio.php:601
 msgid "Download Custom Search"
 msgstr ""
 
 # @ default
-#: portfolio.php:618
+#: portfolio.php:607
 msgid "Save Changes"
 msgstr "שמור שינויים"
 
-#: portfolio.php:624
+#: portfolio.php:613
 msgid ""
 "If you install the demo-data, will be created portfolios with images, demo-"
 "post with available shortcodes and page with a list of all the portfolios."
 msgstr ""
 
 # @ portfolio
-#: portfolio.php:644
+#: portfolio.php:635
 msgid "Add New"
 msgstr "הוסף"
 
 # @ portfolio
-#: portfolio.php:645
+#: portfolio.php:636
 msgid "Add New Portfolio"
 msgstr "הוסף פורטפוליו חדש"
 
 # @ portfolio
-#: portfolio.php:646
+#: portfolio.php:637
 msgid "Edit"
 msgstr "ערוך"
 
 # @ portfolio
-#: portfolio.php:647
+#: portfolio.php:638
 msgid "Edit Portfolio"
 msgstr "ערוך פורטפוליו"
 
 # @ portfolio
-#: portfolio.php:648
+#: portfolio.php:639
 msgid "New Portfolio"
 msgstr "פורטפוליו"
 
 # @ portfolio
-#: portfolio.php:649 portfolio.php:650
+#: portfolio.php:640 portfolio.php:641
 msgid "View Portfolio"
 msgstr "הצג פורטפוליו"
 
 # @ portfolio
-#: portfolio.php:651
+#: portfolio.php:642
 msgid "Search Portfolio"
 msgstr "חיפוש פורטפוליו"
 
 # @ portfolio
-#: portfolio.php:652
+#: portfolio.php:643
 msgid "No portfolio found"
 msgstr "לא נמצא אף פורטפוליו"
 
 # @ portfolio
-#: portfolio.php:653
+#: portfolio.php:644
 msgid "No portfolio found in Trash"
 msgstr "אף פורטפוליו לא נמצא בפח"
 
 # @ portfolio
-#: portfolio.php:654
+#: portfolio.php:645
 msgid "Parent Portfolio"
 msgstr "פורטפוליו אב"
 
 # @ portfolio
-#: portfolio.php:655
+#: portfolio.php:646
 #, fuzzy
 msgid "Filter portfolios list"
 msgstr "פורטפוליו"
 
 # @ portfolio
-#: portfolio.php:656
+#: portfolio.php:647
 #, fuzzy
 msgid "Portfolios list navigation"
 msgstr "אפשרויות פורטפוליו"
 
 # @ portfolio
-#: portfolio.php:657
+#: portfolio.php:648
 #, fuzzy
 msgid "Portfolios list"
 msgstr "פורטפוליו"
 
 # @ portfolio
-#: portfolio.php:659
+#: portfolio.php:650
 #, fuzzy
 msgid "Create a portfolio item"
 msgstr "צור פורטפוליו."
 
 # @ portfolio
-#: portfolio.php:692
-msgid "Executor Profiles"
-msgstr "פרופילים"
+#: portfolio.php:684 template/portfolio.php:19 template/portfolio.php:20
+msgid "Executor Profile"
+msgstr "פרופיל"
 
 # @ portfolio
-#: portfolio.php:694
+#: portfolio.php:685
 msgid "Search Executor Profiles"
 msgstr "חיפוש פרופילים"
 
 # @ portfolio
-#: portfolio.php:695
+#: portfolio.php:686
 msgid "Popular Executor Profiles"
 msgstr "פרופילים פופולריים"
 
 # @ portfolio
-#: portfolio.php:696
+#: portfolio.php:687
 msgid "All Executor Profiles"
 msgstr "כל הפרופילים"
 
 # @ portfolio
-#: portfolio.php:697
+#: portfolio.php:688
 msgid "Parent Executor Profile"
 msgstr "פרופיל אב"
 
 # @ portfolio
-#: portfolio.php:698
+#: portfolio.php:689
 msgid "Parent Executor Profile:"
 msgstr "פרופיל אב:"
 
 # @ portfolio
-#: portfolio.php:699
+#: portfolio.php:690
 msgid "Edit Executor Profile"
 msgstr "ערוך פרופיל"
 
 # @ portfolio
-#: portfolio.php:700
+#: portfolio.php:691
 msgid "Update Executor Profile"
 msgstr "עדכן פרופיל"
 
 # @ portfolio
-#: portfolio.php:701
+#: portfolio.php:692
 msgid "Add New Executor Profile"
 msgstr "הוסף פרופיל חדש"
 
 # @ portfolio
-#: portfolio.php:702
+#: portfolio.php:693
 #, fuzzy
 msgid "New Executor Name"
 msgstr "שם פרופיל חדש"
 
 # @ portfolio
-#: portfolio.php:703
+#: portfolio.php:694
 msgid "Separate Executor Profiles with commas"
 msgstr "הפרד פרופילים עם פסיק"
 
 # @ portfolio
-#: portfolio.php:704
+#: portfolio.php:695
 msgid "Add or remove Executor Profile"
 msgstr "הוסף או הסר פרופיל"
 
 # @ portfolio
-#: portfolio.php:705
+#: portfolio.php:696
 #, fuzzy
 msgid "Choose from the most used Executor Profiles"
 msgstr "בחר מהפרופיל שהכי בשימוש"
 
 # @ portfolio
-#: portfolio.php:706
+#: portfolio.php:697
 #, fuzzy
 msgid "Executors"
 msgstr "מחולל"
 
-#: portfolio.php:707
+#: portfolio.php:698
 msgid "Executors list navigation"
 msgstr ""
 
 # @ portfolio
-#: portfolio.php:708
+#: portfolio.php:699
 #, fuzzy
 msgid "Executors list"
 msgstr "מחולל"
 
 # @ portfolio
-#: portfolio.php:725
+#: portfolio.php:716
 msgid "Technology"
 msgstr "טכנולוגיה"
 
 # @ portfolio
-#: portfolio.php:726
+#: portfolio.php:717
 msgid "Search Technologies"
 msgstr "חיפוש טכנולוגיות"
 
 # @ portfolio
-#: portfolio.php:727
+#: portfolio.php:718
 msgid "Popular Technologies"
 msgstr "טכנולוגיות פופולריות"
 
 # @ portfolio
-#: portfolio.php:728
+#: portfolio.php:719
 msgid "All Technologies"
 msgstr "כל הטכנולוגיות"
 
 # @ portfolio
-#: portfolio.php:729
+#: portfolio.php:720
 msgid "Parent Technology"
 msgstr "טכנולוגיית אב"
 
 # @ portfolio
-#: portfolio.php:730
+#: portfolio.php:721
 msgid "Parent Technology:"
 msgstr "טכנולוגיית אב:"
 
 # @ portfolio
-#: portfolio.php:731
+#: portfolio.php:722
 msgid "Edit Technology"
 msgstr "ערוך טכנולוגיה"
 
 # @ portfolio
-#: portfolio.php:732
+#: portfolio.php:723
 msgid "Update Technology"
 msgstr "עדכן טכנולוגיה"
 
 # @ portfolio
-#: portfolio.php:733
+#: portfolio.php:724
 msgid "Add New Technology"
 msgstr "הוסף טכנולוגיה חדשה"
 
 # @ portfolio
-#: portfolio.php:734
+#: portfolio.php:725
 msgid "New Technology Name"
 msgstr "שם הטכנולוגיה החדשה"
 
 # @ portfolio
-#: portfolio.php:735
+#: portfolio.php:726
 msgid "Separate Technologies with commas"
 msgstr "הפרד טכנולוגיות עם פסיק"
 
 # @ portfolio
-#: portfolio.php:736
+#: portfolio.php:727
 msgid "Add or remove Technology"
 msgstr "הוסף הסר טכנולוגיה"
 
 # @ portfolio
-#: portfolio.php:737
+#: portfolio.php:728
 #, fuzzy
 msgid "Choose from the most used technologies"
 msgstr "בחר מהטכנולוגיה שהכי בשימוש"
 
 # @ portfolio
-#: portfolio.php:739
+#: portfolio.php:730
 #, fuzzy
 msgid "Technologies list navigation"
 msgstr "טכנולוגיות"
 
 # @ portfolio
-#: portfolio.php:740
+#: portfolio.php:731
 #, fuzzy
 msgid "Technologies list"
 msgstr "טכנולוגיות"
 
 # @ portfolio
-#: portfolio.php:782
+#: portfolio.php:773
 #, fuzzy
 msgid "Your most used portfolio technologies as a tag cloud"
 msgstr "טכנולוגיות הפורטפוליו שלך שהכי בשימוש בצורת ענן"
 
 # @ portfolio
-#: portfolio.php:807
+#: portfolio.php:798
 msgid "Title"
 msgstr "כותרת"
 
 # @ portfolio
-#: portfolio.php:846
+#: portfolio.php:837
 msgid "Portfolio Info"
 msgstr "מידע פורטפוליו"
 
-#: portfolio.php:853
-msgid "Already attached"
-msgstr ""
+# @ portfolio
+#: portfolio.php:838
+#, fuzzy
+msgid "Portfolio images"
+msgstr "פורטפוליו"
 
 # @ portfolio
-#: portfolio.php:872
+#: portfolio.php:861
 #, fuzzy
 msgid "Featured portfolio"
 msgstr "חיפוש פורטפוליו"
 
-#: portfolio.php:874
+#: portfolio.php:863
 msgid "Display this portfolio in the slider?"
 msgstr ""
 
 # @ portfolio
-#: portfolio.php:901
-#, fuzzy
-msgid "Activate"
-msgstr "תוספים פעילים"
-
-# @ default
-#: portfolio.php:908
-#, fuzzy
-msgid "Install now"
-msgstr "התקן %s"
-
-#: portfolio.php:911
-msgid ""
-"If you'd like to attach the files, which are already uploaded, please use Re-"
-"attacher plugin."
-msgstr ""
-
-# @ portfolio
-#: portfolio.php:914
-#, fuzzy
-msgid "Learn more"
-msgstr "קרא עוד"
-
-# @ portfolio
-#: portfolio.php:933
+#: portfolio.php:892
 #, fuzzy
 msgid "All Categories"
 msgstr "כל הטכנולוגיות"
 
-#: portfolio.php:934
+#: portfolio.php:893
 msgid "Most Used"
 msgstr ""
 
-#: portfolio.php:939 portfolio.php:945 portfolio.php:955
+#: portfolio.php:898 portfolio.php:904 portfolio.php:914
 msgid "Uncatgorized"
 msgstr ""
 
 # @ portfolio
-#: portfolio.php:949 portfolio.php:951 portfolio.php:957
+#: portfolio.php:908 portfolio.php:910 portfolio.php:916
 #, fuzzy
 msgid "Add New Category"
 msgstr "הוסף טכנולוגיה חדשה"
 
 # @ portfolio
-#: portfolio.php:952
+#: portfolio.php:911
 #, fuzzy
 msgid "New Category Name"
 msgstr "שם פרופיל חדש"
 
 # @ portfolio
-#: portfolio.php:952 portfolio.php:954
+#: portfolio.php:911 portfolio.php:913
 #, fuzzy
 msgid "Parent Category"
 msgstr "טכנולוגיית אב"
 
+#: portfolio.php:962
+msgid "Please enable JavaScript to add or delete images."
+msgstr ""
+
+# @ default
+#: portfolio.php:998
+#, fuzzy
+msgid "Delete image"
+msgstr "עדכן תמונות"
+
+#: portfolio.php:998
+msgid "Delete"
+msgstr ""
+
 # @ portfolio
-#: portfolio.php:1216 portfolio.php:1327 template/portfolio.php:110
+#: portfolio.php:1012
+#, fuzzy
+msgid "Add portfolio images"
+msgstr "גודל תמונת הפורטפוליו"
+
+# @ portfolio
+#: portfolio.php:1229 portfolio.php:1342 template/portfolio.php:126
 #: template/portfolio-post.php:13
 #, fuzzy
 msgid "No title"
 msgstr "כותרת"
 
 # @ portfolio
-#: portfolio.php:1345 template/portfolio.php:153
+#: portfolio.php:1360 template/portfolio.php:169
 msgid "Read more"
 msgstr "קרא עוד"
 
 # @ default
-#: portfolio.php:1356 template/portfolio.php:164
-#: template/portfolio-post.php:148
+#: portfolio.php:1371 template/portfolio.php:180
+#: template/portfolio-post.php:162
 #, php-format
 msgid "View all posts in %s"
 msgstr "הצג את כל הפוסטים ב %s"
 
 # @ portfolio
-#: portfolio.php:1383
+#: portfolio.php:1402
 #, fuzzy
 msgid "Updating images..."
 msgstr "מעדכן תמונות..."
 
 # @ portfolio
-#: portfolio.php:1384
+#: portfolio.php:1403
 #, fuzzy
 msgid "No image found"
 msgstr "לא נמצאו תמונות."
 
 # @ portfolio
-#: portfolio.php:1385
+#: portfolio.php:1404
 #, fuzzy
 msgid "All images are updated"
 msgstr "כל התמונות עודכנו."
 
 # @ portfolio
-#: portfolio.php:1386
+#: portfolio.php:1405
 msgid "Error."
 msgstr "שגיאה."
 
 # @ portfolio
-#: portfolio.php:1520
+#: portfolio.php:1538
 #, fuzzy
 msgid "Image size not defined"
 msgstr "שם גודל התמונה"
 
-#: portfolio.php:1534
+#: portfolio.php:1552
 msgid ""
 "We can update only PNG, JPEG, GIF, WPMP or XBM filetype. For other, please, "
 "manually reload image."
 msgstr ""
 
-#: portfolio.php:1544
+#: portfolio.php:1562
 msgid "Image size changes not defined"
 msgstr ""
 
-#: portfolio.php:1569 portfolio.php:1572 portfolio.php:1577
+#: portfolio.php:1587 portfolio.php:1590 portfolio.php:1595
 msgid "Invalid path"
 msgstr ""
 
 # @ portfolio
-#: portfolio.php:1684
+#: portfolio.php:1683
 msgid "FAQ"
 msgstr "שאלות ותשובות"
 
 # @ portfolio
-#: portfolio.php:1685
+#: portfolio.php:1684
 msgid "Support"
 msgstr "תמיכה"
 
-#: portfolio.php:1740
+#: portfolio.php:1739
 msgid "ATTENTION!"
 msgstr ""
 
-#: portfolio.php:1741
+#: portfolio.php:1740
 msgid ""
 "In the current version of Portfolio plugin we updated the Technologies "
 "widget. If it was added to the sidebar, it will disappear and you will have "
 "to add it again."
 msgstr ""
 
-#: portfolio.php:1745
+#: portfolio.php:1744
 msgid "Read and Understood"
 msgstr ""
 
-#: portfolio.php:1768
+#: portfolio.php:1769
 msgid "The number of portfolio to display"
 msgstr ""
 
@@ -891,51 +866,87 @@ msgstr ""
 msgid "Demo options already installed."
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:342
+#: inc/demo-data/class-bws-demo-data.php:363
 msgid "Demo data successfully installed."
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:344
+#: inc/demo-data/class-bws-demo-data.php:365
 msgid "View post with shortcodes"
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:347
+#: inc/demo-data/class-bws-demo-data.php:368
 msgid "View page with examples"
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:356
+#: inc/demo-data/class-bws-demo-data.php:377
 msgid "Installation of demo data with some errors occurred."
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:359
+#: inc/demo-data/class-bws-demo-data.php:380
 msgid "Posts data is missing."
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:433
+#: inc/demo-data/class-bws-demo-data.php:454
 msgid "Demo data have already been removed."
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:490
+#: inc/demo-data/class-bws-demo-data.php:511
 msgid "Demo data successfully removed."
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:494
+#: inc/demo-data/class-bws-demo-data.php:515
 msgid "Removing demo data with some errors occurred."
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:557
+#: inc/demo-data/class-bws-demo-data.php:584
 msgid "Close notice"
 msgstr ""
 
 # @ default
-#: inc/demo-data/class-bws-demo-data.php:561
+#: inc/demo-data/class-bws-demo-data.php:588
 #, fuzzy
 msgid "Install demo data"
 msgstr "התקן %s"
 
-#: inc/demo-data/class-bws-demo-data.php:561
+#: inc/demo-data/class-bws-demo-data.php:588
 msgid "for an acquaintance with the possibilities of the"
 msgstr ""
+
+# @ portfolio
+#, fuzzy
+#~ msgid ""
+#~ "WordPress will create a new thumbnail with the specified dimensions when "
+#~ "you upload a new photo. It is necessary to click the Update images button "
+#~ "at the top of this page in order to generate new images and set new "
+#~ "dimensions for the old photo."
+#~ msgstr ""
+#~ "וורדפרס ייצור עותק של התמונה הממוזערת של הפוסט עם המידות שצוינו, כאשר אתה "
+#~ "מעלה תמונה חדשה. זה הכרחי ללחוץ על כפתור עדכון תמונות בתחתית דף זה כדי "
+#~ "לייצר תמונות חדשות בהתאם למידות החדשות "
+
+# @ portfolio
+#~ msgid "Executor"
+#~ msgstr "מחולל"
+
+# @ portfolio
+#, fuzzy
+#~ msgid "More screenshots"
+#~ msgstr "עוד צילומי מסך"
+
+# @ portfolio
+#, fuzzy
+#~ msgid "Activate"
+#~ msgstr "תוספים פעילים"
+
+# @ default
+#, fuzzy
+#~ msgid "Install now"
+#~ msgstr "התקן %s"
+
+# @ portfolio
+#, fuzzy
+#~ msgid "Learn more"
+#~ msgstr "קרא עוד"
 
 # @ portfolio
 #, fuzzy
@@ -945,11 +956,6 @@ msgstr ""
 # @ default
 #~ msgid "Update All Info"
 #~ msgstr "עדכן את כל המידע"
-
-# @ portfolio
-#, fuzzy
-#~ msgid "Size of portfolio images"
-#~ msgstr "גודל תמונת הפורטפוליו"
 
 # @ portfolio
 #, fuzzy

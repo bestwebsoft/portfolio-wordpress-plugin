@@ -4,7 +4,7 @@ Donate link: http://bestwebsoft.com/donate/
 Tags: add portfolio widget, add album, add image, add image description, add custom fields, add portfolio, add portfolios, add portfolio plugin, add categories, album, best portfolio, best portfolio plugin, categories, category, clients, clients-plugin, custom, custom fields, free, free plugin, free portfolio plugin, free portfolio, image, image description, image display, image-size, images, images gallery, jpeg, jpg, labels, page, pages, photographs, photos, picture, pictures, porfolio, portfolio, portolio, portfolio plugin, portfolio widget, portfolio plugin wordpress, portfolio wp plugin, Post, posts, premium portfolio, project, project portfolio, responsive, responsive design, responsive portfolio, simple portfolio, simple portfolio plugin, screenshots, showcase, tags, thumbnails, visual items, widget, wordpress, wp, wp plugin, wp free plugin, wp portfolio, wp portfolio plugin, wp simple portfolio plugin, wp free portfolio, wp free portfolio plugin, wordpress plugin, wordpress free plugin, wordpress portfolio, wordpress portfolio plugin, wordpress simple portfolio plugin, wordpress free portfolio, wordpress free portfolio plugin
 Requires at least: 3.8
 Tested up to: 4.4.2
-Stable tag: 2.36
+Stable tag: 2.37
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,11 +35,12 @@ https://www.youtube.com/watch?v=OIxDlQZcCcI
 * Display the latest portfolio items on your page or post using the shortcode.
 * Install (and delete) demo data.
 
+If you have a feature, suggestion or idea you'd like to see in the plugin, we'd love to hear about it! <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">Suggest a Feature</a>
+
 = Recommended Plugins =
 
 The author of the Portfolio also recommends the following plugins:
 
-* <a href="http://wordpress.org/plugins/re-attacher/">Re-attacher</a> - With this plugin, you can reattach previously uploaded images to other posts, as well as detach files from the post completely. This plugin makes using our Gallery and Portfolio plugins a lot more convenient, as you won’t have to upload new images each time you may need them on your gallery or portfolio pages.
 * <a href="http://wordpress.org/plugins/updater/">Updater</a> - This plugin updates WordPress core and the plugins to the recent versions. You can also use the auto mode or manual mode for updating and set email notifications.
 There is also a premium version of the plugin <a href="http://bestwebsoft.com/products/updater/?k=5c5c9083d339113b444b74b2cb3ecaa1">Updater Pro</a> with more useful features available. It can make backup of all your files and database before updating. Also it can forbid some plugins or WordPress Core update.
 
@@ -96,17 +97,6 @@ http://www.youtube.com/watch?v=6xPYIttiJ8g
 2. This is optional. Fill this page http://example.com/wp-admin/edit-tags.php?taxonomy=portfolio_executor_profile&post_type=portfolio - create an executor profile. Fill out the fields 'Name' and 'Description'. The 'Description' field contains a link to the executor page.
 3. Click 'Add New' in the 'Portfolio' menu and fill out your page. Set the necessary values for the Technologies and Executors Profile widgets.
 
-= How to add an image? =
-
-Use Wordpress meta box to upload images from URL or your local storage. Please note that one of the images should be set as 'Featured' - it will be the main image of your portfolio item.
-
-= How to add image from Media library into portfolio? =
-
-Since our Portfolio plugin works with attached images, this cannot be done by standard means.
-However, you can re-attach previously downloaded images to your portfolio. Please note that after this, that image will not be available as an attachment in that post to which it was attached earlier.
-
-You can re-attach images using our plugin <a href="http://wordpress.org/plugins/re-attacher/">Re-attacher</a>. With this plugin, you can reattach previously uploaded images to other posts, as well as detach files from the post completely. Re-attacher allows you to manage both single files and groups of files. This plugin makes using our Gallery and Portfolio plugins a lot more convenient, as you won't have to upload new images each time you may need them on your gallery or portfolio pages.
-
 = I updated the plugin, the template changed, but I would like to revert it back as it was before? What should I do? =
 
 Sometimes during the plugin update the plugin template in your theme is also updated. Meanwhile a backup of the previous template version is created and it contains the files `portfolio-post.php.bak` and `portfolio.php.bak`. You should compare the old files with the new ones and apply the necessary changes to the new files. If you want to templates are not overwritten when updating the plugin, turn off the checkbox in "Rewrite templates after update" option on the plugin settings page and save the changes.
@@ -143,6 +133,12 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 8. The pop-up window on Portfolio single page.
 
 == Changelog ==
+
+= V2.37 - 08.04.2016 =
+* NEW : Ability to add images from WordPress media library.
+* NEW : Metabox with portfolio images has been added for portfolio editing page.
+* Update : An ability to use the shortcodes has been added in the single portfolio template.
+* Update : An ability to add main contant has been added in the portfolio template.
 
 = V2.36 - 04.03.2016 =
 * NEW : The ability to install demo data for plugin was added.
@@ -316,6 +312,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * In this version an image uploaded by means of custom fields is substituted with Wordpress standard meta box for the media files uploading.
 
 == Upgrade Notice ==
+
+= V2.37 =
+Ability to add images from WordPress media library. Metabox with portfolio images has been added for portfolio editing page. An ability to use the shortcodes has been added in the single portfolio template. An ability to add main contant has been added in the portfolio template.
 
 = V2.36 =
 The ability to install demo data for plugin was added. The Czech language file was added. The bug with plugin menu duplicating was fixed.

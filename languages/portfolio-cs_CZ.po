@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: portfolio\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-16 16:57+0300\n"
-"PO-Revision-Date: 2016-02-16 16:57+0300\n"
+"POT-Creation-Date: 2016-04-06 16:07+0300\n"
+"PO-Revision-Date: 2016-04-06 16:07+0300\n"
 "Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
 "Language-Team: bestwebsoft.com <plugin@bestwebsoft.com>\n"
 "Language: cs_CZ\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: portfolio.php:45 portfolio.php:642 portfolio.php:643
+#: portfolio.php:45 portfolio.php:633 portfolio.php:634
 msgid "Portfolio"
 msgstr "Portfolio"
 
-#: portfolio.php:48 portfolio.php:407 portfolio.php:1683 portfolio.php:1699
+#: portfolio.php:48 portfolio.php:413 portfolio.php:1682 portfolio.php:1698
 msgid "Settings"
 msgstr "Nastavení"
 
-#: portfolio.php:81 portfolio.php:573
+#: portfolio.php:81 portfolio.php:566
 msgid "Short description"
 msgstr "Stručný popis"
 
@@ -34,7 +34,7 @@ msgid ""
 "A short description which you'd like to be displayed on your portfolio page"
 msgstr "Stručný popis, který chcete zobrazit na stránce portfolio"
 
-#: portfolio.php:82 portfolio.php:571
+#: portfolio.php:82 portfolio.php:498 portfolio.php:564
 msgid "Date of completion"
 msgstr "Datum dokončení"
 
@@ -42,7 +42,7 @@ msgstr "Datum dokončení"
 msgid "The date when the task was completed"
 msgstr "Datum, kdy byl úkol dokončen"
 
-#: portfolio.php:83 portfolio.php:493 portfolio.php:572
+#: portfolio.php:83 portfolio.php:499 portfolio.php:565
 msgid "Link"
 msgstr "Odkaz"
 
@@ -50,7 +50,7 @@ msgstr "Odkaz"
 msgid "A link to the site"
 msgstr "Odkaz na web"
 
-#: portfolio.php:84 portfolio.php:496 portfolio.php:575
+#: portfolio.php:84 portfolio.php:502 portfolio.php:568
 msgid "SVN"
 msgstr "SVN"
 
@@ -101,27 +101,31 @@ msgstr ""
 "adresáři motivu. Prosím, zkopírujte je z adresáře `wp-content/plugins/"
 "portfolio/template/` do adresáře motivu pro správnou práci modulu Portfolio "
 
-#: portfolio.php:376
+#: portfolio.php:382
 msgid "Settings saved."
 msgstr "Nastavení bylo uloženo."
 
-#: portfolio.php:384
+#: portfolio.php:390
 msgid "All plugin settings were restored."
 msgstr "Výchozí nastavení pluginu bylo obnoveno."
 
-#: portfolio.php:405
+#: portfolio.php:411
 msgid "Portfolio Settings"
 msgstr "Portfolio Nastavení"
 
-#: portfolio.php:408
+#: portfolio.php:414
+msgid "Custom code"
+msgstr ""
+
+#: portfolio.php:415
 msgid "Go PRO"
 msgstr "Získat verzi Pro"
 
-#: portfolio.php:421
+#: portfolio.php:428
 msgid "Please enable JavaScript to use the option to renew images."
 msgstr "Prosím povolte JavaScript k použítí možnosti obnovení obrázků."
 
-#: portfolio.php:424
+#: portfolio.php:431
 #, php-format
 msgid ""
 "If you would like to add the Latest Portfolio Items to your page or post, "
@@ -130,7 +134,7 @@ msgstr ""
 "Pokud byste chtěli přidat nejnovější položky portfolia na vaší stránku nebo "
 "příspěvek, použijte tlačítko %s"
 
-#: portfolio.php:429
+#: portfolio.php:436
 #, php-format
 msgid ""
 "You can add the Latest Portfolio Items to your page or post by clicking on "
@@ -143,537 +147,517 @@ msgstr ""
 "režimu. Není-li tlačítko zobrazeno, použijte shortcode %s, kde * je číslo "
 "portfolia k zobrazení "
 
-#: portfolio.php:438
+#: portfolio.php:446
+#, fuzzy
+msgid "Image size"
+msgstr "Název velikosti obrazu"
+
+#: portfolio.php:449
+msgid ""
+"WordPress will create a copy of the post thumbnail with the specified "
+"dimensions when you upload a new photo."
+msgstr ""
+
+#: portfolio.php:451
+#, fuzzy
+msgid "For the album cover"
+msgstr "Velikost obrazu pro obal alba"
+
+#: portfolio.php:452 portfolio.php:456
+msgid "width x height"
+msgstr ""
+
+#: portfolio.php:452 portfolio.php:456
+msgid "in px"
+msgstr ""
+
+#: portfolio.php:455
+#, fuzzy
+msgid "For thumbnails"
+msgstr "Velikost obrazu pro miniatury"
+
+#: portfolio.php:459
 msgid "Update images for portfolio"
 msgstr "Aktualizovat obrázky pro portfolio"
 
-#: portfolio.php:440
-msgid "Update images"
-msgstr "Aktualizovat obrázky"
-
-#: portfolio.php:449
-msgid "Image size for the album cover"
-msgstr "Velikost obrazu pro obal alba"
-
-#: portfolio.php:451 portfolio.php:460
-msgid "Image size name"
-msgstr "Název velikosti obrazu"
-
-#: portfolio.php:452 portfolio.php:461 portfolio.php:533
-msgid "Width (in px)"
-msgstr "Šířka (v px)"
-
-#: portfolio.php:453 portfolio.php:462 portfolio.php:534
-msgid "Height (in px)"
-msgstr "Výška (v px)"
-
-#: portfolio.php:454 portfolio.php:463
-msgid ""
-"WordPress will create a new thumbnail with the specified dimensions when you "
-"upload a new photo. It is necessary to click the Update images button at the "
-"top of this page in order to generate new images and set new dimensions for "
-"the old photo."
-msgstr ""
-"WordPress při odeslání nové fotografie vytvoří novou miniaturu se zadanými "
-"rozměry. Je nutné kliknout na tlačítko Aktualizovat obrázky v horní části "
-"této stránky, pro vytvoření nových obrázků a nastavení nových rozměrů pro "
-"staré obrázky."
-
-#: portfolio.php:458
-msgid "Image size for thumbnails"
-msgstr "Velikost obrazu pro miniatury"
-
-#: portfolio.php:467
+#: portfolio.php:465
 msgid "Sort portfolio by"
 msgstr "Seřadit portfolio podle"
 
-#: portfolio.php:469
+#: portfolio.php:467
 msgid "portfolio id"
 msgstr "portfolio id"
 
-#: portfolio.php:470
+#: portfolio.php:468
 msgid "portfolio title"
 msgstr "Titulek portfolia"
 
-#: portfolio.php:471
+#: portfolio.php:469
 msgid "date"
 msgstr "Datum"
 
-#: portfolio.php:472
+#: portfolio.php:470
 msgid "menu order"
 msgstr "Menu řazení"
 
-#: portfolio.php:473
+#: portfolio.php:471
 msgid "random"
 msgstr "náhodně"
 
-#: portfolio.php:477
+#: portfolio.php:475
 msgid "Portfolio sorting"
 msgstr "Třídění portfolia"
 
-#: portfolio.php:479
+#: portfolio.php:477
 msgid "ASC (ascending order from lowest to highest values - 1, 2, 3; a, b, c)"
 msgstr ""
 "ASC (vzestupném pořadí od nejnižší do nejvyšší hodnoty - 1, 2, 3; a, b, c)"
 
-#: portfolio.php:480
+#: portfolio.php:478
 msgid ""
 "DESC (descending order from highest to lowest values - 3, 2, 1; c, b, a)"
 msgstr "DESC (sestupně od nejvyšší k nejnižší hodnoty - 3, 2, 1, c, b,)"
 
-#: portfolio.php:484
+#: portfolio.php:482
 msgid "Number of images in the row"
 msgstr "Počet obrázků v řádku"
 
-#: portfolio.php:490 portfolio.php:509
-msgid "Display additional fields"
+#: portfolio.php:488
+msgid "Display the link field as a text for non-registered users"
+msgstr "Zobrazit pole s odkazem jako text pro neregistrované uživatele"
+
+#: portfolio.php:494 portfolio.php:514
+#, fuzzy
+msgid "Display in the front end"
 msgstr "Zobrazit další pole"
 
-#: portfolio.php:492
-msgid "Date"
-msgstr "Datum"
+#: portfolio.php:497 portfolio.php:562 portfolio.php:683
+msgid "Executor Profiles"
+msgstr "Profily vykonavatele"
 
-#: portfolio.php:494
-msgid "Short Description"
-msgstr "Stručný popis"
-
-#: portfolio.php:495 portfolio.php:574
-msgid "Description"
-msgstr "Popis"
-
-#: portfolio.php:497
-msgid "Executor"
-msgstr "Vykonavatel"
-
-#: portfolio.php:498 portfolio.php:578 portfolio.php:724 portfolio.php:738
-#: portfolio.php:781 portfolio.php:1351
+#: portfolio.php:498 portfolio.php:563 portfolio.php:715 portfolio.php:729
+#: portfolio.php:772 portfolio.php:1366
 msgid "Technologies"
 msgstr "Technologie"
 
-#: portfolio.php:505
+#: portfolio.php:500
+msgid "Short Description"
+msgstr "Stručný popis"
+
+#: portfolio.php:501 portfolio.php:567
+msgid "Description"
+msgstr "Popis"
+
+#: portfolio.php:510
 msgid "Close"
 msgstr "Zavřít"
 
-#: portfolio.php:511 portfolio.php:850
-msgid "Categories"
-msgstr "Kategorie"
-
-#: portfolio.php:515
-msgid "Hide \"More screenshots\" block"
-msgstr "Skrýt blok \"Více screenshots\""
-
-#: portfolio.php:521
-msgid "Selectbox of sorting portfolio by date or title in the front end"
+#: portfolio.php:517
+#, fuzzy
+msgid "Selectbox of sorting portfolio by date or title"
 msgstr ""
 "Výběr třídění podle data nebo názvu portfolií při zobrazování na stránkách"
 
-#: portfolio.php:527
+#: portfolio.php:518 portfolio.php:842
+msgid "Categories"
+msgstr "Kategorie"
+
+#: portfolio.php:519 portfolio.php:569
+#, fuzzy
+msgid "\"More screenshots\" block"
+msgstr "Skrýt blok \"Více screenshots\""
+
+#: portfolio.php:524
 msgid "The lightbox helper"
 msgstr "Lightbox nápověda"
 
-#: portfolio.php:529
+#: portfolio.php:526
 msgid "Do not use"
 msgstr "Nepoužít"
 
-#: portfolio.php:530
+#: portfolio.php:527
 msgid "Button helper"
 msgstr "Tlačítko pomocník"
 
-#: portfolio.php:531
+#: portfolio.php:528
 msgid "Thumbnail helper"
 msgstr "Náhled pomocník"
 
-#: portfolio.php:537
+#: portfolio.php:530
+msgid "Width (in px)"
+msgstr "Šířka (v px)"
+
+#: portfolio.php:531
+msgid "Height (in px)"
+msgstr "Výška (v px)"
+
+#: portfolio.php:534
 msgid "top"
 msgstr "nahoře"
 
-#: portfolio.php:538
+#: portfolio.php:535
 msgid "bottom"
 msgstr "dole"
 
-#: portfolio.php:540
+#: portfolio.php:537
 msgid "Position"
 msgstr "Pozice"
 
-#: portfolio.php:547
+#: portfolio.php:544
 msgid ""
 "If you upgrade to Pro version all your settings and portfolios will be saved."
 msgstr "Pokud upgradujete na verzi Pro všechna nastavení budou uložena."
 
-#: portfolio.php:554 portfolio.php:879 portfolio.php:965
+#: portfolio.php:551 portfolio.php:868 portfolio.php:924
 msgid "Unlock premium options by upgrading to Pro version"
 msgstr "Odemknout prémiové možnosti při aktualizaci na verzi Pro"
 
-#: portfolio.php:556 portfolio.php:881 portfolio.php:967
+#: portfolio.php:553 portfolio.php:870 portfolio.php:926
 msgid "Learn More"
 msgstr "Více informací"
 
-#: portfolio.php:563
-msgid "Display the link field as a text for non-registered users"
-msgstr "Zobrazit pole s odkazem jako text pro neregistrované uživatele"
-
-#: portfolio.php:569
+#: portfolio.php:560
 msgid "Text for additional fields"
 msgstr "Text pro přidaná pole:"
 
-#: portfolio.php:576 portfolio.php:693 template/portfolio.php:19
-#: template/portfolio.php:20
-msgid "Executor Profile"
-msgstr "Profil vykonavatele:"
-
-#: portfolio.php:577
-msgid "More screenshots"
-msgstr "Další screenshoty:"
-
-#: portfolio.php:582
+#: portfolio.php:573
 msgid "Slug for portfolio item"
 msgstr "Slug pro položky portfolia"
 
-#: portfolio.php:584
+#: portfolio.php:575
 msgid "for any structure of permalinks except the default structure"
 msgstr "pro jakoukoli strukturu trvalých odkazů kromě výchozí struktury"
 
-#: portfolio.php:588
+#: portfolio.php:579
 msgid "Rewrite templates after update"
 msgstr "Přepsat šablony po aktualizaci"
 
-#: portfolio.php:590
+#: portfolio.php:582
+#, fuzzy, php-format
 msgid ""
-"Turn off the checkbox, if You edited the file 'portfolio.php' or 'portfolio-"
-"post.php' file in your theme folder and You don't want to rewrite them"
+"Turn off the checkbox, if You edited the file %s or %s file in your theme "
+"folder and You don't want to rewrite them"
 msgstr ""
 "Odškrtněte checkbox pokud jste upravovali soubor 'portfolio.php' nebo ' "
 "portfolio-post.php' ve složce šablony a vy nechcete aby byly přepsány"
 
-#: portfolio.php:594
-msgid "Rename uploaded images"
-msgstr "Přejmenovat nahrané obrázky"
-
-#: portfolio.php:596
-msgid ""
-"To avoid conflicts, all the symbols will be excluded, except numbers, the "
-"Roman letters,  _ and - symbols."
-msgstr ""
-"Aby se zabránilo konfliktům, všechny symboly bude vyloučeny s výjimkou čísla "
-"a znaků Roman, _ a - symbolů."
-
-#: portfolio.php:600
+#: portfolio.php:589
 msgid "Add portfolio to the search"
 msgstr "Zadat portfolio k hledání"
 
-#: portfolio.php:605 portfolio.php:608 portfolio.php:612
+#: portfolio.php:594 portfolio.php:597 portfolio.php:601
 msgid "Using Custom Search powered by"
 msgstr "Použijte Custom Search vyrobené"
 
-#: portfolio.php:608
+#: portfolio.php:597
 msgid "Activate Custom Search"
 msgstr "Aktivovat Custom Search"
 
-#: portfolio.php:612
+#: portfolio.php:601
 msgid "Download Custom Search"
 msgstr "Stáhnout Custom Search"
 
-#: portfolio.php:618
+#: portfolio.php:607
 msgid "Save Changes"
 msgstr "Uložit změny"
 
-#: portfolio.php:624
+#: portfolio.php:613
 msgid ""
 "If you install the demo-data, will be created portfolios with images, demo-"
 "post with available shortcodes and page with a list of all the portfolios."
 msgstr ""
 
-#: portfolio.php:644
+#: portfolio.php:635
 msgid "Add New"
 msgstr "Přidat nový"
 
-#: portfolio.php:645
+#: portfolio.php:636
 msgid "Add New Portfolio"
 msgstr "Přidat nové portfolio"
 
-#: portfolio.php:646
+#: portfolio.php:637
 msgid "Edit"
 msgstr "Upravit"
 
-#: portfolio.php:647
+#: portfolio.php:638
 msgid "Edit Portfolio"
 msgstr "Upravit portfolio"
 
-#: portfolio.php:648
+#: portfolio.php:639
 msgid "New Portfolio"
 msgstr "Nové porfolio"
 
-#: portfolio.php:649 portfolio.php:650
+#: portfolio.php:640 portfolio.php:641
 msgid "View Portfolio"
 msgstr "Zobrazit portfolio"
 
-#: portfolio.php:651
+#: portfolio.php:642
 msgid "Search Portfolio"
 msgstr "Hledat portfolio"
 
-#: portfolio.php:652
+#: portfolio.php:643
 msgid "No portfolio found"
 msgstr "Nebylo nalezeno žádné portfolio"
 
-#: portfolio.php:653
+#: portfolio.php:644
 msgid "No portfolio found in Trash"
 msgstr "V koši nebyla nalezena žádná položka portfolia"
 
-#: portfolio.php:654
+#: portfolio.php:645
 msgid "Parent Portfolio"
 msgstr "Nadřazené portfolio"
 
-#: portfolio.php:655
+#: portfolio.php:646
 #, fuzzy
 msgid "Filter portfolios list"
 msgstr "Slug pro položky portfolia"
 
-#: portfolio.php:656
+#: portfolio.php:647
 #, fuzzy
 msgid "Portfolios list navigation"
 msgstr "Třídění portfolia"
 
-#: portfolio.php:657
+#: portfolio.php:648
 #, fuzzy
 msgid "Portfolios list"
 msgstr "Portfolio"
 
-#: portfolio.php:659
+#: portfolio.php:650
 msgid "Create a portfolio item"
 msgstr "Vytvoření položky portfolia"
 
-#: portfolio.php:692
-msgid "Executor Profiles"
-msgstr "Profily vykonavatele"
+#: portfolio.php:684 template/portfolio.php:19 template/portfolio.php:20
+msgid "Executor Profile"
+msgstr "Profil vykonavatele:"
 
-#: portfolio.php:694
+#: portfolio.php:685
 msgid "Search Executor Profiles"
 msgstr "Hledat profily vykonavatele:"
 
-#: portfolio.php:695
+#: portfolio.php:686
 msgid "Popular Executor Profiles"
 msgstr "Oblíbené profily vykonavatele"
 
-#: portfolio.php:696
+#: portfolio.php:687
 msgid "All Executor Profiles"
 msgstr "Všechny profily vykonavatele"
 
-#: portfolio.php:697
+#: portfolio.php:688
 msgid "Parent Executor Profile"
 msgstr "Nadřazený  profil vykonavatele"
 
-#: portfolio.php:698
+#: portfolio.php:689
 msgid "Parent Executor Profile:"
 msgstr "Nadřazený  profil vykonavatele:"
 
-#: portfolio.php:699
+#: portfolio.php:690
 msgid "Edit Executor Profile"
 msgstr "Upravit profil vykonavatele"
 
-#: portfolio.php:700
+#: portfolio.php:691
 msgid "Update Executor Profile"
 msgstr "Aktualizovat profil vykonavatele"
 
-#: portfolio.php:701
+#: portfolio.php:692
 msgid "Add New Executor Profile"
 msgstr "Přidat nový profil vykonavatele"
 
-#: portfolio.php:702
+#: portfolio.php:693
 msgid "New Executor Name"
 msgstr "Název nového vykonavatele"
 
-#: portfolio.php:703
+#: portfolio.php:694
 msgid "Separate Executor Profiles with commas"
 msgstr "Oddělte čárkami profily vykonavatele"
 
-#: portfolio.php:704
+#: portfolio.php:695
 msgid "Add or remove Executor Profile"
 msgstr "Přidání nebo odebrání profilu vykonavatele"
 
-#: portfolio.php:705
+#: portfolio.php:696
 msgid "Choose from the most used Executor Profiles"
 msgstr "Vyberte si z nejpoužívanějších profilů vykonavatele"
 
-#: portfolio.php:706
+#: portfolio.php:697
 msgid "Executors"
 msgstr "Vykonavatelé"
 
-#: portfolio.php:707
+#: portfolio.php:698
 msgid "Executors list navigation"
 msgstr ""
 
-#: portfolio.php:708
+#: portfolio.php:699
 #, fuzzy
 msgid "Executors list"
 msgstr "Vykonavatelé"
 
-#: portfolio.php:725
+#: portfolio.php:716
 msgid "Technology"
 msgstr "Technologie"
 
-#: portfolio.php:726
+#: portfolio.php:717
 msgid "Search Technologies"
 msgstr "Hledat technologie"
 
-#: portfolio.php:727
+#: portfolio.php:718
 msgid "Popular Technologies"
 msgstr "Oblíbené technologie"
 
-#: portfolio.php:728
+#: portfolio.php:719
 msgid "All Technologies"
 msgstr "Všechny technologie"
 
-#: portfolio.php:729
+#: portfolio.php:720
 msgid "Parent Technology"
 msgstr "Nadřazená technologie"
 
-#: portfolio.php:730
+#: portfolio.php:721
 msgid "Parent Technology:"
 msgstr "Nadřazená technologie:"
 
-#: portfolio.php:731
+#: portfolio.php:722
 msgid "Edit Technology"
 msgstr "Úprava technologie"
 
-#: portfolio.php:732
+#: portfolio.php:723
 msgid "Update Technology"
 msgstr "Aktualizace technologie"
 
-#: portfolio.php:733
+#: portfolio.php:724
 msgid "Add New Technology"
 msgstr "Přidat novou technologii"
 
-#: portfolio.php:734
+#: portfolio.php:725
 msgid "New Technology Name"
 msgstr "Název nové technologie"
 
-#: portfolio.php:735
+#: portfolio.php:726
 msgid "Separate Technologies with commas"
 msgstr "Oddělte technologie čárkami "
 
-#: portfolio.php:736
+#: portfolio.php:727
 msgid "Add or remove Technology"
 msgstr "Přidání nebo odebrání technologie"
 
-#: portfolio.php:737
+#: portfolio.php:728
 msgid "Choose from the most used technologies"
 msgstr "Vyberte si z nejvíce používaných technologií"
 
-#: portfolio.php:739
+#: portfolio.php:730
 #, fuzzy
 msgid "Technologies list navigation"
 msgstr "Technologie"
 
-#: portfolio.php:740
+#: portfolio.php:731
 #, fuzzy
 msgid "Technologies list"
 msgstr "Technologie"
 
-#: portfolio.php:782
+#: portfolio.php:773
 msgid "Your most used portfolio technologies as a tag cloud"
 msgstr "Nejčastěji používané technologie portfolia jako tag v cloudu"
 
-#: portfolio.php:807
+#: portfolio.php:798
 msgid "Title"
 msgstr "Titulek"
 
-#: portfolio.php:846
+#: portfolio.php:837
 msgid "Portfolio Info"
 msgstr "Portfolio Info"
 
-#: portfolio.php:853
-msgid "Already attached"
-msgstr "Již připojeno"
+#: portfolio.php:838
+#, fuzzy
+msgid "Portfolio images"
+msgstr "Portfolio"
 
-#: portfolio.php:872
+#: portfolio.php:861
 #, fuzzy
 msgid "Featured portfolio"
 msgstr "Hledat portfolio"
 
-#: portfolio.php:874
+#: portfolio.php:863
 msgid "Display this portfolio in the slider?"
 msgstr ""
 
-#: portfolio.php:901
-msgid "Activate"
-msgstr "Aktivovat"
-
-#: portfolio.php:908
-msgid "Install now"
-msgstr "Nainstalovat nyní"
-
-#: portfolio.php:911
-msgid ""
-"If you'd like to attach the files, which are already uploaded, please use Re-"
-"attacher plugin."
-msgstr ""
-"Pokud byste chtěli připojit soubory, které jsou již nahrány, použijte prosím "
-"re-attacher plugin."
-
-#: portfolio.php:914
-msgid "Learn more"
-msgstr "Více informací"
-
-#: portfolio.php:933
+#: portfolio.php:892
 msgid "All Categories"
 msgstr "Všechny kategorie"
 
-#: portfolio.php:934
+#: portfolio.php:893
 msgid "Most Used"
 msgstr "Nejvíce používané"
 
-#: portfolio.php:939 portfolio.php:945 portfolio.php:955
+#: portfolio.php:898 portfolio.php:904 portfolio.php:914
 msgid "Uncatgorized"
 msgstr "Bez kategorie"
 
-#: portfolio.php:949 portfolio.php:951 portfolio.php:957
+#: portfolio.php:908 portfolio.php:910 portfolio.php:916
 msgid "Add New Category"
 msgstr "Přidat novou kategorii"
 
-#: portfolio.php:952
+#: portfolio.php:911
 msgid "New Category Name"
 msgstr "Název nové kategorie"
 
-#: portfolio.php:952 portfolio.php:954
+#: portfolio.php:911 portfolio.php:913
 msgid "Parent Category"
 msgstr "Nadřazená kategorie"
 
-#: portfolio.php:1216 portfolio.php:1327 template/portfolio.php:110
+#: portfolio.php:962
+#, fuzzy
+msgid "Please enable JavaScript to add or delete images."
+msgstr "Prosím povolte JavaScript k použítí možnosti obnovení obrázků."
+
+#: portfolio.php:998
+#, fuzzy
+msgid "Delete image"
+msgstr "Aktualizovat obrázky"
+
+#: portfolio.php:998
+msgid "Delete"
+msgstr ""
+
+#: portfolio.php:1012
+#, fuzzy
+msgid "Add portfolio images"
+msgstr "portfolio id"
+
+#: portfolio.php:1229 portfolio.php:1342 template/portfolio.php:126
 #: template/portfolio-post.php:13
 msgid "No title"
 msgstr "Bez názvu"
 
-#: portfolio.php:1345 template/portfolio.php:153
+#: portfolio.php:1360 template/portfolio.php:169
 msgid "Read more"
 msgstr "Číst více"
 
-#: portfolio.php:1356 template/portfolio.php:164
-#: template/portfolio-post.php:148
+#: portfolio.php:1371 template/portfolio.php:180
+#: template/portfolio-post.php:162
 #, php-format
 msgid "View all posts in %s"
 msgstr "Zobrazit všechny příspěvky v %s"
 
-#: portfolio.php:1383
+#: portfolio.php:1402
 msgid "Updating images..."
 msgstr "Aktualizace snímků..."
 
-#: portfolio.php:1384
+#: portfolio.php:1403
 msgid "No image found"
 msgstr "Obrázek nenalezen"
 
-#: portfolio.php:1385
+#: portfolio.php:1404
 msgid "All images are updated"
 msgstr "Všechny obrazy jsou aktualizovány"
 
-#: portfolio.php:1386
+#: portfolio.php:1405
 msgid "Error."
 msgstr "Chyba."
 
-#: portfolio.php:1520
+#: portfolio.php:1538
 msgid "Image size not defined"
 msgstr "Velikost obrázku není definována"
 
-#: portfolio.php:1534
+#: portfolio.php:1552
 msgid ""
 "We can update only PNG, JPEG, GIF, WPMP or XBM filetype. For other, please, "
 "manually reload image."
@@ -681,27 +665,27 @@ msgstr ""
 "Lze aktualizovat pouze typy souborů PNG, JPEG, GIF, WPMP nebo XBM. Pro "
 "ostatní typy, prosím, obrázek znovu ručně nahrajte ."
 
-#: portfolio.php:1544
+#: portfolio.php:1562
 msgid "Image size changes not defined"
 msgstr "Změna velikosti obrázku není definována"
 
-#: portfolio.php:1569 portfolio.php:1572 portfolio.php:1577
+#: portfolio.php:1587 portfolio.php:1590 portfolio.php:1595
 msgid "Invalid path"
 msgstr "Neplatná cesta"
 
-#: portfolio.php:1684
+#: portfolio.php:1683
 msgid "FAQ"
 msgstr "Často kladené otázky"
 
-#: portfolio.php:1685
+#: portfolio.php:1684
 msgid "Support"
 msgstr "Podpora"
 
-#: portfolio.php:1740
+#: portfolio.php:1739
 msgid "ATTENTION!"
 msgstr "Upozornění!"
 
-#: portfolio.php:1741
+#: portfolio.php:1740
 msgid ""
 "In the current version of Portfolio plugin we updated the Technologies "
 "widget. If it was added to the sidebar, it will disappear and you will have "
@@ -711,11 +695,11 @@ msgstr ""
 "Byl-li již přidaný do postranního panelu, zmizí a budete ho muset znovu "
 "přidat."
 
-#: portfolio.php:1745
+#: portfolio.php:1744
 msgid "Read and Understood"
 msgstr "Číst a pochopit"
 
-#: portfolio.php:1768
+#: portfolio.php:1769
 msgid "The number of portfolio to display"
 msgstr "Číslo portfolia k zobrazení"
 
@@ -760,47 +744,96 @@ msgstr ""
 msgid "Demo options already installed."
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:342
+#: inc/demo-data/class-bws-demo-data.php:363
 msgid "Demo data successfully installed."
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:344
+#: inc/demo-data/class-bws-demo-data.php:365
 msgid "View post with shortcodes"
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:347
+#: inc/demo-data/class-bws-demo-data.php:368
 msgid "View page with examples"
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:356
+#: inc/demo-data/class-bws-demo-data.php:377
 msgid "Installation of demo data with some errors occurred."
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:359
+#: inc/demo-data/class-bws-demo-data.php:380
 msgid "Posts data is missing."
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:433
+#: inc/demo-data/class-bws-demo-data.php:454
 msgid "Demo data have already been removed."
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:490
+#: inc/demo-data/class-bws-demo-data.php:511
 msgid "Demo data successfully removed."
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:494
+#: inc/demo-data/class-bws-demo-data.php:515
 msgid "Removing demo data with some errors occurred."
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:557
+#: inc/demo-data/class-bws-demo-data.php:584
 msgid "Close notice"
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:561
+#: inc/demo-data/class-bws-demo-data.php:588
 #, fuzzy
 msgid "Install demo data"
 msgstr "Nainstalovat nyní"
 
-#: inc/demo-data/class-bws-demo-data.php:561
+#: inc/demo-data/class-bws-demo-data.php:588
 msgid "for an acquaintance with the possibilities of the"
 msgstr ""
+
+#~ msgid ""
+#~ "WordPress will create a new thumbnail with the specified dimensions when "
+#~ "you upload a new photo. It is necessary to click the Update images button "
+#~ "at the top of this page in order to generate new images and set new "
+#~ "dimensions for the old photo."
+#~ msgstr ""
+#~ "WordPress při odeslání nové fotografie vytvoří novou miniaturu se "
+#~ "zadanými rozměry. Je nutné kliknout na tlačítko Aktualizovat obrázky v "
+#~ "horní části této stránky, pro vytvoření nových obrázků a nastavení nových "
+#~ "rozměrů pro staré obrázky."
+
+#~ msgid "Date"
+#~ msgstr "Datum"
+
+#~ msgid "Executor"
+#~ msgstr "Vykonavatel"
+
+#~ msgid "More screenshots"
+#~ msgstr "Další screenshoty:"
+
+#~ msgid "Rename uploaded images"
+#~ msgstr "Přejmenovat nahrané obrázky"
+
+#~ msgid ""
+#~ "To avoid conflicts, all the symbols will be excluded, except numbers, the "
+#~ "Roman letters,  _ and - symbols."
+#~ msgstr ""
+#~ "Aby se zabránilo konfliktům, všechny symboly bude vyloučeny s výjimkou "
+#~ "čísla a znaků Roman, _ a - symbolů."
+
+#~ msgid "Already attached"
+#~ msgstr "Již připojeno"
+
+#~ msgid "Activate"
+#~ msgstr "Aktivovat"
+
+#~ msgid "Install now"
+#~ msgstr "Nainstalovat nyní"
+
+#~ msgid ""
+#~ "If you'd like to attach the files, which are already uploaded, please use "
+#~ "Re-attacher plugin."
+#~ msgstr ""
+#~ "Pokud byste chtěli připojit soubory, které jsou již nahrány, použijte "
+#~ "prosím re-attacher plugin."
+
+#~ msgid "Learn more"
+#~ msgstr "Více informací"

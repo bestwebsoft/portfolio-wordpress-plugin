@@ -1,7 +1,7 @@
 <?php
 /*
 * Template - Portfolio post
-* Version: 1.4.1
+* Version: 1.4.2
 */
 get_header(); ?>
 	<div class="content-area">
@@ -37,11 +37,7 @@ get_header(); ?>
 							$image_large	=	wp_get_attachment_image_src( $post_thumbnail_id, 'large' );
 							$image_alt		=	get_post_meta( $post_thumbnail_id, '_wp_attachment_image_alt', true );
 							$image_desc 	=	get_post( $post_thumbnail_id );
-							$image_desc		=	$image_desc->post_content;
-							$full_descr     =   $post->post_content != "" ? $post->post_content : '';
-							if ( empty( $full_descr ) )
-								$full_descr = isset( $post_meta['_prtfl_short_descr'] ) ? $post_meta['_prtfl_short_descr'] : '';
-							
+							$image_desc		=	$image_desc->post_content;							
 							$post_meta		=	get_post_meta( $post->ID, 'prtfl_information', true );							
 							
 							if ( ! empty( $image[0] ) ) { ?>
@@ -72,8 +68,21 @@ get_header(); ?>
 										<p><span class="lable"><?php echo $portfolio_options['prtfl_link_text_field']; ?></span> <?php echo $link; ?></p>
 									<?php }
 								}
-								if ( 1 == $portfolio_options['prtfl_description_additional_field'] ) { ?>
-									<p><span class="lable"><?php echo $portfolio_options['prtfl_description_text_field']; ?></span> <?php echo str_replace("\n", "<br />", $full_descr); ?></p>
+								if ( 1 == $portfolio_options['prtfl_description_additional_field'] ) { 
+									$full_descr = $post->post_content != "" ? $post->post_content : '';
+									if ( empty( $full_descr ) ){
+										$full_descr = isset( $post_meta['_prtfl_short_descr'] ) ? $post_meta['_prtfl_short_descr'] : '';
+									} else {
+										/* dublicate filter 'the_content' - as we couldnt use it */
+										if ( function_exists( 'wptexturize' ) ) $full_descr = wptexturize( $full_descr );
+										if ( function_exists( 'convert_smilies' ) ) $full_descr = convert_smilies( $full_descr );
+										if ( function_exists( 'wpautop' ) ) $full_descr = wpautop( $full_descr );
+										if ( function_exists( 'shortcode_unautop' ) ) $full_descr = shortcode_unautop( $full_descr );
+										if ( function_exists( 'prepend_attachment' ) ) $full_descr = prepend_attachment( $full_descr );
+										if ( function_exists( 'wp_make_content_images_responsive' ) ) $full_descr = wp_make_content_images_responsive( $full_descr );
+										if ( function_exists( 'do_shortcode' ) ) $full_descr = do_shortcode( $full_descr );
+									} ?>
+									<p><span class="lable"><?php echo $portfolio_options['prtfl_description_text_field']; ?></span> <?php echo $full_descr; ?></p>
 								<?php }
 								if ( 0 != $user_id && $portfolio_options ) {
 									if ( 1 == $portfolio_options['prtfl_svn_additional_field'] ) { 
@@ -95,18 +104,23 @@ get_header(); ?>
 								 } ?>
 							</div><!-- .portfolio_short_content -->
 							<div class="portfolio_images_block">
-								<?php $args = array(
-									'post_parent'		=>	$post->ID,
-									'post_type'			=>	'attachment',
-									'post_mime_type'	=>	'image',
-									'numberposts'		=>	-1,
-									'orderby'			=>	'menu_order',
-									'order'				=>	'ASC',
-									'exclude'			=>	$post_thumbnail_id
-								);
-								$attachments				=	get_children( $args );
-								$array_post_thumbnail_id	=	array_keys( $attachments );
-								$count_element				=	count( $array_post_thumbnail_id );
+								<?php if ( metadata_exists( 'post', $post->ID, '_prtfl_images' ) ) {
+									$array_post_thumbnail_id = array_filter( explode( ',', get_post_meta( $post->ID, '_prtfl_images', true ) ) );
+								} else {
+									/* Compatibility with old plugin version 2.37 */
+									$args = array(
+										'post_parent'		=>	$post->ID,
+										'post_type'			=>	'attachment',
+										'post_mime_type'	=>	'image',
+										'numberposts'		=>	-1,
+										'orderby'			=>	'menu_order',
+										'order'				=>	'ASC',
+										'exclude'			=>	$post_thumbnail_id,
+										'fields'			=> 'ids'
+									);
+									$array_post_thumbnail_id = get_children( $args );
+								}
+								$count_element = count( $array_post_thumbnail_id );
 
 								while ( list( $key, $value ) = each( $array_post_thumbnail_id ) ) {
 									$image			=	wp_get_attachment_image_src( $value, 'portfolio-photo-thumb' );

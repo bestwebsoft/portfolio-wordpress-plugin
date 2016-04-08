@@ -1,7 +1,7 @@
 <?php
 /*
 Template Name: Portfolio template
-* Version: 1.4.1
+* Version: 1.4.2
 */
 get_header(); ?>
 	<div class="content-area">
@@ -75,12 +75,28 @@ get_header(); ?>
 						'posts_per_page'	=>	$per_page,
 						'paged'				=>	$paged
 					);
-				}
-
-				$second_query = new WP_Query( $args );
+				}				
 
 				do_action( 'bwsplgns_display_pdf_print_buttons', 'top' );
+
+				/* display page content */
+				if ( ! empty( $post ) && ! empty( $post->post_content ) ) {
+					$page_content = $post->post_content;
+					/* dublicate filter 'the_content' - as we couldnt use it */
+					if ( function_exists( 'wptexturize' ) ) $page_content = wptexturize( $page_content );
+					if ( function_exists( 'convert_smilies' ) ) $page_content = convert_smilies( $page_content );
+					if ( function_exists( 'wpautop' ) ) $page_content = wpautop( $page_content );
+					if ( function_exists( 'shortcode_unautop' ) ) $page_content = shortcode_unautop( $page_content );
+					if ( function_exists( 'prepend_attachment' ) ) $page_content = prepend_attachment( $page_content );
+					if ( function_exists( 'wp_make_content_images_responsive' ) ) $page_content = wp_make_content_images_responsive( $page_content );
+					if ( function_exists( 'do_shortcode' ) ) $page_content = do_shortcode( $page_content ); ?>
+
+					<div class="portfolio_content entry-content">
+						<div class="entry"><?php echo $page_content; ?></div>
+					</div>
+				<?php }
 				
+				$second_query = new WP_Query( $args );
 				$request = $second_query->request;
 
 				if ( $second_query->have_posts() ) : 
