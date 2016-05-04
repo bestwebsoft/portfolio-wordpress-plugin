@@ -3,7 +3,7 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: add portfolio widget, add album, add image, add image description, add custom fields, add portfolio, add portfolios, add portfolio plugin, add categories, album, best portfolio, best portfolio plugin, categories, category, clients, clients-plugin, custom, custom fields, free, free plugin, free portfolio plugin, free portfolio, image, image description, image display, image-size, images, images gallery, jpeg, jpg, labels, page, pages, photographs, photos, picture, pictures, porfolio, portfolio, portolio, portfolio plugin, portfolio widget, portfolio plugin wordpress, portfolio wp plugin, Post, posts, premium portfolio, project, project portfolio, responsive, responsive design, responsive portfolio, simple portfolio, simple portfolio plugin, screenshots, showcase, tags, thumbnails, visual items, widget, wordpress, wp, wp plugin, wp free plugin, wp portfolio, wp portfolio plugin, wp simple portfolio plugin, wp free portfolio, wp free portfolio plugin, wordpress plugin, wordpress free plugin, wordpress portfolio, wordpress portfolio plugin, wordpress simple portfolio plugin, wordpress free portfolio, wordpress free portfolio plugin
 Requires at least: 3.8
-Tested up to: 4.4.2
+Tested up to: 4.5
 Stable tag: 2.37
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -65,7 +65,7 @@ If you would like to create your own language pack or update the existing one, y
 
 = Technical support =
 
-Dear users, our plugins are available for free download. If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to contact us. Please note that we accept requests in English only. All messages in another languages won't be accepted.
+Dear users, our plugins are available for free download. If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to contact us. Please note that we accept requests in English only. All messages in other languages won't be accepted.
 
 If you notice any bugs in the plugins, you can notify us about it and we'll investigate and fix the issue then. Your request should contain URL of the website, issues description and WordPress admin panel credentials.
 Moreover we can customize the plugin according to your requirements. It's a paid service (as a rule it costs $40, but the price can vary depending on the amount of the necessary changes and their complexity). Please note that we could also include this or that feature (developed for you) in the next release and share with the other users then. 
