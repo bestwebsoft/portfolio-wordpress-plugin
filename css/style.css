@@ -32,11 +32,11 @@
 	padding-top: 10px;
 }
 .portfolio_admin_box {
-	margin: 10px auto 10px auto; 
-	background-color: #F9F9F9; 
-	border: 1px solid #DFDFDF; 
-	-moz-border-radius: 5px; 
-	-webkit-border-radius: 5px; 
+	margin: 10px auto 10px auto;
+	background-color: #F9F9F9;
+	border: 1px solid #DFDFDF;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 	padding: 10px;
 }
 .portfolio_admin_subbox {
@@ -153,7 +153,7 @@
 	position: relative;
 	display: none;
 }
-#prtfl_date_additional_field, #prtfl_link_additional_field, 
+#prtfl_date_additional_field, #prtfl_link_additional_field,
 #prtfl_shrdescription_additional_field, #prtfl_description_additional_field,
 #prtfl_svn_additional_field, #prtfl_executor_additional_field,
 #prtfl_technologies_additional_field {
@@ -183,14 +183,29 @@
 .rtl .portfolio_images_gallery,
 .rtl .portfolio_thumb,
 .rtl .portfolio_short_content,
-.rtl #prtfl_date_additional_field, #prtflpr_link_additional_field, 
-.rtl #prtfl_shrdescription_additional_field, #prtflpr_description_additional_field,
-.rtl #prtfl_svn_additional_field, #prtflpr_executor_additional_field,
-.rtl #prtfl_technologies_additional_field, #prtflpr_categories_additional_field {
+.rtl #prtfl_date_additional_field, #prtfl_link_additional_field,
+.rtl #prtfl_shrdescription_additional_field, #prtfl_description_additional_field,
+.rtl #prtfl_svn_additional_field, #prtfl_executor_additional_field,
+.rtl #prtfl_technologies_additional_field, #prtfl_categories_additional_field {
 	float: right;
 }
 .rtl .portfolio_content .read_more {
 	float: left;
+}
+.portfolio_images_gallery img {
+	display: block;
+}
+.portfolio_images_gallery {
+	float: none;
+	display: inline-block;
+	margin: auto;
+}
+.portfolio_images_block > span {
+	float: left;
+	margin-left: 9px;
+}
+.portfolio_images_rows {
+	height: auto;
 }
 
 /* metabox for portfolio images */
@@ -207,16 +222,29 @@
 	width: 100px;
 	height: 100px;
 	float: left;
-	cursor: move;	
-	margin:9px 9px 0 0;	
+	cursor: move;
+	margin:9px 9px 0 0;
 	border-radius: 2px;
 	position: relative;
 	box-sizing: border-box;
+}
+.prtfl_save_first_notice {
+	display: none;
+}
+.prtfl_x {
+	padding: 0 2px;
+}
+.rtl .prtfl_x {
+	display: inline-block;
+}
+.rtl .portfolio_images_block span.lable {
+	float: right;
 }
 #prtfl_images_container ul li.prtfl_single_image img,
 #prtfl_images_container ul li.prtfl-sortable-placeholder img{
 	width: 100%;
 	height: auto;
+	max-height: 100%;
 	display: block;
 	border: 1px solid #d5d5d5;
 }

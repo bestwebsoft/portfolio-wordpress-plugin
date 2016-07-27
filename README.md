@@ -16,11 +16,11 @@ Moreover you can add not just one, but many screenshots to one portfolio item fo
 
 Features
 -----------------------------
-* Create a template with page navigation to display all portfolio items. 
-* Regenerate thumbnails after changing their size. 
-* Change image size and a number of images displayed in the row. 
+* Create a template with page navigation to display all portfolio items.
+* Regenerate thumbnails after changing their size.
+* Change image size and a number of images displayed in the row.
 * Edit labels of additional fields.
-* Enable/disable the option of additional fields displaying. 
+* Enable/disable the option of additional fields displaying.
 * Display the latest portfolio items on your page or post using the shortcode.
 * Install (and delete) demo data.
 

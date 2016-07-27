@@ -1,8 +1,8 @@
 function setMessage( msg ) {
-	(function($){		
+	(function($){
 		$( ".error" ).hide();
 		$( ".updated" ).html( msg ).show();
-		$( '#bws_save_settings_notice' ).hide();	
+		$( '#bws_save_settings_notice' ).hide();
 	})(jQuery);
 }
 
@@ -15,7 +15,7 @@ function setError( msg ) {
 }
 
 (function($) {
-	$(document).ready( function() {	
+	$(document).ready( function() {
 		$( '#prtfl_ajax_update_images' ).click( function() {
 			setMessage( "<p>" + prtfl_var.update_img_message + "</p>" );
 			var curr = 0;
@@ -24,12 +24,12 @@ function setError( msg ) {
 				type: "POST",
 				data: "action1=get_all_attachment" + '&prtfl_ajax_nonce_field=' + prtfl_var.prtfl_nonce,
 				success: function( result ) {
-					var list = eval( '(' + result + ')' );				
+					var list = eval( '(' + result + ')' );
 					if ( ! list ) {
 						setError( "<p>" + prtfl_var.not_found_img_info + "</p>" );
 						$( "#ajax_update_images" ).removeAttr( "disabled" );
 						return;
-					}							
+					}
 					$( '#prtfl_img_loader' ).css( 'display', 'inline-block' );
 
 					function updatenImageItem() {
@@ -56,13 +56,18 @@ function setError( msg ) {
 				}
 			});
 		});
-		
+
 		var is_rtl = ( $( 'body' ).hasClass( 'rtl' ) );
 
 		$( '#_prtfl_date_compl' ).datepicker({
 			dateFormat : 'dd.mm.yy',
 			isRTL : is_rtl
 		});
+
+		$( '[name^="prtfl_custom_image_size_"]' ).change( function() {
+			$( '#prtfl_ajax_update_images' ).attr( 'disabled', 'disabled' );
+			$( '.prtfl_save_first_notice' ).show();
+		} );
 
 		/* Portfolio images */
 		var images_frame;

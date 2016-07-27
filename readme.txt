@@ -1,19 +1,19 @@
 === Portfolio by BestWebSoft ===
 Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
-Tags: add portfolio widget, add album, add image, add image description, add custom fields, add portfolio, add portfolios, add portfolio plugin, add categories, album, best portfolio, best portfolio plugin, categories, category, clients, clients-plugin, custom, custom fields, free, free plugin, free portfolio plugin, free portfolio, image, image description, image display, image-size, images, images gallery, jpeg, jpg, labels, page, pages, photographs, photos, picture, pictures, porfolio, portfolio, portolio, portfolio plugin, portfolio widget, portfolio plugin wordpress, portfolio wp plugin, Post, posts, premium portfolio, project, project portfolio, responsive, responsive design, responsive portfolio, simple portfolio, simple portfolio plugin, screenshots, showcase, tags, thumbnails, visual items, widget, wordpress, wp, wp plugin, wp free plugin, wp portfolio, wp portfolio plugin, wp simple portfolio plugin, wp free portfolio, wp free portfolio plugin, wordpress plugin, wordpress free plugin, wordpress portfolio, wordpress portfolio plugin, wordpress simple portfolio plugin, wordpress free portfolio, wordpress free portfolio plugin
+Tags: add portfolio, add portfolio plugin, add portfolio widget, portfolio, showcase, responsive portfolio,  portfolio plugin, create portfolio, portfolio categories, project portfolio, portfolio widget, add album
 Requires at least: 3.8
-Tested up to: 4.5
-Stable tag: 2.37
+Tested up to: 4.5.3
+Stable tag: 2.38
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Portfolio plugin allows you to create a page containing the information about your past projects.
+Create your personal portfolio WordPress website. Manage and showcase past projects to get more clients.
 
 == Description ==
 
 With the Portfolio plugin you can create a unique page for displaying portfolio items consisting of screenshots and additional information such as description, short description, URL, date of completion, etc.
-Moreover you can add not just one, but many screenshots to one portfolio item for better visual guidance. 
+Moreover you can add not just one, but many screenshots to one portfolio item for better visual guidance.
 
 https://www.youtube.com/watch?v=OIxDlQZcCcI
 
@@ -27,11 +27,11 @@ https://www.youtube.com/watch?v=OIxDlQZcCcI
 
 = Features =
 
-* Create a template with page navigation to display all portfolio items. 
-* Regenerate thumbnails after changing their size. 
-* Change image size and a number of images displayed in the row. 
+* Create a template with page navigation to display all portfolio items.
+* Regenerate thumbnails after changing their size.
+* Change image size and a number of images displayed in the row.
 * Edit labels of additional fields.
-* Enable/disable the option of additional fields displaying. 
+* Enable/disable the option of additional fields displaying.
 * Display the latest portfolio items on your page or post using the shortcode.
 * Install (and delete) demo data.
 
@@ -61,19 +61,19 @@ There is also a premium version of the plugin <a href="http://bestwebsoft.com/pr
 * Spanish (es_ES) (thanks to Grupo Gomariz, S.L. www.grupogomariz.com)
 * Ukrainian (uk)
 
-If you would like to create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text of PO and MO files</a> for <a href="http://support.bestwebsoft.com" target="_blank">BestWebSoft</a> and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO files  <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
+Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text of PO and MO files</a> for <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">BestWebSoft</a> and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO files  <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
 
 = Technical support =
 
 Dear users, our plugins are available for free download. If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to contact us. Please note that we accept requests in English only. All messages in other languages won't be accepted.
 
 If you notice any bugs in the plugins, you can notify us about it and we'll investigate and fix the issue then. Your request should contain URL of the website, issues description and WordPress admin panel credentials.
-Moreover we can customize the plugin according to your requirements. It's a paid service (as a rule it costs $40, but the price can vary depending on the amount of the necessary changes and their complexity). Please note that we could also include this or that feature (developed for you) in the next release and share with the other users then. 
+Moreover we can customize the plugin according to your requirements. It's a paid service (as a rule it costs $40, but the price can vary depending on the amount of the necessary changes and their complexity). Please note that we could also include this or that feature (developed for you) in the next release and share with the other users then.
 We can fix some things for free for the users who provide translation of our plugin into their native language (this should be a new translation of a certain plugin, you can check available translations on the official plugin page).
 
 == Installation ==
 
-1. Upload the folder `portfolio` to the directory `/wp-content/plugins/` 
+1. Upload the folder `portfolio` to the directory `/wp-content/plugins/`
 2. Activate the plugin via the 'Plugins' menu in WordPress
 3. Please check if you have the template files 'portfolio.php' and 'portfolio-post.php' in your templates directory. If you can't find these files, then just copy them from the directory '/wp-content/plugins/portfolio/template/' to your templates directory.
 4. Create a page and select a template in the Page Attributes block.
@@ -123,16 +123,21 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 
 == Screenshots ==
 
-1. Portfolio Settings page.
-2. Add technologies page.
-3. Add executors profile page.
-4. Add New Portfolio items.
-5. Portfolio admin page (for all portfolios).
-6. Portfolio frontend page (for all portfolios).
-7. Portfolio single frontend page.
-8. The pop-up window on Portfolio single page.
+1. Portfolio frontend page (for all portfolios).
+2. Portfolio single frontend page.
+3. The pop-up window on Portfolio single page.
+4. Portfolio Settings page.
+5. Add technologies page.
+6. Add executors profile page.
+7. Add New Portfolio items.
+8. Portfolio admin page (for all portfolios).
 
 == Changelog ==
+
+= V2.38 - 27.07.2016 =
+* Update : Responsive for single portfolio has been improved.
+* Bugfix : Bug with updating images has been fixed.
+* Pro: Slider displaying has been changed.
 
 = V2.37 - 08.04.2016 =
 * NEW : Ability to add images from WordPress media library.
@@ -192,7 +197,7 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 = V2.25 - 20.05.2014 =
 * Update : We updated all functionality for wordpress 3.9.1.
 
-= V2.24 - 23.04.2014 = 
+= V2.24 - 23.04.2014 =
 * Update : We updated all functionality for wordpress 3.9.
 * Update : Compatibility with Gallery Pro plugin.
 * Update : The Ukrainian language file is updated in the plugin.
@@ -235,7 +240,7 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 
 = V2.16 - 24.07.2013 =
 * NEW : Added an ability to not display the link as a text for non-registered users.
-* Bugfix : The error related to save settings if WordPress Permalinks are disabled is fixed. 
+* Bugfix : The error related to save settings if WordPress Permalinks are disabled is fixed.
 
 = V2.15 - 18.07.2013 =
 * NEW : Added an ability to view and send system information by mail.
@@ -245,7 +250,7 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * NEW : Ability to change slug for portfolio item
 
 = V2.13 - 27.05.2013 =
-* Bugfix : The error related to changing the name of the field '_prtfl_descr' to the field '_prtfl_short_descr' is fixed. 
+* Bugfix : The error related to changing the name of the field '_prtfl_descr' to the field '_prtfl_short_descr' is fixed.
 * Update : BWS plugins section is updated.
 
 = V2.12 - 12.04.2013 =
@@ -268,7 +273,7 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * NEW : The German language file is added to the plugin.
 
 = V2.06 - 24.07.2012 =
-* Bugfix : Cross Site Request Forgery bug was fixed. 
+* Bugfix : Cross Site Request Forgery bug was fixed.
 
 = V2.05 - 10.07.2012 =
 * NEW : Brazilian Portuguese, Hebrew, Hindi, Italian, Persian, Spain language files are added to the plugin.
@@ -283,7 +288,7 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 
 = V2.03 - 07.03.2012 =
 * NEW : Shortcode for displaying of latest portfolio items is added.
-* Changed : BWS plugins section. 
+* Changed : BWS plugins section.
 
 = V2.02 - 24.02.2012 =
 * NEW : Dutch language file is added to the plugin.
@@ -312,6 +317,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * In this version an image uploaded by means of custom fields is substituted with Wordpress standard meta box for the media files uploading.
 
 == Upgrade Notice ==
+
+= V2.38 =
+Appearance improved. Bugs fixed.
 
 = V2.37 =
 Ability to add images from WordPress media library. Metabox with portfolio images has been added for portfolio editing page. An ability to use the shortcodes has been added in the single portfolio template. An ability to add main contant has been added in the portfolio template.
@@ -408,7 +416,7 @@ The ordering of Portfolio Items was added to Settings page.
 The German language file is added to the plugin.
 
 = V2.06 =
-Cross Site Request Forgery bug was fixed. 
+Cross Site Request Forgery bug was fixed.
 
 = V2.05 =
 Brazilian Portuguese, Hebrew, Hindi, Italian, Persian, Spain language files are added to the plugin. Add possibility to change caption to additional fields. Add possibility to select additional fields to display them on main and single portfolio pages. Template to display portfolio is changed. Changes were done to both main page and single portfolio page. We updated all functionality for wordpress 3.4.1.
@@ -417,7 +425,7 @@ Brazilian Portuguese, Hebrew, Hindi, Italian, Persian, Spain language files are 
 Replace prettyPhoto library to fancybox library. Code that is used to display a lightbox for images in `portfolio.php` and `portfolio-post.php` template files is changed.
 
 = V2.03 =
-Shortcode for displaying of the latest portfolio items is added. BWS plugins section has been changed. 
+Shortcode for displaying of the latest portfolio items is added. BWS plugins section has been changed.
 
 = V2.02 =
 Dutch language file is added to the plugin. Code to backup portfolio template before a plugin is updated is added. Code that is used to connect styles and scripts is added to the plugin for correct SSL verification.
