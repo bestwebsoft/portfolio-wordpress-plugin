@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: add portfolio, add portfolio plugin, add portfolio widget, portfolio, showcase, responsive portfolio,  portfolio plugin, create portfolio, portfolio categories, project portfolio, portfolio widget, add album
 Requires at least: 3.8
-Tested up to: 4.5.3
-Stable tag: 2.38
+Tested up to: 4.6
+Stable tag: 2.39
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -133,6 +133,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 8. Portfolio admin page (for all portfolios).
 
 == Changelog ==
+
+= V2.39 - 17.08.2016 =
+* Bugfix : Adding Jquery UI style for datepicker has been updated.
+* Update : Multilanguage plugin compatibility has been added.
+* Update : All functionality for WordPress 4.6 was updated.
 
 = V2.38 - 27.07.2016 =
 * Update : Responsive for single portfolio has been improved.
@@ -317,6 +322,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * In this version an image uploaded by means of custom fields is substituted with Wordpress standard meta box for the media files uploading.
 
 == Upgrade Notice ==
+
+= V2.39 =
+* Bugs fixed.
+* The compatibility with new WordPress version updated.
 
 = V2.38 =
 Appearance improved. Bugs fixed.

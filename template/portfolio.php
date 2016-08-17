@@ -1,7 +1,7 @@
 <?php
 /*
 Template Name: Portfolio template
-* Version: 1.4.3
+* Version: 1.4.4
 */
 get_header(); ?>
 	<div class="content-area">
@@ -89,8 +89,8 @@ get_header(); ?>
 					if ( function_exists( 'shortcode_unautop' ) ) $page_content = shortcode_unautop( $page_content );
 					if ( function_exists( 'prepend_attachment' ) ) $page_content = prepend_attachment( $page_content );
 					if ( function_exists( 'wp_make_content_images_responsive' ) ) $page_content = wp_make_content_images_responsive( $page_content );
-					if ( function_exists( 'do_shortcode' ) ) $page_content = do_shortcode( $page_content ); ?>
-
+					if ( function_exists( 'do_shortcode' ) ) $page_content = do_shortcode( $page_content );
+					if ( function_exists( 'mltlngg_the_content_filter' ) ) $page_content = mltlngg_the_content_filter( $page_content ); ?>
 					<div class="portfolio_content entry-content">
 						<div class="entry"><?php echo $page_content; ?></div>
 					</div>

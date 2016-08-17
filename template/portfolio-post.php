@@ -1,7 +1,7 @@
 <?php
 /*
 * Template - Portfolio post
-* Version: 1.4.3
+* Version: 1.4.4
 */
 get_header(); ?>
 	<div class="content-area">
@@ -81,6 +81,7 @@ get_header(); ?>
 										if ( function_exists( 'prepend_attachment' ) ) $full_descr = prepend_attachment( $full_descr );
 										if ( function_exists( 'wp_make_content_images_responsive' ) ) $full_descr = wp_make_content_images_responsive( $full_descr );
 										if ( function_exists( 'do_shortcode' ) ) $full_descr = do_shortcode( $full_descr );
+										if ( function_exists( 'mltlngg_the_content_filter' ) ) $full_descr = mltlngg_the_content_filter( $full_descr ); 
 									} ?>
 									<p><span class="lable"><?php echo $portfolio_options['description_text_field']; ?></span> <?php echo $full_descr; ?></p>
 								<?php }

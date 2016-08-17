@@ -6,7 +6,7 @@ Description: Create your personal portfolio WordPress website. Manage and showca
 Author: BestWebSoft
 Text Domain: portfolio
 Domain Path: /languages
-Version: 2.38
+Version: 2.39
 Author URI: http://bestwebsoft.com/
 License: GPLv2 or later
 */
@@ -1406,10 +1406,10 @@ if ( ! function_exists ( 'prtfl_admin_head' ) ) {
 	function prtfl_admin_head() {
 		global $prtfl_plugin_info, $hook_suffix, $post_type;
 		wp_enqueue_style( 'prtfl_stylesheet', plugins_url( 'css/style.css', __FILE__ ) );
-		wp_enqueue_style( 'prtfl_jquery-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css' );
-
+		
 		if ( ( ( 'post.php' == $hook_suffix || 'post-new.php' == $hook_suffix ) && isset( $post_type ) && 'portfolio' == $post_type ) ||
-			( isset( $_GET['page'] ) && "portfolio.php" == $_GET['page'] ) ) {
+			( isset( $_GET['page'] ) && 'portfolio.php' == $_GET['page'] ) ) {
+			wp_enqueue_style( 'prtfl_jquery-style', '//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css' );
 			wp_enqueue_script( 'jquery-ui-datepicker' );
 
 			wp_enqueue_script( 'prtfl_script', plugins_url( 'js/script.js', __FILE__ ) );
