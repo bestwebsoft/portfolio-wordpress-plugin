@@ -3,73 +3,117 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: add portfolio, add portfolio plugin, add portfolio widget, portfolio, showcase, responsive portfolio,  portfolio plugin, create portfolio, portfolio categories, project portfolio, portfolio widget, add album
 Requires at least: 3.8
-Tested up to: 4.6
+Tested up to: 4.6.1
 Stable tag: 2.39
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Create your personal portfolio WordPress website. Manage and showcase past projects to get more clients.
+Create and add personal portfolio to your WordPress website. Manage and showcase past projects to get more clients.
 
 == Description ==
 
-With the Portfolio plugin you can create a unique page for displaying portfolio items consisting of screenshots and additional information such as description, short description, URL, date of completion, etc.
-Moreover you can add not just one, but many screenshots to one portfolio item for better visual guidance.
+Portfolio plugin is the best way to create and add past projects to your WordPress website.  Create, configure and manage unlimited number of portfolio projects.
+
+Include project details, short and long description, URL, screenshots, date of completion along with each project and much more.
+
+Showcase your recent work to get more jobs and grow your business!
 
 https://www.youtube.com/watch?v=OIxDlQZcCcI
 
-<a href="http://www.youtube.com/watch?v=6xPYIttiJ8g" target="_blank">Portfolio by BestWebSoft Video instruction on Installation</a>
+= Free Features =
 
-<a href="http://wordpress.org/plugins/portfolio/faq/" target="_blank">Portfolio by BestWebSoft FAQ</a>
+* Add unlimited number of portfolio projects with the following info:
+	* Title
+	* Description
+	* Short description
+	* Images
+	* Completion date
+	* Executor profiles
+	* Technologies
+	* Link
+	* SVN
+* Change image size for:
+	* Album cover
+	* Thumbnails
+* Set default portfolio projects sorting order by:
+	* ID
+	* Title
+	* Date created
+	* Menu order
+	* Random
+	* ASC (ascending order from lowest to highest values)
+	* DESC (descending order from highest to lowest values)
+* Set the number of images to display per row
+* Compatible with [Multilanguage](http://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=8e94e3b0c771409cf33cd1527ccad522)
+* Install/Delete demo data
+* Add labels for additional fields
+* Change a slug for portfolio project
+* Add portfolio projects to the search results using [Custom Search](http://bestwebsoft.com/products/wordpress/plugins/custom-search/?k=2f4d98ffee7777d767bf26c726c70f67)
+* Compatible with latest WordPress version 
+* Incredibly simple settings for fast setup without modifying code
+* Detailed step-by-step documentation and videos
+* Multilingual and RTL ready
 
-<a href="http://support.bestwebsoft.com" target="_blank">Portfolio by BestWebSoft Support</a>
+> **Pro Features**
+>
+> All features from Free version included plus:
+>
+> * Create and display portfolio сategories on your website
+> * Add the widget with portfolio categories
+> * Sort portfolio projects by date and title
+> * Enable lightbox helper:
+> 	* Button 
+> 	* Thumbnail 
+> * Add the slider with featured portfolios
+> * Сonfigure all subsites on the network
+> * Get answer to your support question within one business day ([Support Policy](http://bestwebsoft.com/support-policy/))
+>
+> [Upgrade to Pro Now](http://bestwebsoft.com/products/wordpress/plugins/portfolio/?k=b97fe54507469c680b273a111ab11083)
 
-<a href="http://bestwebsoft.com/products/portfolio/?k=b97fe54507469c680b273a111ab11083" target="_blank">Upgrade to Portfolio Pro by BestWebSoft</a>
+If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! [Suggest a Feature](http://support.bestwebsoft.com/hc/en-us/requests/new)
 
-= Features =
+= Documentation & Videos =
 
-* Create a template with page navigation to display all portfolio items.
-* Regenerate thumbnails after changing their size.
-* Change image size and a number of images displayed in the row.
-* Edit labels of additional fields.
-* Enable/disable the option of additional fields displaying.
-* Display the latest portfolio items on your page or post using the shortcode.
-* Install (and delete) demo data.
+* [[Doc] Installation](https://docs.google.com/document/d/1hfVxqFXw-Mr2vI9jVQbDO3JyEcAAu9FY5fZTjovShO0/)
+* [[Doc] Purchase, Installation & Configuration](https://docs.google.com/document/d/1TE9SfB2TERtVpUcf6INOWxoLYGq-zD3uTlQICcyNTf8/)
+* [[Video] Installation Instruction](http://www.youtube.com/watch?v=6xPYIttiJ8g)
 
-If you have a feature, suggestion or idea you'd like to see in the plugin, we'd love to hear about it! <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">Suggest a Feature</a>
+= Help & Support =
 
-= Recommended Plugins =
-
-The author of the Portfolio also recommends the following plugins:
-
-* <a href="http://wordpress.org/plugins/updater/">Updater</a> - This plugin updates WordPress core and the plugins to the recent versions. You can also use the auto mode or manual mode for updating and set email notifications.
-There is also a premium version of the plugin <a href="http://bestwebsoft.com/products/updater/?k=5c5c9083d339113b444b74b2cb3ecaa1">Updater Pro</a> with more useful features available. It can make backup of all your files and database before updating. Also it can forbid some plugins or WordPress Core update.
+Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <http://support.bestwebsoft.com/>
 
 = Translation =
 
-* Czech (cs_CZ) (thanks to <a href="mailto:info@pamadessoft.cz">PaMaDeSSoft</a>, www.pamadessoft.cz)
-* European Portuguese (pt_PT) (thanks to <a href="mailto:catarinavclemente@gmail.com">Catarina Clemente</a>)
+* Czech (cs_CZ) (thanks to [PaMaDeSSoft](mailto:info@pamadessoft.cz), www.pamadessoft.cz)
+* European Portuguese (pt_PT) (thanks to [Catarina Clemente](mailto:catarinavclemente@gmail.com))
 * Brazilian Portuguese (pt_BR) (thanks to DJIO, www.djio.com.br)
-* Dutch (nl_NL) (thanks to <a href="mailto:ronald@hostingu.nl">HostingU, Ronald Verheul</a>)
-* French (fr_FR) (thanks to <a href="mailto:paillat.jeff@gmail.com">Jeff</a>)
+* Dutch (nl_NL) (thanks to [HostingU, Ronald Verheul](mailto:ronald@hostingu.nl))
+* French (fr_FR) (thanks to [Jeff](mailto:paillat.jeff@gmail.com))
 * German (de_DE) (thanks to Felix Griewald, www.felix-griewald.de)
 * Hebrew (he_IL) (thanks to Sagive SEO)
-* Hindi (hi_IN) (thanks to <a href="mailto:ash.pr@outshinesolutions.com">Outshine Solutions</a>, www.outshinesolutions.com)
+* Hindi (hi_IN) (thanks to [Outshine Solutions](mailto:ash.pr@outshinesolutions.com), www.outshinesolutions.com)
 * Italian (it_IT)
-* Persian (fa_IR) (thanks to <a href="mailto:AmirMaskani@gmail.com">Amir Maskani</a>, www.emir.ir)
+* Persian (fa_IR) (thanks to [Amir Maskani](mailto:AmirMaskani@gmail.com), www.emir.ir)
 * Russian (ru_RU)
-* Serbian (sr_RS) (thanks to <a href="mailto:ognjend@firstsiteguide.com">Ogi Djuraskovic</a>, www.firstsiteguide.com)
+* Serbian (sr_RS) (thanks to [Ogi Djuraskovic](mailto:ognjend@firstsiteguide.com), www.firstsiteguide.com)
 * Spanish (es_ES) (thanks to Grupo Gomariz, S.L. www.grupogomariz.com)
 * Ukrainian (uk)
 
-Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text of PO and MO files</a> for <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">BestWebSoft</a> and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO files  <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
+Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](http://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](http://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO [files Poedit](http://www.poedit.net/download.php).
 
-= Technical support =
+= Recommended Plugins =
 
-Dear users, our plugins are available for free download. If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to contact us. Please note that we accept requests in English only. All messages in other languages won't be accepted.
+* [Updater](http://bestwebsoft.com/products/wordpress/plugins/updater/?k=5c5c9083d339113b444b74b2cb3ecaa1) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
+* [Multilanguage](http://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=8e94e3b0c771409cf33cd1527ccad522) - Translate WordPress website content to other languages manually. Create multilingual pages, posts, widgets, menus, etc.
+Facebook Button - Add Facebook Like, Share and Profile buttons to WordPress posts, pages and widgets.
+* [Custom Search](http://bestwebsoft.com/products/wordpress/plugins/custom-search/?k=2f4d98ffee7777d767bf26c726c70f67) - Add custom post types to WordPress website search results.
+* [Re-attacher](http://bestwebsoft.com/products/wordpress/plugins/re-attacher/) - Attach, unattach and re-attach media files quickly to WordPress posts and pages.
 
-If you notice any bugs in the plugins, you can notify us about it and we'll investigate and fix the issue then. Your request should contain URL of the website, issues description and WordPress admin panel credentials.
-Moreover we can customize the plugin according to your requirements. It's a paid service (as a rule it costs $40, but the price can vary depending on the amount of the necessary changes and their complexity). Please note that we could also include this or that feature (developed for you) in the next release and share with the other users then.
-We can fix some things for free for the users who provide translation of our plugin into their native language (this should be a new translation of a certain plugin, you can check available translations on the official plugin page).
+= Donate =
+
+Donations play an important role in supporting open-source projects. We greatly appreciate any donation you can make to help us continue further development of free products.
+
+[Donate Now](http://bestwebsoft.com/donate/)
 
 == Installation ==
 
@@ -80,7 +124,7 @@ We can fix some things for free for the users who provide translation of our plu
 5. Create (if necessary) Technologies and Executor profiles.
 6. Create portfolio item, add title, description, short description, and upload the images one of which should be set as featured. Publish portfolio then.
 
-<a href="https://docs.google.com/document/d/1hfVxqFXw-Mr2vI9jVQbDO3JyEcAAu9FY5fZTjovShO0/edit" target="_blank">View a PDF version of Step-by-step Instruction on Portfolio Installation</a>.
+[View a PDF version of Step-by-step Instruction on Portfolio Installation](https://docs.google.com/document/d/1hfVxqFXw-Mr2vI9jVQbDO3JyEcAAu9FY5fZTjovShO0/)
 
 http://www.youtube.com/watch?v=6xPYIttiJ8g
 
@@ -114,12 +158,12 @@ After that your theme will support thumbnails and the error will disappear.
 
 = I have some problems with the plugin's work. What Information should I provide to receive proper support? =
 
-Please make sure that the problem hasn't been discussed yet on our forum (<a href="http://support.bestwebsoft.com" target="_blank">http://support.bestwebsoft.com</a>). If no, please provide the following data along with your problem's description:
+Please make sure that the problem hasn't been discussed yet on our forum (<http://support.bestwebsoft.com>). If no, please provide the following data along with your problem's description:
 
 1. the link to the page where the problem occurs
 2. the name of the plugin and its version. If you are using a pro version - your order number.
 3. the version of your WordPress installation
-4. copy and paste into the message your system status report. Please read more here: <a href="https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit" target="_blank">Instuction on System Status</a>
+4. copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit)
 
 == Screenshots ==
 
