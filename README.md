@@ -1,9 +1,7 @@
-<a href="http://bestwebsoft.com/products/portfolio/" target=_blank>Portfolio WordPress Plugin</a>
+<a href="http://bestwebsoft.com/products/wordpress/plugins/portfolio/" target=_blank>Portfolio WordPress Plugin</a>
 ========================
 
 Create and add personal portfolio to your WordPress website. Manage and showcase past projects to get more clients.
-
-<img src="http://bestwebsoft.com/wp-content/uploads/2014/09/portfolio-banner-website.jpg" />
 
 <p>Portfolio plugin is the best way to create and add past projects to your WordPress website.  Create, configure and manage unlimited number of portfolio projects.</p>
 
