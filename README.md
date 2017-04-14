@@ -1,4 +1,4 @@
-<a href="http://bestwebsoft.com/products/wordpress/plugins/portfolio/" target=_blank>Portfolio WordPress Plugin</a>
+<a href="https://bestwebsoft.com/products/wordpress/plugins/portfolio/" target=_blank>Portfolio WordPress Plugin</a>
 ========================
 
 Create and add personal portfolio to your WordPress website. Manage and showcase past projects to get more clients.
@@ -47,11 +47,11 @@ Create and add personal portfolio to your WordPress website. Manage and showcase
 <li>DESC (descending order from highest to lowest values)</li>
 </ul></li>
 <li>Set the number of images to display per row</li>
-<li>Compatible with <a href="http://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=8e94e3b0c771409cf33cd1527ccad522">Multilanguage</a></li>
+<li>Compatible with <a href="https://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=8e94e3b0c771409cf33cd1527ccad522">Multilanguage</a></li>
 <li>Install/Delete demo data</li>
 <li>Add labels for additional fields</li>
 <li>Change a slug for portfolio project</li>
-<li>Add portfolio projects to the search results using <a href="http://bestwebsoft.com/products/wordpress/plugins/custom-search/?k=2f4d98ffee7777d767bf26c726c70f67">Custom Search</a></li>
+<li>Add portfolio projects to the search results using <a href="https://bestwebsoft.com/products/wordpress/plugins/custom-search/?k=2f4d98ffee7777d767bf26c726c70f67">Custom Search</a></li>
 <li>Compatible with latest WordPress version </li>
 <li>Incredibly simple settings for fast setup without modifying code</li>
 <li>Detailed step-by-step documentation and videos</li>
@@ -75,25 +75,25 @@ Create and add personal portfolio to your WordPress website. Manage and showcase
   </ul></li>
   <li>Add the slider with featured portfolios</li>
   <li>Сonfigure all subsites on the network</li>
-  <li>Get answer to your support question within one business day (<a href="http://bestwebsoft.com/support-policy/">Support Policy</a>)</li>
+  <li>Get answer to your support question within one business day (<a href="https://bestwebsoft.com/support-policy/">Support Policy</a>)</li>
   </ul>
   
-  <p><a href="http://bestwebsoft.com/products/wordpress/plugins/portfolio/?k=b97fe54507469c680b273a111ab11083">Upgrade to Pro Now</a></p>
+  <p><a href="https://bestwebsoft.com/products/wordpress/plugins/portfolio/?k=b97fe54507469c680b273a111ab11083">Upgrade to Pro Now</a></p>
 </blockquote>
 
-<p>If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! <a href="http://support.bestwebsoft.com/hc/en-us/requests/new">Suggest a Feature</a></p>
+<p>If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! <a href="https://support.bestwebsoft.com/hc/en-us/requests/new">Suggest a Feature</a></p>
 
 <h4>Documentation &#38; Videos</h4>
 
 <ul>
-<li><a href="https://docs.google.com/document/d/1hfVxqFXw-Mr2vI9jVQbDO3JyEcAAu9FY5fZTjovShO0/">[Doc] Installation</a></li>
-<li><a href="https://docs.google.com/document/d/1TE9SfB2TERtVpUcf6INOWxoLYGq-zD3uTlQICcyNTf8/">[Doc] Purchase, Installation &#38; Configuration</a></li>
-<li><a href="http://www.youtube.com/watch?v=6xPYIttiJ8g">[Video] Installation Instruction</a></li>
+<li><a href="https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/">[Doc] Installation</a></li>
+<li><a href="https://docs.google.com/document/d/1EUdBVvnm7IHZ6y0DNyldZypUQKpB8UVPToSc_LdOYQI/">[Doc] Purchase</a></li>
+<li><a href="https://www.youtube.com/watch?v=6xPYIttiJ8g">[Video] Installation Instruction</a></li>
 </ul>
 
 <h4>Help &#38; Support</h4>
 
-<p>Visit our Help Center if you have any questions, our friendly Support Team is happy to help &#8212; <a href="http://support.bestwebsoft.com/">http://support.bestwebsoft.com/</a></p>
+<p>Visit our Help Center if you have any questions, our friendly Support Team is happy to help &#8212; <a href="https://support.bestwebsoft.com/">https://support.bestwebsoft.com/</a></p>
 
 <h4>Translation</h4>
 
@@ -114,20 +114,14 @@ Create and add personal portfolio to your WordPress website. Manage and showcase
 <li>Ukrainian (uk)</li>
 </ul>
 
-<p>Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress">the text of PO and MO files</a> to <a href="http://support.bestwebsoft.com/hc/en-us/requests/new">BestWebSoft</a> and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO <a href="http://www.poedit.net/download.php">files Poedit</a>.</p>
+<p>Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send <a href="https://codex.wordpress.org/Translating_WordPress">the text of PO and MO files</a> to <a href="https://support.bestwebsoft.com/hc/en-us/requests/new">BestWebSoft</a> and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO <a href="https://www.poedit.net/download.php">files Poedit</a>.</p>
 
 <h4>Recommended Plugins</h4>
 
 <ul>
-<li><a href="http://bestwebsoft.com/products/wordpress/plugins/updater/?k=5c5c9083d339113b444b74b2cb3ecaa1">Updater</a> - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.</li>
-<li><a href="http://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=8e94e3b0c771409cf33cd1527ccad522">Multilanguage</a> - Translate WordPress website content to other languages manually. Create multilingual pages, posts, widgets, menus, etc.
+<li><a href="https://bestwebsoft.com/products/wordpress/plugins/updater/?k=5c5c9083d339113b444b74b2cb3ecaa1">Updater</a> - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.</li>
+<li><a href="https://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=8e94e3b0c771409cf33cd1527ccad522">Multilanguage</a> - Translate WordPress website content to other languages manually. Create multilingual pages, posts, widgets, menus, etc.
 Facebook Button - Add Facebook Like, Share and Profile buttons to WordPress posts, pages and widgets.</li>
-<li><a href="http://bestwebsoft.com/products/wordpress/plugins/custom-search/?k=2f4d98ffee7777d767bf26c726c70f67">Custom Search</a> - Add custom post types to WordPress website search results.</li>
-<li><a href="http://bestwebsoft.com/products/wordpress/plugins/re-attacher/">Re-attacher</a> - Attach, unattach and re-attach media files quickly to WordPress posts and pages.</li>
+<li><a href="https://bestwebsoft.com/products/wordpress/plugins/custom-search/?k=2f4d98ffee7777d767bf26c726c70f67">Custom Search</a> - Add custom post types to WordPress website search results.</li>
+<li><a href="https://bestwebsoft.com/products/wordpress/plugins/re-attacher/">Re-attacher</a> - Attach, unattach and re-attach media files quickly to WordPress posts and pages.</li>
 </ul>
-
-<h4>Donate</h4>
-
-<p>Donations play an important role in supporting open-source projects. We greatly appreciate any donation you can make to help us continue further development of free products.</p>
-
-<p><a href="http://bestwebsoft.com/donate/">Donate Now</a></p>

@@ -1,10 +1,10 @@
 === Portfolio by BestWebSoft ===
 Contributors: bestwebsoft
-Donate link: http://bestwebsoft.com/donate/
+Donate link: https://bestwebsoft.com/donate/
 Tags: add portfolio, add portfolio plugin, add portfolio widget, portfolio, showcase, responsive portfolio,  portfolio plugin, create portfolio, portfolio categories, project portfolio, portfolio widget, add album
 Requires at least: 3.8
-Tested up to: 4.6.1
-Stable tag: 2.39
+Tested up to: 4.7.3
+Stable tag: 2.40
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,11 +44,11 @@ https://www.youtube.com/watch?v=OIxDlQZcCcI
 	* ASC (ascending order from lowest to highest values)
 	* DESC (descending order from highest to lowest values)
 * Set the number of images to display per row
-* Compatible with [Multilanguage](http://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=8e94e3b0c771409cf33cd1527ccad522)
+* Compatible with [Multilanguage](https://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=8e94e3b0c771409cf33cd1527ccad522)
 * Install/Delete demo data
 * Add labels for additional fields
 * Change a slug for portfolio project
-* Add portfolio projects to the search results using [Custom Search](http://bestwebsoft.com/products/wordpress/plugins/custom-search/?k=2f4d98ffee7777d767bf26c726c70f67)
+* Add portfolio projects to the search results using [Custom Search](https://bestwebsoft.com/products/wordpress/plugins/custom-search/?k=2f4d98ffee7777d767bf26c726c70f67)
 * Compatible with latest WordPress version 
 * Incredibly simple settings for fast setup without modifying code
 * Detailed step-by-step documentation and videos
@@ -66,21 +66,21 @@ https://www.youtube.com/watch?v=OIxDlQZcCcI
 > 	* Thumbnail 
 > * Add the slider with featured portfolios
 > * Сonfigure all subsites on the network
-> * Get answer to your support question within one business day ([Support Policy](http://bestwebsoft.com/support-policy/))
+> * Get answer to your support question within one business day ([Support Policy](https://bestwebsoft.com/support-policy/))
 >
-> [Upgrade to Pro Now](http://bestwebsoft.com/products/wordpress/plugins/portfolio/?k=b97fe54507469c680b273a111ab11083)
+> [Upgrade to Pro Now](https://bestwebsoft.com/products/wordpress/plugins/portfolio/?k=b97fe54507469c680b273a111ab11083)
 
-If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! [Suggest a Feature](http://support.bestwebsoft.com/hc/en-us/requests/new)
+If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! [Suggest a Feature](https://support.bestwebsoft.com/hc/en-us/requests/new)
 
 = Documentation & Videos =
 
-* [[Doc] Installation](https://docs.google.com/document/d/1hfVxqFXw-Mr2vI9jVQbDO3JyEcAAu9FY5fZTjovShO0/)
-* [[Doc] Purchase, Installation & Configuration](https://docs.google.com/document/d/1TE9SfB2TERtVpUcf6INOWxoLYGq-zD3uTlQICcyNTf8/)
-* [[Video] Installation Instruction](http://www.youtube.com/watch?v=6xPYIttiJ8g)
+* [[Doc] Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
+* [[Doc] Purchase](https://docs.google.com/document/d/1EUdBVvnm7IHZ6y0DNyldZypUQKpB8UVPToSc_LdOYQI/)
+* [[Video] Installation Instruction](https://www.youtube.com/watch?v=6xPYIttiJ8g)
 
 = Help & Support =
 
-Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <http://support.bestwebsoft.com/>
+Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <https://support.bestwebsoft.com/>
 
 = Translation =
 
@@ -99,21 +99,15 @@ Visit our Help Center if you have any questions, our friendly Support Team is ha
 * Spanish (es_ES) (thanks to Grupo Gomariz, S.L. www.grupogomariz.com)
 * Ukrainian (uk)
 
-Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](http://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](http://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO [files Poedit](http://www.poedit.net/download.php).
+Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](https://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](https://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO [files Poedit](https://www.poedit.net/download.php).
 
 = Recommended Plugins =
 
-* [Updater](http://bestwebsoft.com/products/wordpress/plugins/updater/?k=5c5c9083d339113b444b74b2cb3ecaa1) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
-* [Multilanguage](http://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=8e94e3b0c771409cf33cd1527ccad522) - Translate WordPress website content to other languages manually. Create multilingual pages, posts, widgets, menus, etc.
+* [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=5c5c9083d339113b444b74b2cb3ecaa1) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
+* [Multilanguage](https://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=8e94e3b0c771409cf33cd1527ccad522) - Translate WordPress website content to other languages manually. Create multilingual pages, posts, widgets, menus, etc.
 Facebook Button - Add Facebook Like, Share and Profile buttons to WordPress posts, pages and widgets.
-* [Custom Search](http://bestwebsoft.com/products/wordpress/plugins/custom-search/?k=2f4d98ffee7777d767bf26c726c70f67) - Add custom post types to WordPress website search results.
-* [Re-attacher](http://bestwebsoft.com/products/wordpress/plugins/re-attacher/) - Attach, unattach and re-attach media files quickly to WordPress posts and pages.
-
-= Donate =
-
-Donations play an important role in supporting open-source projects. We greatly appreciate any donation you can make to help us continue further development of free products.
-
-[Donate Now](http://bestwebsoft.com/donate/)
+* [Custom Search](https://bestwebsoft.com/products/wordpress/plugins/custom-search/?k=2f4d98ffee7777d767bf26c726c70f67) - Add custom post types to WordPress website search results.
+* [Re-attacher](https://bestwebsoft.com/products/wordpress/plugins/re-attacher/) - Attach, unattach and re-attach media files quickly to WordPress posts and pages.
 
 == Installation ==
 
@@ -124,9 +118,9 @@ Donations play an important role in supporting open-source projects. We greatly 
 5. Create (if necessary) Technologies and Executor profiles.
 6. Create portfolio item, add title, description, short description, and upload the images one of which should be set as featured. Publish portfolio then.
 
-[View a PDF version of Step-by-step Instruction on Portfolio Installation](https://docs.google.com/document/d/1hfVxqFXw-Mr2vI9jVQbDO3JyEcAAu9FY5fZTjovShO0/)
+[View a PDF version of Step-by-step Instruction on Portfolio Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
 
-http://www.youtube.com/watch?v=6xPYIttiJ8g
+https://www.youtube.com/watch?v=6xPYIttiJ8g
 
 == Frequently Asked Questions ==
 
@@ -158,7 +152,7 @@ After that your theme will support thumbnails and the error will disappear.
 
 = I have some problems with the plugin's work. What Information should I provide to receive proper support? =
 
-Please make sure that the problem hasn't been discussed yet on our forum (<http://support.bestwebsoft.com>). If no, please provide the following data along with your problem's description:
+Please make sure that the problem hasn't been discussed yet on our forum (<https://support.bestwebsoft.com>). If no, please provide the following data along with your problem's description:
 
 1. the link to the page where the problem occurs
 2. the name of the plugin and its version. If you are using a pro version - your order number.
@@ -177,6 +171,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<http:
 8. Portfolio admin page (for all portfolios).
 
 == Changelog ==
+
+= V2.40 - 14.04.2017 =
+* Bugfix : Multiple Cross-Site Scripting (XSS) vulnerability was fixed.
 
 = V2.39 - 17.08.2016 =
 * Bugfix : Adding Jquery UI style for datepicker has been updated.
@@ -366,6 +363,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<http:
 * In this version an image uploaded by means of custom fields is substituted with Wordpress standard meta box for the media files uploading.
 
 == Upgrade Notice ==
+
+= V2.40 =
+* Bugs fixed.
 
 = V2.39 =
 * Bugs fixed.

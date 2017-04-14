@@ -1,18 +1,18 @@
 <?php
 /*
 Plugin Name: Portfolio by BestWebSoft
-Plugin URI: http://bestwebsoft.com/products/portfolio/
+Plugin URI: https://bestwebsoft.com/products/wordpress/plugins/portfolio/
 Description: Create your personal portfolio WordPress website. Manage and showcase past projects to get more clients.
 Author: BestWebSoft
 Text Domain: portfolio
 Domain Path: /languages
-Version: 2.39
-Author URI: http://bestwebsoft.com/
+Version: 2.40
+Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
 
 /*
-	@ Copyright 2016  BestWebSoft  ( http://support.bestwebsoft.com )
+	@ Copyright 2017  BestWebSoft  ( https://support.bestwebsoft.com )
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -441,12 +441,12 @@ if ( ! function_exists( 'prtfl_settings_page' ) ) {
 				<br/>
 				<div><?php printf(
 					__( "If you would like to add the Latest Portfolio Items to your page or post, please use %s button", 'portfolio' ),
-					'<span class="bws_code"><img style="vertical-align: sub;" src="' . plugins_url( 'bws_menu/images/shortcode-icon.png', __FILE__ ) . '" alt=""/></span>' ); ?>
+					'<span class="bws_code"><span class="bwsicons bwsicons-shortcode"></span></span>' ); ?>
 					<div class="bws_help_box bws_help_box_right dashicons dashicons-editor-help">
 						<div class="bws_hidden_help_text" style="min-width: 180px;">
 							<?php printf(
 								__( "You can add the Latest Portfolio Items to your page or post by clicking on %s button in the content edit block using the Visual mode. If the button isn't displayed, please use the shortcode %s, where * is a number of portfolio to display", 'portfolio' ),
-								'<code><img style="vertical-align: sub;" src="' . plugins_url( 'bws_menu/images/shortcode-icon.png', __FILE__ ) . '" alt="" /></code>',
+								'<span class="bws_code"><span class="bwsicons bwsicons-shortcode"></span></span>',
 								'<code>[latest_portfolio_items count=*]</code>'
 							); ?>
 						</div>
@@ -560,10 +560,7 @@ if ( ! function_exists( 'prtfl_settings_page' ) ) {
 								</table>
 							</div>
 							<div class="bws_pro_version_tooltip">
-								<div class="bws_info">
-									<?php _e( 'Unlock premium options by upgrading to Pro version', 'portfolio' ); ?>
-								</div>
-								<a class="bws_button" href="http://bestwebsoft.com/products/portfolio/?k=f047e20c92c972c398187a4f70240285&pn=74&v=<?php echo $prtfl_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="Portfolio Pro"><?php _e( 'Learn More', 'portfolio' ); ?></a>
+								<a class="bws_button" href="https://bestwebsoft.com/products/wordpress/plugins/portfolio/?k=f047e20c92c972c398187a4f70240285&pn=74&v=<?php echo $prtfl_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="Portfolio Pro"><?php _e( 'Learn More', 'portfolio' ); ?></a>
 								<div class="clear"></div>
 							</div>
 						</div>
@@ -604,14 +601,14 @@ if ( ! function_exists( 'prtfl_settings_page' ) ) {
 								<?php if ( array_key_exists( 'custom-search-plugin/custom-search-plugin.php', $all_plugins ) || array_key_exists( 'custom-search-pro/custom-search-pro.php', $all_plugins ) ) {
 									if ( is_plugin_active( 'custom-search-plugin/custom-search-plugin.php' ) || is_plugin_active( 'custom-search-pro/custom-search-pro.php' ) ) { ?>
 										<input type="checkbox" name="prtfl_add_to_search" value="1" <?php if ( isset( $cstmsrch_options ) && ( ( isset( $cstmsrch_options['post_types'] ) && in_array( 'portfolio', $cstmsrch_options['post_types'] ) ) || ( ! isset( $cstmsrch_options['post_types'] ) && in_array( 'portfolio', $cstmsrch_options ) ) ) ) echo 'checked="checked"'; ?> />
-										<span class="bws_info"> (<?php _e( 'Using Custom Search powered by', 'portfolio' ); ?> <a href="http://bestwebsoft.com/products/" target="_blank">bestwebsoft.com</a>)</span>
+										<span class="bws_info"> (<?php _e( 'Using Custom Search powered by', 'portfolio' ); ?> <a href="https://bestwebsoft.com/products/" target="_blank">bestwebsoft.com</a>)</span>
 									<?php } else { ?>
 										<input disabled="disabled" type="checkbox" name="prtfl_add_to_search" value="1" />
-										<span class="bws_info">(<?php _e( 'Using Custom Search powered by', 'portfolio' ); ?> <a href="http://bestwebsoft.com/products/" target="_blank">bestwebsoft.com</a>) <a href="<?php echo bloginfo("url"); ?>/wp-admin/plugins.php"><?php _e( 'Activate Custom Search', 'portfolio' ); ?></a></span>
+										<span class="bws_info">(<?php _e( 'Using Custom Search powered by', 'portfolio' ); ?> <a href="https://bestwebsoft.com/products/" target="_blank">bestwebsoft.com</a>) <a href="<?php echo bloginfo("url"); ?>/wp-admin/plugins.php"><?php _e( 'Activate Custom Search', 'portfolio' ); ?></a></span>
 									<?php }
 								} else { ?>
 									<input disabled="disabled" type="checkbox" name="prtfl_add_to_search" value="1" />
-									<span class="bws_info">(<?php _e( 'Using Custom Search powered by', 'portfolio' ); ?> <a href="http://bestwebsoft.com/products/" target="_blank">bestwebsoft.com</a>) <a href="http://bestwebsoft.com/products/custom-search/" target="_blank"><?php _e( 'Download Custom Search', 'portfolio' ); ?></a></span>
+									<span class="bws_info">(<?php _e( 'Using Custom Search powered by', 'portfolio' ); ?> <a href="https://bestwebsoft.com/products/" target="_blank">bestwebsoft.com</a>) <a href="https://bestwebsoft.com/products/wordpress/plugins/custom-search/" target="_blank"><?php _e( 'Download Custom Search', 'portfolio' ); ?></a></span>
 								<?php } ?>
 							</td>
 						</tr>
@@ -877,10 +874,7 @@ if ( ! function_exists( 'prtfl_post_custom_box' ) ) {
 						</p>
 					</div>
 					<div class="bws_pro_version_tooltip">
-						<div class="bws_info">
-							<?php _e( 'Unlock premium options by upgrading to Pro version', 'portfolio' ); ?>
-						</div>
-						<a class="bws_button" href="http://bestwebsoft.com/products/portfolio/?k=f047e20c92c972c398187a4f70240285&pn=74&v=<?php echo $prtfl_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="Portfolio Pro Plugin"><?php _e( 'Learn More', 'portfolio' ); ?></a>
+						<a class="bws_button" href="https://bestwebsoft.com/products/wordpress/plugins/portfolio/?k=f047e20c92c972c398187a4f70240285&pn=74&v=<?php echo $prtfl_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="Portfolio Pro Plugin"><?php _e( 'Learn More', 'portfolio' ); ?></a>
 						<div class="clear"></div>
 					</div>
 				</div>
@@ -933,10 +927,7 @@ if ( ! function_exists( 'prtfl_categories_meta_box' ) ) {
 					</div>
 				</div>
 				<div class="bws_pro_version_tooltip">
-					<div class="bws_info">
-						<?php _e( 'Unlock premium options by upgrading to Pro version', 'portfolio' ); ?>
-					</div>
-					<a class="bws_button" href="http://bestwebsoft.com/products/portfolio/?k=f047e20c92c972c398187a4f70240285&pn=74&v=<?php echo $prtfl_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="Portfolio Pro Plugin"><?php _e( 'Learn More', 'portfolio' ); ?></a>
+					<a class="bws_button" href="https://bestwebsoft.com/products/wordpress/plugins/portfolio/?k=f047e20c92c972c398187a4f70240285&pn=74&v=<?php echo $prtfl_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="Portfolio Pro Plugin"><?php _e( 'Learn More', 'portfolio' ); ?></a>
 					<div class="clear"></div>
 				</div>
 			</div>
@@ -1719,8 +1710,8 @@ if ( ! function_exists ( 'prtfl_register_plugin_links' ) ) {
 		if ( $file == $base ) {
 			if ( ! is_network_admin() )
 				$links[]	=	'<a href="admin.php?page=portfolio.php">' . __( 'Settings', 'portfolio' ) . '</a>';
-			$links[]	=	'<a href="http://wordpress.org/plugins/portfolio/faq/" target="_blank">' . __( 'FAQ', 'portfolio' ) . '</a>';
-			$links[]	=	'<a href="http://support.bestwebsoft.com">' . __( 'Support', 'portfolio' ) . '</a>';
+			$links[]	=	'<a href="https://support.bestwebsoft.com/hc/en-us/sections/200538929" target="_blank">' . __( 'FAQ', 'portfolio' ) . '</a>';
+			$links[]	=	'<a href="https://support.bestwebsoft.com">' . __( 'Support', 'portfolio' ) . '</a>';
 		}
 		return $links;
 	}
