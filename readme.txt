@@ -2,9 +2,9 @@
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add portfolio, add portfolio plugin, add portfolio widget, portfolio, showcase, responsive portfolio,  portfolio plugin, create portfolio, portfolio categories, project portfolio, portfolio widget, add album
-Requires at least: 3.8
-Tested up to: 4.7.3
-Stable tag: 2.40
+Requires at least: 3.9
+Tested up to: 4.7.5
+Stable tag: 2.41
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,7 +49,7 @@ https://www.youtube.com/watch?v=OIxDlQZcCcI
 * Add labels for additional fields
 * Change a slug for portfolio project
 * Add portfolio projects to the search results using [Custom Search](https://bestwebsoft.com/products/wordpress/plugins/custom-search/?k=2f4d98ffee7777d767bf26c726c70f67)
-* Compatible with latest WordPress version 
+* Compatible with latest WordPress version
 * Incredibly simple settings for fast setup without modifying code
 * Detailed step-by-step documentation and videos
 * Multilingual and RTL ready
@@ -58,14 +58,14 @@ https://www.youtube.com/watch?v=OIxDlQZcCcI
 >
 > All features from Free version included plus:
 >
-> * Create and display portfolio сategories on your website
+> * Create and display portfolio categories on your website
 > * Add the widget with portfolio categories
 > * Sort portfolio projects by date and title
 > * Enable lightbox helper:
-> 	* Button 
-> 	* Thumbnail 
+> 	* Button
+> 	* Thumbnail
 > * Add the slider with featured portfolios
-> * Сonfigure all subsites on the network
+> * Configure all subsites on the network
 > * Get answer to your support question within one business day ([Support Policy](https://bestwebsoft.com/support-policy/))
 >
 > [Upgrade to Pro Now](https://bestwebsoft.com/products/wordpress/plugins/portfolio/?k=b97fe54507469c680b273a111ab11083)
@@ -80,7 +80,7 @@ If you have a feature suggestion or idea you'd like to see in the plugin, we'd l
 
 = Help & Support =
 
-Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <https://support.bestwebsoft.com/>
+Visit our Help Center if you have any questions, our friendly Support Team is happy to help - <https://support.bestwebsoft.com/>
 
 = Translation =
 
@@ -103,7 +103,7 @@ Some of these translations are not complete. We are constantly adding new featur
 
 = Recommended Plugins =
 
-* [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=5c5c9083d339113b444b74b2cb3ecaa1) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
+* [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=5c5c9083d339113b444b74b2cb3ecaa1) - Automatically check and update WordPress website core with all installed plugins and themes to the latest versions.
 * [Multilanguage](https://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=8e94e3b0c771409cf33cd1527ccad522) - Translate WordPress website content to other languages manually. Create multilingual pages, posts, widgets, menus, etc.
 Facebook Button - Add Facebook Like, Share and Profile buttons to WordPress posts, pages and widgets.
 * [Custom Search](https://bestwebsoft.com/products/wordpress/plugins/custom-search/?k=2f4d98ffee7777d767bf26c726c70f67) - Add custom post types to WordPress website search results.
@@ -171,6 +171,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 8. Portfolio admin page (for all portfolios).
 
 == Changelog ==
+
+= V2.41 - 18.05.2017 =
+* Bugfix : The functionality of adding Portfolio to the Custom Search by BestWebSoft was fixed.
+* Bugfix : Feed links were corrected.
 
 = V2.40 - 14.04.2017 =
 * Bugfix : Multiple Cross-Site Scripting (XSS) vulnerability was fixed.
@@ -363,6 +367,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * In this version an image uploaded by means of custom fields is substituted with Wordpress standard meta box for the media files uploading.
 
 == Upgrade Notice ==
+
+= V2.41 =
+* Bugs fixed.
 
 = V2.40 =
 * Bugs fixed.
