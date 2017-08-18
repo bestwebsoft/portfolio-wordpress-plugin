@@ -10,7 +10,7 @@ get_header(); ?>
 				<div class="breadcrumbs home_page_title entry-header">
 					<?php global $post;
 					$title = get_the_title();
-					echo empty( $title ) ? '(' . __( 'No title', 'portfolio-pro' ) . ')' : $title; ?>
+					echo empty( $title ) ? '(' . __( 'No title', 'portfolio' ) . ')' : $title; ?>
 				</div>
 				<?php do_action( 'bwsplgns_display_pdf_print_buttons', 'top' );
 
@@ -19,31 +19,27 @@ get_header(); ?>
 					<div class="portfolio_content entry-content">
 						<div class="entry">
 							<?php global $post;
-							$portfolio_options	=	get_option( 'prtfl_options' );
-							$post_thumbnail_id	=	get_post_thumbnail_id( $post->ID );
-							if ( empty ( $post_thumbnail_id ) ) {
-								$args = array(
-									'post_parent'		=>	$post->ID,
-									'post_type'			=>	'attachment',
-									'post_mime_type'	=>	'image',
-									'orderby'			=>	'menu_order',
-									'order'				=>	'ASC',
-									'numberposts'		=>	1
-								);
-								$attachments		=	get_children( $args );
-								$post_thumbnail_id	=	key( $attachments );
-							}
-							$image			=	wp_get_attachment_image_src( $post_thumbnail_id, 'portfolio-thumb' );
-							$image_large	=	wp_get_attachment_image_src( $post_thumbnail_id, 'large' );
-							$image_alt		=	get_post_meta( $post_thumbnail_id, '_wp_attachment_image_alt', true );
-							$image_desc 	=	get_post( $post_thumbnail_id );
-							$image_desc		=	$image_desc->post_content;
+							$portfolio_options	= get_option( 'prtfl_options' );
+							$post_thumbnail_id	= get_post_thumbnail_id( $post->ID );
+							$image			=	wp_get_attachment_image_src( $post_thumbnail_id, $prtfl_options['image_size_album'] );
 							$post_meta		=	get_post_meta( $post->ID, 'prtfl_information', true );
 
-							if ( ! empty( $image[0] ) ) { ?>
+							if ( ! empty( $image[0] ) ) { 
+								$image_large = wp_get_attachment_image_src( $post_thumbnail_id, 'large' );
+								$image_desc = get_post( $post_thumbnail_id );
+								$image_desc = $image_desc->post_content;
+								/* get width and height for image_size_album */
+								if ( 'portfolio-thumb' != $prtfl_options['image_size_album'] ) {
+									$width  = absint( get_option( $prtfl_options['image_size_album'] . '_size_w' ) );
+									$height = absint( get_option( $prtfl_options['image_size_album'] . '_size_h' ) );
+								} else {
+									$width  = $prtfl_options['custom_size_px']['portfolio-thumb'][0];
+									$height = $prtfl_options['custom_size_px']['portfolio-thumb'][1];
+								}
+								$image_alt = get_post_meta( $post_thumbnail_id, '_wp_attachment_image_alt', true ); ?>
 								<div class="portfolio_thumb">
 									<a class="lightbox" rel="portfolio_fancybox" href="<?php echo $image_large[0]; ?>" title="<?php echo $image_desc; ?>">
-										<img src="<?php echo $image[0]; ?>" width="<?php echo $portfolio_options['custom_size_px'][0][0]; ?>" height="<?php echo $portfolio_options['custom_size_px'][0][1]; ?>" alt="<?php echo $image_alt; ?>" />
+										<img src="<?php echo $image[0]; ?>" alt="<?php echo $image_alt; ?>" <?php if ( $width ) echo 'width="' . $width . '"'; if ( $height ) echo 'height="' . $height . '"'; ?> style="<?php if ( $width ) echo 'width:' . $width . 'px;'; if ( $height ) echo 'height:' . $height . 'px;'; ?>" />
 									</a>
 								</div><!-- .portfolio_thumb -->
 							<?php } ?>
@@ -73,6 +69,7 @@ get_header(); ?>
 									if ( empty( $full_descr ) ){
 										$full_descr = isset( $post_meta['_prtfl_short_descr'] ) ? $post_meta['_prtfl_short_descr'] : '';
 									} else {
+										if ( function_exists( 'mltlngg_the_content_filter' ) ) $full_descr = mltlngg_the_content_filter( $full_descr );
 										/* dublicate filter 'the_content' - as we couldnt use it */
 										if ( function_exists( 'wptexturize' ) ) $full_descr = wptexturize( $full_descr );
 										if ( function_exists( 'convert_smilies' ) ) $full_descr = convert_smilies( $full_descr );
@@ -81,7 +78,6 @@ get_header(); ?>
 										if ( function_exists( 'prepend_attachment' ) ) $full_descr = prepend_attachment( $full_descr );
 										if ( function_exists( 'wp_make_content_images_responsive' ) ) $full_descr = wp_make_content_images_responsive( $full_descr );
 										if ( function_exists( 'do_shortcode' ) ) $full_descr = do_shortcode( $full_descr );
-										if ( function_exists( 'mltlngg_the_content_filter' ) ) $full_descr = mltlngg_the_content_filter( $full_descr ); 
 									} ?>
 									<p><span class="lable"><?php echo $portfolio_options['description_text_field']; ?></span> <?php echo $full_descr; ?></p>
 								<?php }
@@ -123,25 +119,34 @@ get_header(); ?>
 								}
 								$count_element = count( $array_post_thumbnail_id );
 
-								while ( list( $key, $value ) = each( $array_post_thumbnail_id ) ) {
-									$image			=	wp_get_attachment_image_src( $value, 'portfolio-photo-thumb' );
+								foreach ( $array_post_thumbnail_id as $key => $value ) {
+									$image			=	wp_get_attachment_image_src( $value, $prtfl_options['image_size_photo'] );
 									$image_large	=	wp_get_attachment_image_src( $value, 'large' );
 									$image_alt		=	get_post_meta( $value, '_wp_attachment_image_alt', true );
 									$image_title	=	get_post_meta( $value, '_wp_attachment_image_title', true );
 									$image_desc 	=	get_post( $value );
 									$image_desc		=	$image_desc->post_content;
 
+									/* get width and height for image_size_photo */
+									if ( 'portfolio-photo-thumb' != $prtfl_options['image_size_photo'] ) {
+										$width  = absint( get_option( $prtfl_options['image_size_photo'] . '_size_w' ) );
+										$height = absint( get_option( $prtfl_options['image_size_photo'] . '_size_h' ) );
+									} else {
+										$width  = $prtfl_options['custom_size_px']['portfolio-photo-thumb'][0];
+										$height = $prtfl_options['custom_size_px']['portfolio-photo-thumb'][1];
+									}
+
 									if ( 0 == $key ) { ?>
 										<span class="lable"><?php echo $portfolio_options['screenshot_text_field']; ?></span>
 										<div class="portfolio_images_rows">
 									<?php } ?>
-										<div class="portfolio_images_gallery">
-											<a class="lightbox" rel="portfolio_fancybox" href="<?php echo $image_large[0]; ?>" title="<?php echo $image_desc; ?>">
-												<img src="<?php echo $image[0]; ?>" width="<?php echo $portfolio_options['custom_size_px'][1][0]; ?>" height="<?php echo $portfolio_options['custom_size_px'][1][1]; ?>" alt="<?php echo $image_alt; ?>" />
-											</a>
-											<br /><?php echo $image_title; ?>
-										</div>
-									<?php if ( 0 == ( $key + 1 ) % $portfolio_options['custom_image_row_count'] && 0 != $key && $key + 1 != $count_element) { ?>
+									<div class="portfolio_images_gallery">
+										<a class="lightbox" rel="portfolio_fancybox" href="<?php echo $image_large[0]; ?>" title="<?php echo $image_desc; ?>">
+											<img src="<?php echo $image[0]; ?>" alt="<?php echo $image_alt; ?>" <?php if ( $width ) echo 'width="' . $width . '"'; if ( $height ) echo 'height="' . $height . '"'; ?> style="<?php if ( $width ) echo 'width:' . $width . 'px;'; if ( $height ) echo 'height:' . $height . 'px;'; ?>" />
+										</a>
+										<br /><?php echo $image_title; ?>
+									</div>
+									<?php if ( 0 == ( $key + 1 ) % $portfolio_options['custom_image_row_count'] && 0 != $key && $key + 1 != $count_element ) { ?>
 										</div><!-- .portfolio_images_rows -->
 										<div class="portfolio_images_rows">
 									<?php }
@@ -160,7 +165,7 @@ get_header(); ?>
 										foreach ( $terms as $term ) {
 											if ( $count > 0 )
 												echo ', ';
-											echo '<a href="' . get_term_link( $term->slug, 'portfolio_technologies') . '" title="' . sprintf( __( "View all posts in %s" ), $term->name ) . '" ' . '>' . $term->name . '</a>';
+											echo '<a href="' . get_term_link( $term->slug, 'portfolio_technologies') . '" title="' . sprintf( __( "View all projects in %s" ), $term->name ) . '">' . $term->name . '</a>';
 											$count++;
 										} ?>
 									</div><!-- .portfolio_terms -->

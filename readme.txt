@@ -1,10 +1,10 @@
 === Portfolio by BestWebSoft ===
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
-Tags: add portfolio, add portfolio plugin, add portfolio widget, portfolio, showcase, responsive portfolio,  portfolio plugin, create portfolio, portfolio categories, project portfolio, portfolio widget, add album
+Tags: add portfolio, portfolio plugin, add portfolio widget, portfolio, fancybox, showcase, responsive portfolio, portfolio plugin, create portfolio, portfolio categories, project portfolio, portfolio widget, add album
 Requires at least: 3.9
-Tested up to: 4.7.5
-Stable tag: 2.41
+Tested up to: 4.8.1
+Stable tag: 2.42
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,7 +58,11 @@ https://www.youtube.com/watch?v=OIxDlQZcCcI
 >
 > All features from Free version included plus:
 >
-> * Create and display portfolio categories on your website
+> * Create and display portfolio:
+> 	* Categories
+> 	* Sectors [NEW]
+> 	* Services [NEW]
+> * Add info about the client [NEW]
 > * Add the widget with portfolio categories
 > * Sort portfolio projects by date and title
 > * Enable lightbox helper:
@@ -85,18 +89,7 @@ Visit our Help Center if you have any questions, our friendly Support Team is ha
 = Translation =
 
 * Czech (cs_CZ) (thanks to [PaMaDeSSoft](mailto:info@pamadessoft.cz), www.pamadessoft.cz)
-* European Portuguese (pt_PT) (thanks to [Catarina Clemente](mailto:catarinavclemente@gmail.com))
-* Brazilian Portuguese (pt_BR) (thanks to DJIO, www.djio.com.br)
-* Dutch (nl_NL) (thanks to [HostingU, Ronald Verheul](mailto:ronald@hostingu.nl))
-* French (fr_FR) (thanks to [Jeff](mailto:paillat.jeff@gmail.com))
-* German (de_DE) (thanks to Felix Griewald, www.felix-griewald.de)
-* Hebrew (he_IL) (thanks to Sagive SEO)
-* Hindi (hi_IN) (thanks to [Outshine Solutions](mailto:ash.pr@outshinesolutions.com), www.outshinesolutions.com)
-* Italian (it_IT)
-* Persian (fa_IR) (thanks to [Amir Maskani](mailto:AmirMaskani@gmail.com), www.emir.ir)
 * Russian (ru_RU)
-* Serbian (sr_RS) (thanks to [Ogi Djuraskovic](mailto:ognjend@firstsiteguide.com), www.firstsiteguide.com)
-* Spanish (es_ES) (thanks to Grupo Gomariz, S.L. www.grupogomariz.com)
 * Ukrainian (uk)
 
 Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](https://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](https://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO [files Poedit](https://www.poedit.net/download.php).
@@ -107,7 +100,6 @@ Some of these translations are not complete. We are constantly adding new featur
 * [Multilanguage](https://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=8e94e3b0c771409cf33cd1527ccad522) - Translate WordPress website content to other languages manually. Create multilingual pages, posts, widgets, menus, etc.
 Facebook Button - Add Facebook Like, Share and Profile buttons to WordPress posts, pages and widgets.
 * [Custom Search](https://bestwebsoft.com/products/wordpress/plugins/custom-search/?k=2f4d98ffee7777d767bf26c726c70f67) - Add custom post types to WordPress website search results.
-* [Re-attacher](https://bestwebsoft.com/products/wordpress/plugins/re-attacher/) - Attach, unattach and re-attach media files quickly to WordPress posts and pages.
 
 == Installation ==
 
@@ -124,29 +116,23 @@ https://www.youtube.com/watch?v=6xPYIttiJ8g
 
 == Frequently Asked Questions ==
 
-= I don't see my Portfolio page =
+= How to change or override plugin templates? =
 
-1. First of all, you should create your first Portfolio page and select 'Portfolio Template' in the list of available templates.
-2. If you cannot find 'Portfolio Template' in the list of available templates, then just copy it from the directory '/wp-content/plugins/portfolio/template/' to your templates directory.
+Plugin template files can be found in the `/wp-content/plugins/portfolio/templates/` directory.
+You can edit these files in an upgrade-safe way using overrides. Copy them into a directory with your theme named `/bws-templates`.
 
-= How to use a plugin? =
+Example: To override the single portfolio template, please copy `/wp-content/plugins/portfolio/templates/portfolio-post.php` to `wp-content/themes/your-theme/bws-templates/portfolio-post.php`.
 
-1. Add necessary technologies using this page http://example.com/wp-admin/edit-tags.php?taxonomy=portfolio_technologies&post_type=portfolio
-2. This is optional. Fill this page http://example.com/wp-admin/edit-tags.php?taxonomy=portfolio_executor_profile&post_type=portfolio - create an executor profile. Fill out the fields 'Name' and 'Description'. The 'Description' field contains a link to the executor page.
-3. Click 'Add New' in the 'Portfolio' menu and fill out your page. Set the necessary values for the Technologies and Executors Profile widgets.
-
-= I updated the plugin, the template changed, but I would like to revert it back as it was before? What should I do? =
-
-Sometimes during the plugin update the plugin template in your theme is also updated. Meanwhile a backup of the previous template version is created and it contains the files `portfolio-post.php.bak` and `portfolio.php.bak`. You should compare the old files with the new ones and apply the necessary changes to the new files. If you want to templates are not overwritten when updating the plugin, turn off the checkbox in "Rewrite templates after update" option on the plugin settings page and save the changes.
+Do not edit these files in the plugin's core directly as they are overwritten during the upgrade process and any customizations will be lost.
 
 = I'm getting the following error: Fatal error: Call to undefined function get_post_thumbnail_id() =
 
 This error means that your theme doesn't support thumbnails, in order to add this option please find the file 'functions.php' in your theme and add the following strings to this file:
-add_action( 'after_setup_theme', 'theme_setup' );
+`add_action( 'after_setup_theme', 'theme_setup' );
 
 function theme_setup() {
     add_theme_support( 'post-thumbnails' );
-}
+}`
 
 After that your theme will support thumbnails and the error will disappear.
 
@@ -171,6 +157,13 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 8. Portfolio admin page (for all portfolios).
 
 == Changelog ==
+
+= V2.42 - 18.08.2017 =
+* Update : The plugin settings page has been updated.
+* Update : Template files loading has been changed.
+* Pro : Portfolio sectors is added.
+* Pro : Portfolio services is added.
+* Pro : Portfolio client information is added.
 
 = V2.41 - 18.05.2017 =
 * Bugfix : The functionality of adding Portfolio to the Custom Search by BestWebSoft was fixed.
@@ -367,6 +360,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * In this version an image uploaded by means of custom fields is substituted with Wordpress standard meta box for the media files uploading.
 
 == Upgrade Notice ==
+
+= V2.42 =
+* Usability improved.
 
 = V2.41 =
 * Bugs fixed.

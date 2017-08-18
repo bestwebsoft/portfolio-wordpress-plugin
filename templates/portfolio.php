@@ -15,9 +15,9 @@ get_header(); ?>
 						$term = get_term_by( 'slug', $wp_query->query_vars["technologies"], 'portfolio_technologies' );
 						echo $portfolio_options['technologies_text_field'] . " " . ( $term->name );
 					} elseif ( isset( $wp_query->query_vars["portfolio_executor_profile"] ) ) {
-						$term = get_term_by('slug', $wp_query->query_vars["portfolio_executor_profile"], 'portfolio_executor_profile');
-						echo __( 'Executor Profile', 'portfolio' ) . ": <h1>" . ( $term->name ) . "</h1>";
-						$_SESSION['prtfl_page_name'] = __( 'Executor Profile', 'portfolio' ) . ": " . ( $term->name );
+						$term = get_term_by( 'slug', $wp_query->query_vars["portfolio_executor_profile"], 'portfolio_executor_profile' );
+						echo $portfolio_options['executor_text_field'] . " <h1>" . ( $term->name ) . "</h1>";
+						$_SESSION['prtfl_page_name'] = $portfolio_options['executor_text_field'] . " " . ( $term->name );
 						$_SESSION['prtfl_page_url'] = get_pagenum_link( $wp_query->query_vars['paged'] );
 					} else {
 						the_title();
@@ -32,9 +32,8 @@ get_header(); ?>
 					$paged = 1;
 				}
 				$per_page = $showitems = get_option( 'posts_per_page' );
-				$technologies = isset( $wp_query->query_vars["technologies"] ) ? $wp_query->query_vars["technologies"] : "";
-				$executor_profile = isset( $wp_query->query_vars["portfolio_executor_profile"] ) ? $wp_query->query_vars["portfolio_executor_profile"] : "";
-				if ( "" != $technologies ) {
+
+				if ( ! empty( $wp_query->query_vars["technologies"] ) ) {
 					$args = array(
 						'post_type' 		=> 'portfolio',
 						'post_status' 		=> 'publish',
@@ -46,11 +45,11 @@ get_header(); ?>
 							array(
 								'taxonomy' 	=> 'portfolio_technologies',
 								'field' 	=> 'slug',
-								'terms' 	=> $technologies
+								'terms' 	=> $wp_query->query_vars["technologies"]
 							)
 						)
 					);
-				} else if ( "" != $executor_profile ) {
+				} else if ( ! empty( $wp_query->query_vars["portfolio_executor_profile"] ) ) {
 					$args = array(
 						'post_type' 		=> 'portfolio',
 						'post_status' 		=> 'publish',
@@ -62,7 +61,7 @@ get_header(); ?>
 							array(
 								'taxonomy' 	=> 'portfolio_executor_profile',
 								'field' 	=> 'slug',
-								'terms' 	=> $executor_profile
+								'terms' 	=> $wp_query->query_vars["portfolio_executor_profile"]
 							)
 						)
 					);
@@ -82,6 +81,7 @@ get_header(); ?>
 				/* display page content */
 				if ( ! empty( $post ) && ! empty( $post->post_content ) ) {
 					$page_content = $post->post_content;
+					if ( function_exists( 'mltlngg_the_content_filter' ) ) $page_content = mltlngg_the_content_filter( $page_content );
 					/* dublicate filter 'the_content' - as we couldnt use it */
 					if ( function_exists( 'wptexturize' ) ) $page_content = wptexturize( $page_content );
 					if ( function_exists( 'convert_smilies' ) ) $page_content = convert_smilies( $page_content );
@@ -89,8 +89,7 @@ get_header(); ?>
 					if ( function_exists( 'shortcode_unautop' ) ) $page_content = shortcode_unautop( $page_content );
 					if ( function_exists( 'prepend_attachment' ) ) $page_content = prepend_attachment( $page_content );
 					if ( function_exists( 'wp_make_content_images_responsive' ) ) $page_content = wp_make_content_images_responsive( $page_content );
-					if ( function_exists( 'do_shortcode' ) ) $page_content = do_shortcode( $page_content );
-					if ( function_exists( 'mltlngg_the_content_filter' ) ) $page_content = mltlngg_the_content_filter( $page_content ); ?>
+					if ( function_exists( 'do_shortcode' ) ) $page_content = do_shortcode( $page_content ); ?>
 					<div class="portfolio_content entry-content">
 						<div class="entry"><?php echo $page_content; ?></div>
 					</div>
@@ -103,33 +102,31 @@ get_header(); ?>
 					while ( $second_query->have_posts() ) : $second_query->the_post(); ?>
 						<div class="portfolio_content entry-content">
 							<div class="entry">
-								<?php $post_thumbnail_id	=	get_post_thumbnail_id( $post->ID );
-								if ( empty ( $post_thumbnail_id ) ) {
-									$args = array(
-										'post_parent'		=>	$post->ID,
-										'post_type'			=>	'attachment',
-										'post_mime_type'	=>	'image',
-										'numberposts'		=>	1
-									);
-									$attachments		=	get_children( $args );
-									$post_thumbnail_id	=	key( $attachments );
-								}
-								$image			=	wp_get_attachment_image_src( $post_thumbnail_id, 'portfolio-thumb' );
-								$image_alt		=	get_post_meta( $post_thumbnail_id, '_wp_attachment_image_alt', true );
-								$post_meta		=	get_post_meta( $post->ID, 'prtfl_information', true );
+								<?php $post_thumbnail_id = get_post_thumbnail_id( $post->ID );
+								$image			= wp_get_attachment_image_src( $post_thumbnail_id, $prtfl_options['image_size_album'] );
+								$post_meta		= get_post_meta( $post->ID, 'prtfl_information', true );
 
 								$short_descr	=	isset( $post_meta['_prtfl_short_descr'] ) ? $post_meta['_prtfl_short_descr'] : '';
 								if ( empty( $short_descr ) )
 									$short_descr = get_the_excerpt();
 								$title = get_the_title();
 								if ( empty( $title ) )
-									$title = '(' . __( 'No title', 'portfolio-pro' ) . ')';
+									$title = '(' . __( 'No title', 'portfolio' ) . ')';
 
 								$permalink = get_permalink();
-								if ( ! empty( $image[0] ) ) { ?>
+								if ( ! empty( $image[0] ) ) {
+									/* get width and height for image_size_album */
+									if ( 'portfolio-thumb' != $prtfl_options['image_size_album'] ) {
+										$width  = absint( get_option( $prtfl_options['image_size_album'] . '_size_w' ) );
+										$height = absint( get_option( $prtfl_options['image_size_album'] . '_size_h' ) );
+									} else {
+										$width  = $prtfl_options['custom_size_px']['portfolio-thumb'][0];
+										$height = $prtfl_options['custom_size_px']['portfolio-thumb'][1];
+									}
+									$image_alt = get_post_meta( $post_thumbnail_id, '_wp_attachment_image_alt', true ); ?>
 									<div class="portfolio_thumb">
 										<a rel="bookmark" href="<?php echo $permalink; ?>" title="<?php echo $title; ?>">
-											<img src="<?php echo $image[0]; ?>" width="<?php echo $portfolio_options['custom_size_px'][0][0]; ?>" height="<?php echo $portfolio_options['custom_size_px'][0][1]; ?>" alt="<?php echo $image_alt; ?>" />
+											<img src="<?php echo $image[0]; ?>" alt="<?php echo $image_alt; ?>" <?php if ( $width ) echo 'width="' . $width . '"'; if ( $height ) echo 'height="' . $height . '"'; ?> style="<?php if ( $width ) echo 'width:' . $width . 'px;'; if ( $height ) echo 'height:' . $height . 'px;'; ?>" />
 										</a>
 									</div><!-- .portfolio_thumb -->
 								<?php } ?>
@@ -177,7 +174,7 @@ get_header(); ?>
 											foreach ( $terms as $term ) {
 												if ( 0 < $count )
 													echo ', ';
-												echo '<a href="' . get_term_link( $term->slug, 'portfolio_technologies') . '" title="' . sprintf( __( "View all posts in %s" ), $term->name ) . '" ' . '>' . $term->name . '</a>';
+												echo '<a href="' . get_term_link( $term->slug, 'portfolio_technologies') . '" title="' . sprintf( __( "View all projects in %s" ), $term->name ) . '" ' . '>' . $term->name . '</a>';
 												$count++;
 											}
 										}

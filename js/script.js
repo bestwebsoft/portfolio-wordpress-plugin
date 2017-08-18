@@ -1,58 +1,59 @@
-function setMessage( msg ) {
+function prtfl_setMessage( msg ) {
 	(function($){
 		$( ".error" ).hide();
-		$( ".updated" ).html( msg ).show();
-		$( '#bws_save_settings_notice' ).hide();
+		$( ".prtfl_image_update_message" ).html( msg ).show();
 	})(jQuery);
 }
 
-function setError( msg ) {
+function prtfl_setError( msg ) {
 	(function($){
-		$( ".updated" ).hide();
-		$( ".error" ).html( msg );
-		$( ".error" ).show();
+		$( ".prtfl_image_update_message" ).hide();
+		$( ".error" ).html( msg ).show();;
 	})(jQuery);
 }
 
 (function($) {
 	$(document).ready( function() {
 		$( '#prtfl_ajax_update_images' ).click( function() {
-			setMessage( "<p>" + prtfl_var.update_img_message + "</p>" );
+			prtfl_setMessage( "<p>" + prtfl_vars.update_img_message + "</p>" );
 			var curr = 0;
 			$.ajax({
+				/* update_img_url */
 				url: '../wp-admin/admin-ajax.php?action=prtfl_update_image',
 				type: "POST",
-				data: "action1=get_all_attachment" + '&prtfl_ajax_nonce_field=' + prtfl_var.prtfl_nonce,
+				data: "action1=get_all_attachment&prtfl_ajax_nonce_field=" + prtfl_vars.prtfl_nonce,
 				success: function( result ) {
-					var list = eval( '(' + result + ')' );
+					var list = $.parseJSON( result );
 					if ( ! list ) {
-						setError( "<p>" + prtfl_var.not_found_img_info + "</p>" );
-						$( "#ajax_update_images" ).removeAttr( "disabled" );
+						prtfl_setError( "<p>" + prtfl_vars.not_found_img_info + "</p>" );
 						return;
 					}
-					$( '#prtfl_img_loader' ).css( 'display', 'inline-block' );
+					$( '.prtfl_loader' ).css( 'display', 'inline-block' );
 
-					function updatenImageItem() {
-						if ( curr >= list.length ) {
-							$( "#ajax_update_images" ).removeAttr( "disabled" );
-							setMessage("<p>" + prtfl_var.img_success + "</p>");
-							$( '#prtfl_img_loader' ).hide();
-							return;
-						}
+					var curr = 0,
+						all_count = Object.keys( list ).length;
+					$.each( list, function( index, value ) {
 						$.ajax({
 							url: '../wp-admin/admin-ajax.php?action=prtfl_update_image',
 							type: "POST",
-							data: "action1=update_image&id=" + list[ curr ] + '&prtfl_ajax_nonce_field=' + prtfl_var.prtfl_nonce,
+							data: "action1=update_image&id=" + value + '&prtfl_ajax_nonce_field=' + prtfl_vars.prtfl_nonce,
 							success: function( result ) {
 								curr = curr + 1;
-								updatenImageItem();
+								if ( curr >= all_count ) {
+									$.ajax({
+										url: '../wp-admin/admin-ajax.php?action=prtfl_update_image',
+										type: "POST",
+										data: "action1=update_options&prtfl_ajax_nonce_field=" + prtfl_vars.prtfl_nonce,
+									});
+									prtfl_setMessage( "<p>" + prtfl_vars.img_success + "</p>" );
+									$( '.prtfl_loader' ).hide();
+								}
 							}
-						});
-					}
-					updatenImageItem();
+						});	
+					});
 				},
 				error: function( request, status, error ) {
-					setError( "<p>" + prtfl_var.img_error + request.status + "</p>" );
+					prtfl_setError( "<p>" + prtfl_vars.img_error + request.status + "</p>" );
 				}
 			});
 		});
@@ -66,7 +67,6 @@ function setError( msg ) {
 
 		$( '[name^="prtfl_custom_image_size_"]' ).change( function() {
 			$( '#prtfl_ajax_update_images' ).attr( 'disabled', 'disabled' );
-			$( '.prtfl_save_first_notice' ).show();
 		} );
 
 		/* Portfolio images */

@@ -24,7 +24,7 @@ if ( ! class_exists( 'Bws_Demo_Data' ) ) {
 		 * Display "Install demo data" or "Uninstal demo data" buttons
 		 * @return void
 		 */
-		function bws_show_demo_button( $form_title ) {
+		function bws_show_demo_button( $form_info ) {
 			if ( ! ( is_multisite() && is_network_admin() ) ) {
 				if ( empty( $this->bws_demo_options ) ) {
 					$value        = 'install';
@@ -32,15 +32,10 @@ if ( ! class_exists( 'Bws_Demo_Data' ) ) {
 				} else {
 					$value        = 'remove';
 					$button_title = __( 'Remove Demo Data', $this->bws_plugin_text_domain );
-					$form_title   = __( 'Delete demo-data and restore old plugin settings.', $this->bws_plugin_text_domain );
+					$form_info   = __( 'Delete demo data and restore previous plugin settings.', $this->bws_plugin_text_domain );
 				} ?>
-				<form method="post" action="" id="bws_handle_demo_data">
-					<p><?php echo $form_title; ?></p>
-					<p>
-						<button class="button" name="bws_handle_demo" value="<?php echo $value; ?>"><?php echo $button_title; ?></button>
-						<?php wp_nonce_field( $this->bws_plugin_basename, 'bws_settings_nonce_name' ); ?>
-					</p>
-				</form>
+				<button class="button" name="bws_handle_demo" value="<?php echo $value; ?>"><?php echo $button_title; ?></button>
+				<div class="bws_info"><?php echo $form_info; ?></div>
 			<?php }
 		}
 
@@ -60,7 +55,7 @@ if ( ! class_exists( 'Bws_Demo_Data' ) ) {
 				<p><?php echo $label; ?></p>
 				<form method="post" action="">
 					<p>
-						<button class="button" name="bws_<?php echo $_POST['bws_handle_demo']; ?>_demo_confirm" value="true"><?php echo $button_title; ?></button>
+						<button class="button button-primary" name="bws_<?php echo $_POST['bws_handle_demo']; ?>_demo_confirm" value="true"><?php echo $button_title; ?></button>
 						<button class="button" name="bws_<?php echo $_POST['bws_handle_demo']; ?>_demo_deny" value="true"><?php _e( 'No, go back to the settings page', $this->bws_plugin_text_domain ) ?></button>
 						<?php wp_nonce_field( $this->bws_plugin_basename, 'bws_settings_nonce_name' ); ?>
 					</p>
@@ -123,7 +118,7 @@ if ( ! class_exists( 'Bws_Demo_Data' ) ) {
 				 * check if demo options already loaded
 				 */
 				if ( ! empty( $this->bws_demo_options ) ) {
-					$message['error'] = __( 'Demo options already installed.', $this->bws_plugin_text_domain );
+					$message['error'] = __( 'Demo settings are already installed.', $this->bws_plugin_text_domain );
 					return $message;
 				}
 
@@ -212,10 +207,8 @@ if ( ! class_exists( 'Bws_Demo_Data' ) ) {
 									$selected_terms[] = intval( $term_array[ array_rand( $term_array ) ] );
 								}
 
-								foreach ( $selected_terms as $selected_term ) {
-									if ( ! wp_set_object_terms( $post_id, $selected_term, $taxonomy_name, false ) )
-										$error ++;
-								}
+								if ( ! wp_set_object_terms( $post_id, $selected_terms, $taxonomy_name, false ) )
+									$error ++;
 							}
 						}
 
@@ -374,10 +367,10 @@ if ( ! class_exists( 'Bws_Demo_Data' ) ) {
 						if ( $callback && function_exists( $callback ) )
 							call_user_func( $callback );
 					} else {
-						$message['error'] = __( 'Installation of demo data with some errors occurred.', $this->bws_plugin_text_domain );
+						$message['error'] = __( 'Demo data installation proceeded with some errors.', $this->bws_plugin_text_domain );
 					}
 				} else {
-					$message['error'] = __( 'Posts data is missing.', $this->bws_plugin_text_domain );
+					$message['error'] = __( 'Post data is missing.', $this->bws_plugin_text_domain );
 				}
 			}
 			return $message;
@@ -451,7 +444,7 @@ if ( ! class_exists( 'Bws_Demo_Data' ) ) {
 			);
 
 			if ( empty( $this->bws_demo_options ) ) {
-				$message['error'] = __( 'Demo data have already been removed.', $this->bws_plugin_text_domain );
+				$message['error'] = __( 'Demo data have been already removed.', $this->bws_plugin_text_domain );
 			} else {
 
 				/*
