@@ -70,12 +70,13 @@ if ( ! class_exists( 'Bws_Demo_Data' ) ) {
 		 * @return array
 		 */
 		function bws_handle_demo_data( $install_callback = false, $remove_callback = false ) {
-			if ( isset( $_POST['bws_install_demo_confirm'] ) && check_admin_referer( $this->bws_plugin_basename, 'bws_settings_nonce_name' ) )
+			if ( isset( $_POST['bws_install_demo_confirm'] ) && check_admin_referer( $this->bws_plugin_basename, 'bws_settings_nonce_name' ) ) {
 				return $this->bws_install_demo_data( $install_callback );
-			elseif ( isset( $_POST['bws_remove_demo_confirm'] ) && check_admin_referer( $this->bws_plugin_basename, 'bws_settings_nonce_name' ) )
+			} elseif ( isset( $_POST['bws_remove_demo_confirm'] ) && check_admin_referer( $this->bws_plugin_basename, 'bws_settings_nonce_name' ) ) {
 				return $this->bws_remove_demo_data( $remove_callback );
-			else
+			} else {
 				return false;
+			}
 		}
 
 		/**
@@ -187,15 +188,18 @@ if ( ! class_exists( 'Bws_Demo_Data' ) ) {
 							$post['post_content'] = preg_replace( '/{last_post_id}/', $post_id, $post['post_content'] );
 						}
 						if ( preg_match( '/{template_page}/', $post['post_content'] ) ) {
-							if ( empty( $page_id ) && ! empty( $page_template ) )
+							if ( empty( $page_id ) && ! empty( $page_template ) ) {
 								$page_id = intval( $wpdb->get_var( "SELECT `post_id` FROM $wpdb->postmeta WHERE `meta_key` LIKE '_wp_page_template' AND `meta_value` LIKE '" . $page_template . "' LIMIT 1" ) );
-							if ( ! empty( $page_id ) )
+							}
+							if ( ! empty( $page_id ) ) {
 								$post['post_content'] = preg_replace( '/{template_page}/', '<a href="' . get_permalink( $page_id ) . '">' . get_the_title( $page_id ) . '</a>', $post['post_content'] );
+							}
 						}
 						/* insert current post */
 						$post_id = wp_insert_post( $post );
-						if ( 'post' == $post['post_type'] )
+						if ( 'post' == $post['post_type'] ) {
 							$posttype_post_id = $post_id;
+						}
 
 						/* add taxonomy for posttype */
 						if ( 'post' != $post['post_type'] && 'page' != $post['post_type'] && ! empty( $term_IDs ) ) {
@@ -578,7 +582,7 @@ if ( ! class_exists( 'Bws_Demo_Data' ) ) {
 							<input type="hidden" name="bws_hide_demo_notice" value="hide" />
 							<?php wp_nonce_field( $this->bws_plugin_basename, 'bws_demo_nonce_name' ); ?>
 						</form>
-						<div style="margin: 0 20px;"><a href="<?php echo admin_url( 'edit.php?post_type=portfolio&page=' . $this->bws_plugin_page . '#bws_handle_demo_data' ); ?>"><?php _e( 'Install demo data', $this->bws_plugin_text_domain ); ?></a>&nbsp;<?php echo __( 'for an acquaintance with the possibilities of the', $this->bws_plugin_text_domain ) . '&nbsp;' . $this->bws_plugin_name; ?>.</div>
+						<div style="margin: 0 20px;"><?php printf( __( 'Do you want to install demo content and settings for %s (You can do this later using Import / Export settings)?', $this->bws_plugin_text_domain ), '<a href="edit.php?post_type=portfolio&page=portfolio.php">Portfolio by BestWebSoft</a>' ); ?>&nbsp;<a href="<?php echo admin_url( 'admin.php?page=' . $this->bws_plugin_page ); ?>"><?php _e( 'Yes, install demo now', $this->bws_plugin_text_domain ); ?></a></div>
 					</div>
 				<?php }
 			}

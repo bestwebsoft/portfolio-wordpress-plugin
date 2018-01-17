@@ -120,7 +120,7 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 				}
 			}			
 			$this->options['custom_size_px']['portfolio-photo-thumb'] = $custom_size_px_photo;
-			$this->options['image_size_photo'] 				= $new_image_size_photo;			
+			$this->options['image_size_photo'] 				= $new_image_size_photo;
 
 			$new_image_size_album 		= esc_attr( $_POST['prtfl_image_size_album'] );
 			$custom_image_size_w_album 	= intval( $_POST['prtfl_custom_image_size_w_album'] );
@@ -142,7 +142,7 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 			$this->options['custom_size_px']['portfolio-thumb'] = $custom_size_px_album;
 			$this->options['image_size_album'] 				= $new_image_size_album;
 
-			if ( $this->options['page_id_portfolio_template'] != intval( $_POST['prtfl_page_id_portfolio_template'] ) ) {
+			if ( ! empty( $_POST['prtfl_page_id_portfolio_template'] ) && $this->options['page_id_portfolio_template'] != intval( $_POST['prtfl_page_id_portfolio_template'] ) ) {
 				/* for rewrite */
 				$this->options["flush_rewrite_rules"] = 1;
 				$this->options['page_id_portfolio_template'] = intval( $_POST['prtfl_page_id_portfolio_template'] );
@@ -235,7 +235,7 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 		public function tab_settings() { ?>
 			<h3 class="bws_tab_label"><?php _e( 'Portfolio Settings', 'portfolio' ); ?></h3>
 			<?php $this->help_phrase(); ?>
-			<hr>		
+			<hr>
 			<table class="form-table">
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Number of Columns', 'portfolio' ); ?> </th>
@@ -345,21 +345,6 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 									<select disabled name="">
 										<option><?php _e( 'Thumbnails', 'portfolio' ); ?></option>
 										<option><?php _e( 'Buttons', 'portfolio' ); ?></option>
-									</select>
-								</td>
-							</tr>
-							<tr valign="top">
-								<th scope="row"><?php _e( 'Lightbox Helper Thumbnail Size', 'portfolio' ); ?></th>
-								<td>
-									<input disabled type="number" name="" value="70" /> x <input disabled type="number" name="" value="70" /> px
-								</td>
-							</tr>
-							<tr valign="top">
-								<th scope="row"><?php _e( 'Lightbox Helper Thumbnail Position', 'portfolio' ); ?></th>
-								<td>
-									<select disabled name="">
-										<option><?php _e( 'Top', 'portfolio' ); ?></option>
-										<option><?php _e( 'Bottom', 'portfolio' ); ?></option>
 									</select>
 								</td>
 							</tr>

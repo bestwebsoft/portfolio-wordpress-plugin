@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: portfolio\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-18 17:08+0300\n"
-"PO-Revision-Date: 2017-08-18 17:08+0300\n"
+"POT-Creation-Date: 2018-01-11 13:50+0200\n"
+"PO-Revision-Date: 2018-01-11 13:51+0200\n"
 "Last-Translator: plugin@bestwebsoft.com <plugin@bestwebsoft.com>\n"
 "Language-Team: bestwebsoft.com <plugin@bestwebsoft.com>\n"
 "Language: cs_CZ\n"
@@ -17,8 +17,8 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: inc/class-prtfl-settings.php:26 portfolio.php:38 portfolio.php:1440
-#: portfolio.php:1456
+#: inc/class-prtfl-settings.php:26 portfolio.php:38 portfolio.php:1486
+#: portfolio.php:1502
 msgid "Settings"
 msgstr "Nastavení"
 
@@ -195,7 +195,7 @@ msgstr ""
 msgid "Descending (e.g. 3, 2, 1; c, b, a)"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:325 inc/class-prtfl-settings.php:405
+#: inc/class-prtfl-settings.php:325 inc/class-prtfl-settings.php:390
 msgid "Close"
 msgstr ""
 
@@ -227,103 +227,87 @@ msgstr ""
 msgid "Buttons"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:352
-msgid "Lightbox Helper Thumbnail Size"
-msgstr ""
-
 #: inc/class-prtfl-settings.php:358
-msgid "Lightbox Helper Thumbnail Position"
-msgstr ""
-
-#: inc/class-prtfl-settings.php:361
-msgid "Top"
-msgstr ""
-
-#: inc/class-prtfl-settings.php:362
-msgid "Bottom"
-msgstr ""
-
-#: inc/class-prtfl-settings.php:373
 msgid "Text Link"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:376
+#: inc/class-prtfl-settings.php:361
 msgid "Enable to display link field as a text for non-registered users."
 msgstr ""
 
-#: inc/class-prtfl-settings.php:381 inc/class-prtfl-settings.php:409
+#: inc/class-prtfl-settings.php:366 inc/class-prtfl-settings.php:394
 msgid "Projects Fields"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:394 inc/class-prtfl-settings.php:432
+#: inc/class-prtfl-settings.php:379 inc/class-prtfl-settings.php:417
 #, fuzzy
 msgid "\"More screenshots\" block"
 msgstr "Zobrazit blok \"Další screenshoty\" "
 
-#: inc/class-prtfl-settings.php:414 inc/class-prtfl-settings.php:415
+#: inc/class-prtfl-settings.php:399 inc/class-prtfl-settings.php:400
 #: portfolio.php:528
 msgid "Categories"
 msgstr "Kategorie"
 
-#: inc/class-prtfl-settings.php:419 inc/class-prtfl-settings.php:420
+#: inc/class-prtfl-settings.php:404 inc/class-prtfl-settings.php:405
 #: portfolio.php:529
 msgid "Sectors"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:424 inc/class-prtfl-settings.php:425
+#: inc/class-prtfl-settings.php:409 inc/class-prtfl-settings.php:410
 #: portfolio.php:530
 msgid "Services"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:429 inc/class-prtfl-settings.php:430
+#: inc/class-prtfl-settings.php:414 inc/class-prtfl-settings.php:415
 #: portfolio.php:550
 msgid "Client"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:449
+#: inc/class-prtfl-settings.php:434
 msgid "Demo Data"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:451
+#: inc/class-prtfl-settings.php:436
 msgid ""
 "Install demo data to create portfolio projects with images, post with "
 "shortcodes and page with a list of all portfolio projects."
 msgstr ""
 
-#: inc/class-prtfl-settings.php:469
+#: inc/class-prtfl-settings.php:454
 msgid "Portfolio Slug"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:472
+#: inc/class-prtfl-settings.php:457
 msgid "Enter the unique portfolio slug."
 msgstr ""
 
-#: inc/class-prtfl-settings.php:476
+#: inc/class-prtfl-settings.php:461
 msgid "Search Portfolio Projects"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:482
+#: inc/class-prtfl-settings.php:467
 msgid "Activate Now"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:497
+#: inc/class-prtfl-settings.php:482
 msgid "Install Now"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:500
+#: inc/class-prtfl-settings.php:485
 msgid "Enable to include portfolio projects to your website search."
 msgstr ""
 
-#: inc/class-prtfl-settings.php:500
+#: inc/class-prtfl-settings.php:485
 #, php-format
 msgid "%s plugin is required."
 msgstr ""
 
-#: inc/class-prtfl-settings.php:514
+#: inc/class-prtfl-settings.php:499
 msgid "Portfolio Shortcode"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:517
+#: inc/class-prtfl-settings.php:502
 msgid ""
 "Add the latest portfolio projects using the following shortcode (where * is "
 "a number of projects to display):"
@@ -361,57 +345,60 @@ msgstr "Jste si jisti, že chcete odstranit demo data?"
 msgid "No, go back to the settings page"
 msgstr "Ne, přejděte zpět na stránku nastavení"
 
-#: inc/demo-data/class-bws-demo-data.php:114
+#: inc/demo-data/class-bws-demo-data.php:115
 msgid "Can not get demo data."
 msgstr "Nelze získat demo data."
 
-#: inc/demo-data/class-bws-demo-data.php:121
+#: inc/demo-data/class-bws-demo-data.php:122
 msgid "Demo settings are already installed."
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:356
+#: inc/demo-data/class-bws-demo-data.php:360
 msgid "Demo data successfully installed."
 msgstr "Ukázková data úspěšně nainstalována."
 
-#: inc/demo-data/class-bws-demo-data.php:358
+#: inc/demo-data/class-bws-demo-data.php:362
 msgid "View post with shortcodes"
 msgstr "Zobrazit příspěvek se shortkódy"
 
-#: inc/demo-data/class-bws-demo-data.php:361
+#: inc/demo-data/class-bws-demo-data.php:365
 msgid "View page with examples"
 msgstr "Zobrazit stránku s příklady"
 
-#: inc/demo-data/class-bws-demo-data.php:370
+#: inc/demo-data/class-bws-demo-data.php:374
 msgid "Demo data installation proceeded with some errors."
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:373
+#: inc/demo-data/class-bws-demo-data.php:377
 msgid "Post data is missing."
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:447
+#: inc/demo-data/class-bws-demo-data.php:451
 msgid "Demo data have been already removed."
 msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:504
+#: inc/demo-data/class-bws-demo-data.php:508
 msgid "Demo data successfully removed."
 msgstr "Ukázková data byla úspěšně odebrána."
 
-#: inc/demo-data/class-bws-demo-data.php:508
+#: inc/demo-data/class-bws-demo-data.php:512
 msgid "Removing demo data with some errors occurred."
 msgstr "Při odstraňování demo dat došlo k chybám."
 
-#: inc/demo-data/class-bws-demo-data.php:577
+#: inc/demo-data/class-bws-demo-data.php:581
 msgid "Close notice"
 msgstr "Zavřít oznámení"
 
-#: inc/demo-data/class-bws-demo-data.php:581
-msgid "Install demo data"
-msgstr "Nainstalovat ukázková data"
+#: inc/demo-data/class-bws-demo-data.php:585
+#, php-format
+msgid ""
+"Do you want to install demo content and settings for %s (You can do this "
+"later using Import / Export settings)?"
+msgstr ""
 
-#: inc/demo-data/class-bws-demo-data.php:581
-msgid "for an acquaintance with the possibilities of the"
-msgstr "pro seznámení s možnostmi"
+#: inc/demo-data/class-bws-demo-data.php:585
+msgid "Yes, install demo now"
+msgstr ""
 
 #: portfolio.php:44
 msgid "Upgrade to Pro"
@@ -711,17 +698,15 @@ msgstr ""
 msgid "Add images"
 msgstr ""
 
-#: portfolio.php:958 portfolio.php:1085 templates/portfolio-post.php:13
-#: templates/portfolio.php:114
+#: portfolio.php:958 portfolio.php:1085 portfolio.php:1587 portfolio.php:1698
 msgid "No title"
 msgstr "Bez názvu"
 
-#: portfolio.php:1103 templates/portfolio.php:166
+#: portfolio.php:1103 portfolio.php:1751
 msgid "Read more"
 msgstr "Číst více"
 
-#: portfolio.php:1114 templates/portfolio-post.php:168
-#: templates/portfolio.php:177
+#: portfolio.php:1114 portfolio.php:1760 portfolio.php:1933
 #, php-format
 msgid "View all projects in %s"
 msgstr ""
@@ -742,50 +727,56 @@ msgstr ""
 msgid "Error:"
 msgstr "Chyba:"
 
-#: portfolio.php:1307
+#: portfolio.php:1351
 msgid "Image size not defined"
 msgstr "Velikost obrázku není definována"
 
-#: portfolio.php:1321
+#: portfolio.php:1365
 msgid ""
 "We can update only PNG, JPEG, GIF, WPMP or XBM filetype. For other image "
 "formats, please manually reload image."
 msgstr ""
 
-#: portfolio.php:1331
+#: portfolio.php:1375
 msgid "Image size changes not defined"
 msgstr "Změna velikosti obrázku není definována"
 
-#: portfolio.php:1356 portfolio.php:1359 portfolio.php:1364
+#: portfolio.php:1400 portfolio.php:1403 portfolio.php:1408
 msgid "Invalid path"
 msgstr "Neplatná cesta"
 
-#: portfolio.php:1441
+#: portfolio.php:1487
 msgid "FAQ"
 msgstr "Často kladené otázky"
 
-#: portfolio.php:1442
+#: portfolio.php:1488
 msgid "Support"
 msgstr "Podpora"
 
-#: portfolio.php:1497
+#: portfolio.php:1543
 msgid "ATTENTION!"
 msgstr ""
 
-#: portfolio.php:1498
+#: portfolio.php:1544
 msgid ""
 "In the current version of Portfolio plugin we updated the Technologies "
 "widget. If it was added to the sidebar, it will disappear and you will have "
 "to add it again."
 msgstr ""
 
-#: portfolio.php:1502
+#: portfolio.php:1548
 msgid "Read and Understood"
 msgstr ""
 
-#: portfolio.php:1526
+#: portfolio.php:1999
 msgid "The number of portfolio projects to display"
 msgstr ""
+
+#~ msgid "Install demo data"
+#~ msgstr "Nainstalovat ukázková data"
+
+#~ msgid "for an acquaintance with the possibilities of the"
+#~ msgstr "pro seznámení s možnostmi"
 
 #~ msgid "Demo options already installed."
 #~ msgstr "Možnost Demo je již nainstalována."

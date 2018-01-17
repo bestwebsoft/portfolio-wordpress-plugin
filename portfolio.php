@@ -6,7 +6,7 @@ Description: Create your personal portfolio WordPress website. Manage and showca
 Author: BestWebSoft
 Text Domain: portfolio
 Domain Path: /languages
-Version: 2.42
+Version: 2.43
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
@@ -38,9 +38,9 @@ if ( ! function_exists( 'add_prtfl_admin_menu' ) ) {
 		$settings = add_submenu_page( 'edit.php?post_type=portfolio', __( 'Portfolio Settings', 'portfolio' ), __( 'Settings', 'portfolio' ), 'manage_options', 'portfolio.php', 'prtfl_settings_page' );
 
 		add_submenu_page( 'edit.php?post_type=portfolio', 'BWS Panel', 'BWS Panel', 'manage_options', 'prtfl-bws-panel', 'bws_add_menu_render' );
-		
+
 		if ( isset( $submenu['edit.php?post_type=portfolio'] ) )
-			$submenu['edit.php?post_type=portfolio'][] = array( 
+			$submenu['edit.php?post_type=portfolio'][] = array(
 				'<span style="color:#d86463"> ' . __( 'Upgrade to Pro', 'portfolio' ) . '</span>',
 				'manage_options',
 				'https://bestwebsoft.com/products/wordpress/plugins/portfolio/?k=f047e20c92c972c398187a4f70240285&pn=74&v=' . $prtfl_plugin_info["Version"] . '&wp_v=' . $wp_version );
@@ -75,22 +75,22 @@ if ( ! function_exists( 'prtfl_init' ) ) {
 		bws_wp_min_version_check( plugin_basename( __FILE__ ), $prtfl_plugin_info, '3.9' );
 
 		$prtfl_boxes['Portfolio-Info'] = array(
-			array( 
+			array(
 				'name'	=> '_prtfl_short_descr',
 				'title'	=> __( 'Short description', 'portfolio' ),
 				'type'	=> 'text'
 			),
-			array( 
+			array(
 				'name'	=> '_prtfl_date_compl',
 				'title'	=> __( 'Date of completion', 'portfolio' ),
 				'type'	=> 'text'
 			),
-			array( 
+			array(
 				'name'	=> '_prtfl_link',
 				'title'	=> __( 'Link', 'portfolio' ),
 				'type'	=> 'url'
 			),
-			array( 
+			array(
 				'name'	=> '_prtfl_svn',
 				'title'	=> __( 'SVN URL', 'portfolio' ),
 				'type'	=> 'url'
@@ -144,7 +144,7 @@ if ( ! function_exists( 'register_prtfl_settings' ) ) {
 		if ( ! isset( $prtfl_options['plugin_option_version'] ) || $prtfl_options['plugin_option_version'] != $prtfl_plugin_info["Version"] ) {
 
 			$option_defaults = prtfl_get_options_default();
-			
+
 			if ( ! isset( $prtfl_options['plugin_option_version'] ) || $prtfl_options['plugin_option_version'] < '2.29' )
 				$option_defaults['widget_updated'] = 0;
 
@@ -183,14 +183,14 @@ if ( ! function_exists( 'prtfl_get_options_default' ) ) {
 			/* internal general */
 			'plugin_option_version' 					=> $prtfl_plugin_info["Version"],
 			'first_install'								=> strtotime( "now" ),
-			'suggest_feature_banner'					=> 1,			
+			'suggest_feature_banner'					=> 1,
 			'display_settings_notice'					=> 1,
 			/* internal */
 			'display_demo_notice'						=> 1,
 			/* settings */
 			'image_size_album'							=> 'medium',
 			'image_size_photo'							=> 'thumbnail',
-			'custom_size_px'							=> array( 
+			'custom_size_px'							=> array(
 															'portfolio-thumb' => array( 280, 300 ),
 															'portfolio-photo-thumb' => array( 240, 260 )
 														),
@@ -213,7 +213,7 @@ if ( ! function_exists( 'prtfl_get_options_default' ) ) {
 			'svn_text_field'							=>	__( 'SVN:', 'portfolio' ),
 			'executor_text_field'						=>	__( 'Executor:', 'portfolio' ),
 			'screenshot_text_field'						=>	__( 'More screenshots:', 'portfolio' ),
-			'technologies_text_field'					=>	__( 'Technologies:', 'portfolio' ),			
+			'technologies_text_field'					=>	__( 'Technologies:', 'portfolio' ),
 			/* misc */
 			'slug' 										=>	'portfolio',
 			/* other */
@@ -519,7 +519,7 @@ if ( ! function_exists( 'prtfl_template_include' ) ) {
 /* Initialization of all metaboxes on the 'Add Portfolio' and Edit Portfolio pages */
 if ( ! function_exists( 'prtfl_init_metaboxes' ) ) {
 	function prtfl_init_metaboxes() {
-		global $prtfl_options;		
+		global $prtfl_options;
 		add_meta_box( 'prtfl_metabox_images', __( 'Images', 'portfolio' ), 'prtfl_metabox_images_block', 'portfolio', 'normal', 'high' );
 		add_meta_box( 'Portfolio-Info', __( 'General', 'portfolio' ), 'prtfl_post_custom_box', 'portfolio', 'normal', 'high' );
 
@@ -659,7 +659,7 @@ if ( ! function_exists( 'prtfl_sectors_meta_box' ) ) {
 									<li class="popular-category"><label class="selectit"><input value="236" name="tax_input[portfolio_sectors][]" disabled="disabled" type="checkbox" /> <?php _e( 'Sector', 'portfolio' ); ?> 1</label></li>
 									<li class="popular-category"><label class="selectit"><input value="237" name="tax_input[portfolio_sectors][]" disabled="disabled" type="checkbox" /> <?php _e( 'Sector', 'portfolio' ); ?> 2</label></li>
 								</ul>
-							</div>							
+							</div>
 						</div>
 					</div>
 				</div>
@@ -700,7 +700,7 @@ if ( ! function_exists( 'prtfl_services_meta_box' ) ) {
 									<li class="popular-category"><label class="selectit"><input value="236" name="tax_input[portfolio_services][]" disabled="disabled" type="checkbox" /> <?php _e( 'Service', 'portfolio' ); ?> 1</label></li>
 									<li class="popular-category"><label class="selectit"><input value="237" name="tax_input[portfolio_services][]" disabled="disabled" type="checkbox" /> <?php _e( 'Service', 'portfolio' ); ?> 2</label></li>
 								</ul>
-							</div>							
+							</div>
 						</div>
 					</div>
 				</div>
@@ -973,7 +973,7 @@ if ( ! function_exists( 'prtfl_add_pdf_print_content' ) ) {
 						|| ( isset( $pdfprntpr_options['show_featured_image'] ) && 1 == $pdfprntpr_options['show_featured_image'] ) ) {
 
 						$image = wp_get_attachment_image_src( $post_thumbnail_id, $prtfl_options['image_size_album'] );
-						
+
 						if ( ! empty( $image[0] ) ) {
 							/* get width and height for image_size_album */
 							if ( 'portfolio-thumb' != $prtfl_options['image_size_album'] ) {
@@ -1155,20 +1155,64 @@ if ( ! function_exists( 'prtfl_admin_head' ) ) {
 	}
 }
 
+if ( ! function_exists( 'prtfl_wp_enqueue_scripts' ) ) {
+	function prtfl_wp_enqueue_scripts() {
+		wp_enqueue_style( 'prtfl_stylesheet', plugins_url( 'css/style.css', __FILE__ ) );
+		wp_enqueue_style( 'prtfl_lightbox_stylesheet', plugins_url( 'fancybox/jquery.fancybox.min.css', __FILE__ ) );
+	}
+}
+
 if ( ! function_exists( 'prtfl_wp_head' ) ) {
 	function prtfl_wp_head() {
-		wp_enqueue_style( 'prtfl_stylesheet', plugins_url( 'css/style.css', __FILE__ ) );
-		wp_enqueue_style( 'prtfl_lightbox_stylesheet', plugins_url( 'fancybox/jquery.fancybox-1.3.4.css', __FILE__ ) );
+		/* Add style for IE compatibility */
+		if ( isset( $_SERVER['HTTP_USER_AGENT'] ) && strpos( $_SERVER['HTTP_USER_AGENT'], 'Trident/7.0; rv:11.0' ) !== false || strpos( $_SERVER['HTTP_USER_AGENT'], 'MSIE' ) !== false ) {
+			$post_type = get_post_type();
+			if ( is_single() && 'portfolio' == $post_type ) { ?>
+				<style type="text/css">
+					.portfolio_images_gallery {
+						display: block;
+					}
+					.portfolio_thumb {
+						float: none;
+					}
+				</style>
+			<?php }
+		}
 	}
 }
 
 if ( ! function_exists( 'prtfl_wp_footer' ) ) {
 	function prtfl_wp_footer() {
+		global $prtfl_options, $post;
+
+		$post_thumbnail_id	= get_post_thumbnail_id( $post->ID );
+		$image				= wp_get_attachment_image_src( $post_thumbnail_id, $prtfl_options['image_size_album'] );
+
 		if ( wp_script_is( 'prtfl_front_script', 'registered' ) ) {
 			wp_enqueue_script( 'prtfl_front_script' );
-			wp_enqueue_script( 'prtfl_fancybox_mousewheelJs', plugins_url( 'fancybox/jquery.mousewheel-3.0.4.pack.js', __FILE__ ), array( 'jquery' ) );
-			wp_enqueue_script( 'prtfl_fancyboxJs', plugins_url( 'fancybox/jquery.fancybox-1.3.4.pack.js', __FILE__ ), array( 'jquery' ) );
+			wp_enqueue_script( 'prtfl_fancyboxJs', plugins_url( 'fancybox/jquery.fancybox.min.js', __FILE__ ), array( 'jquery' ) );
 		}
+		/* Initialization of fancybox script */
+		if ( ! empty( $image[0] ) || ( ! empty( $attachments ) ) ) { ?>
+			<script type="text/javascript">
+				( function( $ ){
+					$( document ).ready( function(){
+
+						$( "a[data-fancybox=portfolio_fancybox]" ).fancybox({
+							loop    : true,
+							arrows  : false,
+							infobar : true,
+							speed : 500,
+							toolbar: false,
+							animationEffect : 'zoom',
+							openEffect	: 'elastic',
+							closeEffect	: 'elastic'
+						} );
+
+					} );
+				} )( jQuery );
+			</script>
+		<?php }
 	}
 }
 
@@ -1426,8 +1470,10 @@ if ( ! function_exists( 'prtfl_theme_body_classes' ) ) {
 			$current_theme = wp_get_theme();
 			$classes[] = 'prtfl_' . basename( $current_theme->get( 'ThemeURI' ) );
 		}
-		if ( in_array( 'page-id-' . $prtfl_options['page_id_portfolio_template'], $classes ) )
+		if ( in_array( 'page-id-' . $prtfl_options['page_id_portfolio_template'], $classes ) ) {
 			$classes[]     = 'prtfl-page-template';
+			$classes[]     = 'has-sidebar';
+		}
 		return $classes;
 	}
 }
@@ -1512,6 +1558,433 @@ if ( ! function_exists( 'prtfl_admin_notices' ) ) {
 				bws_plugin_suggest_feature_banner( $prtfl_plugin_info, 'prtfl_options', 'portfolio' );
 			}
 		}
+	}
+}
+
+/* This function will display title for portfolio type template */
+if ( ! function_exists( 'prtfl_template_title' ) ) {
+	function prtfl_template_title() {
+		global $wp_query, $prtfl_options;
+
+		if ( isset( $wp_query->query_vars["technologies"] ) ) {
+			$term = get_term_by( 'slug', $wp_query->query_vars["technologies"], 'portfolio_technologies' );
+			echo $prtfl_options['technologies_text_field'] . " " . ( $term->name );
+		} elseif ( isset( $wp_query->query_vars["portfolio_executor_profile"] ) ) {
+			$term = get_term_by( 'slug', $wp_query->query_vars["portfolio_executor_profile"], 'portfolio_executor_profile' );
+			echo $prtfl_options['executor_text_field'] . " <h1>" . ( $term->name ) . "</h1>";
+			$_SESSION['prtfl_page_name'] = $prtfl_options['executor_text_field'] . " " . ( $term->name );
+			$_SESSION['prtfl_page_url'] = get_pagenum_link( $wp_query->query_vars['paged'] );
+		} else {
+			the_title( '<h2>', '</h2>' );
+		}
+	}
+}
+
+/* This function will display title for portfolio post type template */
+if ( ! function_exists( 'prtfl_post_template_title' ) ) {
+	function prtfl_post_template_title() {
+		$title = get_the_title();
+		echo empty( $title ) ? '(' . __( 'No title', 'portfolio' ) . ')' : '<h2>'. $title . '</h2>' ;
+	}
+}
+
+/**
+ * Prepare arguments for post query
+ * @return array|false
+ */
+if ( ! function_exists( 'prtfl_get_query_args' ) ) {
+	function prtfl_get_query_args() {
+		global $prtfl_options;
+		$count = 0;
+		if ( get_query_var( 'paged' ) ) {
+			$paged = get_query_var( 'paged' );
+		} elseif ( get_query_var( 'page' ) ) {
+			$paged = get_query_var( 'page' );
+		} else {
+			$paged = 1;
+		}
+		$per_page = $showitems = get_option( 'posts_per_page' );
+
+		if ( ! empty( $wp_query->query_vars["technologies"] ) ) {
+			$args = array(
+				'post_type' 		=> 'portfolio',
+				'post_status' 		=> 'publish',
+				'orderby' 			=> $prtfl_options['order_by'],
+				'order'			 	=> $prtfl_options['order'],
+				'posts_per_page'	=> $per_page,
+				'paged' 			=> $paged,
+				'tax_query' 		=> array(
+					array(
+						'taxonomy' 	=> 'portfolio_technologies',
+						'field' 	=> 'slug',
+						'terms' 	=> $wp_query->query_vars["technologies"]
+					)
+				)
+			);
+		} else if ( ! empty( $wp_query->query_vars["portfolio_executor_profile"] ) ) {
+			$args = array(
+				'post_type' 		=> 'portfolio',
+				'post_status' 		=> 'publish',
+				'orderby'			=> $prtfl_options['order_by'],
+				'order' 			=> $prtfl_options['order'],
+				'posts_per_page' 	=> $per_page,
+				'paged' 			=> $paged,
+				'tax_query' 		=> array(
+					array(
+						'taxonomy' 	=> 'portfolio_executor_profile',
+						'field' 	=> 'slug',
+						'terms' 	=> $wp_query->query_vars["portfolio_executor_profile"]
+					)
+				)
+			);
+		} else {
+			$args = array(
+				'post_type'			=>	'portfolio',
+				'post_status'		=>	'publish',
+				'orderby'			=>	$prtfl_options['order_by'],
+				'order'				=>	$prtfl_options['order'],
+				'posts_per_page'	=>	$per_page,
+				'paged'				=>	$paged
+			);
+		}
+
+		if ( isset( $args ) ) {
+			return $args;
+		} else {
+			return false;
+		}
+	}
+}
+
+/**
+ * Display template content
+ * @return void
+ */
+if ( ! function_exists( 'prtfl_get_content' ) ) {
+	function prtfl_get_content( $second_query ) {
+		global $post, $prtfl_options;
+
+		$request = $second_query->request;
+
+		if ( ! empty( $post ) && ! empty( $post->post_content ) ) {
+			$page_content = $post->post_content;
+			if ( function_exists( 'mltlngg_the_content_filter' ) ) $page_content = mltlngg_the_content_filter( $page_content );
+			/* dublicate filter 'the_content' - as we couldnt use it */
+			if ( function_exists( 'wptexturize' ) ) $page_content = wptexturize( $page_content );
+			if ( function_exists( 'convert_smilies' ) ) $page_content = convert_smilies( $page_content );
+			if ( function_exists( 'wpautop' ) ) $page_content = wpautop( $page_content );
+			if ( function_exists( 'shortcode_unautop' ) ) $page_content = shortcode_unautop( $page_content );
+			if ( function_exists( 'prepend_attachment' ) ) $page_content = prepend_attachment( $page_content );
+			if ( function_exists( 'wp_make_content_images_responsive' ) ) $page_content = wp_make_content_images_responsive( $page_content );
+			if ( function_exists( 'do_shortcode' ) ) $page_content = do_shortcode( $page_content ); ?>
+			<div class="portfolio_content entry-content">
+				<div class="entry"><?php echo $page_content; ?></div>
+			</div>
+		<?php }
+
+		if ( $second_query->have_posts() ) :
+			while ( $second_query->have_posts() ) : $second_query->the_post(); ?>
+				<div class="portfolio_content <?php if ( 'twentyfourteen' == get_stylesheet() || 'twentythirteen' == get_stylesheet() || 'twentytwelve' == get_stylesheet() ) echo 'entry-content'; ?>">
+					<div class="entry">
+						<?php $post_thumbnail_id = get_post_thumbnail_id( $post->ID );
+						$image			= wp_get_attachment_image_src( $post_thumbnail_id, $prtfl_options['image_size_album'] );
+						$post_meta		= get_post_meta( $post->ID, 'prtfl_information', true );
+
+						$short_descr	=	isset( $post_meta['_prtfl_short_descr'] ) ? $post_meta['_prtfl_short_descr'] : '';
+						if ( empty( $short_descr ) )
+							$short_descr = get_the_excerpt();
+						$title = get_the_title();
+						if ( empty( $title ) )
+							$title = '(' . __( 'No title', 'portfolio' ) . ')';
+
+						$permalink = get_permalink();
+						if ( ! empty( $image[0] ) ) {
+							/* get width and height for image_size_album */
+							if ( 'portfolio-thumb' != $prtfl_options['image_size_album'] ) {
+								$width  = absint( get_option( $prtfl_options['image_size_album'] . '_size_w' ) );
+								$height = absint( get_option( $prtfl_options['image_size_album'] . '_size_h' ) );
+							} else {
+								$width  = $prtfl_options['custom_size_px']['portfolio-thumb'][0];
+								$height = $prtfl_options['custom_size_px']['portfolio-thumb'][1];
+							}
+							$image_alt = get_post_meta( $post_thumbnail_id, '_wp_attachment_image_alt', true ); ?>
+							<div class="portfolio_thumb">
+								<a rel="bookmark" href="<?php echo $permalink; ?>" title="<?php echo $title; ?>">
+									<img src="<?php echo $image[0]; ?>" alt="<?php echo $image_alt; ?>" <?php if ( $width ) echo 'width="' . $width . '"'; if ( $height ) echo 'height="' . $height . '"'; ?> style="<?php if ( $width ) echo 'width:' . $width . 'px;'; if ( $height ) echo 'height:' . $height . 'px;'; ?>" />
+								</a>
+							</div><!-- .portfolio_thumb -->
+						<?php } ?>
+						<div class="portfolio_short_content">
+							<div class="item_title">
+								<p>
+									<a href="<?php echo $permalink; ?>" rel="bookmark"><?php echo $title; ?></a>
+								</p>
+							</div><!-- .item_title -->
+							<?php $date_compl	= isset( $post_meta['_prtfl_date_compl'] ) ? $post_meta['_prtfl_date_compl'] : '';
+							if ( 1 == $prtfl_options['date_additional_field'] && ! empty( $date_compl ) ) { ?>
+								<p>
+									<span class="lable"><?php echo '<b>' . $prtfl_options['date_text_field'] . '</b>'; ?></span> <?php echo $date_compl; ?>
+								</p>
+							<?php }
+							$user_id = get_current_user_id();
+
+							$link =	isset( $post_meta['_prtfl_link'] ) ? $post_meta['_prtfl_link'] : '';
+							if ( 1 == $prtfl_options['link_additional_field'] && ! empty( $link ) ) {
+
+								if ( false !== parse_url( $link ) ) {
+									if ( ( 0 == $user_id && 0 == $prtfl_options['link_additional_field_for_non_registered'] ) || 0 != $user_id ) { ?>
+										<p><span class="lable"><?php echo '<b>' . $prtfl_options['link_text_field'] . '</b>'; ?></span> <a href="<?php echo $link; ?>"><?php echo $link; ?></a></p>
+									<?php } else { ?>
+										<p><span class="lable"><?php echo '<b>' . $prtfl_options['link_text_field'] . '</b>'; ?></span> <?php echo $link; ?></p>
+									<?php }
+								} else { ?>prtfl_options
+									<p><span class="lable"><?php echo '<b>' . $prtfl_options['link_text_field'] . '</b>'; ?></span> <?php echo $link; ?></p>
+								<?php }
+							}
+							if ( 1 == $prtfl_options['shrdescription_additional_field'] ) { ?>
+								<p><span class="lable"><?php echo '<b>' . $prtfl_options['shrdescription_text_field'] . '</b>'; ?></span> <?php echo $short_descr; ?></p>
+							<?php } ?>
+						</div><!-- .portfolio_short_content -->
+					</div><!-- .entry -->
+					<div class="entry_footer">
+						<div class="read_more">
+							<a href="<?php the_permalink(); ?>" rel="bookmark"><?php _e( 'Read more', 'portfolio' ); ?></a>
+						</div><!-- .read_more -->
+						<?php $terms = wp_get_object_terms( $post->ID, 'portfolio_technologies' );
+						if ( 1 == $prtfl_options['technologies_additional_field'] && ! is_wp_error( $terms ) ) {
+							if ( is_array( $terms ) && 0 < count( $terms ) ) { ?>
+								<div class="portfolio_terms">
+									<?php if ( isset( $prtfl_options['technologies_text_field'] ) ) echo '<b>' . $prtfl_options['technologies_text_field'] . '&nbsp;</b>';
+									$links = array();
+									foreach ( $terms as $term ) {
+										$links[] = '<a href="' . get_term_link( $term->slug, 'portfolio_technologies') . '" title="' . sprintf( __( "View all projects in %s" ), $term->name ) . '" ' . '>' . $term->name . '</a>';
+									}
+									echo implode( ', ', $links ); ?>
+								</div><!-- .portfolio_terms -->
+							<?php }
+						} ?>
+					</div><!-- .entry_footer -->
+				</div><!-- .portfolio_content -->
+			<?php endwhile;
+		endif;
+	}
+}
+
+/**
+ * Display post template content
+ * @return void
+ */
+if ( ! function_exists( 'prtfl_post_get_content' ) ) {
+	function prtfl_post_get_content() {
+		global $post, $prtfl_options;
+
+		while ( have_posts() ) : the_post(); ?>
+			<article class="portfolio_content entry-content">
+				<div class="entry">
+					<?php global $post;
+					$portfolio_options	= get_option( 'prtfl_options' );
+					$post_thumbnail_id	= get_post_thumbnail_id( $post->ID );
+					$image			=	wp_get_attachment_image_src( $post_thumbnail_id, $prtfl_options['image_size_album'] );
+					$post_meta		=	get_post_meta( $post->ID, 'prtfl_information', true );
+
+					if ( ! empty( $image[0] ) ) {
+						$image_large = wp_get_attachment_image_src( $post_thumbnail_id, 'large' );
+						$image_desc = get_post( $post_thumbnail_id );
+						$image_desc = $image_desc->post_content;
+						/* get width and height for image_size_album */
+						if ( 'portfolio-thumb' != $prtfl_options['image_size_album'] ) {
+							$width  = absint( get_option( $prtfl_options['image_size_album'] . '_size_w' ) );
+							$height = absint( get_option( $prtfl_options['image_size_album'] . '_size_h' ) );
+						} else {
+							$width  = $prtfl_options['custom_size_px']['portfolio-thumb'][0];
+							$height = $prtfl_options['custom_size_px']['portfolio-thumb'][1];
+						}
+						$image_alt = get_post_meta( $post_thumbnail_id, '_wp_attachment_image_alt', true ); ?>
+						<div class="portfolio_thumb">
+							<a class="lightbox" data-fancybox="portfolio_fancybox" href="<?php echo $image_large[0]; ?>" title="<?php echo $image_desc; ?>">
+								<img src="<?php echo $image[0]; ?>" alt="<?php echo $image_alt; ?>" <?php if ( $width ) echo 'width="' . $width . '"'; if ( $height ) echo 'height="' . $height . '"'; ?> style="<?php if ( $width ) echo 'width:' . $width . 'px;'; if ( $height ) echo 'height:' . $height . 'px;'; ?>" />
+							</a>
+						</div><!-- .portfolio_thumb -->
+					<?php } ?>
+					<div class="portfolio_short_content">
+						<?php $date_compl	= isset( $post_meta['_prtfl_date_compl'] ) ? $post_meta['_prtfl_date_compl'] : '';
+						if ( 1 == $portfolio_options['date_additional_field'] && ! empty( $date_compl ) ) { ?>
+							<p>
+								<span class="lable"><?php echo '<b>' . $portfolio_options['date_text_field'] . '</b>'; ?></span> <?php echo $date_compl; ?>
+							</p>
+						<?php }
+						$user_id = get_current_user_id();
+
+						$link =	isset( $post_meta['_prtfl_link'] ) ? $post_meta['_prtfl_link'] : '';
+						if ( 1 == $portfolio_options['link_additional_field'] && ! empty( $link ) ) {
+
+							if ( false !== parse_url( $link ) ) { ?>
+								<?php if ( ( 0 == $user_id && 0 == $portfolio_options['link_additional_field_for_non_registered'] ) || 0 != $user_id ) { ?>
+									<p><span class="lable"><?php echo '<b>'.  $portfolio_options['link_text_field'] . '</b>'; ?></span> <a href="<?php echo $link; ?>"><?php echo $link; ?></a></p>
+								<?php } else { ?>
+									<p><span class="lable"><?php echo '<b>' . $portfolio_options['link_text_field'] . '</b>'; ?></span> <?php echo $link; ?></p>
+								<?php }
+							} else { ?>
+								<p><span class="lable"><?php echo '<b>' . $portfolio_options['link_text_field'] . '</b>'; ?></span> <?php echo $link; ?></p>
+							<?php }
+						}
+						if ( 1 == $portfolio_options['description_additional_field'] ) {
+							$full_descr = $post->post_content != "" ? $post->post_content : '';
+							if ( empty( $full_descr ) ){
+								$full_descr = isset( $post_meta['_prtfl_short_descr'] ) ? $post_meta['_prtfl_short_descr'] : '';
+							} else {
+								if ( function_exists( 'mltlngg_the_content_filter' ) ) $full_descr = mltlngg_the_content_filter( $full_descr );
+								/* dublicate filter 'the_content' - as we couldnt use it */
+								if ( function_exists( 'wptexturize' ) ) $full_descr = wptexturize( $full_descr );
+								if ( function_exists( 'convert_smilies' ) ) $full_descr = convert_smilies( $full_descr );
+								if ( function_exists( 'wpautop' ) ) $full_descr = wpautop( $full_descr );
+								if ( function_exists( 'shortcode_unautop' ) ) $full_descr = shortcode_unautop( $full_descr );
+								if ( function_exists( 'prepend_attachment' ) ) $full_descr = prepend_attachment( $full_descr );
+								if ( function_exists( 'wp_make_content_images_responsive' ) ) $full_descr = wp_make_content_images_responsive( $full_descr );
+								if ( function_exists( 'do_shortcode' ) ) $full_descr = do_shortcode( $full_descr );
+							}
+							if ( ! empty( $full_descr ) ) { ?>
+								<div style = "clear: both;"><span class="lable"><?php echo '<b>' . $prtfl_options['description_text_field'] . '</b>'; ?></span> <?php echo $full_descr; ?></div>
+							<?php }
+						}
+
+						if ( 0 != $user_id && $portfolio_options ) {
+							$svn = isset( $post_meta['_prtfl_svn'] ) ? $post_meta['_prtfl_svn'] : '';
+							if ( 1 == $portfolio_options['svn_additional_field'] && ! empty( $svn ) ) { ?>
+								<p><span class="lable"><?php echo '<b>' . $portfolio_options['svn_text_field'] . '</b>'; ?></span> <?php echo $svn; ?></p>
+							<?php }
+							$executors_profile = wp_get_object_terms( $post->ID, 'portfolio_executor_profile' );
+							if ( 1 == $portfolio_options['executor_additional_field'] && ! empty( $executors_profile ) ) { ?>
+								<p><span class="lable"><?php echo '<b>' . $portfolio_options['executor_text_field'] . '</b>'; ?></span>
+								<?php $count = 0;
+								foreach ( $executors_profile as $profile ) {
+									if ( $count > 0 )
+										echo ', '; ?>
+									<a href="<?php echo get_term_link( $profile->slug, 'portfolio_executor_profile'); ?>" title="<?php echo $profile->name; ?> profile" target="_blank"><?php echo $profile->name; ?></a>
+									<?php $count++;
+								} ?>
+								</p>
+							<?php }
+						 } ?>
+					</div><!-- .portfolio_short_content -->
+					<div class="portfolio_images_block" data-columns="<?php echo $portfolio_options['custom_image_row_count'] ?>">
+						<?php if ( metadata_exists( 'post', $post->ID, '_prtfl_images' ) ) {
+							$array_post_thumbnail_id = array_filter( explode( ',', get_post_meta( $post->ID, '_prtfl_images', true ) ) );
+						} else {
+							/* Compatibility with old plugin version 2.37 */
+							$args = array(
+								'post_parent'		=>	$post->ID,
+								'post_type'			=>	'attachment',
+								'post_mime_type'	=>	'image',
+								'numberposts'		=>	-1,
+								'orderby'			=>	'menu_order',
+								'order'				=>	'ASC',
+								'exclude'			=>	$post_thumbnail_id,
+								'fields'			=>	'ids'
+							);
+							$array_post_thumbnail_id = get_children( $args );
+						}
+						$count_element = count( $array_post_thumbnail_id );
+
+						foreach ( $array_post_thumbnail_id as $key => $value ) {
+							$image			=	wp_get_attachment_image_src( $value, $prtfl_options['image_size_photo'] );
+							$image_large	=	wp_get_attachment_image_src( $value, 'large' );
+							$image_alt		=	get_post_meta( $value, '_wp_attachment_image_alt', true );
+							$image_title	=	get_post_meta( $value, '_wp_attachment_image_title', true );
+							$image_desc 	=	get_post( $value );
+							$image_desc		=	$image_desc->post_content;
+
+							/* get width and height for image_size_photo */
+							if ( 'portfolio-photo-thumb' != $prtfl_options['image_size_photo'] ) {
+								$width  = absint( get_option( $prtfl_options['image_size_photo'] . '_size_w' ) );
+								$height = absint( get_option( $prtfl_options['image_size_photo'] . '_size_h' ) );
+							} else {
+								$width  = $prtfl_options['custom_size_px']['portfolio-photo-thumb'][0];
+								$height = $prtfl_options['custom_size_px']['portfolio-photo-thumb'][1];
+							}
+
+							if ( 0 == $key ) { ?>
+								<span class="lable"><?php echo '<b>' . $portfolio_options['screenshot_text_field'] . '</b>'; ?></span>
+								<div class="portfolio_images_rows">
+							<?php } ?>
+							<div class="portfolio_images_gallery">
+								<a class="lightbox" data-fancybox="portfolio_fancybox" href="<?php echo $image_large[0]; ?>" title="<?php echo $image_desc; ?>">
+									<img src="<?php echo $image[0]; ?>" alt="<?php echo $image_alt; ?>" <?php if ( $width ) echo 'width="' . $width . '"'; if ( $height ) echo 'height="' . $height . '"'; ?> style="<?php if ( $width ) echo 'width:' . $width . 'px;'; if ( $height ) echo 'height:' . $height . 'px;'; ?>" />
+								</a>
+								<br /><?php echo $image_title; ?>
+							</div>
+							<?php if ( 0 == ( $key + 1 ) % $portfolio_options['custom_image_row_count'] && 0 != $key && $key + 1 != $count_element ) { ?>
+								</div><!-- .portfolio_images_rows -->
+								<div class="portfolio_images_rows">
+							<?php }
+						}
+						if ( 0 < $count_element ) { ?>
+							</div><!-- .portfolio_images_rows -->
+						<?php } ?>
+					</div><!-- .portfolio_images_block -->
+				</div><!-- .entry -->
+				<div class="entry_footer entry-footer">
+					<?php $terms = wp_get_object_terms( $post->ID, 'portfolio_technologies' );
+					if ( 1 == $portfolio_options['technologies_additional_field'] && ! ( empty( $terms ) || is_wp_error( $terms ) ) ) {
+						if ( is_array( $terms ) && 0 < count( $terms ) ) { ?>
+							<div class="portfolio_terms">
+								<?php if ( isset( $portfolio_options['technologies_text_field'] ) ) echo '<b>'. $portfolio_options['technologies_text_field'] . '&nbsp;</b>';
+								$links = array();
+								foreach ( $terms as $term ) {
+									$links[] = '<a href="' . get_term_link( $term->slug, 'portfolio_technologies') . '" title="' . sprintf( __( "View all projects in %s" ), $term->name ) . '" ' . '>' . $term->name . '</a>';
+								}
+								echo implode( ', ', $links ); ?>
+							</div><!-- .portfolio_terms -->
+						<?php }
+					} ?>
+				</div><!-- .entry_footer .entry-footer -->
+			</article><!-- .portfolio_content -->
+		<?php endwhile;
+	}
+}
+
+/* This function prints pagination for portfolio post type template */
+if ( ! function_exists( 'prtfl_pro_pagination' ) ) {
+	function prtfl_pro_pagination( $second_query, &$args ) {
+		global $wp_query, $prtfl_options;
+		$count_all_albums = $second_query->found_posts;
+
+		$request 	= $wp_query->request;
+		$paged 		= $showitems = $args['paged'];
+		$per_page 	= $args['posts_per_page'];
+		$pages 		= intval( $count_all_albums / $per_page );
+
+		if ( $count_all_albums % $per_page > 0 )
+			$pages += 1;
+
+		$range = 2;
+
+		if ( ! $pages )
+			$pages = 1;
+
+		if ( 1 != $pages ) { ?>
+			<div class='clear'></div>
+			<div id="portfolio_pagenation">
+				<div class='pagination'>
+					<?php if ( 2 < $paged && $paged > $range + 1 && $showitems < $pages )
+						echo "<a href='" . get_pagenum_link( 1 ) . "'>&laquo;</a>";
+					if ( 1 < $paged && $showitems < $pages )
+						echo "<a href='" . get_pagenum_link( $paged - 1 ) . "'>&lsaquo;</a>";
+
+					for ( $i = 1; $i <= $pages; $i++ ) {
+						if ( 1 != $pages && ( ! ( $i >= $paged + $range + 1 || $i <= $paged - $range - 1 ) || $pages <= $showitems ) ) {
+							echo ( $paged == $i ) ? "<span class='current'>" . $i . "</span>":"<a href='" . get_pagenum_link( $i ) . "' class='inactive' >" . $i . "</a>";
+						}
+					}
+					if ( $paged < $pages && $showitems < $pages )
+						echo "<a href='" . get_pagenum_link( $paged + 1 ) . "'>&rsaquo;</a>";
+					if ( $paged < $pages - 1 && $paged + $range - 1 < $pages && $showitems < $pages )
+						echo "<a href='" . get_pagenum_link( $pages ) . "'>&raquo;</a>"; ?>
+					<div class='clear'></div>
+				</div><!-- .pagination -->
+				<?php if ( function_exists( 'pgntn_display_pagination' ) ) pgntn_display_pagination( 'custom', $second_query ); ?>
+			</div><!-- #portfolio_pagenation -->
+		<?php }
 	}
 }
 
@@ -1632,7 +2105,8 @@ add_filter( 'content_save_pre', 'prtfl_content_save_pre', 10, 1 );
 add_filter( 'bwsplgns_get_pdf_print_content', 'prtfl_add_pdf_print_content' );
 
 add_action( 'admin_enqueue_scripts', 'prtfl_admin_head' );
-add_action( 'wp_enqueue_scripts', 'prtfl_wp_head' );
+add_action( 'wp_enqueue_scripts', 'prtfl_wp_enqueue_scripts' );
+add_action( 'wp_head', 'prtfl_wp_head' );
 add_action( 'wp_footer', 'prtfl_wp_footer' );
 
 /* add theme name as class to body tag */

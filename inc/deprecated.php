@@ -16,9 +16,9 @@ if ( ! function_exists( 'prtfl_old_template_options' ) ) {
 			$template_pages = $wpdb->get_var( "SELECT $wpdb->posts.ID FROM $wpdb->posts, $wpdb->postmeta WHERE meta_key = '_wp_page_template' AND meta_value = 'portfolio.php' AND ( post_status = 'publish' OR post_status = 'private' ) AND $wpdb->posts.ID = $wpdb->postmeta.post_id" );
 			if ( ! empty( $template_pages ) ) {
 				$prtfl_options['page_id_portfolio_template'] = $template_pages;
-			}						
+			}
 		}
-		if ( isset( $prtfl_options['rewrite_template'] ) ) {				
+		if ( isset( $prtfl_options['rewrite_template'] ) ) {
 			$themepath = get_stylesheet_directory() . '/';
 			foreach ( array( 'portfolio-post.php', 'portfolio.php' ) as $filename ) {
 				if ( file_exists( $themepath . $filename ) ) {
@@ -45,7 +45,7 @@ if ( ! function_exists( 'prtfl_old_template_options' ) ) {
 if ( ! function_exists( 'prtfl_update_options_after_redesign' ) ) {
 	function prtfl_update_options_after_redesign() {
 		global $prtfl_options;
-		
+
 		if ( isset( $prtfl_options['custom_size_name'] ) ) {
 			$prtfl_options['custom_size_px']['portfolio-thumb'] = $prtfl_options['custom_size_px'][0];
 			$prtfl_options['custom_size_px']['portfolio-photo-thumb'] = $prtfl_options['custom_size_px'][1];

@@ -55,11 +55,11 @@
 <li>Create and display portfolio:
 <ul>
 <li>Categories</li>
-<li>Sectors [NEW]</li>
-<li>Services [NEW]</li>
+<li>Sectors</li>
+<li>Services</li>
 </ul>
 </li>
-<li>Add info about the client [NEW]</li>
+<li>Add info about the client</li>
 <li>Add the widget with portfolio categories</li>
 <li>Sort portfolio projects by date and title</li>
 <li>Enable lightbox helper:

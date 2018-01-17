@@ -1,228 +1,38 @@
 <?php
 /*
 Template Name: Portfolio template
-* Version: 1.4.4
+* Version: 1.4.6
 */
 get_header(); ?>
-	<div class="content-area">
-		<div id="container" class="site-content site-main">
-			<div id="content" class="hentry">
-				<div class="breadcrumbs home_page_title entry-header">
-					<?php global $post, $wp_query, $request;
-					$portfolio_options = get_option( 'prtfl_options' );
-
-					if ( isset( $wp_query->query_vars["technologies"] ) ) {
-						$term = get_term_by( 'slug', $wp_query->query_vars["technologies"], 'portfolio_technologies' );
-						echo $portfolio_options['technologies_text_field'] . " " . ( $term->name );
-					} elseif ( isset( $wp_query->query_vars["portfolio_executor_profile"] ) ) {
-						$term = get_term_by( 'slug', $wp_query->query_vars["portfolio_executor_profile"], 'portfolio_executor_profile' );
-						echo $portfolio_options['executor_text_field'] . " <h1>" . ( $term->name ) . "</h1>";
-						$_SESSION['prtfl_page_name'] = $portfolio_options['executor_text_field'] . " " . ( $term->name );
-						$_SESSION['prtfl_page_url'] = get_pagenum_link( $wp_query->query_vars['paged'] );
-					} else {
-						the_title();
-					} ?>
-				</div>
-				<?php $count = 0;
-				if ( get_query_var( 'paged' ) ) {
-					$paged = get_query_var( 'paged' );
-				} elseif ( get_query_var( 'page' ) ) {
-					$paged = get_query_var( 'page' );
-				} else {
-					$paged = 1;
-				}
-				$per_page = $showitems = get_option( 'posts_per_page' );
-
-				if ( ! empty( $wp_query->query_vars["technologies"] ) ) {
-					$args = array(
-						'post_type' 		=> 'portfolio',
-						'post_status' 		=> 'publish',
-						'orderby' 			=> $portfolio_options['order_by'],
-						'order'			 	=> $portfolio_options['order'],
-						'posts_per_page'	=> $per_page,
-						'paged' 			=> $paged,
-						'tax_query' 		=> array(
-							array(
-								'taxonomy' 	=> 'portfolio_technologies',
-								'field' 	=> 'slug',
-								'terms' 	=> $wp_query->query_vars["technologies"]
-							)
-						)
-					);
-				} else if ( ! empty( $wp_query->query_vars["portfolio_executor_profile"] ) ) {
-					$args = array(
-						'post_type' 		=> 'portfolio',
-						'post_status' 		=> 'publish',
-						'orderby'			=> $portfolio_options['order_by'],
-						'order' 			=> $portfolio_options['order'],
-						'posts_per_page' 	=> $per_page,
-						'paged' 			=> $paged,
-						'tax_query' 		=> array(
-							array(
-								'taxonomy' 	=> 'portfolio_executor_profile',
-								'field' 	=> 'slug',
-								'terms' 	=> $wp_query->query_vars["portfolio_executor_profile"]
-							)
-						)
-					);
-				} else {
-					$args = array(
-						'post_type'			=>	'portfolio',
-						'post_status'		=>	'publish',
-						'orderby'			=>	$portfolio_options['order_by'],
-						'order'				=>	$portfolio_options['order'],
-						'posts_per_page'	=>	$per_page,
-						'paged'				=>	$paged
-					);
-				}
-
-				do_action( 'bwsplgns_display_pdf_print_buttons', 'top' );
-
-				/* display page content */
-				if ( ! empty( $post ) && ! empty( $post->post_content ) ) {
-					$page_content = $post->post_content;
-					if ( function_exists( 'mltlngg_the_content_filter' ) ) $page_content = mltlngg_the_content_filter( $page_content );
-					/* dublicate filter 'the_content' - as we couldnt use it */
-					if ( function_exists( 'wptexturize' ) ) $page_content = wptexturize( $page_content );
-					if ( function_exists( 'convert_smilies' ) ) $page_content = convert_smilies( $page_content );
-					if ( function_exists( 'wpautop' ) ) $page_content = wpautop( $page_content );
-					if ( function_exists( 'shortcode_unautop' ) ) $page_content = shortcode_unautop( $page_content );
-					if ( function_exists( 'prepend_attachment' ) ) $page_content = prepend_attachment( $page_content );
-					if ( function_exists( 'wp_make_content_images_responsive' ) ) $page_content = wp_make_content_images_responsive( $page_content );
-					if ( function_exists( 'do_shortcode' ) ) $page_content = do_shortcode( $page_content ); ?>
-					<div class="portfolio_content entry-content">
-						<div class="entry"><?php echo $page_content; ?></div>
+	<div class="wrap">
+		<div id="primary" class="content-area">
+			<div id="container" class="<?php if ( 'twentyfourteen' == get_stylesheet() || 'twentytwelve' == get_stylesheet() ) echo 'site-content'; ?> site-main">
+				<div id="content" class="hentry">
+					<div class="breadcrumbs home_page_title entry-header">
+						<?php prtfl_template_title(); ?>
 					</div>
-				<?php }
+					<?php
+					/* Get arguments for WP Query */
+					$args = prtfl_get_query_args();
 
-				$second_query = new WP_Query( $args );
-				$request = $second_query->request;
+					do_action( 'bwsplgns_display_pdf_print_buttons', 'top' );
 
-				if ( $second_query->have_posts() ) :
-					while ( $second_query->have_posts() ) : $second_query->the_post(); ?>
-						<div class="portfolio_content entry-content">
-							<div class="entry">
-								<?php $post_thumbnail_id = get_post_thumbnail_id( $post->ID );
-								$image			= wp_get_attachment_image_src( $post_thumbnail_id, $prtfl_options['image_size_album'] );
-								$post_meta		= get_post_meta( $post->ID, 'prtfl_information', true );
+					$second_query = new WP_Query( $args );
 
-								$short_descr	=	isset( $post_meta['_prtfl_short_descr'] ) ? $post_meta['_prtfl_short_descr'] : '';
-								if ( empty( $short_descr ) )
-									$short_descr = get_the_excerpt();
-								$title = get_the_title();
-								if ( empty( $title ) )
-									$title = '(' . __( 'No title', 'portfolio' ) . ')';
+					/* Display template content */
+					echo prtfl_get_content( $second_query );
 
-								$permalink = get_permalink();
-								if ( ! empty( $image[0] ) ) {
-									/* get width and height for image_size_album */
-									if ( 'portfolio-thumb' != $prtfl_options['image_size_album'] ) {
-										$width  = absint( get_option( $prtfl_options['image_size_album'] . '_size_w' ) );
-										$height = absint( get_option( $prtfl_options['image_size_album'] . '_size_h' ) );
-									} else {
-										$width  = $prtfl_options['custom_size_px']['portfolio-thumb'][0];
-										$height = $prtfl_options['custom_size_px']['portfolio-thumb'][1];
-									}
-									$image_alt = get_post_meta( $post_thumbnail_id, '_wp_attachment_image_alt', true ); ?>
-									<div class="portfolio_thumb">
-										<a rel="bookmark" href="<?php echo $permalink; ?>" title="<?php echo $title; ?>">
-											<img src="<?php echo $image[0]; ?>" alt="<?php echo $image_alt; ?>" <?php if ( $width ) echo 'width="' . $width . '"'; if ( $height ) echo 'height="' . $height . '"'; ?> style="<?php if ( $width ) echo 'width:' . $width . 'px;'; if ( $height ) echo 'height:' . $height . 'px;'; ?>" />
-										</a>
-									</div><!-- .portfolio_thumb -->
-								<?php } ?>
-								<div class="portfolio_short_content">
-									<div class="item_title">
-										<p>
-											<a href="<?php echo $permalink; ?>" rel="bookmark"><?php echo $title; ?></a>
-										</p>
-									</div><!-- .item_title -->
-									<?php if ( 1 == $portfolio_options['date_additional_field'] ) {
-										$date_compl	= isset( $post_meta['_prtfl_date_compl'] ) ? $post_meta['_prtfl_date_compl'] : ''; ?>
-										<p>
-											<span class="lable"><?php echo $portfolio_options['date_text_field']; ?></span> <?php echo $date_compl; ?>
-										</p>
-									<?php }
-									$user_id = get_current_user_id();
-									if ( 1 == $portfolio_options['link_additional_field'] ) {
-										$link =	isset( $post_meta['_prtfl_link'] ) ? $post_meta['_prtfl_link'] : '';
+					wp_reset_query();
 
-										if ( false !== parse_url( $link ) ) {
-											if ( ( 0 == $user_id && 0 == $portfolio_options['link_additional_field_for_non_registered'] ) || 0 != $user_id ) { ?>
-												<p><span class="lable"><?php echo $portfolio_options['link_text_field']; ?></span> <a href="<?php echo $link; ?>"><?php echo $link; ?></a></p>
-											<?php } else { ?>
-												<p><span class="lable"><?php echo $portfolio_options['link_text_field']; ?></span> <?php echo $link; ?></p>
-											<?php }
-										} else { ?>
-											<p><span class="lable"><?php echo $portfolio_options['link_text_field']; ?></span> <?php echo $link; ?></p>
-										<?php }
-									}
-									if ( 1 == $portfolio_options['shrdescription_additional_field'] ) { ?>
-										<p><span class="lable"><?php echo $portfolio_options['shrdescription_text_field']; ?></span> <?php echo $short_descr; ?></p>
-									<?php } ?>
-								</div><!-- .portfolio_short_content -->
-							</div><!-- .entry -->
-							<div class="entry_footer">
-								<div class="read_more">
-									<a href="<?php the_permalink(); ?>" rel="bookmark"><?php _e( 'Read more', 'portfolio' ); ?></a>
-								</div><!-- .read_more -->
-								<div class="portfolio_terms">
-									<?php if ( 1 == $portfolio_options['technologies_additional_field'] ) {
-										$terms = wp_get_object_terms( $post->ID, 'portfolio_technologies' );
-										if ( is_array( $terms ) && 0 < count( $terms ) ) {
-											echo $portfolio_options['technologies_text_field'];
-											$count = 0;
-											foreach ( $terms as $term ) {
-												if ( 0 < $count )
-													echo ', ';
-												echo '<a href="' . get_term_link( $term->slug, 'portfolio_technologies') . '" title="' . sprintf( __( "View all projects in %s" ), $term->name ) . '" ' . '>' . $term->name . '</a>';
-												$count++;
-											}
-										}
-									} ?>
-								</div><!-- .portfolio_terms -->
-							</div><!-- .entry_footer -->
-						</div><!-- .portfolio_content -->
-					<?php endwhile;
-				endif;
-				do_action( 'bwsplgns_display_pdf_print_buttons', 'bottom' ); ?>
-			</div><!-- #content -->
-			<?php $count_all_albums = $second_query->found_posts;
-			wp_reset_query();
-			$request = $wp_query->request;
-			$pages = intval( $count_all_albums / $per_page );
-			if ( $count_all_albums % $per_page > 0 )
-				$pages += 1;
+					do_action( 'bwsplgns_display_pdf_print_buttons', 'bottom' ); ?>
+				</div><!-- #content -->
 
-			$range = 2;
+				<!-- Portfolio tmplate pagination -->
+				<?php prtfl_pro_pagination( $second_query, $args ); ?>
 
-			if ( ! $pages )
-				$pages = 1;
-
-			if ( 1 != $pages ) { ?>
-				<div class='clear'></div>
-				<div id="portfolio_pagenation">
-					<div class='pagination'>
-						<?php if ( 2 < $paged && $paged > $range + 1 && $showitems < $pages )
-							echo "<a href='" . get_pagenum_link( 1 ) . "'>&laquo;</a>";
-						if ( 1 < $paged && $showitems < $pages )
-							echo "<a href='" . get_pagenum_link( $paged - 1 ) . "'>&lsaquo;</a>";
-
-						for ( $i = 1; $i <= $pages; $i++ ) {
-							if ( 1 != $pages && ( ! ( $i >= $paged + $range + 1 || $i <= $paged - $range - 1 ) || $pages <= $showitems ) ) {
-								echo ( $paged == $i ) ? "<span class='current'>" . $i . "</span>":"<a href='" . get_pagenum_link( $i ) . "' class='inactive' >" . $i . "</a>";
-							}
-						}
-						if ( $paged < $pages && $showitems < $pages )
-							echo "<a href='" . get_pagenum_link( $paged + 1 ) . "'>&rsaquo;</a>";
-						if ( $paged < $pages - 1 && $paged + $range - 1 < $pages && $showitems < $pages )
-							echo "<a href='" . get_pagenum_link( $pages ) . "'>&raquo;</a>"; ?>
-						<div class='clear'></div>
-					</div><!-- .pagination -->
-					<?php if ( function_exists( 'pgntn_display_pagination' ) ) pgntn_display_pagination( 'custom', $second_query ); ?>
-				</div><!-- #portfolio_pagenation -->
-			<?php } ?>
-			<?php comments_template(); ?>
-		</div><!-- #container -->
-	</div><!-- .content-area -->
-<?php get_sidebar(); ?>
+				<?php comments_template(); ?>
+			</div><!-- #container -->
+		</div><!-- .content-area -->
+		<?php get_sidebar(); ?>
+	</div><!-- .wrap -->
 <?php get_footer(); ?>
