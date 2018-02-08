@@ -134,7 +134,7 @@
 
 .portfolio_images_block .lable {
 	font-weight: normal;
-	padding-bottom: 2px;
+	padding-bottom: 10px;
 }
 
 .portfolio_images_rows {
@@ -146,6 +146,10 @@
 .portfolio_images_gallery img {
 	padding: 4px;
 	border: 1px solid #D8D8D8;
+}
+
+.portfolio_images_gallery img {
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 15px;
 }
 
 #portfolio_pagenation {
@@ -190,7 +194,7 @@
 }
 
 .page-template-portfolio-php:not(.prtfl_twentyfourteen):not(.prtfl_twentythirteen) .portfolio_content.entry-content,
-.single-portfolio:not(.prtfl_twentyfourteen):not(.prtfl_twentythirteen) .portfolio_content.entry-content,
+.single-portfolio:not(.prtfl_twentyfourteen):not(.prtfl_twentythirteen) .portfolio_content.entry-content {
     max-width: 1080px;
 }
 

@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add portfolio, portfolio plugin, add portfolio widget, portfolio, fancybox, showcase, responsive portfolio, portfolio plugin, create portfolio, portfolio categories, project portfolio, portfolio widget, add album
 Requires at least: 3.9
-Tested up to: 4.9.2
-Stable tag: 2.43
+Tested up to: 4.9.4
+Stable tag: 2.44
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -157,6 +157,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 8. Portfolio admin page (for all portfolios).
 
 == Changelog ==
+
+= V2.44 - 08.02.2018 =
+* Update : Preview image styles have been improved.
+* Bugfix : Fancybox JavaScript error has been fixed.
+* Bugfix : Options removal from the database when working on a multisite network has been fixed.
 
 = V2.43 - 17.01.2018 =
 * Update : The Fancybox library has been updated up to v3.1.20.
@@ -363,6 +368,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * In this version an image uploaded by means of custom fields is substituted with Wordpress standard meta box for the media files uploading.
 
 == Upgrade Notice ==
+
+= V2.44 =
+* Appearance improved.
+* Bugs fixed.
 
 = V2.43 =
 * Appearance improved.

@@ -171,12 +171,25 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 				$this->options["flush_rewrite_rules"] = 1;
 			$this->options["slug"] = $slug;
 
+			/**
+			 * rewriting post types name with unique one from default options
+			 */
+			if ( ! empty( $_POST['prtfl_rename_post_type'] ) ) {
+				global $wpdb;
+				$wpdb->update(
+					$wpdb->prefix . 'posts',
+					array( 'post_type' => $this->default_options['post_type_name'] ),
+					array( 'post_type' => $this->options['post_type_name'] )
+				);
+				$this->options['post_type_name'] = $this->default_options['post_type_name'];
+			}
+
 			if ( ! empty( $this->cstmsrch_options ) ) {
 				if ( isset( $this->cstmsrch_options['output_order'] ) ) {
 					$is_enabled = isset( $_POST['prtfl_add_to_search'] ) ? 1 : 0;
 					$post_type_exist = false;
 					foreach ( $this->cstmsrch_options['output_order'] as $key => $item ) {
-						if ( $item['name'] == 'portfolio' && $item['type'] == 'post_type' ) {
+						if ( $item['name'] == $this->options['post_type_name'] && $item['type'] == 'post_type' ) {
 							$post_type_exist = true;
 							if ( $item['enabled'] != $is_enabled ) {
 								$this->cstmsrch_options['output_order'][ $key ]['enabled'] = $is_enabled;
@@ -187,17 +200,17 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 					}	
 					if ( ! $post_type_exist ) {
 						$this->cstmsrch_options['output_order'][] = array( 
-							'name' 		=> 'portfolio',
+							'name' 		=> $this->options['post_type_name'],
 							'type' 		=> 'post_type',
 							'enabled' 	=> $is_enabled );
 						$cstmsrch_options_update = true;
 					}					
 				} else if ( isset( $this->cstmsrch_options['post_types'] ) ) {
-					if ( isset( $_POST['prtfl_add_to_search'] ) && ! in_array( 'portfolio', $this->cstmsrch_options['post_types'] ) ) {
-						array_push( $this->cstmsrch_options['post_types'], 'portfolio' );
+					if ( isset( $_POST['prtfl_add_to_search'] ) && ! in_array( $this->options['post_type_name'], $this->cstmsrch_options['post_types'] ) ) {
+						array_push( $this->cstmsrch_options['post_types'], $this->options['post_type_name'] );
 						$cstmsrch_options_update = true;
-					} else if ( ! isset( $_POST['prtfl_add_to_search'] ) && in_array( 'portfolio', $this->cstmsrch_options['post_types'] ) ) {
-						unset( $this->cstmsrch_options['post_types'][ array_search( 'portfolio', $this->cstmsrch_options['post_types'] ) ] );
+					} else if ( ! isset( $_POST['prtfl_add_to_search'] ) && in_array( $this->options['post_type_name'], $this->cstmsrch_options['post_types'] ) ) {
+						unset( $this->cstmsrch_options['post_types'][ array_search( $this->options['post_type_name'], $this->cstmsrch_options['post_types'] ) ] );
 						$cstmsrch_options_update = true;
 					}
 				}
@@ -449,7 +462,18 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 				if ( ! function_exists( 'get_plugins' ) )
 					require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 				$this->all_plugins = get_plugins();
-			} ?>					
+			}
+			if ( $this->options['post_type_name'] != $this->default_options['post_type_name'] ) { ?>
+				<tr valign="top">
+					<th scope="row"><?php _e( 'Portfolio Post Type', 'portfolio' ); ?></th>
+					<td>
+						<input type="checkbox" name="prtfl_rename_post_type" value="1" />
+						<span class="bws_info">
+							<?php _e( 'Enable to avoid conflicts with other portfolio plugins installed. All portfolio created earlier will stay unchanged. However, after enabling we recommend to check settings of other plugins where "portfolio" post type is used.', 'portfolio' ); ?>
+						</span>
+					</td>
+				</tr>
+			<?php } ?>
 			<tr valign="top">
 				<th scope="row"><?php _e( 'Portfolio Slug', 'portfolio' ); ?></th>
 				<td>
@@ -468,13 +492,13 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 						}
 						if ( isset( $this->cstmsrch_options['output_order'] ) ) {
 							foreach ( $this->cstmsrch_options['output_order'] as $key => $item ) {
-								if ( $item['name'] == 'portfolio' && $item['type'] == 'post_type' ) {
+								if ( $item['name'] == $this->options['post_type_name'] && $item['type'] == 'post_type' ) {
 									if ( $item['enabled'] )
 										$checked = ' checked="checked"';
 									break;
 								}
 							}
-						} elseif ( ! empty( $this->cstmsrch_options['post_types'] ) && in_array( 'portfolio', $this->cstmsrch_options['post_types'] ) ) {
+						} elseif ( ! empty( $this->cstmsrch_options['post_types'] ) && in_array( $this->options['post_type_name'], $this->cstmsrch_options['post_types'] ) ) {
 							$checked = ' checked="checked"';
 						}
 					} else { 
