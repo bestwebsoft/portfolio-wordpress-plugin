@@ -299,8 +299,9 @@ if ( ! class_exists( 'Bws_Demo_Data' ) ) {
 										/* insert attschment in to database */
 										$attach_id = wp_insert_attachment( $attachment_data, $data['url'], $post_id );
 										if ( 0 != $attach_id ) {
-											if ( empty( $featured_attach_id ) )
+											if ( empty( $featured_attach_id ) ) {
 												$featured_attach_id = $attach_id;
+											}
 											/* remember attachment ID */
 											$this->bws_demo_options['distant_attachments'][ $attachment_name ] = $attach_id;
 
@@ -319,8 +320,9 @@ if ( ! class_exists( 'Bws_Demo_Data' ) ) {
 											/* insert additional metadata */
 											if ( isset( $demo_data['distant_attachments'][ $attachment_name ] ) ) {
 												foreach ( $demo_data['distant_attachments'][ $attachment_name ] as $meta_key => $meta_value ) {
-													if ( '{get_lorem_ipsum}' == $meta_value )
+													if ( '{get_lorem_ipsum}' == $meta_value ) {
 														$meta_value = $this->bws_get_lorem_ipsum();
+													}
 													add_post_meta( $attach_id, $meta_key, $meta_value );
 												}
 											}
@@ -461,8 +463,9 @@ if ( ! class_exists( 'Bws_Demo_Data' ) ) {
 						call_user_func( $callback );
 				}
 				$done = $this->bws_delete_demo_option();
-				if ( ! $done )
+				if ( ! $done ) {
 					$error ++;
+				}
 
 				/*
 				 * Delete all posts
@@ -472,8 +475,9 @@ if ( ! class_exists( 'Bws_Demo_Data' ) ) {
 						/* delete only not modified posts */
 						if ( get_post_modified_time( 'U', false, $post_id, false ) == $last_modified ) {
 							$done = wp_delete_post( $post_id, true );
-							if ( ! $done )
+							if ( ! $done ) {
 								$error ++;
+							}
 						}
 					}
 				}
@@ -493,15 +497,17 @@ if ( ! class_exists( 'Bws_Demo_Data' ) ) {
 				if ( ! empty( $this->bws_demo_options['attachments'] ) ) {
 					foreach ( $this->bws_demo_options['attachments'] as $post_id ) {
 						$done = wp_delete_attachment( $post_id, true );
-						if ( ! $done )
+						if ( ! $done ) {
 							$error ++;
+						}
 					}
 				}
 				if ( ! empty( $this->bws_demo_options['distant_attachments'] ) ) {
 					foreach ( $this->bws_demo_options['distant_attachments'] as $post_id ) {
 						$done = wp_delete_attachment( $post_id, true );
-						if ( ! $done )
+						if ( ! $done ) {
 							$error ++;
+						}
 					}
 				}
 				if ( empty( $error ) ) {

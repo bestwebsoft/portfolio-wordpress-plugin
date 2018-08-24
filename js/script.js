@@ -1,23 +1,23 @@
 function prtfl_setMessage( msg ) {
-	(function($){
+	( function( $ ){
 		$( ".error" ).hide();
 		$( ".prtfl_image_update_message" ).html( msg ).show();
-	})(jQuery);
+	} )( jQuery );
 }
 
 function prtfl_setError( msg ) {
-	(function($){
+	( function( $ ){
 		$( ".prtfl_image_update_message" ).hide();
 		$( ".error" ).html( msg ).show();;
-	})(jQuery);
+	} )( jQuery );
 }
 
-(function($) {
-	$(document).ready( function() {
+( function( $ ) {
+	$( document ).ready( function() {
 		$( '#prtfl_ajax_update_images' ).click( function() {
 			prtfl_setMessage( "<p>" + prtfl_vars.update_img_message + "</p>" );
 			var curr = 0;
-			$.ajax({
+			$.ajax( {
 				/* update_img_url */
 				url: '../wp-admin/admin-ajax.php?action=prtfl_update_image',
 				type: "POST",
@@ -33,37 +33,37 @@ function prtfl_setError( msg ) {
 					var curr = 0,
 						all_count = Object.keys( list ).length;
 					$.each( list, function( index, value ) {
-						$.ajax({
+						$.ajax( {
 							url: '../wp-admin/admin-ajax.php?action=prtfl_update_image',
 							type: "POST",
 							data: "action1=update_image&id=" + value + '&prtfl_ajax_nonce_field=' + prtfl_vars.prtfl_nonce,
 							success: function( result ) {
 								curr = curr + 1;
 								if ( curr >= all_count ) {
-									$.ajax({
+									$.ajax( {
 										url: '../wp-admin/admin-ajax.php?action=prtfl_update_image',
 										type: "POST",
 										data: "action1=update_options&prtfl_ajax_nonce_field=" + prtfl_vars.prtfl_nonce,
-									});
+									} );
 									prtfl_setMessage( "<p>" + prtfl_vars.img_success + "</p>" );
 									$( '.prtfl_loader' ).hide();
 								}
 							}
-						});	
-					});
+						} );
+					} );
 				},
 				error: function( request, status, error ) {
 					prtfl_setError( "<p>" + prtfl_vars.img_error + request.status + "</p>" );
 				}
-			});
-		});
+			} );
+		} );
 
 		var is_rtl = ( $( 'body' ).hasClass( 'rtl' ) );
 
-		$( '#_prtfl_date_compl' ).datepicker({
+		$( '#_prtfl_date_compl' ).datepicker( {
 			dateFormat : 'dd.mm.yy',
 			isRTL : is_rtl
-		});
+		} );
 
 		$( '[name^="prtfl_custom_image_size_"]' ).change( function() {
 			$( '#prtfl_ajax_update_images' ).attr( 'disabled', 'disabled' );
@@ -89,13 +89,13 @@ function prtfl_setError( msg ) {
 					text: $element.data( 'update' )
 				},
 				states: [
-					new wp.media.controller.Library({
+					new wp.media.controller.Library( {
 						title: $element.data( 'choose' ),
 						filterable: 'all',
 						multiple: true
-					})
+					} )
 				]
-			});
+			} );
 
 			/* run a callback when an image is selected */
 			images_frame.on( 'select', function() {
@@ -111,14 +111,14 @@ function prtfl_setError( msg ) {
 
 						$( '#prtfl_images_container ul' ).append( '<li class="prtfl_single_image" data-attachment_id="' + attachment.id + '"><img src="' + attachment_image + '" /><span class="prtfl_delete_image"><a href="#" title="' + $element.data( 'delete' ) + '">' + $element.data( 'text' ) + '</a></span></li>' );
 					}
-				});
+				} );
 
 				$( '#prtfl_images' ).val( attachment_ids );
-			});
+			} );
 
 			/* Open the modal */
 			images_frame.open();
-		});
+		} );
 
 		/* Add image ordering */
 		if ( $( '#prtfl_images_container ul' ).length > 0 ) {
@@ -142,10 +142,10 @@ function prtfl_setError( msg ) {
 					$( '#prtfl_images_container' ).find( 'ul li.prtfl_single_image' ).css( 'cursor', 'default' ).each( function() {
 						var attachment_id = $( this ).attr( 'data-attachment_id' );
 						attachment_ids = attachment_ids + attachment_id + ',';
-					});
+					} );
 					$( '#prtfl_images' ).val( attachment_ids );
 				}
-			});
+			} );
 		}
 
 		/* Remove image */
@@ -156,10 +156,10 @@ function prtfl_setError( msg ) {
 			$( '#prtfl_images_container' ).find( 'ul li.prtfl_single_image' ).css( 'cursor', 'default' ).each( function() {
 				var attachment_id = $( this ).attr( 'data-attachment_id' );
 				attachment_ids = attachment_ids + attachment_id + ',';
-			});
+			} );
 
 			$( '#prtfl_images' ).val( attachment_ids );
 			return false;
-		});
-	});
-})(jQuery);
+		} );
+	} );
+} )( jQuery );

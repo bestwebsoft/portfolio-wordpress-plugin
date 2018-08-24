@@ -45,8 +45,8 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 				'link_pn' 			 => '74',
 			) );
 
-			$wp_sizes = get_intermediate_image_sizes();	
-		
+			$wp_sizes = get_intermediate_image_sizes();
+
 			foreach ( (array) $wp_sizes as $size ) {
 				if ( ! array_key_exists( $size, $prtfl_options['custom_size_px'] ) ) {
 					if ( isset( $_wp_additional_image_sizes[ $size ] ) ) {
@@ -118,7 +118,7 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 						}
 					}
 				}
-			}			
+			}
 			$this->options['custom_size_px']['portfolio-photo-thumb'] = $custom_size_px_photo;
 			$this->options['image_size_photo'] 				= $new_image_size_photo;
 
@@ -151,8 +151,9 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 			$this->options["order_by"]		= esc_attr( $_POST['prtfl_order_by'] );
 			$this->options["order"]			= esc_attr( $_POST['prtfl_order'] );
 
-			if ( ! empty( $need_image_update ) )
+			if ( ! empty( $need_image_update ) ) {
 				$this->options['need_image_update'] = __( 'Custom image size was changed. You need to update project images.', 'portfolio' );
+			}
 
 			$this->options["link_additional_field_for_non_registered"] = isset( $_REQUEST["prtfl_link_additional_field_for_non_registered"] ) ? 1 : 0;
 
@@ -167,8 +168,9 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 			$slug = preg_replace( "/[^a-z0-9\s-]/", "", $slug );
 			$slug = trim( preg_replace( "/[\s-]+/", " ", $slug ) );
 			$slug = preg_replace( "/\s/", "-", $slug );
-			if ( $this->options["slug"] != $slug )
+			if ( $this->options["slug"] != $slug ) {
 				$this->options["flush_rewrite_rules"] = 1;
+			}
 			$this->options["slug"] = $slug;
 
 			/**
@@ -189,7 +191,7 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 					$is_enabled = isset( $_POST['prtfl_add_to_search'] ) ? 1 : 0;
 					$post_type_exist = false;
 					foreach ( $this->cstmsrch_options['output_order'] as $key => $item ) {
-						if ( $item['name'] == $this->options['post_type_name'] && $item['type'] == 'post_type' ) {
+						if ( $item['name'] == $this->options['post_type_name'] && 'post_type' == $item['type'] ) {
 							$post_type_exist = true;
 							if ( $item['enabled'] != $is_enabled ) {
 								$this->cstmsrch_options['output_order'][ $key ]['enabled'] = $is_enabled;
@@ -197,25 +199,26 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 							}
 							break;
 						}
-					}	
+					}
 					if ( ! $post_type_exist ) {
-						$this->cstmsrch_options['output_order'][] = array( 
+						$this->cstmsrch_options['output_order'][] = array(
 							'name' 		=> $this->options['post_type_name'],
 							'type' 		=> 'post_type',
 							'enabled' 	=> $is_enabled );
 						$cstmsrch_options_update = true;
-					}					
-				} else if ( isset( $this->cstmsrch_options['post_types'] ) ) {
+					}
+				} elseif ( isset( $this->cstmsrch_options['post_types'] ) ) {
 					if ( isset( $_POST['prtfl_add_to_search'] ) && ! in_array( $this->options['post_type_name'], $this->cstmsrch_options['post_types'] ) ) {
 						array_push( $this->cstmsrch_options['post_types'], $this->options['post_type_name'] );
 						$cstmsrch_options_update = true;
-					} else if ( ! isset( $_POST['prtfl_add_to_search'] ) && in_array( $this->options['post_type_name'], $this->cstmsrch_options['post_types'] ) ) {
+					} elseif ( ! isset( $_POST['prtfl_add_to_search'] ) && in_array( $this->options['post_type_name'], $this->cstmsrch_options['post_types'] ) ) {
 						unset( $this->cstmsrch_options['post_types'][ array_search( $this->options['post_type_name'], $this->cstmsrch_options['post_types'] ) ] );
 						$cstmsrch_options_update = true;
 					}
 				}
-				if ( isset( $cstmsrch_options_update ) )
+				if ( isset( $cstmsrch_options_update ) ) {
 					update_option( 'cstmsrch_options', $this->cstmsrch_options );
+				}
 			}
 
 			update_option( 'prtfl_options', $this->options );
@@ -290,7 +293,7 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Cover Image Size', 'portfolio' ); ?> </th>
 					<td>
-						<select name="prtfl_image_size_album">							
+						<select name="prtfl_image_size_album">
 							<?php foreach ( $this->wp_image_sizes as $data ) { ?>
 								<option value="<?php echo $data['value']; ?>" <?php selected( $data['value'], $this->options['image_size_album'] ); ?>><?php echo $data['name']; ?></option>
 							<?php } ?>
@@ -298,7 +301,7 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 						</select>
 						<div class="bws_info"><?php _e( 'Maximum cover image size. Custom uses the Image Dimensions values.', 'portfolio' ); ?></div>
 					</td>
-				</tr>			
+				</tr>
 				<tr valign="top" class="prtfl_for_custom_image_size_album">
 					<th scope="row"><?php _e( 'Custom Cover Image Size', 'portfolio' ); ?> </th>
 					<td>
@@ -387,7 +390,7 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 									<input<?php echo $this->change_permission_attr; ?> type="text" name="prtfl_<?php echo $field_key; ?>_text_field" maxlength="250" value="<?php echo $this->options[ $field_key . '_text_field']; ?>" />
 								</label>
 								<br />
-							<?php } ?>							
+							<?php } ?>
 							<label>
 								 <?php _e( '"More screenshots" block', 'portfolio' ); ?>
 								<br>
@@ -449,7 +452,7 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 						<?php $this->demo_data->bws_show_demo_button( __( 'Install demo data to create portfolio projects with images, post with shortcodes and page with a list of all portfolio projects.', 'portfolio' ) ); ?>
 					</td>
 				</tr>
-			</table>			
+			</table>
 		<?php }
 
 		/**
@@ -459,8 +462,9 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 		public function additional_misc_options_affected() {
 			global $wp_version;
 			if ( ! $this->all_plugins ) {
-				if ( ! function_exists( 'get_plugins' ) )
+				if ( ! function_exists( 'get_plugins' ) ) {
 					require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+				}
 				$this->all_plugins = get_plugins();
 			}
 			if ( $this->options['post_type_name'] != $this->default_options['post_type_name'] ) { ?>
@@ -492,16 +496,17 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 						}
 						if ( isset( $this->cstmsrch_options['output_order'] ) ) {
 							foreach ( $this->cstmsrch_options['output_order'] as $key => $item ) {
-								if ( $item['name'] == $this->options['post_type_name'] && $item['type'] == 'post_type' ) {
-									if ( $item['enabled'] )
+								if ( $item['name'] == $this->options['post_type_name'] && 'post_type' == $item['type'] ) {
+									if ( $item['enabled'] ) {
 										$checked = ' checked="checked"';
+									}
 									break;
 								}
 							}
 						} elseif ( ! empty( $this->cstmsrch_options['post_types'] ) && in_array( $this->options['post_type_name'], $this->cstmsrch_options['post_types'] ) ) {
 							$checked = ' checked="checked"';
 						}
-					} else { 
+					} else {
 						$disabled = ' disabled="disabled"';
 						$link = '<a href="https://bestwebsoft.com/products/wordpress/plugins/custom-search/?k=75e20470c8716645cf65febf9d30f269&amp;pn=' . $this->link_pn . '&amp;v=' . $this->plugins_info["Version"] . '&amp;wp_v=' . $wp_version . '" target="_blank">' . __( 'Install Now', 'portfolio' ) . '</a>';
 					} ?>
@@ -524,7 +529,7 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 				</h3>
 				<div class="inside">
 					<?php _e( "Add the latest portfolio projects using the following shortcode (where * is a number of projects to display):", 'portfolio' ); ?>
-					<?php bws_shortcode_output( '[latest_portfolio_items count=*]' ); ?>							
+					<?php bws_shortcode_output( '[latest_portfolio_items count=*]' ); ?>
 				</div>
 			</div>
 		<?php }

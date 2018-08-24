@@ -1,5 +1,5 @@
-(function($) {
-	$(document).ready( function() {
+( function ( $ ) {
+	$( document ).ready( function() {
 		var label = $( '.portfolio_images_block > span' );
 
 		$( window ).resize( function() {
@@ -17,7 +17,7 @@
 					pre_count_images_in_row = Math.floor( gallery_wrap_width / width_image_block_ ),
 					count_images_in_row = ( columns < pre_count_images_in_row ) ? columns : pre_count_images_in_row,
 					count_rows = Math.ceil( count_images / count_images_in_row );
-				if ( count_images_in_first_row != count_images_in_row && count_images_in_row != 0 ) {
+				if ( count_images_in_first_row != count_images_in_row && 0 != count_images_in_row ) {
 
 					$gallery.empty();
 					$gallery.append( label );
@@ -25,13 +25,13 @@
 					for( var i = 1; i <= count_rows; i++ ) {
 						var $new_row = $( '<div/>', {
 							'class' : 'portfolio_images_rows'
-						}),
+						} ),
 						$new_images_in_row = $images.splice( 0, count_images_in_row );
 						$new_row.append( $new_images_in_row );
 						$gallery.append( $new_row );
 					}
 				}
-			});
-		});
-	});
-})(jQuery);
+			} );
+		} );
+	} );
+} )( jQuery );

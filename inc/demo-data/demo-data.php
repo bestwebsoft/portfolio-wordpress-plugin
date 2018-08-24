@@ -20,7 +20,7 @@ if ( ! function_exists( 'bws_demo_data_array' ) ) {
 			/* Portfolio */
 			array( 
 				'post_status'    	=> 'publish',
-				'post_type'      	=> 'portfolio',
+				'post_type'      	=> 'bws-portfolio',
 				'post_title'     	=> 'DEMO Infographic Elements Template - Vector Pack',
 				'post_content'		=> 'Infographic Elements Template is a vector pack which contains various types of elements such as graphs, icons, diagrams, etc. Buy it to create your own infographics, presentations, reports or advertisement.',
 				'post_meta'      	=> array(
@@ -44,7 +44,7 @@ if ( ! function_exists( 'bws_demo_data_array' ) ) {
 				'comment_status' 	=> 'closed',
 				'ping_status'   	=> 'closed',
 				'post_status'    	=> 'publish',
-				'post_type'      	=> 'portfolio',
+				'post_type'      	=> 'bws-portfolio',
 				'post_title'     	=> 'DEMO Medical Care - Responsive Medical HTML5 Template',
 				'post_content'		=> 'Medical Care is a responsive Bootstrap-based HTML5 template. It is built with business and personal users in mind. We packed this template with common reusable widgets and elements.
 										Health is a key factor of normal life of any person. We cannot perform wholesome physical and mental activity without good health. Each separate medical institution is a treatment oasis of many diseases. Our team decided to create a modern clinic UI, where people could easily find the right specialist to get an online consultation or to make an appointment using website built-in tools.
@@ -75,7 +75,7 @@ if ( ! function_exists( 'bws_demo_data_array' ) ) {
 				'comment_status' 	=> 'closed',
 				'ping_status'   	=> 'closed',
 				'post_status'    	=> 'publish',
-				'post_type'      	=> 'portfolio',
+				'post_type'      	=> 'bws-portfolio',
 				'post_title'     	=> 'DEMO Book Your Tour - Excursion Community PSD Template', 
 				'post_content'		=> 'Book Your Tour is a premium PSD template designed for commercial purposes. 
 										Build a stunning excursion booking online website using the pre-build layout and elements. Customize existing graphic to create your own unique interface.', 
@@ -133,7 +133,7 @@ if ( ! function_exists( 'bws_demo_data_array' ) ) {
 				'comment_status' 	=> 'closed',
 				'ping_status'   	=> 'closed',
 				'post_status'    	=> 'publish',
-				'post_type'      	=> 'portfolio',
+				'post_type'      	=> 'bws-portfolio',
 				'post_title'     	=> 'DEMO Concerto - Music Events & Tickets', 
 				'post_content'		=> 'Concerto is a premium PSD template designed for commercial purposes. 
 										Create an amazing tickets booking website for various concerts, events and artists using the pre-build layout and elements. Customize the existing graphics to create your own unique interface.', 
@@ -191,7 +191,7 @@ if ( ! function_exists( 'bws_demo_data_array' ) ) {
 				'comment_status' 	=> 'closed',
 				'ping_status'   	=> 'closed',
 				'post_status'    	=> 'publish',
-				'post_type'      	=> 'portfolio',
+				'post_type'      	=> 'bws-portfolio',
 				'post_title'     	=> 'DEMO Style of Food - Restaurant & Cafe PSD Template', 
 				'post_content'		=> 'Style of Food is an online restaurant & cafe PSD template designed for commercial purposes. 
 										Create an amazing website using the pre-build layout and elements. Customize existing graphics to create your own unique interface.', 
@@ -220,7 +220,7 @@ if ( ! function_exists( 'bws_demo_data_array' ) ) {
 				'comment_status' 	=> 'closed',
 				'ping_status'   	=> 'closed',
 				'post_status'    	=> 'publish',
-				'post_type'      	=> 'portfolio',
+				'post_type'      	=> 'bws-portfolio',
 				'post_title'     	=> 'DEMO Order a Taxi - Website Design UI', 
 				'post_content'		=> 'Order Taxi is a premium PSD template designed for commercial purposes. 
 										Build a stunning taxi booking online website using the pre-build layout and elements. Customize existing graphic to create your own unique interface.', 
@@ -249,7 +249,7 @@ if ( ! function_exists( 'bws_demo_data_array' ) ) {
 				'comment_status' 	=> 'closed',
 				'ping_status'   	=> 'closed',
 				'post_status'    	=> 'publish',
-				'post_type'      	=> 'portfolio',
+				'post_type'      	=> 'bws-portfolio',
 				'post_title'     	=> 'DEMO Hotel Finder - Online Booking PSD Template', 
 				'post_content'		=> 'Hotel Finder is a premium PSD template designed for commercial purposes. 
 										Create an amazing hotel booking website using the pre-build layout and elements. Customize the existing graphics to create your own unique interface.', 
@@ -278,7 +278,7 @@ if ( ! function_exists( 'bws_demo_data_array' ) ) {
 				'comment_status' 	=> 'closed',
 				'ping_status'   	=> 'closed',
 				'post_status'    	=> 'publish',
-				'post_type'      	=> 'portfolio',
+				'post_type'      	=> 'bws-portfolio',
 				'post_title'     	=> 'DEMO Rent a Bike - Rental & Booking PSD Template', 
 				'post_content'		=> 'Rent a Bike is an online directory & booking PSD template designed for commercial purposes. 
 										Create an amazing bicycle store or a brand website using the pre-build layout and elements. Customize the existing graphics to create your own unique interface.', 

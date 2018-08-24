@@ -6,7 +6,7 @@ Description: Create your personal portfolio WordPress website. Manage and showca
 Author: BestWebSoft
 Text Domain: portfolio
 Domain Path: /languages
-Version: 2.44
+Version: 2.45
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
@@ -41,11 +41,12 @@ if ( ! function_exists( 'add_prtfl_admin_menu' ) ) {
 
 		add_submenu_page( 'edit.php?post_type=' . $prtfl_options['post_type_name'], 'BWS Panel', 'BWS Panel', 'manage_options', 'prtfl-bws-panel', 'bws_add_menu_render' );
 
-		if ( isset( $submenu['edit.php?post_type=' . $prtfl_options['post_type_name']] ) )
+		if ( isset( $submenu['edit.php?post_type=' . $prtfl_options['post_type_name']] ) ) {
 			$submenu['edit.php?post_type=' . $prtfl_options['post_type_name']][] = array(
 				'<span style="color:#d86463"> ' . __( 'Upgrade to Pro', 'portfolio' ) . '</span>',
 				'manage_options',
 				'https://bestwebsoft.com/products/wordpress/plugins/portfolio/?k=f047e20c92c972c398187a4f70240285&pn=74&v=' . $prtfl_plugin_info["Version"] . '&wp_v=' . $wp_version );
+		}
 
 		add_action( 'load-' . $settings, 'prtfl_add_tabs' );
 		add_action( 'load-post-new.php', 'prtfl_add_tabs' );
@@ -69,8 +70,9 @@ if ( ! function_exists( 'prtfl_init' ) ) {
 		bws_include_init( plugin_basename( __FILE__ ) );
 
 		if ( ! $prtfl_plugin_info ) {
-			if ( ! function_exists( 'get_plugin_data' ) )
+			if ( ! function_exists( 'get_plugin_data' ) ) {
 				require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			}
 			$prtfl_plugin_info = get_plugin_data( __FILE__ );
 		}
 		/* Function check if plugin is compatible with current WP version  */
@@ -118,13 +120,15 @@ if ( ! function_exists( 'prtfl_init' ) ) {
 
 if ( ! function_exists( 'prtfl_admin_init' ) ) {
 	function prtfl_admin_init() {
-		global $bws_plugin_info, $prtfl_plugin_info, $bws_shortcode_list;
+		global $bws_plugin_info, $prtfl_plugin_info, $bws_shortcode_list, $wpdb;
 
-		if ( empty( $bws_plugin_info ) )
+		if ( empty( $bws_plugin_info ) ) {
 			$bws_plugin_info = array( 'id' => '74', 'version' => $prtfl_plugin_info["Version"] );
+		}
 
 		/* add Portfolio to global $bws_shortcode_list  */
 		$bws_shortcode_list['prtfl'] = array( 'name' => 'Portfolio', 'js_function' => 'prtfl_shortcode_init' );
+
 	}
 }
 
@@ -144,7 +148,7 @@ if ( ! function_exists( 'prtfl_plugin_activate' ) ) {
 /* Register settings function */
 if ( ! function_exists( 'register_prtfl_settings' ) ) {
 	function register_prtfl_settings() {
-		global $prtfl_options, $prtfl_plugin_info;
+		global $prtfl_options, $prtfl_plugin_info, $wpdb;
 
 		/* Install the option defaults */
 		if ( ! get_option( 'prtfl_options' ) ) {
@@ -158,14 +162,16 @@ if ( ! function_exists( 'register_prtfl_settings' ) ) {
 		/* Array merge incase this version has added new options */
 		if ( ! isset( $prtfl_options['plugin_option_version'] ) || $prtfl_options['plugin_option_version'] != $prtfl_plugin_info["Version"] ) {
 
+			$wpdb->query( "UPDATE {$wpdb->prefix}posts SET post_type = 'bws-portfolio' WHERE post_type = 'portfolio'" );
+
 			$option_defaults = prtfl_get_options_default();
 
-			if ( ! isset( $prtfl_options['plugin_option_version'] ) || $prtfl_options['plugin_option_version'] < '2.29' )
+			if ( ! isset( $prtfl_options['plugin_option_version'] ) || $prtfl_options['plugin_option_version'] < '2.29' ) {
 				$option_defaults['widget_updated'] = 0;
-
+			}
 			/* Add options 'post_type_name' */
 			if ( ! isset( $prtfl_options['post_type_name'] ) ) {
-				$option_defaults['post_type_name'] = 'portfolio';
+				$option_defaults['post_type_name'] = 'bws-portfolio';
 			}
 
 			$prtfl_options = array_merge( $option_defaults, $prtfl_options );
@@ -177,10 +183,12 @@ if ( ! function_exists( 'register_prtfl_settings' ) ) {
 		}
 
 		if ( function_exists( 'add_image_size' ) ) {
-			if ( 'portfolio-thumb' == $prtfl_options['image_size_album'] )
+			if ( 'portfolio-thumb' == $prtfl_options['image_size_album'] ) {
 				add_image_size( 'portfolio-thumb', $prtfl_options['custom_size_px']['portfolio-thumb'][0], $prtfl_options['custom_size_px']['portfolio-thumb'][1], true );
-			if ( 'portfolio-photo-thumb' == $prtfl_options['image_size_photo'] )
+			}
+			if ( 'portfolio-photo-thumb' == $prtfl_options['image_size_photo'] ) {
 				add_image_size( 'portfolio-photo-thumb', $prtfl_options['custom_size_px']['portfolio-photo-thumb'][0], $prtfl_options['custom_size_px']['portfolio-photo-thumb'][1], true );
+			}
 		}
 	}
 }
@@ -232,7 +240,7 @@ if ( ! function_exists( 'prtfl_get_options_default' ) ) {
 			'post_type_name'							=>	'bws-portfolio',
 			/* other */
 			'widget_updated' 							=>	1, /* this option is for updating plugin was added in v2.29 */
-			'flush_rewrite_rules'						=> 1,
+			'flush_rewrite_rules'						=>	1,
 		);
 		return $option_defaults;
 	}
@@ -351,7 +359,7 @@ if ( ! function_exists( 'prtfl_post_type_portfolio' ) ) {
 			)
 		);
 
-		if ( isset( $prtfl_options["flush_rewrite_rules"] ) && $prtfl_options["flush_rewrite_rules"] == 1 ) {
+		if ( isset( $prtfl_options["flush_rewrite_rules"] ) && 1 == $prtfl_options["flush_rewrite_rules"]  ) {
 			flush_rewrite_rules();
 			$prtfl_options["flush_rewrite_rules"] = 0;
 			update_option( 'prtfl_options', $prtfl_options );
@@ -403,8 +411,9 @@ if ( ! function_exists( 'prtfl_request_filter' ) ) {
 	function prtfl_request_filter( $query_vars ) {
 		global $prtfl_options;
 		if ( isset( $query_vars["post_type"] ) && 'jetpack-portfolio' == $query_vars["post_type"] ) {
-			if ( ! get_posts( $query_vars ) )
+			if ( ! get_posts( $query_vars ) ) {
 				$query_vars["post_type"] = $prtfl_options['post_type_name'];
+			}
 		}
 		return $query_vars;
 	}
@@ -414,8 +423,9 @@ if ( ! function_exists( 'prtfl_technologies_get_posts' ) ) {
 	function prtfl_technologies_get_posts( $query ) {
 		global $prtfl_options;
 
-		if ( ( isset( $query->query_vars["technologies"] ) || isset( $query->query_vars["portfolio_executor_profile"] ) ) && ( ! is_admin() ) )
+		if ( ( isset( $query->query_vars["technologies"] ) || isset( $query->query_vars["portfolio_executor_profile"] ) ) && ( ! is_admin() ) ) {
 			$query->set( 'post_type', array( $prtfl_options['post_type_name'] ) );
+		}
 		return $query;
 	}
 }
@@ -514,8 +524,9 @@ if ( ! function_exists( 'prtfl_template_include' ) ) {
 	function prtfl_template_include( $template ) {
 		global $prtfl_options, $wp_query;
 
-		if ( function_exists( 'is_embed' ) && is_embed() )
+		if ( function_exists( 'is_embed' ) && is_embed() ) {
 			return $template;
+		}
 
 		$post_type = get_post_type();
 		if ( is_single() && $prtfl_options['post_type_name'] == $post_type ) {
@@ -527,14 +538,16 @@ if ( ! function_exists( 'prtfl_template_include' ) ) {
 		}
 
 		if ( isset( $file ) ) {
-			if ( ! wp_script_is( 'prtfl_front_script', 'registered' ) )
+			if ( ! wp_script_is( 'prtfl_front_script', 'registered' ) ) {
 				wp_register_script( 'prtfl_front_script', plugins_url( 'js/front_script.js', __FILE__ ), array( 'jquery' ) );
+			}
 
 			$find = array( $file, 'bws-templates/' . $file );
 			$template = locate_template( $find );
 
-			if ( ! $template )
+			if ( ! $template ) {
 				$template = untrailingslashit( plugin_dir_path( __FILE__ ) ) . '/templates/' . $file;
+			}
 		}
 
 		return $template;
@@ -570,7 +583,9 @@ if ( ! function_exists( 'prtfl_post_custom_box' ) ) {
 		if ( ! $bws_hide_premium_options_check ) { ?>
 			<div class="bws_pro_version_bloc">
 				<div class="bws_pro_version_table_bloc">
-					<div class="bws_table_bg" style="top: 0px;z-index: 1098;"></div>
+					<div class="bws_table_bg" style="top: 0px; z-index: 2;"></div>
+
+
 					<div class="portfolio_admin_box">
 						<p><label for="prtfl_client"><strong><?php _e( 'Client', 'portfolio' ); ?></strong></label></p>
 						<?php /* display visual editor */
@@ -589,7 +604,7 @@ if ( ! function_exists( 'prtfl_post_custom_box' ) ) {
 						</p>
 					</div>
 					<div class="bws_pro_version_tooltip">
-						<a class="bws_button" href="https://bestwebsoft.com/products/wordpress/plugins/portfolio/?k=f047e20c92c972c398187a4f70240285&pn=74&v=<?php echo $prtfl_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="Portfolio Pro Plugin"><?php _e( 'Learn More', 'portfolio' ); ?></a>
+						<a class="bws_button" href="https://bestwebsoft.com/products/wordpress/plugins/portfolio/?k=f047e20c92c972c398187a4f70240285&pn=74&v=<?php echo $prtfl_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="Portfolio Pro Plugin" style="z-index: 3;" ><?php _e( 'Learn More', 'portfolio' ); ?></a>
 						<div class="clear"></div>
 					</div>
 				</div>
@@ -812,10 +827,11 @@ if ( ! function_exists( 'prtfl_save_postdata' ) ) {
 			foreach ( $prtfl_boxes as $prtfl_boxe ) {
 				foreach ( $prtfl_boxe as $prtfl_fields ) {
 					if ( isset( $_POST[ $prtfl_fields['name'] ] ) ) {
-						if ( 'url' == $prtfl_fields['type'] )
+						if ( 'url' == $prtfl_fields['type'] ) {
 							$my_data[ $prtfl_fields['name'] ] = esc_url( $_POST[ $prtfl_fields['name'] ] );
-						else
+						} else {
 							$my_data[ $prtfl_fields['name'] ] = stripslashes( esc_html( $_POST[ $prtfl_fields['name'] ] ) );
+						}
 					}
 				}
 			}
@@ -860,31 +876,36 @@ if ( ! function_exists( 'prtfl_add_pdf_print_content' ) ) {
 
 		if ( $prtfl_options['post_type_name'] == $current_post_type && ! empty( $post ) ) {
 
-			if ( ! $prtfl_options )
+			if ( ! $prtfl_options ) {
 				$prtfl_options = get_option( 'prtfl_options' );
+			}
 
 			$post_meta	= get_post_meta( $post->ID, 'prtfl_information', true );
 			$user_id 	= get_current_user_id();
 
 			if ( 1 == $prtfl_options['date_additional_field'] ) {
 				$date_compl		=	isset( $post_meta['_prtfl_date_compl'] ) ? $post_meta['_prtfl_date_compl'] : '';
-				if ( ! empty( $date_compl ) )
+				if ( ! empty( $date_compl ) ) {
 					$custom_content .= '<p><span class="lable">' . $prtfl_options['date_text_field'] .' </span> ' . $date_compl . '</p>';
+				}
 			}
 
 			if ( 1 == $prtfl_options['link_additional_field'] && ! empty( $post_meta['_prtfl_link'] ) ) {
 
 				if ( false !== parse_url( $post_meta['_prtfl_link'] ) ) {
-					if ( ( 0 == $user_id && 0 == $prtfl_options['link_additional_field_for_non_registered'] ) || 0 != $user_id )
+					if ( ( 0 == $user_id && 0 == $prtfl_options['link_additional_field_for_non_registered'] ) || 0 != $user_id ) {
 						$custom_content .= '<p><span class="lable">' . $prtfl_options['link_text_field'] . '</span> <a href="' . $post_meta['_prtfl_link'] . '">' . $post_meta['_prtfl_link'] . '</a></p>';
-					else
+					} else {
 						$custom_content .= '<p><span class="lable">' . $prtfl_options['link_text_field'] . '</span> ' . $post_meta['_prtfl_link'] . '</p>';
-				} else
+					}
+				} else {
 					$custom_content .= '<p><span class="lable">' . $prtfl_options['link_text_field'] . '</span> ' . $post_meta['_prtfl_link'] . '</p>';
+				}
 			}
 			if ( 0 != $user_id ) {
-				if ( 1 == $prtfl_options['svn_additional_field'] && ! empty( $post_meta['_prtfl_svn'] ) )
+				if ( 1 == $prtfl_options['svn_additional_field'] && ! empty( $post_meta['_prtfl_svn'] ) ) {
 					$custom_content .= '<p><span class="lable">' . $prtfl_options['svn_text_field'] . '</span> ' . $post_meta['_prtfl_svn'] . '</p>';
+				}
 
 				if ( 1 == $prtfl_options['executor_additional_field'] ) {
 					$executors_profile = wp_get_object_terms( $post->ID, 'portfolio_executor_profile' );
@@ -892,8 +913,9 @@ if ( ! function_exists( 'prtfl_add_pdf_print_content' ) ) {
 						$custom_content .= '<p><span class="lable">' . $prtfl_options['executor_text_field'] . '</span>';
 						$count = 0;
 						foreach ( $executors_profile as $profile ) {
-							if ( $count > 0 )
+							if ( $count > 0 ) {
 								$custom_content .= ', ';
+							}
 							$custom_content .= '<a href="' . get_term_link( $profile->slug, 'portfolio_executor_profile' ) . '" title="' . $profile->name . ' profile" target="_blank">' . $profile->name . '</a>';
 							$count++;
 						}
@@ -905,8 +927,9 @@ if ( ! function_exists( 'prtfl_add_pdf_print_content' ) ) {
 		} elseif ( 'portfolio.php' == basename( get_page_template() ) ) {
 			global $wp_query, $request, $prtfl_options, $pdfprnt_options_array, $pdfprntpr_options;
 
-			if ( ! $prtfl_options )
+			if ( ! $prtfl_options ) {
 				$prtfl_options = get_option( 'prtfl_options' );
+			}
 
 			$count = 0;
 			if ( get_query_var( 'paged' ) ) {
@@ -935,7 +958,7 @@ if ( ! function_exists( 'prtfl_add_pdf_print_content' ) ) {
 						)
 					)
 				);
-			} else if ( "" != $executor_profile ) {
+			} elseif ( "" != $executor_profile ) {
 				$args = array(
 					'post_type' 		=> $prtfl_options['post_type_name'],
 					'post_status' 		=> 'publish',
@@ -975,13 +998,13 @@ if ( ! function_exists( 'prtfl_add_pdf_print_content' ) ) {
 					$user_id = get_current_user_id();
 
 					$short_descr = isset( $post_meta['_prtfl_short_descr'] ) ? $post_meta['_prtfl_short_descr'] : '';
-					if ( empty( $short_descr ) )
+					if ( empty( $short_descr ) ) {
 						$short_descr = get_the_excerpt();
-
+					}
 					$title = get_the_title();
-					if ( empty( $title ) )
+					if ( empty( $title ) ) {
 						$title = '(' . __( 'No title', 'portfolio' ) . ')';
-
+					}
 					$post_thumbnail_id	=	get_post_thumbnail_id( $post->ID );
 					if ( empty( $post_thumbnail_id ) ) {
 						$args = array(
@@ -1020,16 +1043,18 @@ if ( ! function_exists( 'prtfl_add_pdf_print_content' ) ) {
 								</div>';
 					if ( 1 == $prtfl_options['date_additional_field'] ) {
 						$date_compl	= isset( $post_meta['_prtfl_date_compl'] ) ? $post_meta['_prtfl_date_compl'] : '';
-						if ( ! empty( $date_compl ) )
+						if ( ! empty( $date_compl ) ) {
 							$custom_content .= '<p><span class="lable">' . $prtfl_options['date_text_field'] . '</span> ' . $date_compl . '</p>';
+						}
 					}
 
 					if ( 1 == $prtfl_options['link_additional_field'] && ! empty( $post_meta['_prtfl_link'] ) ) {
 						if ( false !== parse_url( $post_meta['_prtfl_link'] ) ) {
-							if ( ( 0 == $user_id && 0 == $prtfl_options['link_additional_field_for_non_registered'] ) || 0 != $user_id )
+							if ( ( 0 == $user_id && 0 == $prtfl_options['link_additional_field_for_non_registered'] ) || 0 != $user_id ) {
 								$custom_content .= '<p><span class="lable">' . $prtfl_options['link_text_field'] . '</span> <a href="' . $post_meta['_prtfl_link'] . '">' . $post_meta['_prtfl_link'] . '</a></p>';
-							else
+							} else {
 								$custom_content .= '<p><span class="lable">' . $prtfl_options['link_text_field'] . '</span> ' . $post_meta['_prtfl_link'] . '</p>';
+							}
 						} else {
 							$custom_content .= '<p><span class="lable">' . $prtfl_options['link_text_field'] . '</span> ' . $post_meta['_prtfl_link'] . '</p>';
 						}
@@ -1046,7 +1071,7 @@ if ( ! function_exists( 'prtfl_add_pdf_print_content' ) ) {
 		return $content . $custom_content;
 	}
 }
-
+/* adding class to manu items  */
 if ( ! function_exists( 'prtfl_add_portfolio_ancestor_to_menu' ) ) {
 	function prtfl_add_portfolio_ancestor_to_menu( $classes, $item ) {
 		global $prtfl_options;
@@ -1054,21 +1079,24 @@ if ( ! function_exists( 'prtfl_add_portfolio_ancestor_to_menu' ) ) {
 			global $wpdb, $post;
 			$parent = $wpdb->get_var( "SELECT $wpdb->posts.post_name FROM $wpdb->posts, $wpdb->postmeta WHERE meta_key = '_wp_page_template' AND meta_value = 'portfolio.php' AND (post_status = 'publish' OR post_status = 'private') AND $wpdb->posts.ID = $wpdb->postmeta.post_id" );
 
-			if ( in_array( 'menu-item-' . $item->ID, $classes ) && $parent == strtolower( $item->title ) )
+			if ( in_array( 'menu-item-' . $item->ID, $classes ) && $parent == strtolower( $item->title ) ) {
 				$classes[] = 'current-page-ancestor';
+			}
 		}
 		return $classes;
 	}
 }
 
+/* forming content for portfolio items */
 if ( ! function_exists( 'prtfl_latest_items' ) ) {
 	function prtfl_latest_items( $atts ) {
 		global $prtfl_options, $wp_query;
 		$old_wp_query = $wp_query;
 
 		$content	=	'<div class="prtfl_portfolio_block">';
-		if ( empty( $atts['count'] ) )
+		if ( empty( $atts['count'] ) ) {
 			$atts['count'] = 3;
+		}
 		$args		=	array(
 			'post_type'			=> $prtfl_options['post_type_name'],
 			'post_status'		=> 'publish',
@@ -1076,9 +1104,12 @@ if ( ! function_exists( 'prtfl_latest_items' ) ) {
 			'order'				=> 'DESC',
 			'posts_per_page'	=> $atts['count'],
 			);
-		query_posts( $args );
+			$second_query = new WP_Query( $args );
+			$request = $second_query->request;
 
-		while ( have_posts() ) : the_post();
+			if ( $second_query->have_posts() ) {
+				while ( $second_query->have_posts() ) {
+					$second_query->the_post();
 			$content .= '
 			<div class="portfolio_content">
 				<div class="entry">';
@@ -1104,11 +1135,13 @@ if ( ! function_exists( 'prtfl_latest_items' ) ) {
 					$date_compl = isset( $post_meta['_prtfl_date_compl'] ) ? $post_meta['_prtfl_date_compl'] : '';
 					$link = isset( $post_meta['_prtfl_link'] ) ? $post_meta['_prtfl_link'] : '';
 					$short_descr = isset( $post_meta['_prtfl_short_descr'] ) ? $post_meta['_prtfl_short_descr'] : '';
-					if ( empty( $short_descr ) )
+					if ( empty( $short_descr ) ) {
 						$short_descr = get_the_excerpt();
+					}
 					$title = get_the_title();
-					if ( empty( $title ) )
+					if ( empty( $title ) ) {
 						$title = '(' . __( 'No title', 'portfolio' ) . ')';
+					}
 					$permalink = get_permalink();
 
 					$content .= '<div class="portfolio_thumb" style="width:165px">
@@ -1135,8 +1168,9 @@ if ( ! function_exists( 'prtfl_latest_items' ) ) {
 						$content .= __( 'Technologies', 'portfolio' ) . ':';
 						$count = 0;
 						foreach ( $terms as $term ) {
-							if ( $count > 0 )
+							if ( $count > 0 ) {
 								$content .= ', ';
+							}
 							$content .= '<a href="' . get_term_link( $term->slug, 'portfolio_technologies' ) . '" title="' . sprintf( __( "View all projects in %s" ), $term->name ) . '" ' . '>' . $term->name . '</a>';
 							$count++;
 						}
@@ -1146,7 +1180,8 @@ if ( ! function_exists( 'prtfl_latest_items' ) ) {
 				}
 				$content .= '</div><!-- .portfolio_terms -->';
 			$content .= '<div class="prtfl_clear"></div></div> <!-- .portfolio_content -->';
-		endwhile;
+			}
+		}
 		$content .= '</div> <!-- .prtfl_portfolio_block -->';
 		wp_reset_query();
 		$wp_query = $old_wp_query;
@@ -1181,6 +1216,7 @@ if ( ! function_exists( 'prtfl_admin_head' ) ) {
 	}
 }
 
+/* enqueue fancybox script and style css */
 if ( ! function_exists( 'prtfl_wp_enqueue_scripts' ) ) {
 	function prtfl_wp_enqueue_scripts() {
 		wp_enqueue_style( 'prtfl_stylesheet', plugins_url( 'css/style.css', __FILE__ ) );
@@ -1188,6 +1224,7 @@ if ( ! function_exists( 'prtfl_wp_enqueue_scripts' ) ) {
 	}
 }
 
+/* styles for IE */
 if ( ! function_exists( 'prtfl_wp_head' ) ) {
 	function prtfl_wp_head() {
 		global $prtfl_options;
@@ -1208,11 +1245,14 @@ if ( ! function_exists( 'prtfl_wp_head' ) ) {
 	}
 }
 
+/* initializing script of fancybox */
 if ( ! function_exists( 'prtfl_wp_footer' ) ) {
 	function prtfl_wp_footer() {
-		global $prtfl_options, $post;
-
-		$post_thumbnail_id = get_post_thumbnail_id( $post->ID );
+		global $prtfl_options, $post, $wp_query;
+		$post_thumbnail_id = '';
+		if ( ! empty(  $wp_query->post->ID ) ) {
+			$post_thumbnail_id = get_post_thumbnail_id( $wp_query->post->ID );
+		}
 		$image = wp_get_attachment_image_src( $post_thumbnail_id, $prtfl_options['image_size_album'] );
 
 		if ( wp_script_is( 'prtfl_front_script', 'registered' ) ) {
@@ -1324,31 +1364,36 @@ if ( ! function_exists( 'prtfl_wp_generate_attachment_metadata' ) ) {
 
 			foreach ( $image_size as $s ) {
 				$sizes[ $s ] = array( 'width' => '', 'height' => '', 'crop' => FALSE );
-				if ( isset( $_wp_additional_image_sizes[ $s ]['width'] ) )
+				if ( isset( $_wp_additional_image_sizes[ $s ]['width'] ) ) {
 					$sizes[ $s]['width'] = intval( $_wp_additional_image_sizes[ $s ]['width'] ); /* For theme-added sizes */
-				else
+				} else {
 					$sizes[ $s ]['width'] = get_option( "{$s}_size_w" ); /* For default sizes set in options */
-				if ( isset( $_wp_additional_image_sizes[ $s ]['height'] ) )
+				}
+				if ( isset( $_wp_additional_image_sizes[ $s ]['height'] ) ) {
 					$sizes[ $s ]['height'] = intval( $_wp_additional_image_sizes[ $s ]['height'] ); /* For theme-added sizes */
-				else
+				} else {
 					$sizes[ $s ]['height'] = get_option( "{$s}_size_h" ); /* For default sizes set in options */
-				if ( isset( $_wp_additional_image_sizes[ $s ]['crop'] ) )
+				}
+				if ( isset( $_wp_additional_image_sizes[ $s ]['crop'] ) ) {
 					$sizes[ $s ]['crop'] = intval( $_wp_additional_image_sizes[ $s ]['crop'] ); /* For theme-added sizes */
-				else
+				} else {
 					$sizes[ $s ]['crop'] = get_option( "{$s}_crop" ); /* For default sizes set in options */
+				}
 			}
 
 			$sizes = apply_filters( 'intermediate_image_sizes_advanced', $sizes );
 			foreach ( $sizes as $size => $size_data ) {
 				$resized = prtfl_image_make_intermediate_size( $file, $size_data['width'], $size_data['height'], $size_data['crop'] );
-				if ( $resized )
+				if ( $resized ) {
 					$metadata['sizes'][ $size ] = $resized;
+				}
 			}
 
 			/* Fetch additional metadata from exif/iptc */
 			$image_meta = wp_read_image_metadata( $file );
-			if ( $image_meta )
+			if ( $image_meta ) {
 				$metadata['image_meta'] = $image_meta;
+			}
 		}
 		return apply_filters( 'wp_generate_attachment_metadata', $metadata, $attachment_id );
 	}
@@ -1374,65 +1419,72 @@ if ( ! function_exists( 'prtfl_image_make_intermediate_size' ) ) {
 if ( ! function_exists( 'prtfl_image_resize' ) ) {
 	function prtfl_image_resize( $file, $max_w, $max_h, $crop = false, $suffix = null, $dest_path = null, $jpeg_quality = 90 ) {
 		$size = @getimagesize( $file );
-		if ( !$size )
+		if ( ! $size ) {
 			return new WP_Error( 'invalid_image', __( 'Image size not defined', 'portfolio' ), $file );
+		}
 		$type = $size[2];
 
-		if ( 3 == $type )
+		if ( 3 == $type ) {
 			$image = imagecreatefrompng( $file );
-		else if ( 2 == $type )
+		} elseif ( 2 == $type ) {
 			$image = imagecreatefromjpeg( $file );
-		else if ( 1 == $type )
+		} elseif ( 1 == $type ) {
 			$image = imagecreatefromgif( $file );
-		else if ( 15 == $type )
+		} elseif ( 15 == $type ) {
 			$image = imagecreatefromwbmp( $file );
-		else if ( 16 == $type )
+		} elseif ( 16 == $type ) {
 			$image = imagecreatefromxbm( $file );
-		else
+		} else {
 			return new WP_Error( 'invalid_image', __( 'We can update only PNG, JPEG, GIF, WPMP or XBM filetype. For other image formats, please manually reload image.', 'portfolio' ), $file );
-
-		if ( ! is_resource( $image ) )
+		}
+		if ( ! is_resource( $image ) ) {
 			return new WP_Error( 'error_loading_image', $image, $file );
-
+		}
 		/* $size = @getimagesize( $file ); */
 		list( $orig_w, $orig_h, $orig_type ) = $size;
 		$dims = prtfl_image_resize_dimensions( $orig_w, $orig_h, $max_w, $max_h, $crop );
 
-		if ( ! $dims )
+		if ( ! $dims ) {
 			return new WP_Error( 'error_getting_dimensions', __( 'Image size changes not defined', 'portfolio' ) );
+		}
 		list( $dst_x, $dst_y, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h ) = $dims;
 		$newimage = wp_imagecreatetruecolor( $dst_w, $dst_h );
 		imagecopyresampled( $newimage, $image, $dst_x, $dst_y, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h );
 		/* Convert from full colors to index colors, like original PNG. */
-		if ( IMAGETYPE_PNG == $orig_type && function_exists( 'imageistruecolor' ) && ! imageistruecolor( $image ) )
+		if ( IMAGETYPE_PNG == $orig_type && function_exists( 'imageistruecolor' ) && ! imageistruecolor( $image ) ) {
 			imagetruecolortopalette( $newimage, false, imagecolorstotal( $image ) );
+		}
 		/* We don't need the original in memory anymore */
 		imagedestroy( $image );
 
 		/* $suffix will be appended to the destination filename, just before the extension */
-		if ( ! $suffix )
+		if ( ! $suffix ) {
 			$suffix = "{$dst_w}x{$dst_h}";
-
+		}
 		$info = pathinfo( $file );
 		$dir = $info['dirname'];
 		$ext = $info['extension'];
 		$name = wp_basename( $file, ".$ext" );
 
-		if ( ! is_null( $dest_path ) and $_dest_path = realpath( $dest_path ) )
+		if ( ! is_null( $dest_path ) and $_dest_path = realpath( $dest_path ) ) {
 			$dir = $_dest_path;
+		}
 		$destfilename = "{$dir}/{$name}-{$suffix}.{$ext}";
 
 		if ( IMAGETYPE_GIF == $orig_type ) {
-			if ( ! imagegif( $newimage, $destfilename ) )
+			if ( ! imagegif( $newimage, $destfilename ) ) {
 				return new WP_Error( 'resize_path_invalid', __( 'Invalid path', 'portfolio' ) );
+			}
 		} elseif ( IMAGETYPE_PNG == $orig_type ) {
-			if ( ! imagepng( $newimage, $destfilename ) )
+			if ( ! imagepng( $newimage, $destfilename ) ) {
 				return new WP_Error( 'resize_path_invalid', __( 'Invalid path', 'portfolio' ) );
+			}
 		} else {
 			/* All other formats are converted to jpg */
 			$destfilename = "{$dir}/{$name}-{$suffix}.jpg";
-			if ( ! imagejpeg( $newimage, $destfilename, apply_filters( 'jpeg_quality', $jpeg_quality, 'image_resize' ) ) )
+			if ( ! imagejpeg( $newimage, $destfilename, apply_filters( 'jpeg_quality', $jpeg_quality, 'image_resize' ) ) ) {
 				return new WP_Error( 'resize_path_invalid', __( 'Invalid path', 'portfolio' ) );
+			}
 		}
 
 		imagedestroy( $newimage );
@@ -1447,11 +1499,13 @@ if ( ! function_exists( 'prtfl_image_resize' ) ) {
 if ( ! function_exists( 'prtfl_image_resize_dimensions' ) ) {
 	function prtfl_image_resize_dimensions( $orig_w, $orig_h, $dest_w, $dest_h, $crop = false ) {
 
-		if ( 0 >= $orig_w || 0 >= $orig_h )
+		if ( 0 >= $orig_w || 0 >= $orig_h ) {
 			return false;
+		}
 		/* At least one of dest_w or dest_h must be specific */
-		if ( 0 >= $dest_w && 0 >= $dest_h )
+		if ( 0 >= $dest_w && 0 >= $dest_h ) {
 			return false;
+		}
 
 		if ( $crop ) {
 			/* Crop the largest possible portion of the original image that we can size to $dest_w x $dest_h */
@@ -1482,8 +1536,9 @@ if ( ! function_exists( 'prtfl_image_resize_dimensions' ) ) {
 		}
 
 		/* If the resulting image would be the same size or larger we don't want to resize it */
-		if ( $new_w >= $orig_w && $new_h >= $orig_h )
+		if ( $new_w >= $orig_w && $new_h >= $orig_h ) {
 			return false;
+		}
 		/* The return array matches the parameters to imagecopyresampled() */
 		/* Int dst_x, int dst_y, int src_x, int src_y, int dst_w, int dst_h, int src_w, int src_h */
 		return array( 0, 0, ( int ) $s_x, ( int ) $s_y, ( int ) $new_w, ( int ) $new_h, ( int ) $crop_w, ( int ) $crop_h );
@@ -1510,8 +1565,9 @@ if ( ! function_exists( 'prtfl_register_plugin_links' ) ) {
 		global $prtfl_options;
 		$base = plugin_basename( __FILE__ );
 		if ( $file == $base ) {
-			if ( ! is_network_admin() )
+			if ( ! is_network_admin() ) {
 				$links[]	=	'<a href="edit.php?post_type=' . $prtfl_options['post_type_name'] . '&page=portfolio.php">' . __( 'Settings', 'portfolio' ) . '</a>';
+			}
 			$links[]	=	'<a href="https://support.bestwebsoft.com/hc/en-us/sections/200538929" target="_blank">' . __( 'FAQ', 'portfolio' ) . '</a>';
 			$links[]	=	'<a href="https://support.bestwebsoft.com">' . __( 'Support', 'portfolio' ) . '</a>';
 		}
@@ -1543,22 +1599,23 @@ if ( ! function_exists( 'prtfl_admin_notices' ) ) {
 		if ( 'plugins.php' == $hook_suffix || ( isset( $_GET['page'] ) && 'portfolio.php' == $_GET['page'] ) ) {
 
 			/* Get options from the database */
-			if ( ! $prtfl_options )
+			if ( ! $prtfl_options ) {
 				$prtfl_options = get_option( 'prtfl_options' );
+			}
 
-			if ( ! $prtfl_BWS_demo_data )
+			if ( ! $prtfl_BWS_demo_data ) {
 				prtfl_include_demo_data();
-
+			}
 			$prtfl_BWS_demo_data->bws_handle_demo_notice( $prtfl_options['display_demo_notice'] );
 
 			if ( 'plugins.php' == $hook_suffix ) {
-				if ( isset( $prtfl_options['first_install'] ) && strtotime( '-1 week' ) > $prtfl_options['first_install'] )
+				if ( isset( $prtfl_options['first_install'] ) && strtotime( '-1 week' ) > $prtfl_options['first_install'] ) {
 					bws_plugin_banner( $prtfl_plugin_info, 'prtfl', 'portfolio', '56e6c97d1bca3199fb16cb817793a8f6', '74', '//ps.w.org/portfolio/assets/icon-128x128.png' );
-
-				if ( ! is_network_admin() )
+				}
+				if ( ! is_network_admin() ) {
 					bws_plugin_banner_to_settings( $prtfl_plugin_info, 'prtfl_options', 'portfolio', 'edit.php?post_type=portfolio&page=portfolio.php', 'Portfolio' );
-
-				if ( $prtfl_options['widget_updated'] == 0 ) {
+				}
+				if ( 0 == $prtfl_options['widget_updated'] ) {
 					/* Save data for settings page */
 					if ( isset( $_REQUEST['prtfl_form_submit'] ) && check_admin_referer( plugin_basename( __FILE__ ), 'prtfl_nonce_name' ) ) {
 						$prtfl_options['widget_updated'] = 1;
@@ -1650,7 +1707,7 @@ if ( ! function_exists( 'prtfl_get_query_args' ) ) {
 					)
 				)
 			);
-		} else if ( ! empty( $wp_query->query_vars["portfolio_executor_profile"] ) ) {
+		} elseif ( ! empty( $wp_query->query_vars["portfolio_executor_profile"] ) ) {
 			$args = array(
 				'post_type' 		=> $prtfl_options['post_type_name'],
 				'post_status' 		=> 'publish',
@@ -1699,20 +1756,36 @@ if ( ! function_exists( 'prtfl_get_content' ) ) {
 			$page_content = $post->post_content;
 			if ( function_exists( 'mltlngg_the_content_filter' ) ) $page_content = mltlngg_the_content_filter( $page_content );
 			/* dublicate filter 'the_content' - as we couldnt use it */
-			if ( function_exists( 'wptexturize' ) ) $page_content = wptexturize( $page_content );
-			if ( function_exists( 'convert_smilies' ) ) $page_content = convert_smilies( $page_content );
-			if ( function_exists( 'wpautop' ) ) $page_content = wpautop( $page_content );
-			if ( function_exists( 'shortcode_unautop' ) ) $page_content = shortcode_unautop( $page_content );
-			if ( function_exists( 'prepend_attachment' ) ) $page_content = prepend_attachment( $page_content );
-			if ( function_exists( 'wp_make_content_images_responsive' ) ) $page_content = wp_make_content_images_responsive( $page_content );
-			if ( function_exists( 'do_shortcode' ) ) $page_content = do_shortcode( $page_content ); ?>
+			if ( function_exists( 'wptexturize' ) ) {
+				$page_content = wptexturize( $page_content );
+			}
+			if ( function_exists( 'convert_smilies' ) ) {
+				$page_content = convert_smilies( $page_content );
+			}
+			if ( function_exists( 'wpautop' ) ) {
+				$page_content = wpautop( $page_content );
+			}
+			if ( function_exists( 'shortcode_unautop' ) ) {
+				$page_content = shortcode_unautop( $page_content );
+			}
+			if ( function_exists( 'prepend_attachment' ) ) {
+				$page_content = prepend_attachment( $page_content );
+			}
+			if ( function_exists( 'wp_make_content_images_responsive' ) ) {
+				$page_content = wp_make_content_images_responsive( $page_content );
+			}
+			if ( function_exists( 'do_shortcode' ) ) {
+				$page_content = do_shortcode( $page_content ); 
+			} ?>
 			<div class="portfolio_content entry-content">
 				<div class="entry"><?php echo $page_content; ?></div>
 			</div>
 		<?php }
 
-		if ( $second_query->have_posts() ) :
-			while ( $second_query->have_posts() ) : $second_query->the_post(); ?>
+
+		if ( $second_query->have_posts() ) {
+			while ( $second_query->have_posts() ) {
+				$second_query->the_post(); ?>
 				<div class="portfolio_content <?php if ( 'twentyfourteen' == get_stylesheet() || 'twentythirteen' == get_stylesheet() || 'twentytwelve' == get_stylesheet() ) echo 'entry-content'; ?>">
 					<div class="entry">
 						<?php $post_thumbnail_id = get_post_thumbnail_id( $post->ID );
@@ -1720,12 +1793,13 @@ if ( ! function_exists( 'prtfl_get_content' ) ) {
 						$post_meta		= get_post_meta( $post->ID, 'prtfl_information', true );
 
 						$short_descr = isset( $post_meta['_prtfl_short_descr'] ) ? $post_meta['_prtfl_short_descr'] : '';
-						if ( empty( $short_descr ) )
+						if ( empty( $short_descr ) ) {
 							$short_descr = get_the_excerpt();
+						}
 						$title = get_the_title();
-						if ( empty( $title ) )
+						if ( empty( $title ) ) {
 							$title = '(' . __( 'No title', 'portfolio' ) . ')';
-
+						}
 						$permalink = get_permalink();
 						if ( ! empty( $image[0] ) ) {
 							/* get width and height for image_size_album */
@@ -1786,7 +1860,7 @@ if ( ! function_exists( 'prtfl_get_content' ) ) {
 									<?php if ( isset( $prtfl_options['technologies_text_field'] ) ) echo '<b>' . $prtfl_options['technologies_text_field'] . '&nbsp;</b>';
 									$links = array();
 									foreach ( $terms as $term ) {
-										$links[] = '<a href="' . get_term_link( $term->slug, 'portfolio_technologies') . '" title="' . sprintf( __( "View all projects in %s" ), $term->name ) . '" ' . '>' . $term->name . '</a>';
+										$links[] = '<a href="' . get_term_link( $term->slug, 'portfolio_technologies' ) . '" title="' . sprintf( __( "View all projects in %s" ), $term->name ) . '" ' . '>' . $term->name . '</a>';
 									}
 									echo implode( ', ', $links ); ?>
 								</div><!-- .portfolio_terms -->
@@ -1794,8 +1868,8 @@ if ( ! function_exists( 'prtfl_get_content' ) ) {
 						} ?>
 					</div><!-- .entry_footer -->
 				</div><!-- .portfolio_content -->
-			<?php endwhile;
-		endif;
+					<?php }
+		}
 	}
 }
 
@@ -1807,7 +1881,12 @@ if ( ! function_exists( 'prtfl_post_get_content' ) ) {
 	function prtfl_post_get_content() {
 		global $post, $prtfl_options;
 
-		while ( have_posts() ) : the_post(); ?>
+		$second_query = new WP_Query( $args );
+		$request = $second_query->request;
+	if ( $second_query->have_post() ) {
+		while ( $second_query->have_posts() ) {
+			$second_query->the_post();
+			?>
 			<article class="portfolio_content entry-content">
 				<div class="entry">
 					<?php global $post;
@@ -1831,7 +1910,7 @@ if ( ! function_exists( 'prtfl_post_get_content' ) ) {
 						$image_alt = get_post_meta( $post_thumbnail_id, '_wp_attachment_image_alt', true ); ?>
 						<div class="portfolio_thumb">
 							<a class="lightbox" data-fancybox="portfolio_fancybox" href="<?php echo $image_large[0]; ?>" title="<?php echo $image_desc; ?>">
-								<img src="<?php echo $image[0]; ?>" alt="<?php echo $image_alt; ?>" <?php if ( $width ) echo 'width="' . $width . '"'; if ( $height ) echo 'height="' . $height . '"'; ?> style="<?php if ( $width ) echo 'width:' . $width . 'px;'; if ( $height ) echo 'height:' . $height . 'px;'; ?>" />
+								<img src="<?php echo $image[0]; ?>" alt="<?php echo $image_alt; ?>" <?php if ( $width ) echo 'width="' . $width . '"'; if ( $height ) echo 'height="' . $height . '"'; ?> />
 							</a>
 						</div><!-- .portfolio_thumb -->
 					<?php } ?>
@@ -1862,15 +1941,31 @@ if ( ! function_exists( 'prtfl_post_get_content' ) ) {
 							if ( empty( $full_descr ) ){
 								$full_descr = isset( $post_meta['_prtfl_short_descr'] ) ? $post_meta['_prtfl_short_descr'] : '';
 							} else {
-								if ( function_exists( 'mltlngg_the_content_filter' ) ) $full_descr = mltlngg_the_content_filter( $full_descr );
+								if ( function_exists( 'mltlngg_the_content_filter' ) ) {
+									$full_descr = mltlngg_the_content_filter( $full_descr );
+								}
 								/* dublicate filter 'the_content' - as we couldnt use it */
-								if ( function_exists( 'wptexturize' ) ) $full_descr = wptexturize( $full_descr );
-								if ( function_exists( 'convert_smilies' ) ) $full_descr = convert_smilies( $full_descr );
-								if ( function_exists( 'wpautop' ) ) $full_descr = wpautop( $full_descr );
-								if ( function_exists( 'shortcode_unautop' ) ) $full_descr = shortcode_unautop( $full_descr );
-								if ( function_exists( 'prepend_attachment' ) ) $full_descr = prepend_attachment( $full_descr );
-								if ( function_exists( 'wp_make_content_images_responsive' ) ) $full_descr = wp_make_content_images_responsive( $full_descr );
-								if ( function_exists( 'do_shortcode' ) ) $full_descr = do_shortcode( $full_descr );
+								if ( function_exists( 'wptexturize' ) ) {
+									$full_descr = wptexturize( $full_descr );
+								}
+								if ( function_exists( 'convert_smilies' ) ) {
+									$full_descr = convert_smilies( $full_descr );
+								}
+								if ( function_exists( 'wpautop' ) ) {
+									$full_descr = wpautop( $full_descr );
+								}
+								if ( function_exists( 'shortcode_unautop' ) ) {
+									$full_descr = shortcode_unautop( $full_descr );
+								}
+								if ( function_exists( 'prepend_attachment' ) ) {
+									$full_descr = prepend_attachment( $full_descr );
+								}
+								if ( function_exists( 'wp_make_content_images_responsive' ) ) {
+									$full_descr = wp_make_content_images_responsive( $full_descr );
+								}
+								if ( function_exists( 'do_shortcode' ) ) {
+									$full_descr = do_shortcode( $full_descr );
+								}
 							}
 							if ( ! empty( $full_descr ) ) { ?>
 								<div style = "clear: both;"><span class="lable"><?php echo '<b>' . $prtfl_options['description_text_field'] . '</b>'; ?></span> <?php echo $full_descr; ?></div>
@@ -1887,8 +1982,9 @@ if ( ! function_exists( 'prtfl_post_get_content' ) ) {
 								<p><span class="lable"><?php echo '<b>' . $portfolio_options['executor_text_field'] . '</b>'; ?></span>
 								<?php $count = 0;
 								foreach ( $executors_profile as $profile ) {
-									if ( $count > 0 )
-										echo ', '; ?>
+									if ( $count > 0 ) {
+										echo ', ';
+									} ?>
 									<a href="<?php echo get_term_link( $profile->slug, 'portfolio_executor_profile' ); ?>" title="<?php echo $profile->name; ?> profile" target="_blank"><?php echo $profile->name; ?></a>
 									<?php $count++;
 								} ?>
@@ -1940,7 +2036,7 @@ if ( ! function_exists( 'prtfl_post_get_content' ) ) {
 								<a class="lightbox" data-fancybox="portfolio_fancybox" href="<?php echo $image_large[0]; ?>" title="<?php echo $image_desc; ?>">
 									<img src="<?php echo $image[0]; ?>" alt="<?php echo $image_alt; ?>" <?php if ( $width ) echo 'width="' . $width . '"'; if ( $height ) echo 'height="' . $height . '"'; ?> style="<?php if ( $width ) echo 'width:' . $width . 'px;'; if ( $height ) echo 'height:' . $height . 'px;'; ?>" />
 								</a>
-								<br /><?php echo $image_title; ?>
+								<br /><?php echo $image_title;?>
 							</div>
 							<?php if ( 0 == ( $key + 1 ) % $portfolio_options['custom_image_row_count'] && 0 != $key && $key + 1 != $count_element ) { ?>
 								</div><!-- .portfolio_images_rows -->
@@ -1968,7 +2064,8 @@ if ( ! function_exists( 'prtfl_post_get_content' ) ) {
 					} ?>
 				</div><!-- .entry_footer .entry-footer -->
 			</article><!-- .portfolio_content -->
-		<?php endwhile;
+				<?php }
+		}
 	}
 }
 
@@ -1983,32 +2080,35 @@ if ( ! function_exists( 'prtfl_pro_pagination' ) ) {
 		$per_page 	= $args['posts_per_page'];
 		$pages 		= intval( $count_all_albums / $per_page );
 
-		if ( $count_all_albums % $per_page > 0 )
+		if ( $count_all_albums % $per_page > 0 ) {
 			$pages += 1;
-
+		}
 		$range = 2;
 
-		if ( ! $pages )
+		if ( ! $pages ) {
 			$pages = 1;
-
+		}
 		if ( 1 != $pages ) { ?>
 			<div class='clear'></div>
 			<div id="portfolio_pagenation">
 				<div class='pagination'>
-					<?php if ( 2 < $paged && $paged > $range + 1 && $showitems < $pages )
+					<?php if ( 2 < $paged && $paged > $range + 1 && $showitems < $pages ) {
 						echo "<a href='" . get_pagenum_link( 1 ) . "'>&laquo;</a>";
-					if ( 1 < $paged && $showitems < $pages )
+					}
+					if ( 1 < $paged && $showitems < $pages ) {
 						echo "<a href='" . get_pagenum_link( $paged - 1 ) . "'>&lsaquo;</a>";
-
+					}
 					for ( $i = 1; $i <= $pages; $i++ ) {
 						if ( 1 != $pages && ( ! ( $i >= $paged + $range + 1 || $i <= $paged - $range - 1 ) || $pages <= $showitems ) ) {
 							echo ( $paged == $i ) ? "<span class='current'>" . $i . "</span>":"<a href='" . get_pagenum_link( $i ) . "' class='inactive' >" . $i . "</a>";
 						}
 					}
-					if ( $paged < $pages && $showitems < $pages )
+					if ( $paged < $pages && $showitems < $pages ) {
 						echo "<a href='" . get_pagenum_link( $paged + 1 ) . "'>&rsaquo;</a>";
-					if ( $paged < $pages - 1 && $paged + $range - 1 < $pages && $showitems < $pages )
-						echo "<a href='" . get_pagenum_link( $pages ) . "'>&raquo;</a>"; ?>
+					}
+					if ( $paged < $pages - 1 && $paged + $range - 1 < $pages && $showitems < $pages ) {
+						echo "<a href='" . get_pagenum_link( $pages ) . "'>&raquo;</a>";
+					} ?>
 					<div class='clear'></div>
 				</div><!-- .pagination -->
 				<?php if ( function_exists( 'pgntn_display_pagination' ) ) pgntn_display_pagination( 'custom', $second_query ); ?>
@@ -2032,13 +2132,13 @@ if ( ! function_exists( 'prtfl_shortcode_button_content' ) ) {
 			<input class="bws_default_shortcode" type="hidden" name="default" value="[latest_portfolio_items count=3]" />
 			<script type="text/javascript">
 				function prtfl_shortcode_init() {
-					(function($) {
+					( function( $ ) {
 						$( '.mce-reset #prtfl_display_count' ).on( 'change', function() {
 							var count = $( '.mce-reset #prtfl_display_count' ).val();
 							var shortcode = '[latest_portfolio_items count=' + count + ']';
 							$( '.mce-reset #bws_shortcode_display' ).text( shortcode );
-						});
-					})(jQuery);
+						} );
+					} )( jQuery );
 				}
 			</script>
 			<div class="clear"></div>
@@ -2081,8 +2181,9 @@ if ( ! function_exists( 'prtfl_plugin_deactivation' ) ) {
 		} else {
 			global $prtfl_BWS_demo_data;
 
-			if ( ! $prtfl_BWS_demo_data )
+			if ( ! $prtfl_BWS_demo_data ) {
 				prtfl_include_demo_data();
+			}
 			$prtfl_BWS_demo_data->bws_remove_demo_data();
 		}
 	}
@@ -2105,6 +2206,9 @@ if ( ! function_exists( 'prtfl_plugin_uninstall' ) ) {
 					delete_option( 'widget_portfolio_technologies_widget' );
 					delete_option( 'prtfl_options' );
 					delete_option( 'prtfl_tag_update' );
+					delete_post_meta_by_key( 'prtfl_information' );
+					delete_post_meta_by_key( '_prtfl_images' );
+					delete_post_meta_by_key( 'prtfl_featured' );
 				}
 			}
 			switch_to_blog( $old_blog );
@@ -2113,6 +2217,9 @@ if ( ! function_exists( 'prtfl_plugin_uninstall' ) ) {
 				delete_option( 'widget_portfolio_technologies_widget' );
 				delete_option( 'prtfl_options' );
 				delete_option( 'prtfl_tag_update' );
+				delete_post_meta_by_key( 'prtfl_information' );
+				delete_post_meta_by_key( '_prtfl_images' );
+				delete_post_meta_by_key( 'prtfl_featured' );
 			}
 		}
 
