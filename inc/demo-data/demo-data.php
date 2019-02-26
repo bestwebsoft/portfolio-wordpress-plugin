@@ -104,7 +104,7 @@ if ( ! function_exists( 'bws_demo_data_array' ) ) {
 				'comment_status' 	=> 'closed',
 				'ping_status'   	=> 'closed',
 				'post_status'    	=> 'publish',
-				'post_type'      	=> 'portfolio',
+				'post_type'      	=> 'bws-portfolio',
 				'post_title'     	=> 'DEMO Coursea - Online Tutorials & Courses Template', 
 				'post_content'		=> 'Coursea is an online tutorials & courses PSD template designed for commercial purposes. 
 										Create an amazing learning website using the pre-build layout and elements. Customize existing graphics to create your own unique interface.', 
@@ -162,7 +162,7 @@ if ( ! function_exists( 'bws_demo_data_array' ) ) {
 				'comment_status' 	=> 'closed',
 				'ping_status'   	=> 'closed',
 				'post_status'    	=> 'publish',
-				'post_type'      	=> 'portfolio',
+				'post_type'      	=> 'bws-portfolio',
 				'post_title'     	=> 'DEMO Love Ceremony - Wedding PSD Template', 
 				'post_content'		=> 'Love Ceremony is an elegant PSD template designed to share wedding details with your guests. 
 										Create personal website for any kind of wedding activities. Make it simple for guests to RSVP and to find the perfect gift on your registry.', 
