@@ -6,7 +6,7 @@ Description: Create your personal portfolio WordPress website. Manage and showca
 Author: BestWebSoft
 Text Domain: portfolio
 Domain Path: /languages
-Version: 2.47
+Version: 2.48
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
@@ -219,6 +219,7 @@ if ( ! function_exists( 'prtfl_get_options_default' ) ) {
 			'order_by' 									=>	'date',
 			'order' 									=>	'DESC',
 			'custom_image_row_count'					=>	3,
+			'custom_portfolio_row_count'				=>  1,
 			'date_additional_field' 					=>	1,
 			'link_additional_field' 					=>	1,
 			'shrdescription_additional_field' 			=>	1,
@@ -1089,10 +1090,26 @@ if ( ! function_exists( 'prtfl_add_portfolio_ancestor_to_menu' ) ) {
 
 /* forming content for portfolio items */
 if ( ! function_exists( 'prtfl_latest_items' ) ) {
-	function prtfl_latest_items( $atts ) {
+	function prtfl_latest_items( $atts, $widget = false ) {
 		global $prtfl_options, $wp_query;
 		$old_wp_query = $wp_query;
+		$count_portfolio_row_block = 0;
+		if ( $widget == false) {
+			$custom_portfolio_row_count = $prtfl_options['custom_portfolio_row_count'];
+		} else {
+			$custom_portfolio_row_count = $widget;
+		}
+		$prtfl_widht = 100 / $custom_portfolio_row_count;
 
+
+		if( 1 < $custom_portfolio_row_count  ) {
+			$prtfl_read_more = 'style="float:left"';
+			$prtfl_img_width = '';
+		}else{
+			$prtfl_read_more = "";
+			$prtfl_img_width = 'style="width:165px"';
+		}
+		
 		$content	=	'<div class="prtfl_portfolio_block">';
 		if ( empty( $atts['count'] ) ) {
 			$atts['count'] = 3;
@@ -1110,7 +1127,10 @@ if ( ! function_exists( 'prtfl_latest_items' ) ) {
 			if ( $second_query->have_posts() ) {
 				while ( $second_query->have_posts() ) {
 					$second_query->the_post();
-			$content .= '
+					if ( $count_portfolio_row_block % $custom_portfolio_row_count == 0 ) {
+						$content .= '<div class="portfolio_row_count">';
+					}
+					$content .= '<div id="portfolio_row_count_block" class="portfolio_row_count_block" style="width: ' . $prtfl_widht . '%">
 			<div class="portfolio_content">
 				<div class="entry">';
 					global $post;
@@ -1144,7 +1164,7 @@ if ( ! function_exists( 'prtfl_latest_items' ) ) {
 					}
 					$permalink = get_permalink();
 
-					$content .= '<div class="portfolio_thumb" style="width:165px">
+					$content .= '<div class="portfolio_thumb" ' . $prtfl_img_width . '>
 							<img src="' . $image[0] . '" width="' . $image[1] . '" alt="' . $image_alt . '" />
 					</div>
 					<div class="portfolio_short_content">
@@ -1158,7 +1178,7 @@ if ( ! function_exists( 'prtfl_latest_items' ) ) {
 						}
 					$content .= '</div> <!-- .portfolio_short_content -->
 				</div> <!-- .entry -->
-				<div class="read_more">
+				<div class="read_more" ' . $prtfl_read_more . '>
 					<a href="' . $permalink . '" rel="bookmark">' . __( 'Read more', 'portfolio' ) . '</a>
 				</div> <!-- .read_more -->
 				<div class="portfolio_terms">';
@@ -1179,10 +1199,15 @@ if ( ! function_exists( 'prtfl_latest_items' ) ) {
 					}
 				}
 				$content .= '</div><!-- .portfolio_terms -->';
-			$content .= '<div class="prtfl_clear"></div></div> <!-- .portfolio_content -->';
+			$content .= '<div class="prtfl_clear"></div></div> <!-- .portfolio_content --></div><!-- .gllr_image_block -->';
+			if ( ( $count_portfolio_row_block % $custom_portfolio_row_count ) == ( $custom_portfolio_row_count - 1 ) ) {
+				$content .= '<div class="clear"></div>
+				</div><!-- .gllr_image_row -->';
+			}
+			$count_portfolio_row_block = $count_portfolio_row_block + 1;
 			}
 		}
-		$content .= '</div> <!-- .prtfl_portfolio_block -->';
+		$content .= '</div> <!-- .prtfl_portfolio_block --><div class="clear"></div>';
 		wp_reset_query();
 		$wp_query = $old_wp_query;
 		return $content;
@@ -1751,6 +1776,14 @@ if ( ! function_exists( 'prtfl_get_content' ) ) {
 		global $post, $prtfl_options;
 
 		$request = $second_query->request;
+		$count_portfolio_row_block = 0;
+		$prtfl_widht = 99 / $prtfl_options['custom_portfolio_row_count'];
+
+		if( 1 < $prtfl_options['custom_portfolio_row_count']  ){
+			$prtfl_read_more = 'style="float:left"';
+		}else{
+			$prtfl_read_more = "";
+		}
 
 		if ( ! empty( $post ) && ! empty( $post->post_content ) ) {
 			$page_content = $post->post_content;
@@ -1785,7 +1818,11 @@ if ( ! function_exists( 'prtfl_get_content' ) ) {
 
 		if ( $second_query->have_posts() ) {
 			while ( $second_query->have_posts() ) {
-				$second_query->the_post(); ?>
+				$second_query->the_post();
+				if ( $count_portfolio_row_block % $prtfl_options['custom_portfolio_row_count'] == 0 ) {?>
+					<div class="portfolio_row_count"><?php
+				}?>
+				<div id="portfolio_row_count_block" class="portfolio_row_count_block" style="width: <?php echo $prtfl_widht ?>%">
 				<div class="portfolio_content <?php if ( 'twentyfourteen' == get_stylesheet() || 'twentythirteen' == get_stylesheet() || 'twentytwelve' == get_stylesheet() ) echo 'entry-content'; ?>">
 					<div class="entry">
 						<?php $post_thumbnail_id = get_post_thumbnail_id( $post->ID );
@@ -1850,7 +1887,7 @@ if ( ! function_exists( 'prtfl_get_content' ) ) {
 						</div><!-- .portfolio_short_content -->
 					</div><!-- .entry -->
 					<div class="entry_footer">
-						<div class="read_more">
+						<div class="read_more" <?php echo $prtfl_read_more ?>>
 							<a href="<?php the_permalink(); ?>" rel="bookmark"><?php _e( 'Read more', 'portfolio' ); ?></a>
 						</div><!-- .read_more -->
 						<?php $terms = wp_get_object_terms( $post->ID, 'portfolio_technologies' );
@@ -1863,13 +1900,24 @@ if ( ! function_exists( 'prtfl_get_content' ) ) {
 										$links[] = '<a href="' . get_term_link( $term->slug, 'portfolio_technologies' ) . '" title="' . sprintf( __( "View all projects in %s" ), $term->name ) . '" ' . '>' . $term->name . '</a>';
 									}
 									echo implode( ', ', $links ); ?>
-								</div><!-- .portfolio_terms -->
-							<?php }
+								</div><!-- .portfolio_terms --><?php
+							}
 						} ?>
 					</div><!-- .entry_footer -->
 				</div><!-- .portfolio_content -->
-					<?php }
+                </div>
+				<?php if ( ( $count_portfolio_row_block % $prtfl_options['custom_portfolio_row_count'] ) == ( $prtfl_options['custom_portfolio_row_count'] - 1 ) ) {?>
+                    <div class="clear"></div>
+                    </div><!-- .portfolio_row_count --><?php
+                }
+                $count_portfolio_row_block = $count_portfolio_row_block + 1;
+            }
 		}
+		if ( 0 != $count_portfolio_row_block % $prtfl_options['custom_portfolio_row_count'] )  {
+			?></div><?php
+		}
+		?>
+       <div class="clear"></div><?php
 	}
 }
 
@@ -2223,6 +2271,83 @@ if ( ! function_exists( 'prtfl_plugin_uninstall' ) ) {
 	}
 }
 
+
+if ( ! function_exists( 'prtfl_widgets_init' ) ) {
+	function prtfl_widgets_init() {
+		register_widget( "Prtfl_Widget" );
+	}
+}
+
+/**
+ * Class extends WP class WP_Widget, and create new widget
+ *
+ */
+if ( ! class_exists( 'Prtfl_Widget' ) ) {
+	class Prtfl_Widget extends WP_Widget {
+		/**
+		 * constructor of class
+		 */
+		public function __construct() {
+			parent::__construct(
+				'prtfl_widget',
+				__( 'Latest Portfolio Items', 'portfolio' ),
+				array( 'description' => __( 'Displays the latest Portfolio projects.', 'portfolio' ) )
+			);
+		}
+		/**
+		 * Function to displaying widget in front end
+		 * @param array()	 $args 	array with sidebar settings
+		 * @param array()	 $instance 	array with widget settings
+		 * @return void
+		 */
+		public function widget( $args, $instance ) {
+
+			$widget_title = ( ! empty( $instance['widget_title'] ) ) ? apply_filters( 'widget_title', $instance['widget_title'], $instance, $this->id_base ) : '';
+			$widget_count_posts = ( ! empty( $instance['widget_count_posts'] ) ) ?  $instance['widget_count_posts']: '';
+			$widget_count_colums = ( ! empty( $instance['widget_count_colums'] ) ) ?  $instance['widget_count_colums']: '';
+
+			$atts['count'] = $widget_count_posts;
+			$content = prtfl_latest_items( $atts, $widget_count_colums );
+			echo $args['before_widget'] . $args['before_title'] . $widget_title . $args['after_title'] . $content;
+		}
+
+		public function form( $instance ) {
+			global $sbscrbr_options;
+
+			$widget_title          = isset( $instance['widget_title'] ) ? stripslashes( esc_html( $instance['widget_title'] ) ) : null;
+			$widget_count_posts          = isset( $instance['widget_count_posts'] ) ? stripslashes( esc_html( $instance['widget_count_posts'] ) ) : null;
+			$widget_count_colums         = isset( $instance['widget_count_colums'] ) ? stripslashes( esc_html( $instance['widget_count_colums'] ) ) : null;
+			?>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'widget_title' ); ?>">
+					<?php _e( 'Title', 'portfolio' ); ?>:
+					<input class="widefat" id="<?php echo $this->get_field_id( 'widget_title' ); ?>" name="<?php echo $this->get_field_name( 'widget_title' ); ?>" type="text" value="<?php echo esc_attr( $widget_title ); ?>"/>
+				</label>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'widget_count_posts' ); ?>">
+					<?php _e( 'Number of projects:', 'portfolio' ); ?>:
+					<input class="widefat" id="<?php echo $this->get_field_id( 'widget_count_posts' ); ?>" name="<?php echo $this->get_field_name( 'widget_count_posts' ); ?>" type="number" name="prtfl_portfolio_custom_row_count" min="1" max="10000" value="<?php echo ! empty( ( $widget_count_posts ) ) ? esc_attr( $widget_count_posts ) : 5; ?>"/>
+				</label>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'widget_count_colums' ); ?>">
+					<?php _e( 'Number of Colums:', 'portfolio' ); ?>:
+					<input class="widefat" id="<?php echo $this->get_field_id( 'widget_count_colums' ); ?>" name="<?php echo $this->get_field_name( 'widget_count_colums' ); ?>" type="number" name="prtfl_portfolio_custom_row_count_colums" min="1" max="100" value="<?php echo ! empty( ( $widget_count_colums ) ) ? esc_attr( $widget_count_colums ) : 3; ?>"/>
+				</label>
+			</p>
+		<?php }
+
+		public function update( $new_instance, $old_instance ) {
+			$instance = array();
+			$instance['widget_title']          = ( ! empty( $new_instance['widget_title'] ) ) ? strip_tags( $new_instance['widget_title'] ) : null;
+			$instance['widget_count_posts']    = ( ! empty( $new_instance['widget_count_posts'] ) ) ? strip_tags( $new_instance['widget_count_posts'] ) : null;
+			$instance['widget_count_colums']    = ( ! empty( $new_instance['widget_count_colums'] ) ) ? strip_tags( $new_instance['widget_count_colums'] ) : null;
+			return $instance;
+		}
+	}
+}
+
 /* Activate plugin */
 register_activation_hook( __FILE__, 'prtfl_plugin_activate' );
 /* Add portfolio settings page in admin menu */
@@ -2261,6 +2386,8 @@ add_filter( 'rewrite_rules_array', 'prtfl_custom_permalinks' );
 /* Additional links on the plugin page */
 add_filter( 'plugin_row_meta', 'prtfl_register_plugin_links', 10, 2 );
 add_filter( 'plugin_action_links', 'prtfl_plugin_action_links', 10, 2 );
+
+add_action( 'widgets_init', 'prtfl_widgets_init' );
 
 add_filter( 'nav_menu_css_class', 'prtfl_add_portfolio_ancestor_to_menu', 10, 2 );
 

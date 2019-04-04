@@ -100,8 +100,11 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 		public function save_options() {
 
 			$this->options["custom_image_row_count"] = intval( $_POST['prtfl_custom_image_row_count'] );
+			$this->options["custom_portfolio_row_count"] = intval( $_POST['prtfl_portfolio_custom_row_count'] );
 			if ( 1 > $this->options["custom_image_row_count"] )
 				$this->options["custom_image_row_count"] = 1;
+			if ( 1 > $this->options["custom_portfolio_row_count"] )
+				$this->options["custom_portfolio_row_count"] = 1;
 
 			$new_image_size_photo 		= esc_attr( $_POST['prtfl_image_size_photo'] );
 			$custom_image_size_w_photo 	= intval( $_POST['prtfl_custom_image_size_w_photo'] );
@@ -255,6 +258,13 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 			<table class="form-table">
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Number of Columns', 'portfolio' ); ?> </th>
+					<td>
+						<input<?php echo $this->change_permission_attr; ?> type="number" name="prtfl_portfolio_custom_row_count" min="1" max="10000" value="<?php echo $this->options["custom_portfolio_row_count"]; ?>" /> <?php _e( 'columns', 'portfolio' ); ?>
+						<div class="bws_info"><?php printf( __( 'Number of portfolio columns (default is %s).', 'portfolio' ), '1' ); ?></div>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><?php _e( 'Number of image Columns', 'portfolio' ); ?> </th>
 					<td>
 						<input type="number" name="prtfl_custom_image_row_count" min="1" max="10000" value="<?php echo $this->options["custom_image_row_count"]; ?>" /> <?php _e( 'columns', 'portfolio' ); ?>
 						 <div class="bws_info"><?php printf( __( 'Number of image columns (default is %s).', 'portfolio' ), '3' ); ?></div>

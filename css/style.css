@@ -368,3 +368,28 @@ div#prtfl_settings_tab select {
 .prtfl-page-template .entry-header {
 	width: 100% !important;
 }
+.prtfl_portfolio_block #portfolio_row_count_block,#content #portfolio_row_count_block {
+	float: left;
+}
+.prtfl_portfolio_block .portfolio_row_count, #content .portfolio_row_count{
+	height: auto;
+	width: 100%;
+}
+#portfolio_row_count_block .portfolio_content{
+	padding: 10px;
+}
+.widget #portfolio_row_count_block .portfolio_short_content {
+	margin: auto;
+}
+.clear{
+	clear:both;
+}
+@media only screen and ( max-width: 520px ) {
+	.prtfl_portfolio_block #portfolio_row_count_block, #content .portfolio_row_count {
+		float: none;
+		width: 100% !important;
+	}
+	.prtfl_portfolio_block .portfolio_row_count, #content .portfolio_row_count{
+		display: block;
+	}
+}
