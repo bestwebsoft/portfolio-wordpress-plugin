@@ -38,7 +38,7 @@
 </ul>
 </li>
 <li>Set the number of images to display per row</li>
-<li>Set the number of portfolio columns [NEW]</li>
+<li>Set the number of portfolio columns </li>
 <li>Compatible with <a href="https://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=8e94e3b0c771409cf33cd1527ccad522" rel="nofollow">Multilanguage</a></li>
 <li>Install/Delete demo data</li>
 <li>Add labels for additional fields</li>

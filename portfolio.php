@@ -6,7 +6,7 @@ Description: Create your personal portfolio WordPress website. Manage and showca
 Author: BestWebSoft
 Text Domain: portfolio
 Domain Path: /languages
-Version: 2.48
+Version: 2.49
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
@@ -2269,6 +2269,56 @@ if ( ! function_exists( 'prtfl_plugin_uninstall' ) ) {
 		bws_include_init( plugin_basename( __FILE__ ) );
 		bws_delete_plugin( plugin_basename( __FILE__ ) );
 	}
+}
+
+
+if ( ! function_exists( 'prtfl_get_data' ) ) {
+    function prtfl_get_data( $prtfl_id ) {
+
+      $post_type = array('bws-portfolio');
+    
+      $prtfl_posts = $prtfl_images_all = array();
+
+      if ( 'all' == $prtfl_id || is_array( $prtfl_id ) ) {
+
+        $prtfl_id_list = ( is_array( $prtfl_id ) && ! empty( $prtfl_id ) ) ? $prtfl_id  : array();
+        $args = ( is_array( $prtfl_id ) ) ? array( 'post_type' => 'bws-portfolio',
+                                                         'include' => $prtfl_id_list ) : array( 'post_type' => 'bws-portfolio');
+        $prtfl_posts = get_posts( $args );
+
+	    } else if ( is_int( $prtfl_id ) || is_string( $prtfl_id ) ) {
+
+	      $prtfl_int_id = is_int( $prtfl_id ) ? $prtfl_id : intval( $prtfl_id );
+	      $prtfl_posts = get_post( $prtfl_int_id );
+
+	    }
+	    
+	    $prtfl_posts_end = array();
+	 	foreach ( (array)$prtfl_posts as $key => $prtfl_post ) {
+
+		    $prtfl_meta = get_post_meta( $prtfl_post->ID, '' );
+		    unset($prtfl_meta['_edit_lock']);
+		    unset($prtfl_meta['_edit_last']);
+
+		    foreach ( $prtfl_meta['prtfl_information']  as $key => $prtfl_information ) {
+
+		    	$prtfl_information =  isset( $prtfl_information ) ? unserialize( $prtfl_information ) : "";
+		    	$prtfl_meta['prtfl_information'][$key] = $prtfl_information;
+		    }
+
+		    foreach ( $prtfl_meta['_prtfl_images']  as $key => $prtfl_images ) {
+		    	
+		    	$prtfl_images_all =  isset( $prtfl_images ) ? explode( ',' , $prtfl_images ) : "";
+		    	$args = array(  'post_type' => 'attachment','include' => $prtfl_images_all ) ;
+		    	$prtfl_images = ! empty( $prtfl_images_all ) ? get_posts( $args ) : "";
+		    	$prtfl_meta['_prtfl_images'][$key] = $prtfl_images;
+		    }
+
+		    $prtfl_posts[$key]->prtfl_post_meta = $prtfl_meta;
+	    }
+
+        return $prtfl_posts;
+    }
 }
 
 
