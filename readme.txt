@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add portfolio, portfolio plugin, add portfolio widget, portfolio, fancybox, showcase, responsive portfolio, portfolio plugin, create portfolio, portfolio categories, project portfolio, portfolio widget, add album
 Requires at least: 4.0
-Tested up to: 5.2.2
-Stable tag: 2.50
+Tested up to: 5.2.3
+Stable tag: 2.51
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,6 +66,7 @@ https://www.youtube.com/watch?v=OIxDlQZcCcI
 > * Add info about the client
 > * Add the widget with portfolio categories
 > * Sort portfolio projects by date and title
+> * Change the size for slider images [NEW]
 > * Enable lightbox helper:
 > 	* Button
 > 	* Thumbnail
@@ -158,6 +159,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 8. Portfolio admin page (for all portfolios).
 
 == Changelog ==
+
+= V2.51 - 07.10.2019 =
+* Pro : The ability to change the size of slider images has been added.
+* Bugfix : Small bugs has been fixed.
 
 = V2.50 - 04.09.2019 =
 * Update : The deactivation feedback has been changed. Misleading buttons have been removed.
@@ -389,6 +394,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Upgrade Notice ==
 
+= V2.51 =
+* Usability improved.
+* Bugs fixed.
+
 = V2.50 =
 * Usability improved.
 
@@ -554,4 +563,3 @@ Display image bug is fixed in this version. Upgrade immediately.
 
 = 1.03 =
 Security related bug is fixed in this version. Upgrade immediately.
-

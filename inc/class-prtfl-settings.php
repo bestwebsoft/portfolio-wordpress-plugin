@@ -312,6 +312,28 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 						<div class="bws_info"><?php _e( 'Maximum cover image size. Custom uses the Image Dimensions values.', 'portfolio' ); ?></div>
 					</td>
 				</tr>
+            </table>
+            <?php if ( ! $this->hide_pro_tabs ) { ?>
+                <div class="bws_pro_version_bloc">
+                    <div class="bws_pro_version_table_bloc">
+                        <button type="submit" name="bws_hide_premium_options" class="notice-dismiss bws_hide_premium_options" title="<?php _e( 'Close', 'portfolio' ); ?>"></button>
+                        <div class="bws_table_bg"></div>
+                        <table class="form-table bws_pro_version">
+                            <tr valign="top">
+                                <th scope="row"><?php _e( 'Slider Image Size', 'portfolio' ); ?> </th>
+                                <td>
+                                    <select name="prtfl_image_size_slider">
+                                        <option value="large">Large (1024 × 1024)</option>
+                                    </select>
+                                    <div class="bws_info"><?php _e( 'Maximum slider image size. Custom uses the Image Dimensions values.', 'portfolio-pro' ); ?></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <?php $this->bws_pro_block_links(); ?>
+                </div>
+            <?php } ?>
+            <table class="form-table">
 				<tr valign="top" class="prtfl_for_custom_image_size_album">
 					<th scope="row"><?php _e( 'Custom Cover Image Size', 'portfolio' ); ?> </th>
 					<td>

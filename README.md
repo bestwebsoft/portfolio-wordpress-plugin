@@ -63,6 +63,7 @@
 <li>Add info about the client</li>
 <li>Add the widget with portfolio categories</li>
 <li>Sort portfolio projects by date and title</li>
+<li>Change the size for slider images [NEW]</li>
 <li>Enable lightbox helper:
 <ul>
 <li>Button</li>

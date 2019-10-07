@@ -6,7 +6,7 @@ Description: Create your personal portfolio WordPress website. Manage and showca
 Author: BestWebSoft
 Text Domain: portfolio
 Domain Path: /languages
-Version: 2.50
+Version: 2.51
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
@@ -1320,11 +1320,28 @@ if ( ! function_exists( 'prtfl_update_image' ) ) {
 		$id		= isset( $_REQUEST['id'] ) ? $_REQUEST['id'] : "";
 		switch ( $action ) {
 			case 'get_all_attachment':
-				$array_parent_id = $wpdb->get_col( "SELECT `ID` FROM $wpdb->posts WHERE `post_type` = {$prtfl_options['post_type_name']}" );
+
+			    $array_parent_id = $wpdb->get_col( $wpdb->prepare( "
+                    SELECT 
+                        ID 
+                    FROM 
+                        {$wpdb->posts}
+                    WHERE 
+                        post_type = %s
+                ", $prtfl_options['post_type_name'] ) );
+
 				if ( ! empty( $array_parent_id ) ) {
 					$string_parent_id = implode( ",", $array_parent_id );
 
-					$metas = $wpdb->get_results( "SELECT `meta_value` FROM $wpdb->postmeta WHERE `meta_key` = '_prtfl_images' AND `post_id` IN (" . $string_parent_id . ")", ARRAY_A );
+					$metas = $wpdb->get_results( "
+                        SELECT 
+                            meta_value 
+                        FROM 
+                            {$wpdb->postmeta} 
+                        WHERE 
+                            meta_key = '_prtfl_images' AND 
+                            post_id IN (" . $string_parent_id . ")
+                    ", ARRAY_A );
 
 					$result_attachment_id = '';
 					foreach ( $metas as $key => $value ) {
@@ -1334,7 +1351,17 @@ if ( ! function_exists( 'prtfl_update_image' ) ) {
 					}
 					$result_attachment_id_array = explode( ",", rtrim( $result_attachment_id, ',' ) );
 
-					$attached_id = $wpdb->get_results( "SELECT `ID` FROM $wpdb->posts WHERE `post_type` = 'attachment' AND `post_mime_type` LIKE 'image%' AND `post_parent` IN (" . $string_parent_id . ")", ARRAY_A );
+					$attached_id = $wpdb->get_results( "
+                        SELECT 
+                            ID 
+                        FROM 
+                            {$wpdb->posts} 
+                        WHERE 
+                            post_type = 'attachment' AND 
+                            post_mime_type LIKE 'image%' AND 
+                            post_parent IN (" . $string_parent_id . ")
+                    ", ARRAY_A );
+
 					foreach ( $attached_id as $key => $value ) {
 						$result_attachment_id_array[] = $value['ID'];
 					}

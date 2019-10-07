@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: portfolio\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-21 15:37+0200\n"
-"PO-Revision-Date: 2019-03-21 15:38+0200\n"
+"POT-Creation-Date: 2019-08-19 11:00+0300\n"
+"PO-Revision-Date: 2019-08-19 11:01+0300\n"
 "Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
 "Language-Team: BestWebSoft <plugin@bestwebsoft.com>\n"
 "Language: uk\n"
@@ -90,7 +90,7 @@ msgstr "Оновити зображення"
 msgid "Portfolio Settings"
 msgstr "Налаштування Portfolio"
 
-#: inc/class-prtfl-settings.php:260 inc/class-prtfl-settings.php:267
+#: inc/class-prtfl-settings.php:260
 msgid "Number of Columns"
 msgstr "Кількість колонок"
 
@@ -102,6 +102,10 @@ msgstr "колонок"
 #, php-format
 msgid "Number of portfolio columns (default is %s)."
 msgstr "Кількість колонок portfolio (за замовчуванням - %s)."
+
+#: inc/class-prtfl-settings.php:267
+msgid "Number of image Columns"
+msgstr "Кількість колонок"
 
 #: inc/class-prtfl-settings.php:270
 #, php-format
@@ -153,138 +157,149 @@ msgstr ""
 "Максимальний розмір зображення альбому. Користувацький використовує значення "
 "Розмірів зображення."
 
-#: inc/class-prtfl-settings.php:316
-msgid "Custom Cover Image Size"
-msgstr "Користувацький розмір зображення альбому"
-
-#: inc/class-prtfl-settings.php:322
-msgid "Sort Projects by"
-msgstr "Сортувати проекти за"
-
-#: inc/class-prtfl-settings.php:325
-msgid "Project ID"
-msgstr "ID проекту"
-
-#: inc/class-prtfl-settings.php:326 portfolio.php:469 portfolio.php:2300
-msgid "Title"
-msgstr "Назва"
-
-#: inc/class-prtfl-settings.php:327
-msgid "Date"
-msgstr "Дата"
-
-#: inc/class-prtfl-settings.php:328
-msgid "Last modified date"
-msgstr "Дата останньої зміни"
-
-#: inc/class-prtfl-settings.php:329
-msgid "Comment count"
-msgstr "Кількість коментарів"
-
-#: inc/class-prtfl-settings.php:330
-msgid "Sorting order (the input field for sorting order)"
-msgstr "Порядок сортування (поле введення для сортування)"
-
-#: inc/class-prtfl-settings.php:331
-msgid "Author"
-msgstr "Автор"
-
-#: inc/class-prtfl-settings.php:332
-msgid "Random"
-msgstr "Довільно"
-
-#: inc/class-prtfl-settings.php:334
-msgid "Select projects sorting order in your portfolio page."
-msgstr "Оберіть порядок сортування проектів на сторінці портфоліо."
-
-#: inc/class-prtfl-settings.php:338
-msgid "Arrange Projects by"
-msgstr "Сортування проектів за"
-
-#: inc/class-prtfl-settings.php:341
-msgid "Ascending (e.g. 1, 2, 3; a, b, c)"
-msgstr "За зростанням (наприклад, 1, 2, 3; а, б, в)"
-
-#: inc/class-prtfl-settings.php:343
-msgid "Descending (e.g. 3, 2, 1; c, b, a)"
-msgstr "За зменшенням (наприклад, 3, 2, 1; в, б, а)"
-
-#: inc/class-prtfl-settings.php:351 inc/class-prtfl-settings.php:416
+#: inc/class-prtfl-settings.php:319 inc/class-prtfl-settings.php:373
+#: inc/class-prtfl-settings.php:438
 msgid "Close"
 msgstr "Закрити"
 
-#: inc/class-prtfl-settings.php:355
+#: inc/class-prtfl-settings.php:323
+msgid "Slider Image Size"
+msgstr "Розмір слайдера"
+
+#: inc/class-prtfl-settings.php:328
+msgid "Maximum slider image size. Custom uses the Image Dimensions values."
+msgstr ""
+"Максимальний розмір зображення слайдера. Призначений для користувача "
+"використовує значення Розмірів зображення."
+
+#: inc/class-prtfl-settings.php:338
+msgid "Custom Cover Image Size"
+msgstr "Користувацький розмір зображення альбому"
+
+#: inc/class-prtfl-settings.php:344
+msgid "Sort Projects by"
+msgstr "Сортувати проекти за"
+
+#: inc/class-prtfl-settings.php:347
+msgid "Project ID"
+msgstr "ID проекту"
+
+#: inc/class-prtfl-settings.php:348 portfolio.php:469 portfolio.php:2373
+msgid "Title"
+msgstr "Назва"
+
+#: inc/class-prtfl-settings.php:349
+msgid "Date"
+msgstr "Дата"
+
+#: inc/class-prtfl-settings.php:350
+msgid "Last modified date"
+msgstr "Дата останньої зміни"
+
+#: inc/class-prtfl-settings.php:351
+msgid "Comment count"
+msgstr "Кількість коментарів"
+
+#: inc/class-prtfl-settings.php:352
+msgid "Sorting order (the input field for sorting order)"
+msgstr "Порядок сортування (поле введення для сортування)"
+
+#: inc/class-prtfl-settings.php:353
+msgid "Author"
+msgstr "Автор"
+
+#: inc/class-prtfl-settings.php:354
+msgid "Random"
+msgstr "Довільно"
+
+#: inc/class-prtfl-settings.php:356
+msgid "Select projects sorting order in your portfolio page."
+msgstr "Оберіть порядок сортування проектів на сторінці портфоліо."
+
+#: inc/class-prtfl-settings.php:360
+msgid "Arrange Projects by"
+msgstr "Сортування проектів за"
+
+#: inc/class-prtfl-settings.php:363
+msgid "Ascending (e.g. 1, 2, 3; a, b, c)"
+msgstr "За зростанням (наприклад, 1, 2, 3; а, б, в)"
+
+#: inc/class-prtfl-settings.php:365
+msgid "Descending (e.g. 3, 2, 1; c, b, a)"
+msgstr "За зменшенням (наприклад, 3, 2, 1; в, б, а)"
+
+#: inc/class-prtfl-settings.php:377
 msgid "Manual Sorting"
 msgstr "Сортування вручну"
 
-#: inc/class-prtfl-settings.php:358
+#: inc/class-prtfl-settings.php:380
 msgid "Enable to sort projects manually by date or title."
 msgstr "Увімкнути сортування проектів вручну за датою або назвою."
 
-#: inc/class-prtfl-settings.php:363
+#: inc/class-prtfl-settings.php:385
 msgid "Lightbox Helper"
 msgstr "Допоміжний елемент лайтбоксу"
 
-#: inc/class-prtfl-settings.php:365
+#: inc/class-prtfl-settings.php:387
 msgid "Enable to use a lightbox helper navigation between images."
 msgstr ""
 "Дозволити використовувати допоміжні елементи лайтбоксу для навігації між "
 "зображеннями."
 
-#: inc/class-prtfl-settings.php:369
+#: inc/class-prtfl-settings.php:391
 msgid "Lightbox Helper Type"
 msgstr "Тип допоміжного елементу лайтбоксу"
 
-#: inc/class-prtfl-settings.php:372
+#: inc/class-prtfl-settings.php:394
 msgid "Thumbnails"
 msgstr "Мініатюри"
 
-#: inc/class-prtfl-settings.php:373
+#: inc/class-prtfl-settings.php:395
 msgid "Buttons"
 msgstr "Кнопки"
 
-#: inc/class-prtfl-settings.php:384
+#: inc/class-prtfl-settings.php:406
 msgid "Text Link"
 msgstr "Текстове посилання"
 
-#: inc/class-prtfl-settings.php:387
+#: inc/class-prtfl-settings.php:409
 msgid "Enable to display link field as a text for non-registered users."
 msgstr ""
 "Увімкнути показ поля посилання як тексту для незареєстрованих користувачів."
 
-#: inc/class-prtfl-settings.php:392 inc/class-prtfl-settings.php:420
+#: inc/class-prtfl-settings.php:414 inc/class-prtfl-settings.php:442
 msgid "Projects Fields"
 msgstr "Поля проектів"
 
-#: inc/class-prtfl-settings.php:405 inc/class-prtfl-settings.php:443
+#: inc/class-prtfl-settings.php:427 inc/class-prtfl-settings.php:465
 msgid "\"More screenshots\" block"
 msgstr "Блок \"Більше скріншотів\""
 
-#: inc/class-prtfl-settings.php:425 inc/class-prtfl-settings.php:426
+#: inc/class-prtfl-settings.php:447 inc/class-prtfl-settings.php:448
 #: portfolio.php:567
 msgid "Categories"
 msgstr "Категорії"
 
-#: inc/class-prtfl-settings.php:430 inc/class-prtfl-settings.php:431
+#: inc/class-prtfl-settings.php:452 inc/class-prtfl-settings.php:453
 #: portfolio.php:568
 msgid "Sectors"
 msgstr "Сектори"
 
-#: inc/class-prtfl-settings.php:435 inc/class-prtfl-settings.php:436
+#: inc/class-prtfl-settings.php:457 inc/class-prtfl-settings.php:458
 #: portfolio.php:569
 msgid "Services"
 msgstr "Послуги"
 
-#: inc/class-prtfl-settings.php:440 inc/class-prtfl-settings.php:441
+#: inc/class-prtfl-settings.php:462 inc/class-prtfl-settings.php:463
 #: portfolio.php:591
 msgid "Client"
 msgstr "Клієнт"
 
-#: inc/class-prtfl-settings.php:460
+#: inc/class-prtfl-settings.php:482
 msgid "Demo Data"
 msgstr "Демо-дані"
 
-#: inc/class-prtfl-settings.php:462
+#: inc/class-prtfl-settings.php:484
 msgid ""
 "Install demo data to create portfolio projects with images, post with "
 "shortcodes and page with a list of all portfolio projects."
@@ -292,11 +307,11 @@ msgstr ""
 "Встановіть демо-дані, щоб створити проекти портфоліо із зображеннями, запис "
 "з шорткодами і сторінку зі списком усіх проектів портфоліо."
 
-#: inc/class-prtfl-settings.php:482
+#: inc/class-prtfl-settings.php:504
 msgid "Portfolio Post Type"
 msgstr "Тип запису портфоліо"
 
-#: inc/class-prtfl-settings.php:486
+#: inc/class-prtfl-settings.php:508
 msgid ""
 "Enable to avoid conflicts with other portfolio plugins installed. All "
 "portfolio created earlier will stay unchanged. However, after enabling we "
@@ -308,40 +323,40 @@ msgstr ""
 "перейменування перевірте, будь ласка, налаштування інших плагінів, де "
 "використовується тип запису \"portfolio\"."
 
-#: inc/class-prtfl-settings.php:492
+#: inc/class-prtfl-settings.php:514
 msgid "Portfolio Slug"
 msgstr "Слаґ портфоліо"
 
-#: inc/class-prtfl-settings.php:495
+#: inc/class-prtfl-settings.php:517
 msgid "Enter the unique portfolio slug."
 msgstr "Введіть унікальний слаґ портфоліо."
 
-#: inc/class-prtfl-settings.php:499
+#: inc/class-prtfl-settings.php:521
 msgid "Search Portfolio Projects"
 msgstr "Шукати проекти портфоліо"
 
-#: inc/class-prtfl-settings.php:505
+#: inc/class-prtfl-settings.php:527
 msgid "Activate Now"
 msgstr "Активувати зараз"
 
-#: inc/class-prtfl-settings.php:521
+#: inc/class-prtfl-settings.php:543
 msgid "Install Now"
 msgstr "Встановити зараз"
 
-#: inc/class-prtfl-settings.php:524
+#: inc/class-prtfl-settings.php:546
 msgid "Enable to include portfolio projects to your website search."
 msgstr "Включити проекти портфоліо в пошук на вашому сайті."
 
-#: inc/class-prtfl-settings.php:524
+#: inc/class-prtfl-settings.php:546
 #, php-format
 msgid "%s plugin is required."
 msgstr "Потрібен плагін %s."
 
-#: inc/class-prtfl-settings.php:538
+#: inc/class-prtfl-settings.php:560
 msgid "Portfolio Shortcode"
 msgstr "Шорткод портфоліо"
 
-#: inc/class-prtfl-settings.php:541
+#: inc/class-prtfl-settings.php:563
 msgid ""
 "Add the latest portfolio projects using the following shortcode (where * is "
 "a number of projects to display):"
@@ -735,15 +750,15 @@ msgstr "Видалити"
 msgid "Add images"
 msgstr "Додати зображення"
 
-#: portfolio.php:1007 portfolio.php:1163 portfolio.php:1698 portfolio.php:1826
+#: portfolio.php:1007 portfolio.php:1163 portfolio.php:1698 portfolio.php:1838
 msgid "No title"
 msgstr "Без назви"
 
-#: portfolio.php:1182 portfolio.php:1879
+#: portfolio.php:1182 portfolio.php:1891
 msgid "Read more"
 msgstr "Докладніше"
 
-#: portfolio.php:1194 portfolio.php:1888 portfolio.php:2079
+#: portfolio.php:1194 portfolio.php:1900 portfolio.php:2102
 #, php-format
 msgid "View all projects in %s"
 msgstr "Проглянути всі проекти у %s"
@@ -810,23 +825,23 @@ msgstr ""
 msgid "Read and Understood"
 msgstr "Ознайомлений"
 
-#: portfolio.php:2147
+#: portfolio.php:2170
 msgid "The number of portfolio projects to display"
 msgstr "Кількість проектів портфоліо для відображення"
 
-#: portfolio.php:2270
+#: portfolio.php:2343
 msgid "Latest Portfolio Items"
 msgstr "Останні проекти портфоліо"
 
-#: portfolio.php:2271
+#: portfolio.php:2344
 msgid "Displays the latest Portfolio projects."
 msgstr "Відображення останніх проектів портфоліо."
 
-#: portfolio.php:2306
+#: portfolio.php:2379
 msgid "Number of projects:"
 msgstr "Кількість проектів:"
 
-#: portfolio.php:2312
+#: portfolio.php:2385
 msgid "Number of Colums:"
 msgstr "Кількість стовпців:"
 
