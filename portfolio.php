@@ -6,13 +6,13 @@ Description: Create your personal portfolio WordPress website. Manage and showca
 Author: BestWebSoft
 Text Domain: portfolio
 Domain Path: /languages
-Version: 2.51
+Version: 2.52
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
 
 /*
-	@ Copyright 2019  BestWebSoft  ( https://support.bestwebsoft.com )
+	@ Copyright 2020  BestWebSoft  ( https://support.bestwebsoft.com )
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -76,7 +76,7 @@ if ( ! function_exists( 'prtfl_init' ) ) {
 			$prtfl_plugin_info = get_plugin_data( __FILE__ );
 		}
 		/* Function check if plugin is compatible with current WP version  */
-		bws_wp_min_version_check( plugin_basename( __FILE__ ), $prtfl_plugin_info, '3.9' );
+		bws_wp_min_version_check( plugin_basename( __FILE__ ), $prtfl_plugin_info, '4.5' );
 
 		$prtfl_boxes['Portfolio-Info'] = array(
 			array(
@@ -91,12 +91,12 @@ if ( ! function_exists( 'prtfl_init' ) ) {
 			),
 			array(
 				'name'	=> '_prtfl_link',
-				'title'	=> __( 'Link', 'portfolio' ),
+				'title'	=> __( 'Project, URL', 'portfolio' ),
 				'type'	=> 'url'
 			),
 			array(
 				'name'	=> '_prtfl_svn',
-				'title'	=> __( 'SVN URL', 'portfolio' ),
+				'title'	=> __( 'Source Files, URL', 'portfolio' ),
 				'type'	=> 'url'
 			)
 		);
@@ -120,7 +120,7 @@ if ( ! function_exists( 'prtfl_init' ) ) {
 
 if ( ! function_exists( 'prtfl_admin_init' ) ) {
 	function prtfl_admin_init() {
-		global $bws_plugin_info, $prtfl_plugin_info, $bws_shortcode_list, $wpdb;
+		global $bws_plugin_info, $prtfl_plugin_info, $bws_shortcode_list, $wpdb, $pagenow, $prtfl_options;
 
 		if ( empty( $bws_plugin_info ) ) {
 			$bws_plugin_info = array( 'id' => '74', 'version' => $prtfl_plugin_info["Version"] );
@@ -129,6 +129,13 @@ if ( ! function_exists( 'prtfl_admin_init' ) ) {
 		/* add Portfolio to global $bws_shortcode_list  */
 		$bws_shortcode_list['prtfl'] = array( 'name' => 'Portfolio', 'js_function' => 'prtfl_shortcode_init' );
 
+		if ( 'plugins.php' == $pagenow ) {
+			/* Install the option defaults */
+			if ( function_exists( 'bws_plugin_banner_go_pro' ) ) {
+				register_prtfl_settings();
+				bws_plugin_banner_go_pro( $prtfl_options, $prtfl_plugin_info, 'prtfl', 'portfolio', '56e6c97d1bca3199fb16cb817793a8f6', '74', 'portfolio' );
+			}
+		}
 	}
 }
 
@@ -229,10 +236,10 @@ if ( ! function_exists( 'prtfl_get_options_default' ) ) {
 			'technologies_additional_field'				=>	1,
 			'link_additional_field_for_non_registered'	=>	1,
 			'date_text_field'							=>	__( 'Date of completion:', 'portfolio' ),
-			'link_text_field'							=>	__( 'Link:', 'portfolio' ),
+			'link_text_field'							=>	__( 'Project, URL:', 'portfolio' ),
 			'shrdescription_text_field'					=>	__( 'Short description:', 'portfolio' ),
 			'description_text_field'					=>	__( 'Description:', 'portfolio' ),
-			'svn_text_field'							=>	__( 'SVN:', 'portfolio' ),
+			'svn_text_field'							=>	__( 'Source Files, URL:', 'portfolio' ),
 			'executor_text_field'						=>	__( 'Executor:', 'portfolio' ),
 			'screenshot_text_field'						=>	__( 'More screenshots:', 'portfolio' ),
 			'technologies_text_field'					=>	__( 'Technologies:', 'portfolio' ),
@@ -398,6 +405,8 @@ if ( ! function_exists( 'prtfl_include_demo_data' ) ) {
  */
 if ( ! function_exists( 'prtfl_settings_page' ) ) {
 	function prtfl_settings_page() {
+		if ( ! class_exists( 'Bws_Settings_Tabs' ) )
+    		require_once( dirname( __FILE__ ) . '/bws_menu/class-bws-settings.php' );
 		require_once( dirname( __FILE__ ) . '/inc/class-prtfl-settings.php' );
 		$page = new Prtfl_Settings_Tabs( plugin_basename( __FILE__ ) ); ?>
 		<div class="wrap">
@@ -1103,10 +1112,8 @@ if ( ! function_exists( 'prtfl_latest_items' ) ) {
 
 
 		if( 1 < $custom_portfolio_row_count  ) {
-			$prtfl_read_more = 'style="float:left"';
 			$prtfl_img_width = '';
 		}else{
-			$prtfl_read_more = "";
 			$prtfl_img_width = 'style="width:165px"';
 		}
 		
@@ -1178,7 +1185,7 @@ if ( ! function_exists( 'prtfl_latest_items' ) ) {
 						}
 					$content .= '</div> <!-- .portfolio_short_content -->
 				</div> <!-- .entry -->
-				<div class="read_more" ' . $prtfl_read_more . '>
+				<div class="read_more">
 					<a href="' . $permalink . '" rel="bookmark">' . __( 'Read more', 'portfolio' ) . '</a>
 				</div> <!-- .read_more -->
 				<div class="portfolio_terms">';
@@ -1285,24 +1292,25 @@ if ( ! function_exists( 'prtfl_wp_footer' ) ) {
 			wp_enqueue_script( 'prtfl_fancyboxJs', plugins_url( 'fancybox/jquery.fancybox.min.js', __FILE__ ), array( 'jquery' ) );
 
 			/* Initialization of fancybox script */
-			if ( ! empty( $image[0] ) ) { ?>
-				<script type="text/javascript">
-					( function( $ ){
-						$( document ).ready( function(){
-							$( "a[data-fancybox=portfolio_fancybox]" ).fancybox({
-								loop    : true,
-								arrows  : false,
-								infobar : true,
-								speed : 500,
-								toolbar: false,
-								animationEffect : 'zoom',
-								openEffect : 'elastic',
-								closeEffect : 'elastic'
-							} );
-						} );
-					} )( jQuery );
-				</script>
-			<?php }
+			if ( ! empty( $image[0] ) ) {
+				$script = "( function( $ ){
+                    $( document ).ready( function(){
+                        $( \"a[data-fancybox=portfolio_fancybox]\" ).fancybox({
+                            loop    : true,
+                            arrows  : false,
+                            infobar : true,
+                            speed : 500,
+                            toolbar: false,
+                            animationEffect : 'zoom',
+                            openEffect : 'elastic',
+                            closeEffect : 'elastic'
+                        } );
+                    } );
+                } )( jQuery );";
+				wp_register_script( 'prtfl_fancybox_script', '' );
+				wp_enqueue_script( 'prtfl_fancybox_script' );
+				wp_add_inline_script( 'prtfl_fancybox_script', sprintf( $script ) );
+			}
 		}
 
 	}
@@ -1650,20 +1658,15 @@ if ( ! function_exists( 'prtfl_admin_notices' ) ) {
 
 		if ( 'plugins.php' == $hook_suffix || ( isset( $_GET['page'] ) && 'portfolio.php' == $_GET['page'] ) ) {
 
-			/* Get options from the database */
-			if ( ! $prtfl_options ) {
-				$prtfl_options = get_option( 'prtfl_options' );
-			}
-
 			if ( ! $prtfl_BWS_demo_data ) {
 				prtfl_include_demo_data();
 			}
-			$prtfl_BWS_demo_data->bws_handle_demo_notice( $prtfl_options['display_demo_notice'] );
+
+			if ( isset( $_GET['page'] ) && 'portfolio.php' == $_GET['page'] ) {
+				$prtfl_BWS_demo_data->bws_handle_demo_notice( $prtfl_options['display_demo_notice'] );
+			}
 
 			if ( 'plugins.php' == $hook_suffix ) {
-				if ( isset( $prtfl_options['first_install'] ) && strtotime( '-1 week' ) > $prtfl_options['first_install'] ) {
-					bws_plugin_banner( $prtfl_plugin_info, 'prtfl', 'portfolio', '56e6c97d1bca3199fb16cb817793a8f6', '74', '//ps.w.org/portfolio/assets/icon-128x128.png' );
-				}
 				if ( ! is_network_admin() ) {
 					bws_plugin_banner_to_settings( $prtfl_plugin_info, 'prtfl_options', 'portfolio', 'edit.php?post_type=portfolio&page=portfolio.php', 'Portfolio' );
 				}
@@ -1713,7 +1716,7 @@ if ( ! function_exists( 'prtfl_template_title' ) ) {
 			$_SESSION['prtfl_page_name'] = $prtfl_options['executor_text_field'] . " " . ( $term->name );
 			$_SESSION['prtfl_page_url'] = get_pagenum_link( $wp_query->query_vars['paged'] );
 		} else {
-			the_title( '<h2>', '</h2>' );
+			the_title( '<h1>', '</h1>' );
 		}
 	}
 }
@@ -1722,7 +1725,7 @@ if ( ! function_exists( 'prtfl_template_title' ) ) {
 if ( ! function_exists( 'prtfl_post_template_title' ) ) {
 	function prtfl_post_template_title() {
 		$title = get_the_title();
-		echo empty( $title ) ? '(' . __( 'No title', 'portfolio' ) . ')' : '<h2>'. $title . '</h2>' ;
+		echo empty( $title ) ? '(' . __( 'No title', 'portfolio' ) . ')' : '<h1>'. $title . '</h1>' ;
 	}
 }
 
@@ -1806,12 +1809,6 @@ if ( ! function_exists( 'prtfl_get_content' ) ) {
 		$count_portfolio_row_block = 0;
 		$prtfl_widht = 99 / $prtfl_options['custom_portfolio_row_count'];
 
-		if( 1 < $prtfl_options['custom_portfolio_row_count']  ){
-			$prtfl_read_more = 'style="float:left"';
-		}else{
-			$prtfl_read_more = "";
-		}
-
 		if ( ! empty( $post ) && ! empty( $post->post_content ) ) {
 			$page_content = $post->post_content;
 			if ( function_exists( 'mltlngg_the_content_filter' ) ) $page_content = mltlngg_the_content_filter( $page_content );
@@ -1850,7 +1847,7 @@ if ( ! function_exists( 'prtfl_get_content' ) ) {
 					<div class="portfolio_row_count"><?php
 				}?>
 				<div id="portfolio_row_count_block" class="portfolio_row_count_block" style="width: <?php echo $prtfl_widht ?>%">
-				<div class="portfolio_content <?php if ( 'twentyfourteen' == get_stylesheet() || 'twentythirteen' == get_stylesheet() || 'twentytwelve' == get_stylesheet() ) echo 'entry-content'; ?>">
+				<div class="portfolio_content<?php echo in_array( get_stylesheet(), array( 'twentyfourteen', 'twentythirteen', 'twentytwelve', 'twentynineteen', 'twentytwenty' ) ) ?  ' entry-content' : ''; ?>">
 					<div class="entry">
 						<?php $post_thumbnail_id = get_post_thumbnail_id( $post->ID );
 						$image			= wp_get_attachment_image_src( $post_thumbnail_id, $prtfl_options['image_size_album'] );
@@ -1914,7 +1911,7 @@ if ( ! function_exists( 'prtfl_get_content' ) ) {
 						</div><!-- .portfolio_short_content -->
 					</div><!-- .entry -->
 					<div class="entry_footer">
-						<div class="read_more" <?php echo $prtfl_read_more ?>>
+						<div class="read_more">
 							<a href="<?php the_permalink(); ?>" rel="bookmark"><?php _e( 'Read more', 'portfolio' ); ?></a>
 						</div><!-- .read_more -->
 						<?php $terms = wp_get_object_terms( $post->ID, 'portfolio_technologies' );
@@ -2160,25 +2157,27 @@ if ( ! function_exists( 'prtfl_pro_pagination' ) ) {
 		if ( 1 != $pages ) { ?>
 			<div class='clear'></div>
 			<div id="portfolio_pagenation">
-				<div class='pagination'>
-					<?php if ( 2 < $paged && $paged > $range + 1 && $showitems < $pages ) {
-						echo "<a href='" . get_pagenum_link( 1 ) . "'>&laquo;</a>";
-					}
-					if ( 1 < $paged && $showitems < $pages ) {
-						echo "<a href='" . get_pagenum_link( $paged - 1 ) . "'>&lsaquo;</a>";
-					}
-					for ( $i = 1; $i <= $pages; $i++ ) {
-						if ( 1 != $pages && ( ! ( $i >= $paged + $range + 1 || $i <= $paged - $range - 1 ) || $pages <= $showitems ) ) {
-							echo ( $paged == $i ) ? "<span class='current'>" . $i . "</span>":"<a href='" . get_pagenum_link( $i ) . "' class='inactive' >" . $i . "</a>";
+				<div class="pagination">
+					<div class="<?php echo 'twentynineteen' == get_stylesheet() ? 'nav-links' : '' ?>">
+						<?php if ( 2 < $paged && $paged > $range + 1 && $showitems < $pages ) {
+							echo "<a href='" . get_pagenum_link( 1 ) . "'>&laquo;</a>";
 						}
-					}
-					if ( $paged < $pages && $showitems < $pages ) {
-						echo "<a href='" . get_pagenum_link( $paged + 1 ) . "'>&rsaquo;</a>";
-					}
-					if ( $paged < $pages - 1 && $paged + $range - 1 < $pages && $showitems < $pages ) {
-						echo "<a href='" . get_pagenum_link( $pages ) . "'>&raquo;</a>";
-					} ?>
-					<div class='clear'></div>
+						if ( 1 < $paged && $showitems < $pages ) {
+							echo "<a href='" . get_pagenum_link( $paged - 1 ) . "'>&lsaquo;</a>";
+						}
+						for ( $i = 1; $i <= $pages; $i++ ) {
+							if ( 1 != $pages && ( ! ( $i >= $paged + $range + 1 || $i <= $paged - $range - 1 ) || $pages <= $showitems ) ) {
+								echo ( $paged == $i ) ? "<span class='current'>" . $i . "</span>":"<a href='" . get_pagenum_link( $i ) . "' class='inactive' >" . $i . "</a>";
+							}
+						}
+						if ( $paged < $pages && $showitems < $pages ) {
+							echo "<a href='" . get_pagenum_link( $paged + 1 ) . "'>&rsaquo;</a>";
+						}
+						if ( $paged < $pages - 1 && $paged + $range - 1 < $pages && $showitems < $pages ) {
+							echo "<a href='" . get_pagenum_link( $pages ) . "'>&raquo;</a>";
+						} ?>
+                        <div class='clear'></div>
+                    </div>
 				</div><!-- .pagination -->
 				<?php if ( function_exists( 'pgntn_display_pagination' ) ) pgntn_display_pagination( 'custom', $second_query ); ?>
 			</div><!-- #portfolio_pagenation -->
@@ -2199,17 +2198,18 @@ if ( ! function_exists( 'prtfl_shortcode_button_content' ) ) {
 				</label>
 			</fieldset>
 			<input class="bws_default_shortcode" type="hidden" name="default" value="[latest_portfolio_items count=3]" />
-			<script type="text/javascript">
-				function prtfl_shortcode_init() {
-					( function( $ ) {
-						$( '.mce-reset #prtfl_display_count' ).on( 'change', function() {
-							var count = $( '.mce-reset #prtfl_display_count' ).val();
-							var shortcode = '[latest_portfolio_items count=' + count + ']';
-							$( '.mce-reset #bws_shortcode_display' ).text( shortcode );
-						} );
-					} )( jQuery );
-				}
-			</script>
+			<?php $script = "function prtfl_shortcode_init() {
+                ( function( $ ) {
+                    $( '.mce-reset #prtfl_display_count' ).on( 'change', function() {
+                        var count = $( '.mce-reset #prtfl_display_count' ).val();
+                        var shortcode = '[latest_portfolio_items count=' + count + ']';
+                        $( '.mce-reset #bws_shortcode_display' ).text( shortcode );
+                    } );
+                } )( jQuery );
+            }";
+			wp_register_script( 'prtfl_display_script', '' );
+			wp_enqueue_script( 'prtfl_display_script' );
+			wp_add_inline_script( 'prtfl_display_script', sprintf( $script ) ); ?>
 			<div class="clear"></div>
 		</div>
 	<?php }
@@ -2391,26 +2391,26 @@ if ( ! class_exists( 'Prtfl_Widget' ) ) {
 		public function form( $instance ) {
 			global $sbscrbr_options;
 
-			$widget_title          = isset( $instance['widget_title'] ) ? stripslashes( esc_html( $instance['widget_title'] ) ) : null;
-			$widget_count_posts          = isset( $instance['widget_count_posts'] ) ? stripslashes( esc_html( $instance['widget_count_posts'] ) ) : null;
-			$widget_count_colums         = isset( $instance['widget_count_colums'] ) ? stripslashes( esc_html( $instance['widget_count_colums'] ) ) : null;
+			$widget_title           = isset( $instance['widget_title'] ) ? stripslashes( sanitize_text_field( $instance['widget_title'] ) ) : '';
+			$widget_count_posts     = isset( $instance['widget_count_posts'] ) ? stripslashes( sanitize_text_field( $instance['widget_count_posts'] ) ) : 5;
+			$widget_count_colums    = isset( $instance['widget_count_colums'] ) ? stripslashes( sanitize_text_field( $instance['widget_count_colums'] ) ) : 3;
 			?>
 			<p>
 				<label for="<?php echo $this->get_field_id( 'widget_title' ); ?>">
 					<?php _e( 'Title', 'portfolio' ); ?>:
-					<input class="widefat" id="<?php echo $this->get_field_id( 'widget_title' ); ?>" name="<?php echo $this->get_field_name( 'widget_title' ); ?>" type="text" value="<?php echo esc_attr( $widget_title ); ?>"/>
+					<input class="widefat" id="<?php echo $this->get_field_id( 'widget_title' ); ?>" name="<?php echo $this->get_field_name( 'widget_title' ); ?>" type="text" value="<?php echo $widget_title; ?>"/>
 				</label>
 			</p>
 			<p>
 				<label for="<?php echo $this->get_field_id( 'widget_count_posts' ); ?>">
-					<?php _e( 'Number of projects:', 'portfolio' ); ?>:
-					<input class="widefat" id="<?php echo $this->get_field_id( 'widget_count_posts' ); ?>" name="<?php echo $this->get_field_name( 'widget_count_posts' ); ?>" type="number" name="prtfl_portfolio_custom_row_count" min="1" max="10000" value="<?php echo ! empty( ( $widget_count_posts ) ) ? esc_attr( $widget_count_posts ) : 5; ?>"/>
+					<?php _e( 'Number of Projects:', 'portfolio' ); ?>:
+					<input class="widefat" id="<?php echo $this->get_field_id( 'widget_count_posts' ); ?>" name="<?php echo $this->get_field_name( 'widget_count_posts' ); ?>" type="number" min="1" max="100" value="<?php echo $widget_count_posts; ?>" />
 				</label>
 			</p>
 			<p>
 				<label for="<?php echo $this->get_field_id( 'widget_count_colums' ); ?>">
 					<?php _e( 'Number of Colums:', 'portfolio' ); ?>:
-					<input class="widefat" id="<?php echo $this->get_field_id( 'widget_count_colums' ); ?>" name="<?php echo $this->get_field_name( 'widget_count_colums' ); ?>" type="number" name="prtfl_portfolio_custom_row_count_colums" min="1" max="100" value="<?php echo ! empty( ( $widget_count_colums ) ) ? esc_attr( $widget_count_colums ) : 3; ?>"/>
+					<input class="widefat" id="<?php echo $this->get_field_id( 'widget_count_colums' ); ?>" name="<?php echo $this->get_field_name( 'widget_count_colums' ); ?>" type="number" min="1" max="100" value="<?php echo $widget_count_colums; ?>" />
 				</label>
 			</p>
 		<?php }

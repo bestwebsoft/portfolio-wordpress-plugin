@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: portfolio\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-21 15:38+0200\n"
-"PO-Revision-Date: 2019-03-21 15:38+0200\n"
+"POT-Creation-Date: 2020-04-09 12:30+0300\n"
+"PO-Revision-Date: 2020-04-09 12:30+0300\n"
 "Last-Translator: plugin@bestwebsoft.com <plugin@bestwebsoft.com>\n"
 "Language-Team: bestwebsoft.com <plugin@bestwebsoft.com>\n"
 "Language: cs_CZ\n"
@@ -13,14 +13,19 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: bws_menu\n"
 
-#: inc/class-prtfl-settings.php:26 portfolio.php:40 portfolio.php:1594
-#: portfolio.php:1612
+#: inc/class-prtfl-settings.php:25 portfolio.php:40 portfolio.php:1631
+#: portfolio.php:1649
 msgid "Settings"
 msgstr "Nastavení"
+
+#: inc/class-prtfl-settings.php:26 portfolio.php:267
+msgid "Project"
+msgstr ""
 
 #: inc/class-prtfl-settings.php:27
 msgid "Misc"
@@ -38,12 +43,12 @@ msgstr ""
 msgid "License Key"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:79 portfolio.php:306 portfolio.php:320
+#: inc/class-prtfl-settings.php:79 portfolio.php:312 portfolio.php:326
 msgid "Executors"
 msgstr "Vykonavatelé"
 
-#: inc/class-prtfl-settings.php:80 portfolio.php:338 portfolio.php:352
-#: portfolio.php:443 portfolio.php:1188
+#: inc/class-prtfl-settings.php:80 portfolio.php:344 portfolio.php:358
+#: portfolio.php:451 portfolio.php:1196
 msgid "Technologies"
 msgstr "Technologie"
 
@@ -51,7 +56,7 @@ msgstr "Technologie"
 msgid "Date of completion"
 msgstr "Datum dokončení"
 
-#: inc/class-prtfl-settings.php:82 portfolio.php:94
+#: inc/class-prtfl-settings.php:82
 msgid "Link"
 msgstr "Odkaz"
 
@@ -63,228 +68,254 @@ msgstr "Stručný popis"
 msgid "Description"
 msgstr "Popis"
 
-#: inc/class-prtfl-settings.php:85 portfolio.php:99
+#: inc/class-prtfl-settings.php:85
 msgid "SVN URL"
 msgstr "SVN URL"
 
-#: inc/class-prtfl-settings.php:158
+#: inc/class-prtfl-settings.php:159
 msgid "Custom image size was changed. You need to update project images."
 msgstr ""
 
-#: inc/class-prtfl-settings.php:228
+#: inc/class-prtfl-settings.php:229
 msgid "Settings saved."
 msgstr "Nastavení bylo uloženo."
 
-#: inc/class-prtfl-settings.php:240
+#: inc/class-prtfl-settings.php:241
 msgid "Please enable JavaScript in Your browser."
 msgstr ""
 
-#: inc/class-prtfl-settings.php:245
+#: inc/class-prtfl-settings.php:246
 msgid "Update Images"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:255 portfolio.php:40 portfolio.php:404
+#: inc/class-prtfl-settings.php:256 portfolio.php:40 portfolio.php:412
 msgid "Portfolio Settings"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:260 inc/class-prtfl-settings.php:267
+#: inc/class-prtfl-settings.php:261
+msgid "Portfolio Page"
+msgstr ""
+
+#: inc/class-prtfl-settings.php:269
+msgid "Base page where all existing projects will be displayed."
+msgstr ""
+
+#: inc/class-prtfl-settings.php:273
 msgid "Number of Columns"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:262 inc/class-prtfl-settings.php:269
+#: inc/class-prtfl-settings.php:275 inc/class-prtfl-settings.php:282
 msgid "columns"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:263
+#: inc/class-prtfl-settings.php:276
 #, fuzzy, php-format
 #| msgid "The number of portfolio to display"
 msgid "Number of portfolio columns (default is %s)."
 msgstr "Číslo portfolia k zobrazení"
 
-#: inc/class-prtfl-settings.php:270
+#: inc/class-prtfl-settings.php:280
+#, fuzzy
+#| msgid "Number of images in the row"
+msgid "Number of image Columns"
+msgstr "Počet obrázků v řádku"
+
+#: inc/class-prtfl-settings.php:283
 #, php-format
 msgid "Number of image columns (default is %s)."
 msgstr ""
 
-#: inc/class-prtfl-settings.php:274
+#: inc/class-prtfl-settings.php:287
 msgid "Image Size"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:280 inc/class-prtfl-settings.php:310
+#: inc/class-prtfl-settings.php:293 inc/class-prtfl-settings.php:311
 msgid "Custom"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:282
+#: inc/class-prtfl-settings.php:295
 msgid ""
 "Maximum portfolio image size. \"Custom\" uses the Image Dimensions values."
 msgstr ""
 
-#: inc/class-prtfl-settings.php:286
+#: inc/class-prtfl-settings.php:299
 msgid "Custom Image Size"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:288
+#: inc/class-prtfl-settings.php:301
 msgid ""
 "Adjust these values based on the number of columns in your project. This "
 "won't affect the full size of your images in the lightbox."
 msgstr ""
 
-#: inc/class-prtfl-settings.php:292
-msgid "Portfolio Page"
-msgstr ""
-
-#: inc/class-prtfl-settings.php:300
-msgid "Base page where all existing projects will be displayed."
-msgstr ""
-
-#: inc/class-prtfl-settings.php:304
+#: inc/class-prtfl-settings.php:305
 msgid "Cover Image Size"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:312
+#: inc/class-prtfl-settings.php:313
 msgid "Maximum cover image size. Custom uses the Image Dimensions values."
 msgstr ""
 
-#: inc/class-prtfl-settings.php:316
-msgid "Custom Cover Image Size"
-msgstr ""
-
-#: inc/class-prtfl-settings.php:322
-msgid "Sort Projects by"
-msgstr ""
-
-#: inc/class-prtfl-settings.php:325
-msgid "Project ID"
-msgstr ""
-
-#: inc/class-prtfl-settings.php:326 portfolio.php:469 portfolio.php:2300
-msgid "Title"
-msgstr "Název"
-
-#: inc/class-prtfl-settings.php:327
-msgid "Date"
-msgstr "Datum"
-
-#: inc/class-prtfl-settings.php:328
-msgid "Last modified date"
-msgstr ""
-
-#: inc/class-prtfl-settings.php:329
-msgid "Comment count"
-msgstr ""
-
-#: inc/class-prtfl-settings.php:330
-msgid "Sorting order (the input field for sorting order)"
-msgstr ""
-
-#: inc/class-prtfl-settings.php:331
-msgid "Author"
-msgstr ""
-
-#: inc/class-prtfl-settings.php:332
-msgid "Random"
-msgstr ""
-
-#: inc/class-prtfl-settings.php:334
-msgid "Select projects sorting order in your portfolio page."
-msgstr ""
-
-#: inc/class-prtfl-settings.php:338
-msgid "Arrange Projects by"
-msgstr ""
-
-#: inc/class-prtfl-settings.php:341
-msgid "Ascending (e.g. 1, 2, 3; a, b, c)"
-msgstr ""
-
-#: inc/class-prtfl-settings.php:343
-msgid "Descending (e.g. 3, 2, 1; c, b, a)"
-msgstr ""
-
-#: inc/class-prtfl-settings.php:351 inc/class-prtfl-settings.php:416
+#: inc/class-prtfl-settings.php:320 inc/class-prtfl-settings.php:374
+#: inc/class-prtfl-settings.php:439 inc/class-prtfl-settings.php:511
 msgid "Close"
 msgstr ""
 
+#: inc/class-prtfl-settings.php:324
+#, fuzzy
+msgid "Slider Image Size"
+msgstr "Název velikosti obrazu"
+
+#: inc/class-prtfl-settings.php:329
+msgid "Maximum slider image size. Custom uses the Image Dimensions values."
+msgstr ""
+
+#: inc/class-prtfl-settings.php:339
+msgid "Custom Cover Image Size"
+msgstr ""
+
+#: inc/class-prtfl-settings.php:345
+msgid "Sort Projects by"
+msgstr ""
+
+#: inc/class-prtfl-settings.php:348
+msgid "Project ID"
+msgstr ""
+
+#: inc/class-prtfl-settings.php:349 portfolio.php:477 portfolio.php:2405
+msgid "Title"
+msgstr "Název"
+
+#: inc/class-prtfl-settings.php:350
+msgid "Date"
+msgstr "Datum"
+
+#: inc/class-prtfl-settings.php:351
+msgid "Last modified date"
+msgstr ""
+
+#: inc/class-prtfl-settings.php:352
+msgid "Comment count"
+msgstr ""
+
+#: inc/class-prtfl-settings.php:353
+msgid "Sorting order (the input field for sorting order)"
+msgstr ""
+
+#: inc/class-prtfl-settings.php:354
+msgid "Author"
+msgstr ""
+
 #: inc/class-prtfl-settings.php:355
+msgid "Random"
+msgstr ""
+
+#: inc/class-prtfl-settings.php:357
+msgid "Select projects sorting order in your portfolio page."
+msgstr ""
+
+#: inc/class-prtfl-settings.php:361
+msgid "Arrange Projects by"
+msgstr ""
+
+#: inc/class-prtfl-settings.php:364
+msgid "Ascending (e.g. 1, 2, 3; a, b, c)"
+msgstr ""
+
+#: inc/class-prtfl-settings.php:366
+msgid "Descending (e.g. 3, 2, 1; c, b, a)"
+msgstr ""
+
+#: inc/class-prtfl-settings.php:378
 msgid "Manual Sorting"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:358
+#: inc/class-prtfl-settings.php:381
 msgid "Enable to sort projects manually by date or title."
 msgstr ""
 
-#: inc/class-prtfl-settings.php:363
+#: inc/class-prtfl-settings.php:386
 msgid "Lightbox Helper"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:365
+#: inc/class-prtfl-settings.php:388
 msgid "Enable to use a lightbox helper navigation between images."
 msgstr ""
 
-#: inc/class-prtfl-settings.php:369
+#: inc/class-prtfl-settings.php:392
 msgid "Lightbox Helper Type"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:372
+#: inc/class-prtfl-settings.php:395
 msgid "Thumbnails"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:373
+#: inc/class-prtfl-settings.php:396
 msgid "Buttons"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:384
+#: inc/class-prtfl-settings.php:407
 msgid "Text Link"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:387
+#: inc/class-prtfl-settings.php:410
 msgid "Enable to display link field as a text for non-registered users."
 msgstr ""
 
-#: inc/class-prtfl-settings.php:392 inc/class-prtfl-settings.php:420
+#: inc/class-prtfl-settings.php:415 inc/class-prtfl-settings.php:443
+#: inc/class-prtfl-settings.php:487 inc/class-prtfl-settings.php:515
 msgid "Projects Fields"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:405 inc/class-prtfl-settings.php:443
+#: inc/class-prtfl-settings.php:428 inc/class-prtfl-settings.php:466
+#: inc/class-prtfl-settings.php:500 inc/class-prtfl-settings.php:538
 #, fuzzy
 msgid "\"More screenshots\" block"
 msgstr "Zobrazit blok \"Další screenshoty\" "
 
-#: inc/class-prtfl-settings.php:425 inc/class-prtfl-settings.php:426
-#: portfolio.php:567
+#: inc/class-prtfl-settings.php:448 inc/class-prtfl-settings.php:449
+#: inc/class-prtfl-settings.php:520 inc/class-prtfl-settings.php:521
+#: portfolio.php:575
 msgid "Categories"
 msgstr "Kategorie"
 
-#: inc/class-prtfl-settings.php:430 inc/class-prtfl-settings.php:431
-#: portfolio.php:568
+#: inc/class-prtfl-settings.php:453 inc/class-prtfl-settings.php:454
+#: inc/class-prtfl-settings.php:525 inc/class-prtfl-settings.php:526
+#: portfolio.php:576
 msgid "Sectors"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:435 inc/class-prtfl-settings.php:436
-#: portfolio.php:569
+#: inc/class-prtfl-settings.php:458 inc/class-prtfl-settings.php:459
+#: inc/class-prtfl-settings.php:530 inc/class-prtfl-settings.php:531
+#: portfolio.php:577
 msgid "Services"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:440 inc/class-prtfl-settings.php:441
-#: portfolio.php:591
+#: inc/class-prtfl-settings.php:463 inc/class-prtfl-settings.php:464
+#: inc/class-prtfl-settings.php:535 inc/class-prtfl-settings.php:536
+#: portfolio.php:599
 msgid "Client"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:460
+#: inc/class-prtfl-settings.php:482
+msgid "Single Project Settings"
+msgstr ""
+
+#: inc/class-prtfl-settings.php:555
 msgid "Demo Data"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:462
+#: inc/class-prtfl-settings.php:557
 msgid ""
 "Install demo data to create portfolio projects with images, post with "
 "shortcodes and page with a list of all portfolio projects."
 msgstr ""
 
-#: inc/class-prtfl-settings.php:482
+#: inc/class-prtfl-settings.php:577
 msgid "Portfolio Post Type"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:486
+#: inc/class-prtfl-settings.php:581
 msgid ""
 "Enable to avoid conflicts with other portfolio plugins installed. All "
 "portfolio created earlier will stay unchanged. However, after enabling we "
@@ -292,40 +323,40 @@ msgid ""
 "is used."
 msgstr ""
 
-#: inc/class-prtfl-settings.php:492
+#: inc/class-prtfl-settings.php:587
 msgid "Portfolio Slug"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:495
+#: inc/class-prtfl-settings.php:590
 msgid "Enter the unique portfolio slug."
 msgstr ""
 
-#: inc/class-prtfl-settings.php:499
+#: inc/class-prtfl-settings.php:594
 msgid "Search Portfolio Projects"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:505
+#: inc/class-prtfl-settings.php:600
 msgid "Activate Now"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:521
+#: inc/class-prtfl-settings.php:616
 msgid "Install Now"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:524
+#: inc/class-prtfl-settings.php:619
 msgid "Enable to include portfolio projects to your website search."
 msgstr ""
 
-#: inc/class-prtfl-settings.php:524
+#: inc/class-prtfl-settings.php:619
 #, php-format
 msgid "%s plugin is required."
 msgstr ""
 
-#: inc/class-prtfl-settings.php:538
+#: inc/class-prtfl-settings.php:633
 msgid "Portfolio Shortcode"
 msgstr ""
 
-#: inc/class-prtfl-settings.php:541
+#: inc/class-prtfl-settings.php:636
 msgid ""
 "Add the latest portfolio projects using the following shortcode (where * is "
 "a number of projects to display):"
@@ -426,387 +457,394 @@ msgstr ""
 msgid "Short description"
 msgstr "Stručný popis"
 
-#: portfolio.php:231
-msgid "Date of completion:"
-msgstr "Datum dokončení:"
-
-#: portfolio.php:232
-msgid "Link:"
-msgstr "Odkaz:"
-
-#: portfolio.php:233
-msgid "Short description:"
-msgstr "Stručný popis:"
-
-#: portfolio.php:234
-msgid "Description:"
-msgstr "Popis:"
-
-#: portfolio.php:235
-msgid "SVN:"
+#: portfolio.php:94
+msgid "Project, URL"
 msgstr ""
 
-#: portfolio.php:236
-msgid "Executor:"
+#: portfolio.php:99
+msgid "Source Files, URL"
 msgstr ""
 
 #: portfolio.php:237
+msgid "Date of completion:"
+msgstr "Datum dokončení:"
+
+#: portfolio.php:238
+msgid "Project, URL:"
+msgstr ""
+
+#: portfolio.php:239
+msgid "Short description:"
+msgstr "Stručný popis:"
+
+#: portfolio.php:240
+msgid "Description:"
+msgstr "Popis:"
+
+#: portfolio.php:241
+msgid "Source Files, URL:"
+msgstr ""
+
+#: portfolio.php:242
+msgid "Executor:"
+msgstr ""
+
+#: portfolio.php:243
 msgid "More screenshots:"
 msgstr "Další screenshoty:"
 
-#: portfolio.php:238
+#: portfolio.php:244
 msgid "Technologies:"
 msgstr "Technologie:"
 
-#: portfolio.php:259
+#: portfolio.php:265
 msgid "Portfolio"
 msgstr "Portfolio"
 
-#: portfolio.php:260
+#: portfolio.php:266
 msgid "Projects"
 msgstr ""
 
-#: portfolio.php:261
-msgid "Project"
-msgstr ""
-
-#: portfolio.php:262
+#: portfolio.php:268
 msgid "Add New"
 msgstr "Přidat nový"
 
-#: portfolio.php:263
+#: portfolio.php:269
 msgid "Add New Project"
 msgstr ""
 
-#: portfolio.php:264
+#: portfolio.php:270
 msgid "Edit"
 msgstr "Upravit"
 
-#: portfolio.php:265
+#: portfolio.php:271
 msgid "Edit Project"
 msgstr ""
 
-#: portfolio.php:266
+#: portfolio.php:272
 msgid "New Project"
 msgstr ""
 
-#: portfolio.php:267 portfolio.php:268
+#: portfolio.php:273 portfolio.php:274
 msgid "View Project"
 msgstr ""
 
-#: portfolio.php:269
+#: portfolio.php:275
 msgid "Search Projects"
 msgstr ""
 
-#: portfolio.php:270
+#: portfolio.php:276
 msgid "No project found"
 msgstr ""
 
-#: portfolio.php:271
+#: portfolio.php:277
 msgid "No project found in Trash"
 msgstr ""
 
-#: portfolio.php:272
+#: portfolio.php:278
 msgid "Parent Project"
 msgstr ""
 
-#: portfolio.php:273
+#: portfolio.php:279
 msgid "Filter projects list"
 msgstr ""
 
-#: portfolio.php:274
+#: portfolio.php:280
 msgid "Projects list navigation"
 msgstr ""
 
-#: portfolio.php:275
+#: portfolio.php:281
 msgid "Projects list"
 msgstr ""
 
-#: portfolio.php:277
+#: portfolio.php:283
 msgid "Create a project item"
 msgstr ""
 
-#: portfolio.php:307
+#: portfolio.php:313
 msgid "Executor"
 msgstr "Vykonavatel"
 
-#: portfolio.php:308
+#: portfolio.php:314
 msgid "Search Executors"
 msgstr ""
 
-#: portfolio.php:309
+#: portfolio.php:315
 msgid "Popular Executors"
 msgstr ""
 
-#: portfolio.php:310
+#: portfolio.php:316
 msgid "All Executors"
 msgstr ""
 
-#: portfolio.php:311
+#: portfolio.php:317
 msgid "Parent Executor"
 msgstr ""
 
-#: portfolio.php:312
+#: portfolio.php:318
 msgid "Parent Executor:"
 msgstr ""
 
-#: portfolio.php:313
+#: portfolio.php:319
 msgid "Edit Executor"
 msgstr ""
 
-#: portfolio.php:314
+#: portfolio.php:320
 msgid "Update Executor"
 msgstr ""
 
-#: portfolio.php:315
+#: portfolio.php:321
 msgid "Add New Executor"
 msgstr ""
 
-#: portfolio.php:316
+#: portfolio.php:322
 msgid "New Executor Name"
 msgstr "Název nového vykonavatele"
 
-#: portfolio.php:317
+#: portfolio.php:323
 msgid "Separate executors with commas"
 msgstr ""
 
-#: portfolio.php:318
+#: portfolio.php:324
 msgid "Add or remove Executor"
 msgstr ""
 
-#: portfolio.php:319
+#: portfolio.php:325
 msgid "Choose from the most used Executors"
 msgstr ""
 
-#: portfolio.php:321
+#: portfolio.php:327
 msgid "Executors list navigation"
 msgstr "Navigace seznamu vykonalavele"
 
-#: portfolio.php:322
+#: portfolio.php:328
 msgid "Executors list"
 msgstr "Seznam vykonavatelů"
 
-#: portfolio.php:339
+#: portfolio.php:345
 msgid "Technology"
 msgstr "Technologie"
 
-#: portfolio.php:340
+#: portfolio.php:346
 msgid "Search Technologies"
 msgstr "Hledat technologie"
 
-#: portfolio.php:341
+#: portfolio.php:347
 msgid "Popular Technologies"
 msgstr "Oblíbené technologie"
 
-#: portfolio.php:342
+#: portfolio.php:348
 msgid "All Technologies"
 msgstr "Všechny technologie"
 
-#: portfolio.php:343
+#: portfolio.php:349
 msgid "Parent Technology"
 msgstr "Nadřazená technologie"
 
-#: portfolio.php:344
+#: portfolio.php:350
 msgid "Parent Technology:"
 msgstr "Nadřazená technologie:"
 
-#: portfolio.php:345
+#: portfolio.php:351
 msgid "Edit Technology"
 msgstr "Úprava technologie"
 
-#: portfolio.php:346
+#: portfolio.php:352
 msgid "Update Technology"
 msgstr "Aktualizace technologie"
 
-#: portfolio.php:347
+#: portfolio.php:353
 msgid "Add New Technology"
 msgstr "Přidat novou technologii"
 
-#: portfolio.php:348
+#: portfolio.php:354
 msgid "New Technology Name"
 msgstr "Název nové technologie"
 
-#: portfolio.php:349
+#: portfolio.php:355
 msgid "Separate technologies with commas"
 msgstr ""
 
-#: portfolio.php:350
+#: portfolio.php:356
 msgid "Add or remove Technology"
 msgstr "Přidání nebo odebrání technologie"
 
-#: portfolio.php:351
+#: portfolio.php:357
 msgid "Choose from the most used technologies"
 msgstr "Vyberte si z nejvíce používaných technologií"
 
-#: portfolio.php:353
+#: portfolio.php:359
 msgid "Technologies list navigation"
 msgstr "Navigace seznamu technologií"
 
-#: portfolio.php:354
+#: portfolio.php:360
 msgid "Technologies list"
 msgstr "Seznam technologií"
 
-#: portfolio.php:444
+#: portfolio.php:452
 msgid "The tag cloud with your most used portfolio technologies."
 msgstr ""
 
-#: portfolio.php:562
+#: portfolio.php:570
 msgid "Images"
 msgstr ""
 
-#: portfolio.php:563
+#: portfolio.php:571
 msgid "General"
 msgstr ""
 
-#: portfolio.php:602
+#: portfolio.php:610
 msgid "Featured project"
 msgstr ""
 
-#: portfolio.php:604
+#: portfolio.php:612
 msgid "Add to slider"
 msgstr ""
 
-#: portfolio.php:608 portfolio.php:667 portfolio.php:708 portfolio.php:749
+#: portfolio.php:616 portfolio.php:675 portfolio.php:716 portfolio.php:757
 msgid "Learn More"
 msgstr ""
 
-#: portfolio.php:648
+#: portfolio.php:656
 msgid "All Categories"
 msgstr "Všechny kategorie"
 
-#: portfolio.php:649 portfolio.php:689 portfolio.php:730
+#: portfolio.php:657 portfolio.php:697 portfolio.php:738
 msgid "Most Used"
 msgstr ""
 
-#: portfolio.php:654 portfolio.php:660 portfolio.php:694 portfolio.php:735
+#: portfolio.php:662 portfolio.php:668 portfolio.php:702 portfolio.php:743
 msgid "Uncatgorized"
 msgstr ""
 
-#: portfolio.php:688
+#: portfolio.php:696
 msgid "All Sectors"
 msgstr ""
 
-#: portfolio.php:700 portfolio.php:701
+#: portfolio.php:708 portfolio.php:709
 msgid "Sector"
 msgstr ""
 
-#: portfolio.php:729
+#: portfolio.php:737
 msgid "All Services"
 msgstr ""
 
-#: portfolio.php:741 portfolio.php:742
+#: portfolio.php:749 portfolio.php:750
 msgid "Service"
 msgstr ""
 
-#: portfolio.php:761
+#: portfolio.php:769
 #, fuzzy
 msgid "Please enable JavaScript to add or delete images."
 msgstr "Prosím povolte JavaScript k použítí možnosti obnovení obrázků."
 
-#: portfolio.php:797
+#: portfolio.php:805
 #, fuzzy
 msgid "Delete image"
 msgstr "Aktualizovat obrázky"
 
-#: portfolio.php:797
+#: portfolio.php:805
 msgid "Delete"
 msgstr ""
 
-#: portfolio.php:811
+#: portfolio.php:819
 msgid "Add images"
 msgstr ""
 
-#: portfolio.php:1007 portfolio.php:1163 portfolio.php:1698 portfolio.php:1826
+#: portfolio.php:1015 portfolio.php:1171 portfolio.php:1729 portfolio.php:1869
 msgid "No title"
 msgstr "Bez názvu"
 
-#: portfolio.php:1182 portfolio.php:1879
+#: portfolio.php:1190 portfolio.php:1922
 msgid "Read more"
 msgstr "Číst více"
 
-#: portfolio.php:1194 portfolio.php:1888 portfolio.php:2079
+#: portfolio.php:1202 portfolio.php:1931 portfolio.php:2133
 #, php-format
 msgid "View all projects in %s"
 msgstr ""
 
-#: portfolio.php:1233
+#: portfolio.php:1241
 msgid "Updating images..."
 msgstr "Aktualizace snímků..."
 
-#: portfolio.php:1234
+#: portfolio.php:1242
 msgid "No image found."
 msgstr ""
 
-#: portfolio.php:1235
+#: portfolio.php:1243
 msgid "All images are updated."
 msgstr ""
 
-#: portfolio.php:1236
+#: portfolio.php:1244
 msgid "Error:"
 msgstr "Chyba:"
 
-#: portfolio.php:1448
+#: portfolio.php:1485
 msgid "Image size not defined"
 msgstr "Velikost obrázku není definována"
 
-#: portfolio.php:1463
+#: portfolio.php:1500
 msgid ""
 "We can update only PNG, JPEG, GIF, WPMP or XBM filetype. For other image "
 "formats, please manually reload image."
 msgstr ""
 
-#: portfolio.php:1473
+#: portfolio.php:1510
 msgid "Image size changes not defined"
 msgstr "Změna velikosti obrázku není definována"
 
-#: portfolio.php:1501 portfolio.php:1505 portfolio.php:1511
+#: portfolio.php:1538 portfolio.php:1542 portfolio.php:1548
 msgid "Invalid path"
 msgstr "Neplatná cesta"
 
-#: portfolio.php:1596
+#: portfolio.php:1633
 msgid "FAQ"
 msgstr "Často kladené otázky"
 
-#: portfolio.php:1597
+#: portfolio.php:1634
 msgid "Support"
 msgstr "Podpora"
 
-#: portfolio.php:1654
+#: portfolio.php:1685
 msgid "ATTENTION!"
 msgstr ""
 
-#: portfolio.php:1655
+#: portfolio.php:1686
 msgid ""
 "In the current version of Portfolio plugin we updated the Technologies "
 "widget. If it was added to the sidebar, it will disappear and you will have "
 "to add it again."
 msgstr ""
 
-#: portfolio.php:1659
+#: portfolio.php:1690
 msgid "Read and Understood"
 msgstr ""
 
-#: portfolio.php:2147
+#: portfolio.php:2201
 msgid "The number of portfolio projects to display"
 msgstr ""
 
-#: portfolio.php:2270
+#: portfolio.php:2375
 #, fuzzy
 msgid "Latest Portfolio Items"
 msgstr "Vytvoření položky portfolia"
 
-#: portfolio.php:2271
+#: portfolio.php:2376
 #, fuzzy
 msgid "Displays the latest Portfolio projects."
 msgstr "Vytvoření položky portfolia"
 
-#: portfolio.php:2306
+#: portfolio.php:2411
 msgid "Number of projects:"
 msgstr ""
 
-#: portfolio.php:2312
+#: portfolio.php:2417
 msgid "Number of Colums:"
 msgstr ""
+
+#~ msgid "Link:"
+#~ msgstr "Odkaz:"
 
 #~ msgid "Install demo data"
 #~ msgstr "Nainstalovat ukázková data"
@@ -1065,10 +1103,6 @@ msgstr ""
 #~ msgstr "Povolit zobrazení nastavení na vybraných stránkách"
 
 #, fuzzy
-#~ msgid "Image size"
-#~ msgstr "Název velikosti obrazu"
-
-#, fuzzy
 #~ msgid "For the album cover"
 #~ msgstr "Velikost obrazu pro obal alba"
 
@@ -1108,9 +1142,6 @@ msgstr ""
 #~ msgid ""
 #~ "DESC (descending order from highest to lowest values - 3, 2, 1; c, b, a)"
 #~ msgstr "DESC (sestupně od nejvyšší k nejnižší hodnoty - 3, 2, 1, c, b,)"
-
-#~ msgid "Number of images in the row"
-#~ msgstr "Počet obrázků v řádku"
 
 #~ msgid "Display the link field as a text for non-registered users"
 #~ msgstr "Zobrazit pole s odkazem jako text pro neregistrované uživatele"

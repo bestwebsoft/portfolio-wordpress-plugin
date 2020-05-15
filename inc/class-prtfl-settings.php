@@ -3,8 +3,6 @@
  * Displays the content on the plugin settings page
  */
 
-require_once( dirname( dirname( __FILE__ ) ) . '/bws_menu/class-bws-settings.php' );
-
 if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 	class Prtfl_Settings_Tabs extends Bws_Settings_Tabs {
 		public $wp_image_sizes = array();
@@ -24,6 +22,7 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 
 			$tabs = array(
 				'settings' 		=> array( 'label' => __( 'Settings', 'portfolio' ) ),
+				'project' 		=> array( 'label' => __( 'Project', 'portfolio' ) ),
 				'misc' 			=> array( 'label' => __( 'Misc', 'portfolio' ) ),
 				'custom_code' 	=> array( 'label' => __( 'Custom Code', 'portfolio' ) ),
 				'import-export' => array( 'label' => __( 'Import / Export', 'portfolio' ) ),
@@ -99,12 +98,10 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 		 */
 		public function save_options() {
 
-			$this->options["custom_image_row_count"] = intval( $_POST['prtfl_custom_image_row_count'] );
-			$this->options["custom_portfolio_row_count"] = intval( $_POST['prtfl_portfolio_custom_row_count'] );
-			if ( 1 > $this->options["custom_image_row_count"] )
-				$this->options["custom_image_row_count"] = 1;
-			if ( 1 > $this->options["custom_portfolio_row_count"] )
-				$this->options["custom_portfolio_row_count"] = 1;
+			$message = $notice = $error = '';
+
+			$this->options["custom_image_row_count"] = absint( $_POST['prtfl_custom_image_row_count'] );
+			$this->options["custom_portfolio_row_count"] = absint( $_POST['prtfl_portfolio_custom_row_count'] );
 
 			$new_image_size_photo 		= esc_attr( $_POST['prtfl_image_size_photo'] );
 			$custom_image_size_w_photo 	= intval( $_POST['prtfl_custom_image_size_w_photo'] );
@@ -162,19 +159,14 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 
 			foreach ( $this->fields as $field_key => $field_title ) {
 				$this->options[ $field_key . '_additional_field'] = isset( $_REQUEST['prtfl_' . $field_key . '_additional_field'] ) ? 1 : 0;
-				$this->options[ $field_key . '_text_field'] = stripslashes( esc_html( $_REQUEST['prtfl_' . $field_key . '_text_field'] ) );
+				$this->options[ $field_key . '_text_field'] = stripslashes( sanitize_text_field( $_REQUEST['prtfl_' . $field_key . '_text_field'] ) );
 			}
 
-			$this->options['screenshot_text_field'] = stripslashes( esc_html( $_REQUEST['prtfl_screenshot_text_field'] ) );
+			$this->options['screenshot_text_field'] = stripslashes( sanitize_text_field( $_REQUEST['prtfl_screenshot_text_field'] ) );
 
-			$slug = strtolower( trim( stripslashes( esc_html( $_POST['prtfl_slug'] ) ) ) );
-			$slug = preg_replace( "/[^a-z0-9\s-]/", "", $slug );
-			$slug = trim( preg_replace( "/[\s-]+/", " ", $slug ) );
-			$slug = preg_replace( "/\s/", "-", $slug );
-			if ( $this->options["slug"] != $slug ) {
+			if ( $this->options["slug"] != $_POST['prtfl_slug'] )
 				$this->options["flush_rewrite_rules"] = 1;
-			}
-			$this->options["slug"] = $slug;
+			$this->options["slug"] = sanitize_title( $_POST['prtfl_slug'] );
 
 			/**
 			 * rewriting post types name with unique one from default options
@@ -257,6 +249,18 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 			<hr>
 			<table class="form-table">
 				<tr valign="top">
+					<th scope="row"><?php _e( 'Portfolio Page', 'portfolio' ); ?></th>
+					<td>
+						<?php wp_dropdown_pages( array(
+							'depth'                 => 0,
+							'selected'              => $this->options['page_id_portfolio_template'],
+							'name'                  => 'prtfl_page_id_portfolio_template',
+							'show_option_none'		=> '...'
+						) ); ?>
+						<div class="bws_info"><?php _e( 'Base page where all existing projects will be displayed.' , 'portfolio'); ?></div>
+					</td>
+				</tr>
+				<tr valign="top">
 					<th scope="row"><?php _e( 'Number of Columns', 'portfolio' ); ?> </th>
 					<td>
 						<input<?php echo $this->change_permission_attr; ?> type="number" name="prtfl_portfolio_custom_row_count" min="1" max="10000" value="<?php echo $this->options["custom_portfolio_row_count"]; ?>" /> <?php _e( 'columns', 'portfolio' ); ?>
@@ -264,7 +268,7 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"><?php _e( 'Number of image Columns', 'portfolio' ); ?> </th>
+					<th scope="row"><?php _e( 'Number of Image Columns', 'portfolio' ); ?> </th>
 					<td>
 						<input type="number" name="prtfl_custom_image_row_count" min="1" max="10000" value="<?php echo $this->options["custom_image_row_count"]; ?>" /> <?php _e( 'columns', 'portfolio' ); ?>
 						 <div class="bws_info"><?php printf( __( 'Number of image columns (default is %s).', 'portfolio' ), '3' ); ?></div>
@@ -289,18 +293,6 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"><?php _e( 'Portfolio Page', 'portfolio' ); ?></th>
-					<td>
-						<?php wp_dropdown_pages( array(
-							'depth'                 => 0,
-							'selected'              => $this->options['page_id_portfolio_template'],
-							'name'                  => 'prtfl_page_id_portfolio_template',
-							'show_option_none'		=> '...'
-						) ); ?>
-						<div class="bws_info"><?php _e( 'Base page where all existing projects will be displayed.' , 'portfolio'); ?></div>
-					</td>
-				</tr>
-				<tr valign="top">
 					<th scope="row"><?php _e( 'Cover Image Size', 'portfolio' ); ?> </th>
 					<td>
 						<select name="prtfl_image_size_album">
@@ -309,9 +301,15 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 							<?php } ?>
 							<option value="portfolio-thumb" <?php selected( 'portfolio-thumb', $this->options['image_size_album'] ); ?> class="bws_option_affect" data-affect-show=".prtfl_for_custom_image_size_album"><?php _e( 'Custom', 'portfolio' ); ?></option>
 						</select>
-						<div class="bws_info"><?php _e( 'Maximum cover image size. Custom uses the Image Dimensions values.', 'portfolio' ); ?></div>
+						<div class="bws_info"><?php _e( 'Maximum cover image size. "Custom" uses the Image Dimensions values.', 'portfolio' ); ?></div>
 					</td>
 				</tr>
+                <tr valign="top" class="prtfl_for_custom_image_size_album">
+                    <th scope="row"><?php _e( 'Custom Cover Image Size', 'portfolio' ); ?> </th>
+                    <td>
+                        <input type="number" name="prtfl_custom_image_size_w_album" min="1" max="10000" value="<?php echo $this->options['custom_size_px']['portfolio-thumb'][0]; ?>" /> x <input type="number" name="prtfl_custom_image_size_h_album" min="1" max="10000" value="<?php echo $this->options['custom_size_px']['portfolio-thumb'][1]; ?>" /> px
+                    </td>
+                </tr>
             </table>
             <?php if ( ! $this->hide_pro_tabs ) { ?>
                 <div class="bws_pro_version_bloc">
@@ -322,10 +320,18 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
                             <tr valign="top">
                                 <th scope="row"><?php _e( 'Slider Image Size', 'portfolio' ); ?> </th>
                                 <td>
-                                    <select name="prtfl_image_size_slider">
+                                    <select disabled="disabled" name="prtfl_image_size_slider">
                                         <option value="large">Large (1024 × 1024)</option>
                                     </select>
-                                    <div class="bws_info"><?php _e( 'Maximum slider image size. Custom uses the Image Dimensions values.', 'portfolio-pro' ); ?></div>
+                                    <div class="bws_info"><?php _e( 'Maximum slider image size. "Custom" uses the Image Dimensions values.', 'portfolio' ); ?></div>
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <th scope="row"><?php _e( 'Sort Projects Option', 'portfolio' ); ?></th>
+                                <td>
+                                    <label>
+                                        <input type="checkbox" name="prtfl_sorting_selectbox" value="1" disabled="disabled" /> <span class="bws_info"><?php _e( 'Enable to display sort projects manually by date or title.', 'portfolio' ); ?></span>
+                                    </label>
                                 </td>
                             </tr>
                         </table>
@@ -334,12 +340,6 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
                 </div>
             <?php } ?>
             <table class="form-table">
-				<tr valign="top" class="prtfl_for_custom_image_size_album">
-					<th scope="row"><?php _e( 'Custom Cover Image Size', 'portfolio' ); ?> </th>
-					<td>
-						<input type="number" name="prtfl_custom_image_size_w_album" min="1" max="10000" value="<?php echo $this->options['custom_size_px']['portfolio-thumb'][0]; ?>" /> x <input type="number" name="prtfl_custom_image_size_h_album" min="1" max="10000" value="<?php echo $this->options['custom_size_px']['portfolio-thumb'][1]; ?>" /> px
-					</td>
-				</tr>
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Sort Projects by', 'portfolio' ); ?></th>
 					<td>
@@ -374,14 +374,6 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 						<div class="bws_table_bg"></div>
 						<table class="form-table bws_pro_version">
 							<tr valign="top">
-								<th scope="row"><?php _e( 'Manual Sorting', 'portfolio' ); ?></th>
-								<td>
-									<label>
-										<input type="checkbox" name="prtfl_sorting_selectbox" value="1" disabled="disabled" /> <span class="bws_info"><?php _e( 'Enable to sort projects manually by date or title.', 'portfolio' ); ?></span>
-									</label>
-								</td>
-							</tr>
-							<tr valign="top">
 								<th scope="row"><?php _e( 'Lightbox Helper', 'portfolio' ); ?></th>
 								<td>
 									<input disabled type="checkbox" name="" /> <span class="bws_info"><?php _e( 'Enable to use a lightbox helper navigation between images.', 'portfolio' ); ?></span>
@@ -410,23 +402,35 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 						</label>
 					</td>
 				</tr>
+			</table>
+        <?php }
+
+		/**
+		 *
+		 */
+
+		public function tab_project() { ?>
+			<h3 class="bws_tab_label"><?php _e( 'Single Project Settings', 'portfolio' ); ?></h3>
+			<?php $this->help_phrase(); ?>
+			<hr>
+			<table class="form-table">
 				<tr valign="top">
-					<th scope="row"><?php _e( 'Projects Fields', 'portfolio' ); ?> </th>
+					<th scope="row" class="prtfl_table_project"><?php _e( 'Projects Fields', 'portfolio' ); ?> </th>
 					<td>
 						<fieldset>
 							<?php foreach ( $this->fields as $field_key => $field_title ) { ?>
-								<label>
+								<label class="prtfl_label_project">
 									<input<?php echo $this->change_permission_attr; ?> type="checkbox" name="prtfl_<?php echo $field_key; ?>_additional_field" value="1" <?php checked( 1, $this->options[ $field_key . '_additional_field'] ); ?> />
 									 <?php echo $field_title; ?>
 									<br>
-									<input<?php echo $this->change_permission_attr; ?> type="text" name="prtfl_<?php echo $field_key; ?>_text_field" maxlength="250" value="<?php echo $this->options[ $field_key . '_text_field']; ?>" />
+									<input<?php echo $this->change_permission_attr; ?> class="prtfl_input_project" type="text" name="prtfl_<?php echo $field_key; ?>_text_field" maxlength="250" value="<?php echo $this->options[ $field_key . '_text_field']; ?>" />
 								</label>
 								<br />
 							<?php } ?>
-							<label>
+							<label class="prtfl_label_project">
 								 <?php _e( '"More screenshots" block', 'portfolio' ); ?>
 								<br>
-								<input type="text" name="prtfl_screenshot_text_field" maxlength="250" value="<?php echo $this->options["screenshot_text_field"]; ?>" />								
+								<input class="prtfl_input_project" type="text" name="prtfl_screenshot_text_field" maxlength="250" value="<?php echo $this->options["screenshot_text_field"]; ?>" />
 							</label>
 						</fieldset>
 					</td>
@@ -438,29 +442,29 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 						<button type="submit" name="bws_hide_premium_options" class="notice-dismiss bws_hide_premium_options" title="<?php _e( 'Close', 'portfolio' ); ?>"></button>
 						<div class="bws_table_bg"></div>
 						<table class="form-table bws_pro_version">
-							<tr valign="top">
-								<th scope="row"><?php _e( 'Projects Fields', 'portfolio' ); ?></th>
+							<tr>
+								<th scope="row" class="prtfl_table_project"><?php _e( 'Projects Fields', 'portfolio' ); ?></th>
 								<td>
 									<fieldset>
-										<label>
+										<label class="prtfl_label_project">
 											<input type="checkbox" name="prtfl_categories_additional_field" value="1" disabled="disabled" />
 											 <?php _e( 'Categories', 'portfolio' ); ?><br />
-											<input type="text" name="prtfl_categories_text_field" value="<?php _e( 'Categories', 'portfolio' ); ?>:" disabled="disabled" />											
+											<input class="prtfl_input_project" type="text" name="prtfl_categories_text_field" value="<?php _e( 'Categories', 'portfolio' ); ?>:" disabled="disabled" />
 										</label><br />
-										<label>
+										<label class="prtfl_label_project">
 											<input type="checkbox" name="prtfl_sectors_additional_field" value="1" disabled="disabled" />
 											 <?php _e( 'Sectors', 'portfolio' ); ?><br />
-											<input type="text" name="prtfl_sectors_text_field" value="<?php _e( 'Sectors', 'portfolio' ); ?>:" disabled="disabled" />											
+											<input class="prtfl_input_project" type="text" name="prtfl_sectors_text_field" value="<?php _e( 'Sectors', 'portfolio' ); ?>:" disabled="disabled" />
 										</label><br />
-										<label>
+										<label class="prtfl_label_project">
 											<input type="checkbox" name="prtfl_services_additional_field" value="1" disabled="disabled" />
 											 <?php _e( 'Services', 'portfolio' ); ?><br />
-											<input type="text" name="prtfl_services_text_field" value="<?php _e( 'Services', 'portfolio' ); ?>:" disabled="disabled" />											
+											<input class="prtfl_input_project" type="text" name="prtfl_services_text_field" value="<?php _e( 'Services', 'portfolio' ); ?>:" disabled="disabled" />
 										</label><br />
-										<label>
+										<label class="prtfl_label_project">
 											<input type="checkbox" name="prtfl_client_additional_field" value="1" disabled="disabled" />
 											 <?php _e( 'Client', 'portfolio' ); ?><br />
-											<input type="text" name="prtfl_client_text_field" value="<?php _e( 'Client', 'portfolio' ); ?>:" disabled="disabled" />											
+											<input class="prtfl_input_project" type="text" name="prtfl_client_text_field" value="<?php _e( 'Client', 'portfolio' ); ?>:" disabled="disabled" />
 										</label><br />
 										<label><input type="checkbox" name="prtfl_disbable_screenshot_block" value="1" disabled="disabled" /> <?php _e( '"More screenshots" block', 'portfolio' ); ?></label><br />
 									</fieldset>

@@ -2,9 +2,9 @@
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add portfolio, portfolio plugin, add portfolio widget, portfolio, fancybox, showcase, responsive portfolio, portfolio plugin, create portfolio, portfolio categories, project portfolio, portfolio widget, add album
-Requires at least: 4.0
-Tested up to: 5.2.3
-Stable tag: 2.51
+Requires at least: 4.5
+Tested up to: 5.4.1
+Stable tag: 2.52
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,8 +30,8 @@ https://www.youtube.com/watch?v=OIxDlQZcCcI
 	* Completion date
 	* Executor profiles
 	* Technologies
-	* Link
-	* SVN
+	* Project, URL
+	* Source Files, URL
 * Change image size for:
 	* Album cover
 	* Thumbnails
@@ -159,6 +159,12 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 8. Portfolio admin page (for all portfolios).
 
 == Changelog ==
+
+= V2.52 - 13.05.2020 =
+* Update : The plugin settings page was changed.
+* Update : Templates are updated.
+* Update : BWS menu has been updated.
+* Update : All functionality was updated for WordPress 5.4.1.
 
 = V2.51 - 07.10.2019 =
 * Pro : The ability to change the size of slider images has been added.
@@ -393,6 +399,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * In this version an image uploaded by means of custom fields is substituted with Wordpress standard meta box for the media files uploading.
 
 == Upgrade Notice ==
+
+= V2.52 =
+* Plugin optimization completed.
 
 = V2.51 =
 * Usability improved.
