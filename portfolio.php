@@ -6,7 +6,7 @@ Description: Create your personal portfolio WordPress website. Manage and showca
 Author: BestWebSoft
 Text Domain: portfolio
 Domain Path: /languages
-Version: 2.52
+Version: 2.53
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
@@ -232,6 +232,7 @@ if ( ! function_exists( 'prtfl_get_options_default' ) ) {
 			'shrdescription_additional_field' 			=>	1,
 			'description_additional_field' 				=>	1,
 			'svn_additional_field' 						=>	1,
+			'svn_additional_field_for_non_logged'		=>	1,
 			'executor_additional_field' 				=>	1,
 			'technologies_additional_field'				=>	1,
 			'link_additional_field_for_non_registered'	=>	1,
@@ -912,11 +913,12 @@ if ( ! function_exists( 'prtfl_add_pdf_print_content' ) ) {
 					$custom_content .= '<p><span class="lable">' . $prtfl_options['link_text_field'] . '</span> ' . $post_meta['_prtfl_link'] . '</p>';
 				}
 			}
-			if ( 0 != $user_id ) {
+			if ( 0 != $user_id || 0 == $prtfl_options['svn_additional_field_for_non_logged'] ) {
 				if ( 1 == $prtfl_options['svn_additional_field'] && ! empty( $post_meta['_prtfl_svn'] ) ) {
 					$custom_content .= '<p><span class="lable">' . $prtfl_options['svn_text_field'] . '</span> ' . $post_meta['_prtfl_svn'] . '</p>';
-				}
-
+				}	
+			}
+			if ( 0 != $user_id ) {
 				if ( 1 == $prtfl_options['executor_additional_field'] ) {
 					$executors_profile = wp_get_object_terms( $post->ID, 'portfolio_executor_profile' );
 					if ( ! empty( $executors_profile ) ) {
@@ -2039,11 +2041,13 @@ if ( ! function_exists( 'prtfl_post_get_content' ) ) {
 							<?php }
 						}
 
-						if ( 0 != $user_id && $portfolio_options ) {
+						if ( 0 != $user_id || 0 == $portfolio_options['svn_additional_field_for_non_logged'] ) {
 							$svn = isset( $post_meta['_prtfl_svn'] ) ? $post_meta['_prtfl_svn'] : '';
 							if ( 1 == $portfolio_options['svn_additional_field'] && ! empty( $svn ) ) { ?>
 								<p><span class="lable"><?php echo '<b>' . $portfolio_options['svn_text_field'] . '</b>'; ?></span> <?php echo $svn; ?></p>
 							<?php }
+						}
+						if ( $user_id ) {
 							$executors_profile = wp_get_object_terms( $post->ID, 'portfolio_executor_profile' );
 							if ( 1 == $portfolio_options['executor_additional_field'] && ! empty( $executors_profile ) ) { ?>
 								<p><span class="lable"><?php echo '<b>' . $portfolio_options['executor_text_field'] . '</b>'; ?></span>
@@ -2057,7 +2061,7 @@ if ( ! function_exists( 'prtfl_post_get_content' ) ) {
 								} ?>
 								</p>
 							<?php }
-						 } ?>
+						} ?>
 					</div><!-- .portfolio_short_content -->
 					<div class="portfolio_images_block" data-columns="<?php echo $portfolio_options['custom_image_row_count'] ?>">
 						<?php if ( metadata_exists( 'post', $post->ID, '_prtfl_images' ) ) {

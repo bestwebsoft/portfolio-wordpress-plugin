@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add portfolio, portfolio plugin, add portfolio widget, portfolio, fancybox, showcase, responsive portfolio, portfolio plugin, create portfolio, portfolio categories, project portfolio, portfolio widget, add album
 Requires at least: 4.5
-Tested up to: 5.4.1
-Stable tag: 2.52
+Tested up to: 5.5.1
+Stable tag: 2.53
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,7 +66,7 @@ https://www.youtube.com/watch?v=OIxDlQZcCcI
 > * Add info about the client
 > * Add the widget with portfolio categories
 > * Sort portfolio projects by date and title
-> * Change the size for slider images [NEW]
+> * Change the size for slider images
 > * Enable lightbox helper:
 > 	* Button
 > 	* Thumbnail
@@ -83,6 +83,7 @@ If you have a feature suggestion or idea you'd like to see in the plugin, we'd l
 * [[Doc] Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
 * [[Doc] Purchase](https://docs.google.com/document/d/1EUdBVvnm7IHZ6y0DNyldZypUQKpB8UVPToSc_LdOYQI/)
 * [[Video] Installation Instruction](https://www.youtube.com/watch?v=6xPYIttiJ8g)
+* [[Doc] User Guide](https://docs.google.com/document/d/1WpHcCNaIdmDpwfDICZUU8YJjSh_xWE1Zc73PWlXhxVM/)
 
 = Help & Support =
 
@@ -159,6 +160,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 8. Portfolio admin page (for all portfolios).
 
 == Changelog ==
+
+= V2.53 - 29.09.2020 =
+* Update : Added a checkbox that allows viewing Source Files for unregistered users.
+* Update : BWS Panel section was updated.
 
 = V2.52 - 13.05.2020 =
 * Update : The plugin settings page was changed.
@@ -399,6 +404,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * In this version an image uploaded by means of custom fields is substituted with Wordpress standard meta box for the media files uploading.
 
 == Upgrade Notice ==
+
+= V2.53 =
+* Usability improved.
 
 = V2.52 =
 * Plugin optimization completed.

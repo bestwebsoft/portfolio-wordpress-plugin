@@ -38,8 +38,6 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 				'tabs' 				 => $tabs,
 				'wp_slug'			 => 'portfolio',
 				'demo_data'			 => $prtfl_BWS_demo_data,
-				'pro_page' 			 => 'edit.php?post_type=bws-portfolio&page=portfolio-pro.php',
-				'bws_license_plugin' => 'portfolio-pro/portfolio-pro.php',
 				'link_key' 			 => 'f047e20c92c972c398187a4f70240285',
 				'link_pn' 			 => '74',
 			) );
@@ -81,7 +79,7 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 				'link'				=> __( 'Link', 'portfolio' ),
 				'shrdescription'	=> __( 'Short Description', 'portfolio' ),
 				'description'		=> __( 'Description', 'portfolio' ),
-				'svn'				=> __( 'SVN URL', 'portfolio' )
+
 			);
 
 			add_action( get_parent_class( $this ) . '_display_custom_messages', array( $this, 'display_custom_messages' ) );
@@ -156,10 +154,14 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 			}
 
 			$this->options["link_additional_field_for_non_registered"] = isset( $_REQUEST["prtfl_link_additional_field_for_non_registered"] ) ? 1 : 0;
+			$this->options["svn_text_field"] = sanitize_text_field( $_REQUEST["prtfl_svn_text_field"] );
+			$this->options["svn_additional_field_for_non_logged"] = isset( $_REQUEST["prtfl_svn_additional_field_for_non_logged"] ) ? 1 : 0;
+			$this->options["svn_additional_field"] = isset( $_REQUEST["prtfl_svn_additional_field"] ) ? 1 : 0;
 
 			foreach ( $this->fields as $field_key => $field_title ) {
 				$this->options[ $field_key . '_additional_field'] = isset( $_REQUEST['prtfl_' . $field_key . '_additional_field'] ) ? 1 : 0;
 				$this->options[ $field_key . '_text_field'] = stripslashes( sanitize_text_field( $_REQUEST['prtfl_' . $field_key . '_text_field'] ) );
+
 			}
 
 			$this->options['screenshot_text_field'] = stripslashes( sanitize_text_field( $_REQUEST['prtfl_screenshot_text_field'] ) );
@@ -427,6 +429,17 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 								</label>
 								<br />
 							<?php } ?>
+							<label class="prtfl_label_project">
+								<input<?php echo $this->change_permission_attr; ?> type="checkbox" name="prtfl_svn_additional_field" value="1" <?php checked( 1, $this->options["svn_additional_field"] ); ?> />
+								 <?php _e( 'Source Files, URL', 'portfolio' ); ?>
+							</label>
+							<label class="prtfl_label_project" id="prtfl_non_logged">
+								<input<?php echo $this->change_permission_attr; ?> type="checkbox" name="prtfl_svn_additional_field_for_non_logged" value="1" <?php checked( 1, $this->options["svn_additional_field_for_non_logged"] ); ?> />
+								 <?php _e( 'Display only for logged-in users', 'portfolio' ); ?>
+							</label> 
+							<label class="prtfl_label_project">
+								<input<?php echo $this->change_permission_attr; ?> class="prtfl_input_project" type="text" name="prtfl_svn_text_field" maxlength="250" value= "<?php echo $this->options["svn_text_field"]; ?>" />
+							</label>
 							<label class="prtfl_label_project">
 								 <?php _e( '"More screenshots" block', 'portfolio' ); ?>
 								<br>

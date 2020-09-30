@@ -63,7 +63,7 @@
 <li>Add info about the client</li>
 <li>Add the widget with portfolio categories</li>
 <li>Sort portfolio projects by date and title</li>
-<li>Change the size for slider images [NEW]</li>
+<li>Change the size for slider images</li>
 <li>Enable lightbox helper:
 <ul>
 <li>Button</li>
@@ -82,6 +82,7 @@
 <li><a href="https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/" rel="nofollow ugc">[Doc] Installation</a></li>
 <li><a href="https://docs.google.com/document/d/1EUdBVvnm7IHZ6y0DNyldZypUQKpB8UVPToSc_LdOYQI/" rel="nofollow ugc">[Doc] Purchase</a></li>
 <li><a href="https://www.youtube.com/watch?v=6xPYIttiJ8g" rel="nofollow ugc">[Video] Installation Instruction</a></li>
+<li><a href="https://docs.google.com/document/d/1WpHcCNaIdmDpwfDICZUU8YJjSh_xWE1Zc73PWlXhxVM/" rel="nofollow ugc">[Doc] User Guide</a></li>
 </ul>
 <h4>Help &amp; Support</h4>
 <p>Visit our Help Center if you have any questions, our friendly Support Team is happy to help &#8211; <a href="https://support.bestwebsoft.com/" rel="nofollow ugc">https://support.bestwebsoft.com/</a></p>
