@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add portfolio, portfolio plugin, add portfolio widget, portfolio, fancybox, showcase, responsive portfolio, portfolio plugin, create portfolio, portfolio categories, project portfolio, portfolio widget, add album
 Requires at least: 4.5
-Tested up to: 5.5.1
-Stable tag: 2.53
+Tested up to: 5.8.1
+Stable tag: 2.54
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,6 +17,8 @@ Portfolio plugin is the best way to create and add past projects to your WordPre
 Include project details, short and long description, URL, screenshots, date of completion along with each project and much more.
 
 Showcase your recent work to get more jobs and grow your business!
+
+[View Demo](https://bestwebsoft.com/portfolio-demo/?ref=readme)
 
 https://www.youtube.com/watch?v=OIxDlQZcCcI
 
@@ -59,6 +61,7 @@ https://www.youtube.com/watch?v=OIxDlQZcCcI
 >
 > All features from Free version included plus:
 >
+> * Compatible with [Sender](https://bestwebsoft.com/products/wordpress/plugins/sender/?k=b147786efc846e1b8af4f4161a07bd16)
 > * Create and display portfolio:
 > 	* Categories
 > 	* Sectors
@@ -80,14 +83,19 @@ If you have a feature suggestion or idea you'd like to see in the plugin, we'd l
 
 = Documentation & Videos =
 
-* [[Doc] Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
-* [[Doc] Purchase](https://docs.google.com/document/d/1EUdBVvnm7IHZ6y0DNyldZypUQKpB8UVPToSc_LdOYQI/)
+* [[Doc] User Guide](https://bestwebsoft.com/documentation/portfolio/portfolio-user-guide/)
+* [[Doc] Installation](https://bestwebsoft.com/documentation/how-to-install-a-wordpress-product/how-to-install-a-wordpress-plugin/)
+* [[Doc] Purchase](https://bestwebsoft.com/documentation/how-to-purchase-a-wordpress-plugin/how-to-purchase-wordpress-plugin-from-bestwebsoft/)
 * [[Video] Installation Instruction](https://www.youtube.com/watch?v=6xPYIttiJ8g)
-* [[Doc] User Guide](https://docs.google.com/document/d/1WpHcCNaIdmDpwfDICZUU8YJjSh_xWE1Zc73PWlXhxVM/)
+
 
 = Help & Support =
 
 Visit our Help Center if you have any questions, our friendly Support Team is happy to help - <https://support.bestwebsoft.com/>
+
+= Affiliate Program =
+
+Earn 20% commission by selling the premium WordPress plugins and themes by BestWebSoft — [https://bestwebsoft.com/affiliate/](https://bestwebsoft.com/affiliate/?utm_source=plugin&utm_medium=readme&utm_campaign=affiliate_program)
 
 = Translation =
 
@@ -113,7 +121,7 @@ Facebook Button - Add Facebook Like, Share and Profile buttons to WordPress post
 5. Create (if necessary) Technologies and Executor profiles.
 6. Create portfolio item, add title, description, short description, and upload the images one of which should be set as featured. Publish portfolio then.
 
-[View a PDF version of Step-by-step Instruction on Portfolio Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
+[View a PDF version of Step-by-step Instruction on Portfolio Installation](https://bestwebsoft.com/documentation/how-to-install-a-wordpress-product/how-to-install-a-wordpress-plugin/)
 
 https://www.youtube.com/watch?v=6xPYIttiJ8g
 
@@ -146,7 +154,7 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 1. the link to the page where the problem occurs
 2. the name of the plugin and its version. If you are using a pro version - your order number.
 3. the version of your WordPress installation
-4. copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit)
+4. copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://bestwebsoft.com/documentation/admin-panel-issues/system-status/)
 
 == Screenshots ==
 
@@ -160,6 +168,12 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 8. Portfolio admin page (for all portfolios).
 
 == Changelog ==
+
+= V2.54 - 06.10.2021 =
+* Update : All functionality was updated for WordPress 5.8.1.
+* Update : BWS plugins section is updated.
+* Bugfix : Small bugs has been fixed.
+* PRO : Compatibility with Sender by BestWebSoft has been added.
 
 = V2.53 - 29.09.2020 =
 * Update : Added a checkbox that allows viewing Source Files for unregistered users.
@@ -404,6 +418,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * In this version an image uploaded by means of custom fields is substituted with Wordpress standard meta box for the media files uploading.
 
 == Upgrade Notice ==
+
+= V2.54 =
+* Bugs fixed.
+* The compatibility with new WordPress version updated.
 
 = V2.53 =
 * Usability improved.

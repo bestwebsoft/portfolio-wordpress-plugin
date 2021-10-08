@@ -6,13 +6,13 @@ Description: Create your personal portfolio WordPress website. Manage and showca
 Author: BestWebSoft
 Text Domain: portfolio
 Domain Path: /languages
-Version: 2.53
+Version: 2.54
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
 
 /*
-	@ Copyright 2020  BestWebSoft  ( https://support.bestwebsoft.com )
+	@ Copyright 2021  BestWebSoft  ( https://support.bestwebsoft.com )
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -409,7 +409,9 @@ if ( ! function_exists( 'prtfl_settings_page' ) ) {
 		if ( ! class_exists( 'Bws_Settings_Tabs' ) )
     		require_once( dirname( __FILE__ ) . '/bws_menu/class-bws-settings.php' );
 		require_once( dirname( __FILE__ ) . '/inc/class-prtfl-settings.php' );
-		$page = new Prtfl_Settings_Tabs( plugin_basename( __FILE__ ) ); ?>
+		$page = new Prtfl_Settings_Tabs( plugin_basename( __FILE__ ) );
+        if ( method_exists( $page,'add_request_feature' ) )
+            $page->add_request_feature(); ?>
 		<div class="wrap">
 			<h1><?php _e( 'Portfolio Settings', 'portfolio' ); ?></h1>
 			<?php $page->display_content(); ?>

@@ -40,7 +40,10 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 				'demo_data'			 => $prtfl_BWS_demo_data,
 				'link_key' 			 => 'f047e20c92c972c398187a4f70240285',
 				'link_pn' 			 => '74',
-			) );
+                'doc_link'              => 'https://bestwebsoft.com/documentation/portfolio/portfolio-user-guide/'
+            ) );
+
+            $this->all_plugins = get_plugins();
 
 			$wp_sizes = get_intermediate_image_sizes();
 
@@ -170,6 +173,31 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 				$this->options["flush_rewrite_rules"] = 1;
 			$this->options["slug"] = sanitize_title( $_POST['prtfl_slug'] );
 
+            if (  is_plugin_active( 'sender-pro/sender-pro.php' ) ) {
+                $sndr_options = get_option( 'sndr_options' );
+                /* mailout when publishing quote */
+                if ( ! empty( $_POST['sndr_distribution_select'] ) && ! empty( $_POST['sndr_templates_select'] ) && ! empty( $_POST['sndr_priority'] ) ) {
+                    if (isset($_POST['prtfl_sndr_mailout'])) {
+                        $key = array_search('bws-portfolio', $sndr_options['automailout_new_post']);
+                        if ($key == false) {
+                            $sndr_options['automailout_new_post'][] = 'bws-portfolio';
+                            $sndr_options['group_for_post']['bws-portfolio'] = absint($_POST['sndr_distribution_select']['bws-portfolio']);
+                            $sndr_options['letter_for_post']['bws-portfolio'] = absint($_POST['sndr_templates_select']['bws-portfolio']);
+                            $sndr_options['priority_for_post_letters']['bws-portfolio'] = absint($_POST['sndr_priority']['bws-portfolio']);
+                        }
+                    } else {
+                        $key = array_search('bws-portfolio', $sndr_options['automailout_new_post']);
+                        if (false !== $key) {
+                            unset($sndr_options['automailout_new_post'][$key]);
+                            unset($sndr_options['priority_for_post_letters']['bws-portfolio']);
+                            unset($sndr_options['letter_for_post']['bws-portfolio']);
+                            unset($sndr_options['group_for_post']['bws-portfolio']);
+                        }
+                    }
+                }
+                update_option( 'sndr_options', $sndr_options );
+            }
+
 			/**
 			 * rewriting post types name with unique one from default options
 			 */
@@ -245,7 +273,10 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 		/**
 		 *
 		 */
-		public function tab_settings() { ?>
+		public function tab_settings() {
+            if (  is_plugin_active( 'sender-pro/sender-pro.php' ) ) {
+                $sndr_options = get_option( 'sndr_options' );
+            } ?>
 			<h3 class="bws_tab_label"><?php _e( 'Portfolio Settings', 'portfolio' ); ?></h3>
 			<?php $this->help_phrase(); ?>
 			<hr>
@@ -404,6 +435,36 @@ if ( ! class_exists( 'Prtfl_Settings_Tabs' ) ) {
 						</label>
 					</td>
 				</tr>
+                <tr>
+                    <th scope="row"><?php _e( 'Automatic Mailout when Publishing a New:', 'portfolio' ); ?></th>
+                    <td>
+                        <?php if ( array_key_exists( 'sender-pro/sender-pro.php', $this->all_plugins ) ) {
+                            if ( is_plugin_active( 'sender-pro/sender-pro.php' ) ) { ?>
+                                <fieldset>
+                                    <label>
+                                        <input type="checkbox" name="prtfl_sndr_mailout" value="1" class="bws_option_affect" data-affect-show="[data-post-type=bws-portfolio]" <?php checked( in_array( 'bws-portfolio', $sndr_options['automailout_new_post'] ) ); ?> />&nbsp<?php _e( 'Projects', 'portfolio' ); ?>
+                                    </label><br />
+                                    <div data-post-type="bws-portfolio">
+                                        <p><?php sndr_distribution_list_select( $sndr_options['group_for_post'], 'bws-portfolio' ); ?></p>
+                                        <p><?php sndr_letters_list_select( $sndr_options['letter_for_post'], 'bws-portfolio' ); ?></p>
+                                        <p>
+                                            <?php sndr_priorities_list( $sndr_options['priority_for_post_letters'], '', 'bws-portfolio' );
+                                            _e( 'Select mailout priority', 'portfolio' ); ?>
+                                            <br /><span class="bws_info"><?php _e( 'Less number - higher priority', 'portfolio' ) ?></span>
+                                        </p><br/>
+                                    </div>
+                                </fieldset>
+                            <?php } else { ?>
+                                <input disabled="disabled" type="checkbox" name="prtfl_sndr_mailout" />&nbsp
+                                <span class="bws_info"><?php _e( 'Enable to automatic mailout when publishing a new bws-portfolios and tips. Sender Pro plugin is required.', 'portfolio' ); ?> <a href="https://bestwebsoft.com/products/wordpress/plugins/sender/"><?php _e( 'Ativate Now', 'portfolio' ); ?></a></span><br />
+                            <?php }
+                        } else { ?>
+                            <input disabled="disabled" type="checkbox" name="prtfl_sndr_mailout" />&nbsp
+                            <span class="bws_info"><?php _e( 'Enable to automatic mailout when publishing a new bws-portfolios and tips. Sender Pro plugin is required.', 'portfolio' ); ?> <a href="https://bestwebsoft.com/products/wordpress/plugins/sender/"><?php _e( 'Install Now', 'portfolio' ); ?></a></span><br />
+                        <?php } ?>
+
+                    </td>
+                </tr>
 			</table>
         <?php }
 
