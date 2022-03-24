@@ -6,7 +6,7 @@ Description: Create your personal portfolio WordPress website. Manage and showca
 Author: BestWebSoft
 Text Domain: portfolio
 Domain Path: /languages
-Version: 2.54
+Version: 2.55
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
